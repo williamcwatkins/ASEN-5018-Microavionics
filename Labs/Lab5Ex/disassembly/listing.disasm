@@ -1,0 +1,1525 @@
+Disassembly Listing for Lab5Ex
+Generated From:
+C:/Users/William Watkins/Documents/Academics/CU Boulder/2021/Fall 2021/Microavionics/Labs/Lab5Ex/dist/default/debug/Lab5Ex.debug.elf
+Oct 29, 2021 7:17:01 PM
+
+---  C:/Users/William Watkins/Documents/Academics/CU Boulder/2021/Fall 2021/Microavionics/Labs/lab5_orig.asm
+                                                  1:     ;;;;;;; ASEN 4-5067 Lab 5 Example code ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  2:     ;
+                                                  3:     ;	Originally Created:	Scott Palo (scott.palo@colorado.edu)
+                                                  4:     ;	Modified:	Trudy Schwartz (trudy.schwartz@colorado.edu)
+                                                  5:     ;	Updated By:	Ruben Hinojosa Torres (ruhi9621@colorado.edu)
+                                                  6:     ;	Modified:       05-AUGUST-21
+                                                  7:     ;
+                                                  8:     ; NOTES:
+                                                  9:     ;   Use Timer 0 for looptime timing requirements
+                                                  10:    ;
+                                                  11:    ;   This code Generate a jitterfree 10 Hz square wave on CCP1 output using 
+                                                  12:    ;    compare mode with 24bit extension bytes.
+                                                  13:    ;
+                                                  14:    ;   You may re-use parts of lab 4 code (especially the LCD functions!) but 
+                                                  15:    ;    remember to give credit in your comments for any code your didnt write.
+                                                  16:    ;
+                                                  17:    ;;;;;;; Program hierarchy ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  18:    ;
+                                                  19:    ; Mainline
+                                                  20:    ;   Initial
+                                                  21:    ;   Example RPG Code
+                                                  22:    ;   High Priority ISR Example Shell
+                                                  23:    ;   Low Priority ISR
+                                                  24:    ;	CCP1 Handler
+                                                  25:    ;	TMR1 Handler
+                                                  26:    ;
+                                                  27:    ;;;;;;; Compiler Notes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                                                  28:    ; Compiler Notes: 
+                                                  29:    ; Add this line to the Compiler flags i.e
+                                                  30:    ;   Right click on project name -> Properties -> pic-as Global Options -> 
+                                                  31:    ;   Additional options: 
+                                                  32:    ;    -Wl,-presetVec=0h,-pHiPriISR_Vec=0008h,-pLoPriISR_Vec=0018h
+                                                  33:    ;
+                                                  34:    ;;;;;;;;;;;;;;;;;;;;;;;;; Hardware Notes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  35:    // <editor-fold defaultstate="collapsed" desc="Pin Mapping">
+                                                  36:    /*
+                                                  37:        Pin | Pin Name/Register Name
+                                                  38:         1  | RH2/AN21/A18
+                                                  39:         2  | RH3/AN20/A19
+                                                  40:         3  | RE1/P2C/WR/AD9
+                                                  41:         4  | RE0/P2D/RD/AD8
+                                                  42:         5  | RG0/ECCP3/P3A
+                                                  43:         6  | RG1/TX2/CK2/AN19/C3OUT
+                                                  44:         7  | RG2/RX2/DT2/AN18/C3INA
+                                                  45:         8  | RG3/CCP4/AN17/P3D/C3INB
+                                                  46:         9  | MCLR/RG5
+                                                  47:         10 | RG4/RTCC/T7CKI(Note:2)/T5G/CCP5/AN16/P1D/C3INC
+                                                  48:         11 | VSS
+                                                  49:         12 | VDDCORE/VCAP
+                                                  50:         13 | RF7/AN5/SS1
+                                                  51:         14 | RF6/AN11/C1INA
+                                                  52:         15 | RF5/AN10/C1INB
+                                                  53:         16 | RF4/AN9/C2INA
+                                                  54:         17 | RF3/AN8/C2INB/CTMUI
+                                                  55:         18 | RF2/AN7/C1OUT
+                                                  56:         19 | RH7/CCP6(Note:3)/P1B/AN15
+                                                  57:         20 | RH6/CCP7(Note:3)/P1C/AN14/C1INC
+                                                  58:         21 | RH5/CCP8(Note:3)/P3B/AN13/C2IND
+                                                  59:         22 | RH4/CCP9(Note:2,3)/P3C/AN12/C2INC
+                                                  60:         23 | RF1/AN6/C2OUT/CTDIN
+                                                  61:         24 | ENVREG
+                                                  62:         25 | AVDD
+                                                  63:         26 | AVSS
+                                                  64:         27 | RA3/AN3/VREF+
+                                                  65:         28 | RA2/AN2/VREF-
+                                                  66:         29 | RA1/AN1
+                                                  67:         30 | RA0/AN0/ULPWU
+                                                  68:         31 | VSS
+                                                  69:         32 | VDD
+                                                  70:         33 | RA5/AN4/T1CKI/T3G/HLVDIN
+                                                  71:         34 | RA4/T0CKI
+                                                  72:         35 | RC1/SOSC/ECCP2/P2A
+                                                  73:         36 | RC0/SOSCO/SCKLI
+                                                  74:         37 | RC6/TX1/CK1
+                                                  75:         38 | RC7/RX1/DT1
+                                                  76:         39 | RJ4/BA0
+                                                  77:         40 | RJ5/CE
+                                                  78:         41 | RJ6/LB
+                                                  79:         42 | RJ7/UB
+                                                  80:         43 | RC2/ECCP1/P1A
+                                                  81:         44 | RC3/SCK1/SCL1
+                                                  82:         45 | RC4/SDI1/SDA1
+                                                  83:         46 | RC5/SDO1
+                                                  84:         47 | RB7/KBI3/PGD
+                                                  85:         48 | VDD
+                                                  86:         49 | OSC1/CLKI/RA7
+                                                  87:         50 | OSC2/CLKO/RA6
+                                                  88:         51 | VSS
+                                                  89:         52 | RB6/KBI2/PGC
+                                                  90:         53 | RB5/KBI1/T3CKI/T1G
+                                                  91:         54 | RB4/KBI0
+                                                  92:         55 | RB3/INT3/CTED2/ECCP2(Note:1)/P2A
+                                                  93:         56 | RB2/INT2/CTED1
+                                                  94:         57 | RB1/INT1
+                                                  95:         58 | RB0/INT0/FLT0
+                                                  96:         59 | RJ3/WRH
+                                                  97:         60 | RJ2/WRL
+                                                  98:         61 | RJ1/OE
+                                                  99:         62 | RJ0/ALE
+                                                  100:        63 | RD7/SS2/PSP7/AD7
+                                                  101:        64 | RD6/SCK2/SCL2/PSP6/AD6
+                                                  102:        65 | RD5/SDI2/SDA2/PSP5/AD5
+                                                  103:        66 | RD4/SDO2/PSP4/AD4
+                                                  104:        67 | RD3/PSP3/AD3
+                                                  105:        68 | RD2/PSP2/AD2
+                                                  106:        69 | RD1/T5CKI/T7G/PSP1/AD1
+                                                  107:        70 | VSS
+                                                  108:        71 | VDD
+                                                  109:        72 | RD0/PSP0/CTPLS/AD0
+                                                  110:        73 | RE7/ECCP2/P2A/AD15
+                                                  111:        74 | RE6/P1B/CCP6(Note:3)/AD14
+                                                  112:        75 | RE5/P1C/CCP7(Note:3)/AD13
+                                                  113:        76 | RE4/P3B/CCP8(Note:3)/AD12
+                                                  114:        77 | RE3/P3C/CCP9(Note:2,3)/REF0/AD11
+                                                  115:        78 | RE2/P2B/CCP10(Note:2)/CS/AD10
+                                                  116:        79 | RH0/AN23/A16
+                                                  117:        80 | RH1/AN22/A17
+                                                  118:   
+                                                  119:   Note (1) The ECCP2 pin placement depends on the CCP2MX Configuration bit 
+                                                  120:   	setting and whether the device is in Microcontroller or Extended 
+                                                  121:   	Microcontroller mode.
+                                                  122:        (2) Not available on the PIC18F65K22 and PIC18F85K22 devices.
+                                                  123:        (3) The CC6, CCP7, CCP8 and CCP9 pin placement depends on the 
+                                                  124:   	setting of the ECCPMX Configuration bit (CONFIG3H<1>).
+                                                  125:   */
+                                                  126:   // </editor-fold>
+                                                  127:   
+                                                  128:   ;;;;;;;;;;;;;;;;;;;;;;;;; Assembler Directives ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
+                                                  129:   // <editor-fold defaultstate="collapsed" desc="Assembler Directives">    
+                                                  130:   ; Processor Definition
+                                                  131:   PROCESSOR   18F87K22
+                                                  132:   ; Radix Definition 
+                                                  133:   RADIX	DEC	      
+                                                  134:   
+                                                  135:   ; The following code should control macro expansions but needs further editing
+                                                  136:       ; Macro Expansions
+                                                  137:   ;EXPAND ;To expand macros
+                                                  138:   NOEXPAND ;To collapse macros
+                                                  139:       
+                                                  140:   ; The following code is from a previous compiler and no longer works 			      
+                                                  141:       ; List Definition
+                                                  142:       ;   C: Set the page (i.e., Column) width
+                                                  143:       ;   N: Set the page length
+                                                  144:       ;   X: Turn MACRO expansion on or off
+                                                  145:       ;LIST	C = 160, N = 15, X = OFF
+                                                  146:       
+                                                  147:       
+                                                  148:   ; Include File:
+                                                  149:   #include <xc.inc>
+                                                  150:   // </editor-fold>    
+                                                  151:   
+                                                  152:   ;;;;;;;;;;;;;;;;;;;;;;;;; PIC18F87K22 Configuration Bit Settings ;;;;;;;;;;;;;;;    
+                                                  153:   // <editor-fold defaultstate="collapsed" desc="CONFIG Definitions">
+                                                  154:   			      
+                                                  155:   ; CONFIG1L
+                                                  156:   CONFIG  RETEN = ON            ; VREG Sleep Enable bit (Enabled)
+                                                  157:   CONFIG  INTOSCSEL = HIGH      ; LF-INTOSC Low-power Enable bit (LF-INTOSC in 
+                                                  158:                                 ;	    High-power mode during Sleep)
+                                                  159:   CONFIG  SOSCSEL = HIGH        ; SOSC Power Selection and mode Configuration bits 
+                                                  160:   			      ;	    (High Power SOSC circuit selected)
+                                                  161:   CONFIG  XINST = OFF           ; Extended Instruction Set (Disabled)
+                                                  162:   
+                                                  163:   ; CONFIG1H
+                                                  164:   CONFIG  FOSC = HS1            ; Oscillator
+                                                  165:   CONFIG  PLLCFG = OFF          ; PLL x4 Enable bit (Disabled)
+                                                  166:   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor (Disabled)
+                                                  167:   CONFIG  IESO = OFF            ; Internal External Oscillator Switch Over Mode 
+                                                  168:   			      ;	    (Disabled)
+                                                  169:   
+                                                  170:   ; CONFIG2L
+                                                  171:   CONFIG  PWRTEN = ON           ; Power Up Timer (Enabled)
+                                                  172:   CONFIG  BOREN = ON            ; Brown Out Detect (Controlled with SBOREN bit)
+                                                  173:   CONFIG  BORV = 1              ; Brown-out Reset Voltage bits (2.7V)
+                                                  174:   CONFIG  BORPWR = ZPBORMV      ; BORMV Power level (ZPBORMV instead of BORMV 
+                                                  175:   			      ;	    is selected)
+                                                  176:   
+                                                  177:   ; CONFIG2H
+                                                  178:   CONFIG  WDTEN = OFF           ; Watchdog Timer (WDT disabled in hardware; 
+                                                  179:   			      ;	    SWDTEN bit disabled)
+                                                  180:   CONFIG  WDTPS = 1048576       ; Watchdog Postscaler (1:1048576)
+                                                  181:   
+                                                  182:   ; CONFIG3L
+                                                  183:   CONFIG  RTCOSC = SOSCREF      ; RTCC Clock Select (RTCC uses SOSC)
+                                                  184:   CONFIG  EASHFT = ON           ; External Address Shift bit (Address Shifting 
+                                                  185:   			      ;	    enabled)
+                                                  186:   CONFIG  ABW = MM              ; Address Bus Width Select bits (8-bit 
+                                                  187:   			      ;	    address bus)
+                                                  188:   CONFIG  BW = 16               ; Data Bus Width (16-bit external bus mode)
+                                                  189:   CONFIG  WAIT = OFF            ; External Bus Wait (Disabled)
+                                                  190:   
+                                                  191:   ; CONFIG3H
+                                                  192:   CONFIG  CCP2MX = PORTC        ; CCP2 Mux (RC1)
+                                                  193:   CONFIG  ECCPMX = PORTE        ; ECCP Mux (Enhanced CCP1/3 [P1B/P1C/P3B/P3C] 
+                                                  194:   			      ;	    muxed with RE6/RE5/RE4/RE3)
+                                                  195:   ; CONFIG  MSSPMSK = MSK7        ; MSSP address masking (7 Bit address masking 
+                                                  196:   			      ;	    mode)
+                                                  197:   CONFIG  MCLRE = ON            ; Master Clear Enable (MCLR Enabled, RG5 Disabled)
+                                                  198:   
+                                                  199:   ; CONFIG4L
+                                                  200:   CONFIG  STVREN = ON           ; Stack Overflow Reset (Enabled)
+                                                  201:   CONFIG  BBSIZ = BB2K          ; Boot Block Size (2K word Boot Block size)
+                                                  202:   
+                                                  203:   ; CONFIG5L
+                                                  204:   CONFIG  CP0 = OFF             ; Code Protect 00800-03FFF (Disabled)
+                                                  205:   CONFIG  CP1 = OFF             ; Code Protect 04000-07FFF (Disabled)
+                                                  206:   CONFIG  CP2 = OFF             ; Code Protect 08000-0BFFF (Disabled)
+                                                  207:   CONFIG  CP3 = OFF             ; Code Protect 0C000-0FFFF (Disabled)
+                                                  208:   CONFIG  CP4 = OFF             ; Code Protect 10000-13FFF (Disabled)
+                                                  209:   CONFIG  CP5 = OFF             ; Code Protect 14000-17FFF (Disabled)
+                                                  210:   CONFIG  CP6 = OFF             ; Code Protect 18000-1BFFF (Disabled)
+                                                  211:   CONFIG  CP7 = OFF             ; Code Protect 1C000-1FFFF (Disabled)
+                                                  212:   
+                                                  213:   ; CONFIG5H
+                                                  214:   CONFIG  CPB = OFF             ; Code Protect Boot (Disabled)
+                                                  215:   CONFIG  CPD = OFF             ; Data EE Read Protect (Disabled)
+                                                  216:   
+                                                  217:   ; CONFIG6L
+                                                  218:   CONFIG  WRT0 = OFF            ; Table Write Protect 00800-03FFF (Disabled)
+                                                  219:   CONFIG  WRT1 = OFF            ; Table Write Protect 04000-07FFF (Disabled)
+                                                  220:   CONFIG  WRT2 = OFF            ; Table Write Protect 08000-0BFFF (Disabled)
+                                                  221:   CONFIG  WRT3 = OFF            ; Table Write Protect 0C000-0FFFF (Disabled)
+                                                  222:   CONFIG  WRT4 = OFF            ; Table Write Protect 10000-13FFF (Disabled)
+                                                  223:   CONFIG  WRT5 = OFF            ; Table Write Protect 14000-17FFF (Disabled)
+                                                  224:   CONFIG  WRT6 = OFF            ; Table Write Protect 18000-1BFFF (Disabled)
+                                                  225:   CONFIG  WRT7 = OFF            ; Table Write Protect 1C000-1FFFF (Disabled)
+                                                  226:   
+                                                  227:   ; CONFIG6H
+                                                  228:   CONFIG  WRTC = OFF            ; Config. Write Protect (Disabled)
+                                                  229:   CONFIG  WRTB = OFF            ; Table Write Protect Boot (Disabled)
+                                                  230:   CONFIG  WRTD = OFF            ; Data EE Write Protect (Disabled)
+                                                  231:   
+                                                  232:   ; CONFIG7L
+                                                  233:   CONFIG  EBRT0 = OFF           ; Table Read Protect 00800-03FFF (Disabled)
+                                                  234:   CONFIG  EBRT1 = OFF           ; Table Read Protect 04000-07FFF (Disabled)
+                                                  235:   CONFIG  EBRT2 = OFF           ; Table Read Protect 08000-0BFFF (Disabled)
+                                                  236:   CONFIG  EBRT3 = OFF           ; Table Read Protect 0C000-0FFFF (Disabled)
+                                                  237:   CONFIG  EBRT4 = OFF           ; Table Read Protect 10000-13FFF (Disabled)
+                                                  238:   CONFIG  EBRT5 = OFF           ; Table Read Protect 14000-17FFF (Disabled)
+                                                  239:   CONFIG  EBRT6 = OFF           ; Table Read Protect 18000-1BFFF (Disabled)
+                                                  240:   CONFIG  EBRT7 = OFF           ; Table Read Protect 1C000-1FFFF (Disabled)
+                                                  241:   
+                                                  242:   ; CONFIG7H
+                                                  243:   CONFIG  EBRTB = OFF           ; Table Read Protect Boot (Disabled)
+                                                  244:   // </editor-fold>
+                                                  245:   
+                                                  246:   ;;;;;;;;;;;;;;;;;;;;;;;;; MACRO Definitions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  247:   // <editor-fold defaultstate="collapsed" desc="MACRO Definitions">			    
+                                                  248:   ; MACRO Definitions:
+                                                  249:   
+                                                  250:   ; MOVLF
+                                                  251:   ; Description:
+                                                  252:   ;   Move literal value to given register. 
+                                                  253:   ; Input: 
+                                                  254:   ;   lit: literal value
+                                                  255:   ;   dest: destination should be a full 3 byte address
+                                                  256:   ;   access: Access bank or not. Possible values are 'a' for access bank or
+                                                  257:   ;	'b' for banked memory.
+                                                  258:     MOVLF	    MACRO   lit, dest, access
+                                                  259:       MOVLW   lit	    ; Move literal into WREG
+                                                  260:       BANKSEL	(dest)	; Determine bank and set BSR for next file instruction
+                                                  261:       MOVWF   BANKMASK(dest), access  ; Move WREG into destination file
+                                                  262:     ENDM
+                                                  263:     
+                                                  264:   // </editor-fold>
+                                                  265:     
+                                                  266:   ;;;;;;;;;;;;;;;;;;;;;;;;; Program Vectors ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
+                                                  267:   // <editor-fold defaultstate="collapsed" desc="Program Vectors">
+                                                  268:     ;;;;;;;;;;;;;;;;;;;;;; Power-On-Reset entry point ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  269:   PSECT	resetVec, class = CODE, reloc = 2
+                                                  270:   resetVec:
+0000  0000     NOP                                271:       NOP	    ; No Operation
+0002  EFD7     GOTO 0x3AE                         272:       goto    main    ; Go to main after reset
+                                                  273:   
+                                                  274:   ;;;;;;;;;;;;;;;;;;; Interrupt Service Routine Vectors ;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  275:   ; High Priority ISR Vector Definition:
+                                                  276:   PSECT	HiPriISR_Vec, class = CODE, reloc = 2
+                                                  277:   HiPriISR_Vec:
+0010  EF0F     GOTO 0x41E                         278:       GOTO    HiPriISR	; Go to High Priority ISR
+                                                  279:       
+                                                  280:   ; Low Priority ISR Vector Definition:
+                                                  281:   PSECT	LoPriISR_Vec, class = CODE, reloc = 2
+                                                  282:   LoPriISR_Vec:
+0020  EF10     GOTO 0x420                         283:       GOTO    LoPriISR	; Go to Low Priority ISR
+                                                  284:   // </editor-fold>  
+                                                  285:   
+                                                  286:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  287:   // <editor-fold defaultstate="collapsed" desc="Variables">
+                                                  288:   ; Objects to be defined in Access Bank
+                                                  289:   PSECT	udata_acs
+                                                  290:   WREG_TEMP:	DS	1   ; Temp variables used in Low Pri ISR
+                                                  291:   STATUS_TEMP:	DS	1
+                                                  292:   BSR_TEMP:	DS	1    
+                                                  293:   TMR1X:		DS	1   ; Eight-bit extension to TMR1
+                                                  294:   CCPR1X:		DS	1   ; Eight-bit extension to CCPR1
+                                                  295:   DTIMEX:		DS	1   ; Delta time variable of half period of square wave
+                                                  296:   DTIMEH:		DS	1   ; Will copy HalfPeriod constant into these 3 registers
+                                                  297:   DTIMEL:		DS	1
+                                                  298:   DIR_RPG:	DS	1   ; Direction of RPG
+                                                  299:   RPG_TEMP:	DS	1   ; Temp variable used for RPG state
+                                                  300:   OLDPORTD:	DS	1   ; Used to hold previous state of RPG
+                                                  301:   
+                                                  302:   ; Objects to be defined in Bank 1
+                                                  303:   PSECT	udata_bank1
+                                                  304:       NOP
+                                                  305:   // </editor-fold>
+                                                  306:       
+                                                  307:   ;;;;;;; Code Start ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  308:   PSECT	code	
+                                                  309:   
+                                                  310:   ;;;;;;;;;;;;;;;;;;;;;; Definitions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  311:   HalfPeriod  EQU	    200000  ; Number of 250 ns instruction cycles in 0.05 sec 
+                                                  312:   			    ; (Half of 10 Hz)
+                                                  313:   			    ; Only for example, not useful directly for Lab 5
+                                                  314:   
+                                                  315:   ;;;;;;; Mainline program ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  316:   main:
+03AE  D801     RCALL 0x3B2                        317:       RCALL   Initial			; Initialize everything
+                                                  318:   L1:
+03B0  D7FF     BRA 0x3B0                          319:       BRA	    L1
+                                                  320:   
+                                                  321:   ;;;;;;; Initial subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  322:   ;
+                                                  323:   ; This subroutine performs SOME of the initializations of variables and
+                                                  324:   ; registers. YOU will need to add those that are omitted/needed for your 
+                                                  325:   ; specific code
+                                                  326:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  327:   Initial:
+03B2  0E40     MOVLW 0x40                         328:       MOVLF   low HalfPeriod, DTIMEL, a	; Load DTIME with HalfPeriod constant
+03B4  0100     MOVLB 0x0
+03B6  6E2A     MOVWF 0x2A, ACCESS
+03B8  0E0D     MOVLW 0xD                          329:       MOVLF   high HalfPeriod, DTIMEH, a
+03BA  0100     MOVLB 0x0
+03BC  6E29     MOVWF __Hudata_bank0, ACCESS
+03BE  0E03     MOVLW 0x3                          330:       MOVLF   low highword HalfPeriod, DTIMEX, a
+03C0  0100     MOVLB 0x0
+03C2  6E28     MOVWF __Hudata_bank0, ACCESS
+                                                  331:       
+03C4  6A94     CLRF TRISC, ACCESS                 332:       CLRF    TRISC, a		    ; Set I/O for PORTC
+03C6  6A8B     CLRF LATC, ACCESS                  333:       CLRF    LATC, a		    ; Clear lines on PORTC
+03C8  0E02     MOVLW 0x2                          334:       MOVLF   00000010B, T1CON, a	    ; 16 bit timer, buffer H/L registers
+03CA  010F     MOVLB 0xF
+03CC  6ECD     MOVWF T1CON, ACCESS
+03CE  0E0A     MOVLW 0xA                          335:       MOVLF   00001010B, CCP1CON, a   ; Select compare mode, software interrupt only
+03D0  010F     MOVLB 0xF
+03D2  6EBB     MOVWF CCP1CON, ACCESS
+03D4  010F     MOVLB 0xF                          336:       MOVLB   0x0F		    ; Set BSR to bank F for SFRs outside of access bank				
+03D6  0E00     MOVLW 0x0                          337:       MOVLF   00000000B, CCPTMRS0, b  ; Set TMR1 for use with ECCP1, Using BSR!
+03D8  010F     MOVLB 0xF
+03DA  6F2D     MOVWF 0x2D, BANKED
+03DC  8ED0     BSF RCON, 7, ACCESS                338:       BSF	    RCON, 7, a		    ; Set IPEN bit <7> enables priority levels
+03DE  909F     BCF IPR1, 0, ACCESS                339:       BCF	    IPR1, 0, a		    ; TMR1IP bit <0> assigns low priority to TMR1 interrupts
+03E0  92A5     BCF IPR3, 1, ACCESS                340:       BCF	    IPR3, 1, a		    ; CCP1IP bit<1> assign low pri to ECCP1 interrupts
+03E2  6A26     CLRF 0x26, ACCESS                  341:       CLRF    TMR1X, a		    ; Clear TMR1X extension
+03E4  0E03     MOVLW 0x3                          342:       MOVLF   low highword HalfPeriod, CCPR1X, a	; Make first 24-bit compare 
+03E6  0100     MOVLB 0x0
+03E8  6E27     MOVWF 0x27, ACCESS
+                                                  343:   						; occur quickly 16bit+8bit ext 
+                                                  344:   						; Note: 200000 (= 0x30D40)
+03EA  82A3     BSF PIE3, 1, ACCESS                345:       BSF	    PIE3, 1, a	    ; CCP1IE bit <1> enables ECCP1 interrupts
+03EC  809D     BSF PIE1, 0, ACCESS                346:       BSF	    PIE1, 0, a	    ; TMR1IE bit <0> enables TMR1 interrupts
+03EE  8CF2     BSF INTCON, 6, ACCESS              347:       BSF	    INTCON, 6, a    ; GIEL bit <6> enable low-priority interrupts to CPU
+03F0  8EF2     BSF INTCON, 7, ACCESS              348:       BSF	    INTCON, 7, a    ; GIEH bit <7> enable all interrupts
+03F2  80CD     BSF T1CON, 0, ACCESS               349:       BSF	    T1CON, 0, a	    ; TMR1ON bit <0> turn on timer1
+                                                  350:   
+03F4  0012     RETURN 0                           351:       RETURN
+                                                  352:       
+                                                  353:   ;;;;;;; RPG subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  354:   ;
+                                                  355:   ; Credit: This subroutine modified from Peatman book Chapter 8 - RPG
+                                                  356:   ; This subroutine decyphers RPG changes into values of DIR_RPG of 0, +1, or -1.
+                                                  357:   ; DIR_RPG = +1 for CW change, 0 for no change, and -1 for CCW change.
+                                                  358:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  359:   	
+                                                  360:   RPG:
+03F6  6A2B     CLRF 0x2B, ACCESS                  361:           CLRF	DIR_RPG, a	; Clear for "no change" return value.
+03F8  5083     MOVF PORTD, W, ACCESS              362:           MOVF	PORTD, w, a	; Copy PORTD into W.
+03FA  6E2C     MOVWF 0x2C, ACCESS                 363:           MOVWF	RPG_TEMP, a	;  and RPG_TEMP.
+03FC  182D     XORWF 0x2D, W, ACCESS              364:           XORWF	OLDPORTD, w, a	; Check for any change?
+03FE  0B03     ANDLW 0x3                          365:           ANDLW	00000011B	; Masks just the RPG pins          
+0400  E00B     BZ 0x418                           366:           BZ  L8		; If zero, RPG has not moved, ->return
+                                                  367:   			; But if the two bits have changed then...
+                                                  368:   	; Form what a CCW change would produce.          	
+0402  302D     RRCF 0x2D, W, ACCESS               369:   	RRCF	OLDPORTD, w, a	; Rotate right once into carry bit   
+0404  E302     BNC 0x40A                          370:   	BNC	L9	; If no carry, then bit 0 was a 0 -> branch to L9
+0406  92E8     BCF WREG, 1, ACCESS                371:           BCF	WREG, 1, a	; Otherwise, bit 0 was a 1. Then clear bit 1
+                                                  372:   				; to simulate what a CCW change would produce
+0408  D001     BRA 0x40C                          373:           BRA	L10	; Branch to compare if RPG actually matches new CCW pattern in WREG
+                                                  374:   L9:
+040A  82E8     BSF WREG, 1, ACCESS                375:           BSF	WREG, 1, a  ; Set bit 1 since there was no carry
+                                                  376:   			    ; again to simulate what CCW would produce
+                                                  377:   L10:			    ; Test direction of RPG
+040C  182C     XORWF 0x2C, W, ACCESS              378:           XORWF	RPG_TEMP, w, a	; Did the RPG actually change to this output?
+040E  0B03     ANDLW 0x3                          379:           ANDLW	00000011B	; Masks the RPG pins
+0410  E102     BNZ 0x416                          380:           BNZ	L11		; If not zero, then branch to L11 for CW case
+0412  062B     DECF 0x2B, F, ACCESS               381:           DECF	DIR_RPG, f, a	; If zero then change DIR_RPG to -1, must be CCW. 
+0414  D001     BRA 0x418                          382:           BRA	L8		; Done so branch to return
+                                                  383:   L11:	; CW case 
+0416  2A2B     INCF 0x2B, F, ACCESS               384:           INCF	DIR_RPG, f, a	; Change DIR_RPG to +1 for CW.
+                                                  385:   L8:
+0418  C02C     MOVFF 0x2C, 0x2D                   386:           MOVFF	RPG_TEMP, OLDPORTD  ; Save current RPG state as OLDPORTD
+041C  0012     RETURN 0                           387:           RETURN
+                                                  388:   
+                                                  389:   ;;;;;;; HiPriISR interrupt service routine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  390:   
+                                                  391:   HiPriISR:                        ; High-priority interrupt service routine
+                                                  392:   ;       <execute the handler for interrupt source>
+                                                  393:   ;       <clear that source's interrupt flag>
+041E  0011     RETFIE 1                           394:           RETFIE  1	    ; Return and restore STATUS, WREG, and BSR
+                                                  395:   			    ; from shadow registers
+                                                  396:   
+                                                  397:   ;;;;;;; LoPriISR interrupt service routine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  398:   
+                                                  399:   LoPriISR:				; Low-priority interrupt service routine
+0420  CFD8     MOVFF STATUS, 0x24                 400:           MOVFF	STATUS, STATUS_TEMP	; Set aside STATUS and WREG
+0424  6E23     MOVWF 0x23, ACCESS                 401:           MOVWF	WREG_TEMP, a
+0426  CFE0     MOVFF BSR, 0x25                    402:   	MOVFF	BSR, BSR_TEMP        
+                                                  403:   L2:
+042A  A2A4     BTFSS PIR3, 1, ACCESS              404:           BTFSS	PIR3, 1, a	; Test CCP1IF bit <1> for this interrupt
+042C  D002     BRA 0x432                          405:           BRA	L3
+042E  D80B     RCALL 0x446                        406:           RCALL	CCP1handler	; Call CCP1handler for generating RC2 output
+0430  D7FC     BRA 0x42A                          407:           BRA	L2
+                                                  408:   L3:
+0432  A09E     BTFSS PIR1, 0, ACCESS              409:           BTFSS	PIR1, 0, a	; Test TMR1IF bit <0> for this interrupt
+0434  D002     BRA 0x43A                          410:           BRA	L4
+0436  D819     RCALL 0x46A                        411:           RCALL	TMR1handler	; Call TMR1handler for timing with CCP1
+0438  D7F8     BRA 0x42A                          412:           BRA	L2
+                                                  413:   L4:
+043A  5023     MOVF 0x23, W, ACCESS               414:           MOVF	WREG_TEMP, w, a	    ; Restore WREG and STATUS
+043C  C024     MOVFF 0x24, STATUS                 415:           MOVFF	STATUS_TEMP, STATUS
+0440  C025     MOVFF 0x25, BSR                    416:   	MOVFF	BSR_TEMP, BSR        
+0444  0010     RETFIE 0                           417:           RETFIE			; Return from interrupt, reenabling GIEL
+                                                  418:   	
+                                                  419:   ;;;;;;;; CCP Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  420:   CCP1handler:			; First must test of TMR1IF occurred at the same time
+0446  A09E     BTFSS PIR1, 0, ACCESS              421:           BTFSS	PIR1, 0, a	; If TMR1's overflow flag is set? skip to test CCP bit7
+0448  D004     BRA 0x452                          422:           BRA	L5		; If TMR1F was clear, branch to check extension bytes
+044A  BEBD     BTFSC CCPR1H, 7, ACCESS            423:           BTFSC	CCPR1H, 7, a	; Is bit 7 a 0? Then TMR1/CCP just rolled over, need to inc TMR1X
+044C  D002     BRA 0x452                          424:           BRA	L5		; Is bit 7 a 1? Then let TMR1handler inc TMR1X 
+044E  2A26     INCF 0x26, F, ACCESS               425:           INCF	TMR1X, f, a	; TMR1/CCP just rolled over, must increment TMR1 extension
+0450  909E     BCF PIR1, 0, ACCESS                426:           BCF	PIR1, 0, a	; and clear TMR1IF bit <0> flag 
+                                                  427:   				;(Since TMR1 handler was unable to and arrived here first!)
+                                                  428:   L5:
+0452  5026     MOVF 0x26, W, ACCESS               429:           MOVF	TMR1X, w, a	; Check whether extensions are equal
+0454  5C27     SUBWF 0x27, W, ACCESS              430:           SUBWF	CCPR1X, w, a	; by subtracting TMR1X and CCPR1X, check if 0
+0456  E107     BNZ 0x466                          431:           BNZ	L7		; If not, branch to return
+0458  748B     BTG LATC, 2, ACCESS                432:           BTG	LATC, 2, a	; Manually toggle RC2
+045A  502A     MOVF 0x2A, W, ACCESS               433:   	MOVF	DTIMEL, w, a	; and add half period to CCPR1 to add more pulse time
+045C  26BC     ADDWF CCPR1, F, ACCESS             434:           ADDWF	CCPR1L, f, a
+045E  5029     MOVF 0x29, W, ACCESS               435:           MOVF	DTIMEH, w, a	; Add to each of the 3 bytes to get 24 bit CCP
+0460  22BD     ADDWFC CCPR1H, F, ACCESS           436:           ADDWFC	CCPR1H, f, a
+0462  5028     MOVF 0x28, W, ACCESS               437:           MOVF	DTIMEX, w, a
+0464  2227     ADDWFC 0x27, F, ACCESS             438:           ADDWFC	CCPR1X, f, a
+                                                  439:   L7:
+0466  92A4     BCF PIR3, 1, ACCESS                440:           BCF	PIR3, 1, a	; Clear the CCP1IF bit <1> interrupt flag
+0468  0012     RETURN 0                           441:           RETURN
+                                                  442:   
+                                                  443:   ;;;;;;;; TMR Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  444:   TMR1handler:
+046A  2A26     INCF 0x26, F, ACCESS               445:           INCF	TMR1X, f, a	;Increment Timer1 extension
+046C  909E     BCF PIR1, 0, ACCESS                446:           BCF	PIR1, 0, a	;Clear TMR1IF flag and return to service routine
+046E  0012     RETURN 0                           447:           RETURN
+                                                  448:   	
+                                                  449:   ;;;;;;; End of Program ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+                                                  450:       END     resetVec  
+---  C:/Users/William Watkins/Documents/Academics/CU Boulder/2021/Fall 2021/Microavionics/Labs/Lab5Ex/Lab5Watkins.asm
+                                                  1:     ;;;;;; ASEN 5067 LAB 5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  2:     ; Author:	    William Watkins
+                                                  3:     ; Date:		    12 Oct 21
+                                                  4:     ; Target:	    PIC18F87K22
+                                                  5:     ;
+                                                  6:     ; !!!!!!!!!!!!!!!IMPORTANT!!!!!!!! 
+                                                  7:     ; Compiler Notes: 
+                                                  8:     ; Add this line to the Compiler flags i.e
+                                                  9:     ;   Right click on project name -> Properties -> pic-as Global Options -> 
+                                                  10:    ;   Additional options: 
+                                                  11:    ;    -Wl,-presetVec=0h,-pHiPriISR_Vec=0008h,-pLoPriISR_Vec=0018h
+                                                  12:    ;
+                                                  13:    ; Template taken from both Lab 3 template and Lab 4 example
+                                                  14:    
+                                                  15:    ; Decription:
+                                                  16:    ; On power up execute the following sequence:
+                                                  17:    ;    Set RD4, RD5, RD6, RD7 LEDs OFF
+                                                  18:    ;    "ASEN5067" displayed on LCD first line
+                                                  19:    ;    "PW1.00ms" displayed on LCD second line
+                                                  20:    ;    RD5 ON for 0.5s (+/- 10ms) then OFF
+                                                  21:    ;    RD6 ON for 0.5s (+/- 10ms) then OFF
+                                                  22:    ;    RD7 ON for 0.5s (+/- 10ms) then OFF
+                                                  23:    ; Loop forever:
+                                                  24:    ;    Blink "Alive" LED (RD4): ON 200ms (+/-100us), OFF 800ms (+/-10us)
+                                                  25:    ;    Output PWM signal on RC2:
+                                                  26:    ;	Period of 20.00ms
+                                                  27:    ;	5% duty cycle
+                                                  28:    ;	ON +/-100us, OFF +/-10us
+                                                  29:    ;    Use RPG to change pulse width
+                                                  30:    ;	1/64th of a turn +/-0.01ms (CW=+)
+                                                  31:    ;	Hard limit at 1.00,2.00ms
+                                                  32:    ;	Update LCD
+                                                  33:        
+                                                  34:    ;;;;;;;;;;;;;;;;;;;;;;;;;;;; Program hierarchy ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  35:    ;    
+                                                  36:    ; Mainline
+                                                  37:    ; Loop
+                                                  38:    ; Initial	- Initialize ports, display strings on LCD, perform LED seq
+                                                  39:    ; Wait05s	- Wait 0.5s using Timer0 for initialization
+                                                  40:    ; InitLCD	- Subroutine to initialize LCD
+                                                  41:    ; Wait10ms	- Subroutine to wait 10ms for the LCD
+                                                  42:    ; T50		- Subroutine to wait 50ms for LCD
+                                                  43:    ; UpdateLCD	- Subroutine to update LCD with new PW value
+                                                  44:    ; DisplayC	- Subroutine to display a constant display string
+                                                  45:    ; DisplayV	- Subroutine to display a variable display string
+                                                  46:    ; HiPriISR	- High Priority Interrupt Subroutine
+                                                  47:    ; LoPriISR	- Low Priority Interrupt Subroutine
+                                                  48:    ; CCP1Handler	- Handler subroutine for CCP1 interrupt
+                                                  49:    ; CCP2Handler	- Handler subroutine for CCP2 interrupt
+                                                  50:    ; TMR1Handler	- Handler subroutine for Timer1
+                                                  51:    ; RPGChecker	- Subroutine for receiving RPG input
+                                                  52:    			      
+                                                  53:    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Hardware notes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  54:    ; This section is copied from my Lab 4 code
+                                                  55:    // <editor-fold defaultstate="collapsed" desc="Pin Mapping">
+                                                  56:    /*
+                                                  57:        Pin | Pin Name/Register Name
+                                                  58:         1  | RH2/AN21/A18
+                                                  59:         2  | RH3/AN20/A19
+                                                  60:         3  | RE1/P2C/WR/AD9
+                                                  61:         4  | RE0/P2D/RD/AD8
+                                                  62:         5  | RG0/ECCP3/P3A
+                                                  63:         6  | RG1/TX2/CK2/AN19/C3OUT
+                                                  64:         7  | RG2/RX2/DT2/AN18/C3INA
+                                                  65:         8  | RG3/CCP4/AN17/P3D/C3INB
+                                                  66:         9  | MCLR/RG5
+                                                  67:         10 | RG4/RTCC/T7CKI(Note:2)/T5G/CCP5/AN16/P1D/C3INC
+                                                  68:         11 | VSS
+                                                  69:         12 | VDDCORE/VCAP
+                                                  70:         13 | RF7/AN5/SS1
+                                                  71:         14 | RF6/AN11/C1INA
+                                                  72:         15 | RF5/AN10/C1INB
+                                                  73:         16 | RF4/AN9/C2INA
+                                                  74:         17 | RF3/AN8/C2INB/CTMUI
+                                                  75:         18 | RF2/AN7/C1OUT
+                                                  76:         19 | RH7/CCP6(Note:3)/P1B/AN15
+                                                  77:         20 | RH6/CCP7(Note:3)/P1C/AN14/C1INC
+                                                  78:         21 | RH5/CCP8(Note:3)/P3B/AN13/C2IND
+                                                  79:         22 | RH4/CCP9(Note:2,3)/P3C/AN12/C2INC
+                                                  80:         23 | RF1/AN6/C2OUT/CTDIN
+                                                  81:         24 | ENVREG
+                                                  82:         25 | AVDD
+                                                  83:         26 | AVSS
+                                                  84:         27 | RA3/AN3/VREF+
+                                                  85:         28 | RA2/AN2/VREF-
+                                                  86:         29 | RA1/AN1
+                                                  87:         30 | RA0/AN0/ULPWU
+                                                  88:         31 | VSS
+                                                  89:         32 | VDD
+                                                  90:         33 | RA5/AN4/T1CKI/T3G/HLVDIN
+                                                  91:         34 | RA4/T0CKI
+                                                  92:         35 | RC1/SOSC/ECCP2/P2A
+                                                  93:         36 | RC0/SOSCO/SCKLI
+                                                  94:         37 | RC6/TX1/CK1
+                                                  95:         38 | RC7/RX1/DT1
+                                                  96:         39 | RJ4/BA0
+                                                  97:         40 | RJ5/CE
+                                                  98:         41 | RJ6/LB
+                                                  99:         42 | RJ7/UB
+                                                  100:        43 | RC2/ECCP1/P1A
+                                                  101:        44 | RC3/SCK1/SCL1
+                                                  102:        45 | RC4/SDI1/SDA1
+                                                  103:        46 | RC5/SDO1
+                                                  104:        47 | RB7/KBI3/PGD
+                                                  105:        48 | VDD
+                                                  106:        49 | OSC1/CLKI/RA7
+                                                  107:        50 | OSC2/CLKO/RA6
+                                                  108:        51 | VSS
+                                                  109:        52 | RB6/KBI2/PGC
+                                                  110:        53 | RB5/KBI1/T3CKI/T1G
+                                                  111:        54 | RB4/KBI0
+                                                  112:        55 | RB3/INT3/CTED2/ECCP2(Note:1)/P2A
+                                                  113:        56 | RB2/INT2/CTED1
+                                                  114:        57 | RB1/INT1
+                                                  115:        58 | RB0/INT0/FLT0
+                                                  116:        59 | RJ3/WRH
+                                                  117:        60 | RJ2/WRL
+                                                  118:        61 | RJ1/OE
+                                                  119:        62 | RJ0/ALE
+                                                  120:        63 | RD7/SS2/PSP7/AD7
+                                                  121:        64 | RD6/SCK2/SCL2/PSP6/AD6
+                                                  122:        65 | RD5/SDI2/SDA2/PSP5/AD5
+                                                  123:        66 | RD4/SDO2/PSP4/AD4
+                                                  124:        67 | RD3/PSP3/AD3
+                                                  125:        68 | RD2/PSP2/AD2
+                                                  126:        69 | RD1/T5CKI/T7G/PSP1/AD1
+                                                  127:        70 | VSS
+                                                  128:        71 | VDD
+                                                  129:        72 | RD0/PSP0/CTPLS/AD0
+                                                  130:        73 | RE7/ECCP2/P2A/AD15
+                                                  131:        74 | RE6/P1B/CCP6(Note:3)/AD14
+                                                  132:        75 | RE5/P1C/CCP7(Note:3)/AD13
+                                                  133:        76 | RE4/P3B/CCP8(Note:3)/AD12
+                                                  134:        77 | RE3/P3C/CCP9(Note:2,3)/REF0/AD11
+                                                  135:        78 | RE2/P2B/CCP10(Note:2)/CS/AD10
+                                                  136:        79 | RH0/AN23/A16
+                                                  137:        80 | RH1/AN22/A17
+                                                  138:   
+                                                  139:   Note (1) The ECCP2 pin placement depends on the CCP2MX Configuration bit 
+                                                  140:   	setting and whether the device is in Microcontroller or Extended 
+                                                  141:   	Microcontroller mode.
+                                                  142:        (2) Not available on the PIC18F65K22 and PIC18F85K22 devices.
+                                                  143:        (3) The CC6, CCP7, CCP8 and CCP9 pin placement depends on the 
+                                                  144:   	setting of the ECCPMX Configuration bit (CONFIG3H<1>).
+                                                  145:   */
+                                                  146:   // </editor-fold>
+                                                  147:   
+                                                  148:   ;;;;;;;;;;;;;;;;;;;;;;;;; Assembler Directives ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  149:   ; This section is copied from my Lab 4 code
+                                                  150:   // <editor-fold defaultstate="collapsed" desc="Assembler Directives">    
+                                                  151:   ; Processor Definition
+                                                  152:   PROCESSOR   18F87K22
+                                                  153:   ; Radix Definition 
+                                                  154:   RADIX	DEC	      
+                                                  155:   
+                                                  156:   ; The following code should control macro expansions but needs further editing
+                                                  157:       ; Macro Expansions
+                                                  158:   ;EXPAND ;To expand macros
+                                                  159:   NOEXPAND ;To collapse macros
+                                                  160:       
+                                                  161:   ; The following code is from a previous compiler and no longer works 			      
+                                                  162:       ; List Definition
+                                                  163:       ;   C: Set the page (i.e., Column) width
+                                                  164:       ;   N: Set the page length
+                                                  165:       ;   X: Turn MACRO expansion on or off
+                                                  166:       ;LIST	C = 160, N = 15, X = OFF
+                                                  167:       
+                                                  168:       
+                                                  169:   ; Include File:
+                                                  170:   #include <xc.inc>
+                                                  171:   // </editor-fold>    
+                                                  172:   
+                                                  173:   ;;;;;;;;;;;;;;;;;;;;;;;;; PIC18F87K22 Configuration Bit Settings ;;;;;;;;;;;;;;; 
+                                                  174:   ; This section is copied from my Lab 4 code
+                                                  175:   // <editor-fold defaultstate="collapsed" desc="CONFIG Definitions">
+                                                  176:   			      
+                                                  177:   ; CONFIG1L
+                                                  178:   CONFIG  RETEN = ON            ; VREG Sleep Enable bit (Enabled)
+                                                  179:   CONFIG  INTOSCSEL = HIGH      ; LF-INTOSC Low-power Enable bit (LF-INTOSC in 
+                                                  180:                                 ;	    High-power mode during Sleep)
+                                                  181:   CONFIG  SOSCSEL = HIGH        ; SOSC Power Selection and mode Configuration bits 
+                                                  182:   			      ;	    (High Power SOSC circuit selected)
+                                                  183:   CONFIG  XINST = OFF           ; Extended Instruction Set (Disabled)
+                                                  184:   
+                                                  185:   ; CONFIG1H
+                                                  186:   CONFIG  FOSC = HS1            ; Oscillator
+                                                  187:   CONFIG  PLLCFG = OFF          ; PLL x4 Enable bit (Disabled)
+                                                  188:   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor (Disabled)
+                                                  189:   CONFIG  IESO = OFF            ; Internal External Oscillator Switch Over Mode 
+                                                  190:   			      ;	    (Disabled)
+                                                  191:   
+                                                  192:   ; CONFIG2L
+                                                  193:   CONFIG  PWRTEN = ON           ; Power Up Timer (Enabled)
+                                                  194:   CONFIG  BOREN = ON            ; Brown Out Detect (Controlled with SBOREN bit)
+                                                  195:   CONFIG  BORV = 1              ; Brown-out Reset Voltage bits (2.7V)
+                                                  196:   CONFIG  BORPWR = ZPBORMV      ; BORMV Power level (ZPBORMV instead of BORMV 
+                                                  197:   			      ;	    is selected)
+                                                  198:   
+                                                  199:   ; CONFIG2H
+                                                  200:   CONFIG  WDTEN = OFF           ; Watchdog Timer (WDT disabled in hardware; 
+                                                  201:   			      ;	    SWDTEN bit disabled)
+                                                  202:   CONFIG  WDTPS = 1048576       ; Watchdog Postscaler (1:1048576)
+                                                  203:   
+                                                  204:   ; CONFIG3L
+                                                  205:   CONFIG  RTCOSC = SOSCREF      ; RTCC Clock Select (RTCC uses SOSC)
+                                                  206:   CONFIG  EASHFT = ON           ; External Address Shift bit (Address Shifting 
+                                                  207:   			      ;	    enabled)
+                                                  208:   CONFIG  ABW = MM              ; Address Bus Width Select bits (8-bit 
+                                                  209:   			      ;	    address bus)
+                                                  210:   CONFIG  BW = 16               ; Data Bus Width (16-bit external bus mode)
+                                                  211:   CONFIG  WAIT = OFF            ; External Bus Wait (Disabled)
+                                                  212:   
+                                                  213:   ; CONFIG3H
+                                                  214:   CONFIG  CCP2MX = PORTC        ; CCP2 Mux (RC1)
+                                                  215:   CONFIG  ECCPMX = PORTE        ; ECCP Mux (Enhanced CCP1/3 [P1B/P1C/P3B/P3C] 
+                                                  216:   			      ;	    muxed with RE6/RE5/RE4/RE3)
+                                                  217:   ; CONFIG  MSSPMSK = MSK7        ; MSSP address masking (7 Bit address masking 
+                                                  218:   			      ;	    mode)
+                                                  219:   CONFIG  MCLRE = ON            ; Master Clear Enable (MCLR Enabled, RG5 Disabled)
+                                                  220:   
+                                                  221:   ; CONFIG4L
+                                                  222:   CONFIG  STVREN = ON           ; Stack Overflow Reset (Enabled)
+                                                  223:   CONFIG  BBSIZ = BB2K          ; Boot Block Size (2K word Boot Block size)
+                                                  224:   
+                                                  225:   ; CONFIG5L
+                                                  226:   CONFIG  CP0 = OFF             ; Code Protect 00800-03FFF (Disabled)
+                                                  227:   CONFIG  CP1 = OFF             ; Code Protect 04000-07FFF (Disabled)
+                                                  228:   CONFIG  CP2 = OFF             ; Code Protect 08000-0BFFF (Disabled)
+                                                  229:   CONFIG  CP3 = OFF             ; Code Protect 0C000-0FFFF (Disabled)
+                                                  230:   CONFIG  CP4 = OFF             ; Code Protect 10000-13FFF (Disabled)
+                                                  231:   CONFIG  CP5 = OFF             ; Code Protect 14000-17FFF (Disabled)
+                                                  232:   CONFIG  CP6 = OFF             ; Code Protect 18000-1BFFF (Disabled)
+                                                  233:   CONFIG  CP7 = OFF             ; Code Protect 1C000-1FFFF (Disabled)
+                                                  234:   
+                                                  235:   ; CONFIG5H
+                                                  236:   CONFIG  CPB = OFF             ; Code Protect Boot (Disabled)
+                                                  237:   CONFIG  CPD = OFF             ; Data EE Read Protect (Disabled)
+                                                  238:   
+                                                  239:   ; CONFIG6L
+                                                  240:   CONFIG  WRT0 = OFF            ; Table Write Protect 00800-03FFF (Disabled)
+                                                  241:   CONFIG  WRT1 = OFF            ; Table Write Protect 04000-07FFF (Disabled)
+                                                  242:   CONFIG  WRT2 = OFF            ; Table Write Protect 08000-0BFFF (Disabled)
+                                                  243:   CONFIG  WRT3 = OFF            ; Table Write Protect 0C000-0FFFF (Disabled)
+                                                  244:   CONFIG  WRT4 = OFF            ; Table Write Protect 10000-13FFF (Disabled)
+                                                  245:   CONFIG  WRT5 = OFF            ; Table Write Protect 14000-17FFF (Disabled)
+                                                  246:   CONFIG  WRT6 = OFF            ; Table Write Protect 18000-1BFFF (Disabled)
+                                                  247:   CONFIG  WRT7 = OFF            ; Table Write Protect 1C000-1FFFF (Disabled)
+                                                  248:   
+                                                  249:   ; CONFIG6H
+                                                  250:   CONFIG  WRTC = OFF            ; Config. Write Protect (Disabled)
+                                                  251:   CONFIG  WRTB = OFF            ; Table Write Protect Boot (Disabled)
+                                                  252:   CONFIG  WRTD = OFF            ; Data EE Write Protect (Disabled)
+                                                  253:   
+                                                  254:   ; CONFIG7L
+                                                  255:   CONFIG  EBRT0 = OFF           ; Table Read Protect 00800-03FFF (Disabled)
+                                                  256:   CONFIG  EBRT1 = OFF           ; Table Read Protect 04000-07FFF (Disabled)
+                                                  257:   CONFIG  EBRT2 = OFF           ; Table Read Protect 08000-0BFFF (Disabled)
+                                                  258:   CONFIG  EBRT3 = OFF           ; Table Read Protect 0C000-0FFFF (Disabled)
+                                                  259:   CONFIG  EBRT4 = OFF           ; Table Read Protect 10000-13FFF (Disabled)
+                                                  260:   CONFIG  EBRT5 = OFF           ; Table Read Protect 14000-17FFF (Disabled)
+                                                  261:   CONFIG  EBRT6 = OFF           ; Table Read Protect 18000-1BFFF (Disabled)
+                                                  262:   CONFIG  EBRT7 = OFF           ; Table Read Protect 1C000-1FFFF (Disabled)
+                                                  263:   
+                                                  264:   ; CONFIG7H
+                                                  265:   CONFIG  EBRTB = OFF           ; Table Read Protect Boot (Disabled)
+                                                  266:   // </editor-fold>
+                                                  267:   
+                                                  268:   ;;;;;;;;;;;;;;;;;;;;;;;;; MACRO Definitions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  269:   ; This section is copied from my Lab 4 code
+                                                  270:   // <editor-fold defaultstate="collapsed" desc="MACRO Definitions">			    
+                                                  271:   ; MACRO Definitions:
+                                                  272:   
+                                                  273:   ; MOVLF
+                                                  274:   ; Description:
+                                                  275:   ;   Move literal value to given register. 
+                                                  276:   ; Input: 
+                                                  277:   ;   lit: literal value
+                                                  278:   ;   dest: destination 
+                                                  279:   ;   access: Access bank or not. Possible values are 'a' for access bank or
+                                                  280:   ;	'b' for banked memory.
+                                                  281:     MOVLF	    MACRO   lit, dest, access
+                                                  282:       MOVLW   lit	    ; Move literal into WREG
+                                                  283:       BANKSEL	(dest)	; Select Bank for next file instruction
+                                                  284:       MOVWF   BANKMASK(dest), access  ; Move WREG into destination file
+                                                  285:     ENDM
+                                                  286:    
+                                                  287:   ;; POINT adapted from Reference: Peatman CH 7 LCD
+                                                  288:   ;POINT
+                                                  289:   ; Description:
+                                                  290:   ;   Loads strings into table pointer. 
+                                                  291:   ; Input: 
+                                                  292:   ;   stringname: name of the variable containg the desired string.
+                                                  293:     POINT	    MACRO stringname
+                                                  294:       MOVLF high stringname, TBLPTRH, A 
+                                                  295:       MOVLF low stringname, TBLPTRL, A
+                                                  296:     ENDM
+                                                  297:     
+                                                  298:   ;DISPLAY
+                                                  299:   ; Description:
+                                                  300:   ;   Displays a given register in binary on the LCD. 
+                                                  301:   ; Input: 
+                                                  302:   ;   register: The register that is to be displayed on the LCD. 
+                                                  303:     DISPLAY   MACRO register
+                                                  304:       MOVFF register, BYTE 
+                                                  305:       CALL ByteDisplay
+                                                  306:     ENDM
+                                                  307:     
+                                                  308:   // </editor-fold>
+                                                  309:      
+                                                  310:   ;;;;;;;;;;;;;;;;;;;;;;;;; Project Sections ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+                                                  311:   ; This section is a modified version of the one from my Lab 4 code
+                                                  312:   // <editor-fold defaultstate="collapsed" desc="Project Sections">
+                                                  313:     ;;;;;;;;;;;;;;;;;;;;;; Power-On-Reset entry point ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  314:   PSECT	resetVec, class = CODE, reloc = 2
+                                                  315:   resetVec:
+0006  0000     NOP                                316:       NOP	    ; No Operation
+0008  EF14     GOTO 0x28                          317:       goto    main    ; Go to main after reset
+                                                  318:   
+                                                  319:   ;;;;;;;;;;;;;;;;;;; Interrupt Service Routine Vectors ;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  320:   ; High Priority ISR Vector Definition:
+                                                  321:   PSECT	HiPriISR_Vec, class = CODE, reloc = 2
+                                                  322:   HiPriISR_Vec:
+0014  EF3C     GOTO 0x278                         323:       GOTO    HiPriISR	; Go to Program Counter (For Now)
+                                                  324:       
+                                                  325:   ; Low Priority ISR Vector Definition:
+                                                  326:   PSECT	LoPriISR_Vec, class = CODE, reloc = 2
+                                                  327:   LoPriISR_Vec:
+0024  EF45     GOTO 0x28A                         328:       GOTO    LoPriISR	; Go to Program Counter (For Now)
+                                                  329:   
+                                                  330:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  331:   ; Constants
+                                                  332:   AliveON	    EQU 800000	; 800000  = 0x0C3500. Inst. cycles in 200ms
+                                                  333:   AliveOFF    EQU	3200000	; 3200000 = 0x30D400. Inst. cycles in 800ms
+                                                  334:   Bignum	    EQU 65536-62500 ; 3036. Preload for 0.5s delay
+                                                  335:   Bignumdos   EQU	65536-40000 ; Used in 10 ms delay
+                                                  336:   PWMMIN	    EQU	0	
+                                                  337:   PWMMAX	    EQU 100
+                                                  338:   strMax	    EQU 0x39
+                                                  339:   strMin	    EQU 0x30
+                                                  340:   
+                                                  341:   ; Objects to be defined in Access Bank
+                                                  342:   PSECT	udata_acs
+                                                  343:   COUNT:		DS 1	; Reserve 1 byte for COUNT in access bank
+                                                  344:   PWM:		DS 1	; Reserve 1 byte for PWM in access bank
+                                                  345:   PW:		DS 11	; Reserve 8 bytes for PW in access bank
+                                                  346:   press:		DS 1	; Reserve 1 byte for press in access bank
+                                                  347:   WREG_TEMP:	DS 1	; Reserve 1 byte for storing the WREG during LoPriISR
+                                                  348:   STATUS_TEMP:	DS 1	; Reserve 1 byte for storing STATUS during LoPriISR
+                                                  349:   BSR_TEMP:	DS 1	; Reserve 1 byte for BSR during LoPriISR
+                                                  350:   TMR1X:		DS 1	; 1-byte extension for Timer1
+                                                  351:   CCPR1X:		DS 1	; 1-byte extension for ECCP1
+                                                  352:   CCPR2X:		DS 1	; 1-byte extension for ECCP2
+                                                  353:   DTIME1L:	DS 1	; Delta Time for ECCP1
+                                                  354:   DTIME1H:	DS 1	; Delta Time for ECCP1
+                                                  355:   DTIME1X:	DS 1	; Delta Time for ECCP1
+                                                  356:   DTIME2L:	DS 1	; Delta Time for ECCP2
+                                                  357:   DTIME2H:	DS 1	; Delta Time for ECCP2
+                                                  358:   DTIME2X:	DS 1	; Delta Time for ECCP2
+                                                  359:   PWMON:		DS 2	; Reserve 2 bytes for time to leave PWM output on
+                                                  360:   PWMOFF:		DS 3	; Reserve 3 bytes for time to leave PWM output off
+                                                  361:   DIR_RPG:	DS 1	; Direction of RPG
+                                                  362:   RPG_TEMP:	DS 1	; Used for RPG state
+                                                  363:   OLDPORTD:	DS 1	; Previous state of RPG
+                                                  364:   PWMNow:		DS 1	; Used for ease of changing
+                                                  365:       
+                                                  366:   ; Objects to be defined in Bank 1
+                                                  367:   PSECT	udata_bank1
+                                                  368:       NOP
+                                                  369:       
+                                                  370:   ;;;;;;; Constant Strings (Program Memory) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  371:   PSECT romData, space = 0, class = CONST  
+                                                  372:   LCDstr:  
+0470  3233     RRCF 0x33, F, ACCESS               373:       DB  0x33,0x32,0x28,0x01,0x0C,0x06,0x00  ;Initialization string for LCD
+                                                  374:       
+                                                  375:   TopPerm:
+0476  8000     BSF 0x0, 0, ACCESS                 376:       DB 0x80,'A','S','E','N','5','0','6','7',0x00    ;Write "ASEN5067" to first 
+                                                  377:   ;						    line of LCD
+                                                  378:       
+                                                  379:   Bot1Perm:
+0480  C000     MOVFF 0x0, 0x750                   380:       DB 0xC0,'P','W','=','1','.','0','0','m','s',0x00	;Write "PW=1.00ms" to second line of LCD
+                                                  381:       
+                                                  382:   // </editor-fold>  
+                                                  383:       
+                                                  384:   ;;;;;;; Code Start ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	 
+                                                  385:   PSECT	code	
+                                                  386:   
+                                                  387:   ;;;;;;; Mainline program ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  388:   main:
+0028  D806     RCALL 0x36                         389:       rcall   Initial			; Initialize everything
+                                                  390:   loop:
+002A  D912     RCALL 0x250                        391:       RCALL RPG	; Continuously call RPG checker
+002C  501F     MOVF 0x1F, W, ACCESS               392:       MOVF DIR_RPG, w, a ; Move DIR_RPG into the WREG 
+002E  E0FD     BZ 0x2A                            393:       BZ loop
+0030  D97E     RCALL 0x32E                        394:       RCALL RPGUpdate
+0032  D8A4     RCALL 0x17C                        395:       RCALL UpdateLCD
+0034  D7FA     BRA 0x2A                           396:       BRA loop
+                                                  397:       
+                                                  398:   ;;;;;;; Initial subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  399:   // <editor-fold defaultstate="collapsed" desc="Initial Subroutine">
+                                                  400:   ; This subroutine performs all initializations of variables and registers.
+                                                  401:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  402:       
+                                                  403:   Initial:
+0036  0EA0     MOVLW 0xA0                         404:       MOVLF 0xA0, PWMON, a	    ; Load  initial time into PWMON (1ms)
+0038  0100     MOVLB 0x0
+003A  6E1A     MOVWF 0x1A, ACCESS
+003C  0E0F     MOVLW 0xF                          405:       MOVLF 0x0F, PWMON+1, a
+003E  0100     MOVLB 0x0
+0040  6E1B     MOVWF 0x1B, ACCESS
+0042  0EE0     MOVLW 0xE0                         406:       MOVLF 0xE0, PWMOFF, a	    ; Load initial time into PWMOFF (19ms)
+0044  0100     MOVLB 0x0
+0046  6E1C     MOVWF 0x1C, ACCESS
+0048  0E28     MOVLW 0x28                         407:       MOVLF 0x28, PWMOFF+1, a
+004A  0100     MOVLB 0x0
+004C  6E1D     MOVWF 0x1D, ACCESS
+004E  0E01     MOVLW 0x1                          408:       MOVLF 0x01, PWMOFF+2, a
+0050  0100     MOVLB 0x0
+0052  6E1E     MOVWF 0x1E, ACCESS
+0054  0E00     MOVLW 0x0                          409:       MOVLF low AliveON, DTIME1L, a   ; Load AliveON time into DTIME1
+0056  0100     MOVLB 0x0
+0058  6E14     MOVWF 0x14, ACCESS
+005A  0E35     MOVLW 0x35                         410:       MOVLF high AliveON, DTIME1H, a
+005C  0100     MOVLB 0x0
+005E  6E15     MOVWF 0x15, ACCESS
+0060  0E0C     MOVLW 0xC                          411:       MOVLF low highword AliveON, DTIME1X, a
+0062  0100     MOVLB 0x0
+0064  6E16     MOVWF 0x16, ACCESS
+0066  0E1A     MOVLW 0x1A                         412:       MOVLF low PWMON, DTIME2L, a	    ; Load PWMON time into DTIME2
+0068  0100     MOVLB 0x0
+006A  6E17     MOVWF 0x17, ACCESS
+006C  0E00     MOVLW 0x0                          413:       MOVLF high PWMON, DTIME2H, a    
+006E  0100     MOVLB 0x0
+0070  6E18     MOVWF 0x18, ACCESS
+0072  0E00     MOVLW 0x0                          414:       MOVLF low highword PWMON, DTIME2X, a
+0074  0100     MOVLB 0x0
+0076  6E19     MOVWF 0x19, ACCESS
+                                                  415:       
+0078  0EC0     MOVLW 0xC0                         416:       MOVLF   11000000B,TRISB,A	; Set I/O for PORTB
+007A  010F     MOVLB 0xF
+007C  6E93     MOVWF TRISB, ACCESS
+007E  0E00     MOVLW 0x0                          417:       MOVLF   00000000B,LATB,A	; Initialize PORTB
+0080  010F     MOVLB 0xF
+0082  6E8A     MOVWF LATB, ACCESS
+0084  6A94     CLRF TRISC, ACCESS                 418:       CLRF    TRISC, a		; Set I/O for PORTC
+0086  6A8B     CLRF LATC, ACCESS                  419:       CLRF    LATC, a		; Clear outputs on PORTC
+0088  0E03     MOVLW 0x3                          420:       MOVLF   00000011B, TRISD, a	; Set I/O for PORTD
+008A  010F     MOVLB 0xF
+008C  6E95     MOVWF TRISD, ACCESS
+008E  6A8C     CLRF LATD, ACCESS                  421:       CLRF    LATD, a		; Clear outputs for PORTD
+0090  8ED0     BSF RCON, 7, ACCESS                422:       BSF	    RCON, 7, a		; Set IPEN bit <7>
+0092  909F     BCF IPR1, 0, ACCESS                423:       BCF	    IPR1, 0, a		; Assign Low priority to TMR1 interrupts
+0094  92A5     BCF IPR3, 1, ACCESS                424:       BCF	    IPR3, 1, a		; Assign Low Priority to ECCP1 interrupts
+0096  94A5     BCF IPR3, 2, ACCESS                425:       BCF	    IPR3, 2, a		; and ECCP2
+0098  010F     MOVLB 0xF                          426:       MOVLB   0x0F		    ; Set BSR to bank F for SFRs outside of access bank				
+009A  0E00     MOVLW 0x0                          427:       MOVLF   00000000B, CCPTMRS0, b  ; Set TMR1 for use with ECCP1/2, Using BSR!
+009C  010F     MOVLB 0xF
+009E  6F2D     MOVWF 0x2D, BANKED
+                                                  428:   
+                                                  429:   ;;;;;; 0.5s Timer Setup
+00A0  0E00     MOVLW 0x0                          430:       MOVLF 00000000B, INTCON, a	; Clears overflow flag if set
+00A2  010F     MOVLB 0xF
+00A4  6EF2     MOVWF INTCON, ACCESS
+00A6  0E04     MOVLW 0x4                          431:       MOVLF 00000100B, T0CON, a	; Setup timer for delay of 0.5s
+00A8  010F     MOVLB 0xF
+00AA  6ED5     MOVWF T0CON, ACCESS
+00AC  0E0B     MOVLW 0xB                          432:       MOVLF high Bignum, TMR0H, a	; Writing 3036 to TMR0
+00AE  010F     MOVLB 0xF
+00B0  6ED7     MOVWF TMR0H, ACCESS
+00B2  0EDC     MOVLW 0xDC                         433:       MOVLF low Bignum, TMR0L, a
+00B4  010F     MOVLB 0xF
+00B6  6ED6     MOVWF TMR0, ACCESS
+                                                  434:       
+                                                  435:   ;;;;;; 10ms Timer 3 Setup
+00B8  0E00     MOVLW 0x0                          436:       MOVLF   00000000B,PIR2,A		; This clears overflow flag if set
+00BA  010F     MOVLB 0xF
+00BC  6EA1     MOVWF PIR2, ACCESS
+00BE  0E06     MOVLW 0x6                          437:       MOVLF   00000110B,T3CON,A		; Set up Timer3 for a delay of 10ms
+00C0  010F     MOVLB 0xF
+00C2  6EB1     MOVWF T3CON, ACCESS
+00C4  0E63     MOVLW 0x63                         438:       MOVLF   high Bignumdos,TMR3H,A	; Writing binary 25536 to TMR3H / TMR3L
+00C6  010F     MOVLB 0xF
+00C8  6EB3     MOVWF TMR3H, ACCESS
+00CA  0EC0     MOVLW 0xC0                         439:       MOVLF   low Bignumdos,TMR3L,A	; Write high byte first, then low!
+00CC  010F     MOVLB 0xF
+00CE  6EB2     MOVWF TMR3, ACCESS
+                                                  440:       
+                                                  441:   ;;;;;; Alive LED/PWM Output Setup
+00D0  0E02     MOVLW 0x2                          442:       MOVLF   00000010B, T1CON, a	    ; 16 bit timer, buffer H/L registers
+00D2  010F     MOVLB 0xF
+00D4  6ECD     MOVWF T1CON, ACCESS
+00D6  0E0A     MOVLW 0xA                          443:       MOVLF   00001010B, CCP1CON, a   ; Select compare mode, software interrupt only
+00D8  010F     MOVLB 0xF
+00DA  6EBB     MOVWF CCP1CON, ACCESS
+00DC  809D     BSF PIE1, 0, ACCESS                444:       BSF	    PIE1, 0, a		    ; TMR1IE bit<0> enables TMR1 interrupts
+00DE  82A3     BSF PIE3, 1, ACCESS                445:       BSF	    PIE3, 1, a		    ; CCP1IE bit<1> enables ECCP1 interrupts
+00E0  84A3     BSF PIE3, 2, ACCESS                446:       BSF	    PIE3, 2, a		    ; CCP2IE bit<2> enables ECCP2 interrupts
+00E2  8CF2     BSF INTCON, 6, ACCESS              447:       BSF	    INTCON, 6, a	    ; GIEL bit<6> enables low-priority interrupts
+00E4  8EF2     BSF INTCON, 7, ACCESS              448:       BSF	    INTCON, 7, a	    ; GIEH bit<7> enables high-priority interrupts
+                                                  449:       
+                                                  450:   ;;;;;; Setup LCD
+00E6  D84E     RCALL 0x184                        451:       RCALL   InitLCD			; Initialize LCD
+00E8  D871     RCALL 0x1CC                        452:       RCALL   Wait10ms			; 10 ms delay subroutine
+                                                  453:       
+                                                  454:   ;;;;;; Display ASEN5067 to LCD
+00EA  0E04     MOVLW 0x4                          455:       POINT   TopPerm			; ASEN5067
+00EC  010F     MOVLB 0xF
+00EE  6EF7     MOVWF TBLPTRH, ACCESS
+00F0  0E77     MOVLW 0x77
+00F2  010F     MOVLB 0xF
+00F4  6EF6     MOVWF TBLPTR, ACCESS
+00F6  D879     RCALL 0x1EA                        456:       RCALL   DisplayC			; Display character subroutine
+                                                  457:       
+                                                  458:   ;;;;;; Display initial second line on LCD
+00F8  0E04     MOVLW 0x4                          459:       POINT Bot1Perm			; Point to the first output for second line
+00FA  010F     MOVLB 0xF
+00FC  6EF7     MOVWF TBLPTRH, ACCESS
+00FE  0E81     MOVLW 0x81
+0100  010F     MOVLB 0xF
+0102  6EF6     MOVWF TBLPTR, ACCESS
+0104  D872     RCALL 0x1EA                        460:       RCALL DisplayC			; and display it
+0106  0EC0     MOVLW 0xC0                         461:       MOVLF 0xC0, PW,A			; This and following lines configure the
+0108  0100     MOVLB 0x0
+010A  6E02     MOVWF 0x2, ACCESS
+010C  0E50     MOVLW 0x50                         462:       MOVLF 'P', PW+1, A			; PW variable, used for outputting
+010E  0100     MOVLB 0x0
+0110  6E03     MOVWF 0x3, ACCESS
+0112  0E57     MOVLW 0x57                         463:       MOVLF 'W', PW+2, A			; data to the LCD second line
+0114  0100     MOVLB 0x0
+0116  6E04     MOVWF 0x4, ACCESS
+0118  0E3D     MOVLW 0x3D                         464:       MOVLF '=', PW+3, A
+011A  0100     MOVLB 0x0
+011C  6E05     MOVWF 0x5, ACCESS
+011E  0E31     MOVLW 0x31                         465:       MOVLF '1', PW+4, A
+0120  0100     MOVLB 0x0
+0122  6E06     MOVWF 0x6, ACCESS
+0124  0E2E     MOVLW 0x2E                         466:       MOVLF '.', PW+5, A
+0126  0100     MOVLB 0x0
+0128  6E07     MOVWF 0x7, ACCESS
+012A  0E30     MOVLW 0x30                         467:       MOVLF '0', PW+6, A
+012C  0100     MOVLB 0x0
+012E  6E08     MOVWF 0x8, ACCESS
+0130  0E30     MOVLW 0x30                         468:       MOVLF '0', PW+7, A
+0132  0100     MOVLB 0x0
+0134  6E09     MOVWF 0x9, ACCESS
+0136  0E6D     MOVLW 0x6D                         469:       MOVLF 'm', PW+8, A
+0138  0100     MOVLB 0x0
+013A  6E0A     MOVWF 0xA, ACCESS
+013C  0E73     MOVLW 0x73                         470:       MOVLF 's', PW+9, A
+013E  0100     MOVLB 0x0
+0140  6E0B     MOVWF 0xB, ACCESS
+0142  0E00     MOVLW 0x0                          471:       MOVLF 0x00, PW+10, A
+0144  0100     MOVLB 0x0
+0146  6E0C     MOVWF 0xC, ACCESS
+0148  EE00     LFSR 0, 0x2                        472:       LFSR 0, PW				; Set FSR0 to PW
+                                                  473:       
+                                                  474:   ;;;;;; Begin LED sequence
+014C  8A8C     BSF LATD, 5, ACCESS                475:       BSF	    LATD,5,A			; Turn on RE5
+014E  8ED5     BSF T0CON, 7, ACCESS               476:       BSF	    T0CON,7,A			; Start 1s timer
+0150  D80A     RCALL 0x166                        477:       RCALL   Wait05s			; 1s delay subroutine
+0152  9A8C     BCF LATD, 5, ACCESS                478:       BCF	    LATD,5,A			; Turn off RE5
+                                                  479:       
+0154  8C8C     BSF LATD, 6, ACCESS                480:       BSF	    LATD,6,A			; Turn on RE6
+0156  8ED5     BSF T0CON, 7, ACCESS               481:       BSF	    T0CON,7,A			; Start 1s timer
+0158  D806     RCALL 0x166                        482:       RCALL   Wait05s			; 1s delay subroutine
+015A  9C8C     BCF LATD, 6, ACCESS                483:       BCF	    LATD,6,A			; Turn off RE6
+                                                  484:       
+015C  8E8C     BSF LATD, 7, ACCESS                485:       BSF	    LATD,7,A			; Turn on RE7
+015E  8ED5     BSF T0CON, 7, ACCESS               486:       BSF	    T0CON,7,A			; Start 1s timer
+0160  D802     RCALL 0x166                        487:       RCALL   Wait05s			; 1s delay subroutine
+0162  9E8C     BCF LATD, 7, ACCESS                488:       BCF	    LATD,7,A			; Turn off RE7
+                                                  489:       
+0164  0012     RETURN 0                           490:       RETURN
+                                                  491:   // </editor-fold>  
+                                                  492:       
+                                                  493:   ;;;;;;;; Wait0.5s subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  494:   ; // <editor-fold defaultstate="collapsed" desc="Wait0.5s Subroutine">
+                                                  495:   ; This subroutine waits for Timer0 to complete its one second count
+                                                  496:   ; sequence. It does so by waiting for sixteen-bit Timer0 to roll over. To obtain
+                                                  497:   ; a period of 1s/250ns = 2000000 clock periods, it needs to remove
+                                                  498:   ; 65536-62500 or 3036 counts from the sixteen-bit count sequence.  It uses a
+                                                  499:   ; prescale of 32.
+                                                  500:   ; (This subroutine is a modified version of the Wait1s subroutine in my Lab 4 code)
+                                                  501:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  502:   
+                                                  503:   Wait05s:
+0166  A4F2     BTFSS INTCON, 2, ACCESS            504:       BTFSS INTCON,2,A		    ; Read Timer0 TMR0IF rollover flag and ...
+0168  D7FE     BRA 0x166                          505:       BRA Wait05s			    ; Loop if timer has not rolled over
+016A  9ED5     BCF T0CON, 7, ACCESS               506:       BCF	T0CON,7,A		    ; Stop the timer
+016C  0E0B     MOVLW 0xB                          507:       MOVLF high Bignum,TMR0H,A	    ; Then write the timer values into
+016E  010F     MOVLB 0xF
+0170  6ED7     MOVWF TMR0H, ACCESS
+0172  0EDC     MOVLW 0xDC                         508:       MOVLF low Bignum,TMR0L,A	    ; the timer high and low registers
+0174  010F     MOVLB 0xF
+0176  6ED6     MOVWF TMR0, ACCESS
+0178  94F2     BCF INTCON, 2, ACCESS              509:       BCF INTCON,2,A		    ; Clear Timer0 TMR0IF rollover flag
+017A  0012     RETURN 0                           510:       RETURN
+                                                  511:   // </editor-fold>
+                                                  512:   
+                                                  513:   ;;;;;;; UpdateLCD subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  514:   ; / <editor-fold defaultstate="collapsed" desc="UpdateLCD Subroutine">
+                                                  515:   ; Subroutine to update the LCD
+                                                  516:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  517:       
+                                                  518:   UpdateLCD:
+017C  EE00     LFSR 0, 0x2                        519:       LFSR 0, PW			    ; Make sure FSR0 has address of PW
+0180  D850     RCALL 0x222                        520:       RCALL DisplayV		    ; Display PW
+0182  0012     RETURN 0                           521:       RETURN
+                                                  522:   // </editor-fold>
+                                                  523:       
+                                                  524:   ;;;;;;; InitLCD subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  525:   ; // <editor-fold defaultstate="collapsed" desc="InitLCD Subroutine">
+                                                  526:   ; InitLCD - modified version of subroutine in Reference: Peatman CH7 LCD
+                                                  527:   ; Initialize the LCD.
+                                                  528:   ; First wait for 0.1 second, to get past display's power-on reset time.
+                                                  529:   ; (This subroutine is a modified version of the InitLCD subroutine in the 
+                                                  530:   ;   lab4_example_picas.asm file)
+                                                  531:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  532:           
+                                                  533:   InitLCD:
+0184  0E0A     MOVLW 0xA                          534:           MOVLF  10,COUNT,A	    ; Wait 0.1 second for LCD to power up
+0186  0100     MOVLB 0x0
+0188  6E00     MOVWF __S3, ACCESS
+018A  80B1     BSF T3CON, 0, ACCESS               535:   	BSF T3CON,0,A		    ; Set bit 0 to start Timer 3
+                                                  536:   Loop3:
+018C  D81F     RCALL 0x1CC                        537:           RCALL  Wait10ms		    ; Call wait10ms 10 times to 0.1 second
+018E  0600     DECF 0x0, F, ACCESS                538:           DECF  COUNT,F,A
+0190  E1FD     BNZ 0x18C                          539:           BNZ	Loop3
+0192  988A     BCF LATB, 4, ACCESS                540:           BCF     LATB,4,A	    ; RS=0 for command mode to LCD
+0194  0E04     MOVLW 0x4                          541:           POINT   LCDstr		    ; Set up table pointer to initialization string
+0196  010F     MOVLB 0xF
+0198  6EF7     MOVWF TBLPTRH, ACCESS
+019A  0E70     MOVLW 0x70
+019C  010F     MOVLB 0xF
+019E  6EF6     MOVWF TBLPTR, ACCESS
+01A0  0008     TBLRD*                             542:           TBLRD*			    ; Get first byte from string into TABLAT
+                                                  543:   Loop4:
+01A2  6A8A     CLRF LATB, ACCESS                  544:   	CLRF LATB,A		    ; First set LATB to all zero	
+01A4  8A8A     BSF LATB, 5, ACCESS                545:           BSF   LATB,5,A		    ; Drive E high - enable LCD
+01A6  50F5     MOVF TABLAT, W, ACCESS             546:   	MOVF TABLAT,W,A		    ; Move byte from program memory into working register
+01A8  0BF0     ANDLW 0xF0                         547:   	ANDLW 0xF0		    ; Mask to get only upper nibble
+01AA  38E8     SWAPF WREG, W, ACCESS              548:   	SWAPF WREG,W,A		    ; Swap so that upper nibble is in right position to move to LATB (RB0:RB3)
+01AC  1081     IORWF PORTB, W, ACCESS             549:   	IORWF PORTB,W,A		    ; Mask with the rest of PORTB to retain existing RB7:RB4 states
+01AE  6E8A     MOVWF LATB, ACCESS                 550:   	MOVWF LATB,A		    ; Update LATB to send upper nibble
+01B0  9A8A     BCF LATB, 5, ACCESS                551:           BCF   LATB,5,A		    ; Drive E low so LCD will process input
+01B2  D80C     RCALL 0x1CC                        552:           RCALL Wait10ms		    ; Wait ten milliseconds
+                                                  553:   	
+01B4  6A8A     CLRF LATB, ACCESS                  554:   	CLRF LATB,A		    ; Reset LATB to all zero	    
+01B6  8A8A     BSF LATB, 5, ACCESS                555:           BSF  LATB,5,A		    ; Drive E high
+01B8  50F5     MOVF TABLAT, W, ACCESS             556:           MOVF TABLAT,W,A		    ; Move byte from program memory into working register
+01BA  0B0F     ANDLW 0xF                          557:   	ANDLW 0x0F		    ; Mask to get only lower nibble
+01BC  1081     IORWF PORTB, W, ACCESS             558:   	IORWF PORTB,W,A		    ; Mask lower nibble with the rest of PORTB
+01BE  6E8A     MOVWF LATB, ACCESS                 559:   	MOVWF LATB,A		    ; Update LATB to send lower nibble
+01C0  9A8A     BCF LATB, 5, ACCESS                560:           BCF   LATB,5,A		    ; Drive E low so LCD will process input
+01C2  D804     RCALL 0x1CC                        561:           RCALL Wait10ms		    ; Wait ten milliseconds
+01C4  000B     TBLRD+*                            562:           TBLRD+*			    ; Increment pointer and get next byte
+01C6  52F5     MOVF TABLAT, F, ACCESS             563:           MOVF  TABLAT,F,A	    ; Check if we are done, is it zero?
+01C8  E1EC     BNZ 0x1A2                          564:           BNZ	Loop4
+01CA  0012     RETURN 0                           565:           RETURN
+                                                  566:   // </editor-fold>
+                                                  567:   
+                                                  568:   ;;;;;;;; Wait10ms subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  569:   ; // <editor-fold defaultstate="collapsed" desc="Wait10ms Subroutine">
+                                                  570:   ; This subroutine waits for Timer3 to complete its ten millisecond count
+                                                  571:   ; sequence. It does so by waiting for sixteen-bit Timer3 to roll over. To obtain
+                                                  572:   ; a period of 10ms/250ns = 40000 clock periods, it needs to remove
+                                                  573:   ; 65536-40000 or 25536 counts from the sixteen-bit count sequence.
+                                                  574:   ; (This subroutine is copied from the Wait10ms subroutine in my Lab 4 code)
+                                                  575:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  576:   
+                                                  577:   Wait10ms:
+01CC  A2A1     BTFSS PIR2, 1, ACCESS              578:           BTFSS 	PIR2,1,A		    ; Read Timer3 TMR3IF rollover flag and ...
+01CE  D7FE     BRA 0x1CC                          579:           BRA     Wait10ms		    ; Loop if timer has not rolled over
+01D0  0E63     MOVLW 0x63                         580:           MOVLF  	high Bignumdos,TMR3H,A	    ; Then write the timer values into
+01D2  010F     MOVLB 0xF
+01D4  6EB3     MOVWF TMR3H, ACCESS
+01D6  0EC0     MOVLW 0xC0                         581:           MOVLF  	low Bignumdos,TMR3L,A	    ; the timer high and low registers
+01D8  010F     MOVLB 0xF
+01DA  6EB2     MOVWF TMR3, ACCESS
+01DC  92A1     BCF PIR2, 1, ACCESS                582:           BCF  	PIR2,1,A		    ; Clear Timer3 TMR3IF rollover flag
+01DE  0012     RETURN 0                           583:           RETURN
+                                                  584:   // </editor-fold>
+                                                  585:   
+                                                  586:   ;;;;;;; T50 subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  587:   ; // <editor-fold defaultstate="collapsed" desc="T50 Subroutine">
+                                                  588:   
+                                                  589:   ; T50 modified version of T40 taken from Reference: Peatman CH 7 LCD
+                                                  590:   ; Pause for 50 microseconds or 50/0.25 = 200 instruction cycles.
+                                                  591:   ; Assumes 16/4 = 4 MHz internal instruction rate (250 ns)
+                                                  592:   ; rcall(2) + movlw(1) + movwf(1) + COUNT*3 - lastBNZ(1) + return(2) = 200 
+                                                  593:   ; Then COUNT = 195/3
+                                                  594:   ; (This subroutine is a copy of the T50 subroutine in the 
+                                                  595:   ;   lab4_example_picas.asm file)
+                                                  596:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  597:           
+                                                  598:   T50:
+01E0  0E41     MOVLW 0x41                         599:           MOVLW  195/3          ;Each loop L4 takes 3 ins cycles
+01E2  6E00     MOVWF 0x0, ACCESS                  600:           MOVWF  COUNT,A		    
+                                                  601:   L4:
+01E4  0600     DECF 0x0, F, ACCESS                602:           DECF  COUNT,F,A
+01E6  E1FE     BNZ 0x1E4                          603:           BNZ	L4
+01E8  0012     RETURN 0                           604:           RETURN
+                                                  605:   // </editor-fold>
+                                                  606:   	    
+                                                  607:   ;;;;;;;;DisplayC subroutine;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  608:   ; // <editor-fold defaultstate="collapsed" desc="DisplayC Subroutine">
+                                                  609:   ; DisplayC taken from Reference: Peatman CH7 LCD
+                                                  610:   ; This subroutine is called with TBLPTR containing the address of a constant
+                                                  611:   ; display string.  It sends the bytes of the string to the LCD.  The first
+                                                  612:   ; byte sets the cursor position.  The remaining bytes are displayed, beginning
+                                                  613:   ; at that position hex to ASCII.
+                                                  614:   ; This subroutine expects a normal one-byte cursor-positioning code, 0xhh, and
+                                                  615:   ; a null byte at the end of the string 0x00
+                                                  616:   ; (This subroutine is a copy of the DisplayC subroutine in the 
+                                                  617:   ;   lab4_example_picas.asm file)
+                                                  618:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  619:   
+                                                  620:   DisplayC:
+01EA  988A     BCF LATB, 4, ACCESS                621:           BCF   LATB,4,A		    ;Drive RS pin low for cursor positioning code
+01EC  0008     TBLRD*                             622:           TBLRD*			    ;Get byte from string into TABLAT
+01EE  52F5     MOVF TABLAT, F, ACCESS             623:           MOVF  TABLAT,F,A	    ;Check for leading zero byte
+01F0  E101     BNZ 0x1F4                          624:           BNZ	Loop5
+01F2  000B     TBLRD+*                            625:           TBLRD+*			    ;If zero, get next byte
+                                                  626:   Loop5:
+01F4  0EF0     MOVLW 0xF0                         627:   	MOVLW 0xF0
+01F6  168A     ANDWF LATB, F, ACCESS              628:   	ANDWF LATB,F,A		    ;Clear RB0:RB3, which are used to send LCD data
+01F8  8A8A     BSF LATB, 5, ACCESS                629:           BSF   LATB,5,A		    ;Drive E pin high
+01FA  50F5     MOVF TABLAT, W, ACCESS             630:           MOVF TABLAT,W,A		    ;Move byte from table latch to working register
+01FC  0BF0     ANDLW 0xF0                         631:   	ANDLW 0xF0		    ;Mask to get only upper nibble
+01FE  38E8     SWAPF WREG, W, ACCESS              632:   	SWAPF WREG,W,A		    ;swap so that upper nibble is in right position to move to LATB (RB0:RB3)
+0200  1081     IORWF PORTB, W, ACCESS             633:   	IORWF PORTB,W,A		    ;Mask to include the rest of PORTB
+0202  6E8A     MOVWF LATB, ACCESS                 634:   	MOVWF LATB,A		    ;Send upper nibble out to LATB
+0204  9A8A     BCF LATB, 5, ACCESS                635:           BCF   LATB,5,A		    ;Drive E pin low so LCD will accept nibble
+                                                  636:   	
+0206  0EF0     MOVLW 0xF0                         637:   	MOVLW 0xF0
+0208  168A     ANDWF LATB, F, ACCESS              638:   	ANDWF LATB,F,A		    ;Clear RB0:RB3, which are used to send LCD data
+020A  8A8A     BSF LATB, 5, ACCESS                639:           BSF   LATB,5,A		    ;Drive E pin high again
+020C  50F5     MOVF TABLAT, W, ACCESS             640:           MOVF TABLAT,W,A		    ;Move byte from table latch to working register
+020E  0B0F     ANDLW 0xF                          641:   	ANDLW 0x0F		    ;Mask to get only lower nibble
+0210  1081     IORWF PORTB, W, ACCESS             642:   	IORWF PORTB,W,A		    ;Mask to include the rest of PORTB
+0212  6E8A     MOVWF LATB, ACCESS                 643:   	MOVWF LATB,A		    ;Send lower nibble out to LATB
+0214  9A8A     BCF LATB, 5, ACCESS                644:           BCF   LATB,5,A		    ;Drive E pin low so LCD will accept nibble
+0216  DFE4     RCALL 0x1E0                        645:           RCALL T50		    ;Wait 50 usec so LCD can process
+                                                  646:   	
+0218  888A     BSF LATB, 4, ACCESS                647:           BSF   LATB,4,A		    ;Drive RS pin high for displayable characters
+021A  000B     TBLRD+*                            648:           TBLRD+*			    ;Increment pointer, then get next byte
+021C  52F5     MOVF TABLAT, F, ACCESS             649:           MOVF  TABLAT,F,A	    ;Is it zero?
+021E  E1EA     BNZ 0x1F4                          650:           BNZ	Loop5
+0220  0012     RETURN 0                           651:           RETURN
+                                                  652:   // </editor-fold>
+                                                  653:   	
+                                                  654:   ;;;;;;; DisplayV subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  655:   ; // <editor-fold defaultstate="collapsed" desc="DisplayV Subroutine">
+                                                  656:   ; DisplayV taken from Reference: Peatman CH7 LCD
+                                                  657:   ; This subroutine is called with FSR0 containing the address of a variable
+                                                  658:   ; display string.  It sends the bytes of the string to the LCD.  The first
+                                                  659:   ; byte sets the cursor position.  The remaining bytes are displayed, beginning
+                                                  660:   ; at that position.
+                                                  661:   ; (This subroutine is a copy of the DisplayV subroutine in the 
+                                                  662:   ;   lab4_example_picas.asm file)
+                                                  663:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+                                                  664:   
+                                                  665:   DisplayV:
+0222  988A     BCF LATB, 4, ACCESS                666:           BCF     LATB,4,A	    ;Drive RS pin low for cursor positioning code
+                                                  667:   Loop6:
+0224  0EF0     MOVLW 0xF0                         668:   	MOVLW 0xF0
+0226  168A     ANDWF LATB, F, ACCESS              669:   	ANDWF LATB,F,A		    ;Clear RB0:RB3, which are used to send LCD data
+0228  8A8A     BSF LATB, 5, ACCESS                670:           BSF   LATB,5,A		    ;Drive E pin high
+022A  50EF     MOVF INDF0, W, ACCESS              671:           MOVF INDF0,W,A		    ;Move byte from FSR to working register
+022C  0BF0     ANDLW 0xF0                         672:   	ANDLW 0xF0		    ;Mask to get only upper nibble
+022E  38E8     SWAPF WREG, W, ACCESS              673:   	SWAPF WREG,W,A		    ;swap so that upper nibble is in right position to move to LATB (RB0:RB3)
+0230  1081     IORWF PORTB, W, ACCESS             674:   	IORWF PORTB,W,A		    ;Mask to include the rest of PORTB
+0232  6E8A     MOVWF LATB, ACCESS                 675:   	MOVWF LATB,A		    ;Send upper nibble out to LATB
+0234  9A8A     BCF LATB, 5, ACCESS                676:           BCF   LATB,5,A		    ;Drive E pin low so LCD will accept nibble
+                                                  677:   	
+0236  0EF0     MOVLW 0xF0                         678:   	MOVLW 0xF0
+0238  168A     ANDWF LATB, F, ACCESS              679:   	ANDWF LATB,F,A		    ;Clear RB0:RB3, which are used to send LCD data
+023A  8A8A     BSF LATB, 5, ACCESS                680:           BSF   LATB,5,A		    ;Drive E pin high again
+023C  50EF     MOVF INDF0, W, ACCESS              681:           MOVF INDF0,W,A		    ;Move byte from table latch to working register
+023E  0B0F     ANDLW 0xF                          682:   	ANDLW 0x0F		    ;Mask to get only lower nibble
+0240  1081     IORWF PORTB, W, ACCESS             683:   	IORWF PORTB,W,A		    ;Mask to include the rest of PORTB
+0242  6E8A     MOVWF LATB, ACCESS                 684:   	MOVWF LATB,A		    ;Send lower nibble out to LATB
+0244  9A8A     BCF LATB, 5, ACCESS                685:           BCF   LATB,5,A		    ;Drive E pin low so LCD will accept nibble
+0246  DFCC     RCALL 0x1E0                        686:           RCALL T50		    ;Wait 50 usec so LCD can process
+                                                  687:   	  
+0248  888A     BSF LATB, 4, ACCESS                688:           BSF   LATB,4,A		    ;Drive RS pin high for displayable characters
+024A  50EC     MOVF PREINC0, W, ACCESS            689:           MOVF  PREINC0,W,A	    ;Increment pointer, then get next byte
+024C  E1EB     BNZ 0x224                          690:           BNZ   Loop6
+024E  0012     RETURN 0                           691:           RETURN
+                                                  692:   // </editor-fold>
+                                                  693:   
+                                                  694:   ;;;;;;; RPG subroutine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  695:   ; // <editor-fold defaultstate="collapsed" desc="RPG Subroutine">
+                                                  696:   ; Credit: This subroutine modified from Peatman book Chapter 8 - RPG
+                                                  697:   ; This subroutine decyphers RPG changes into values of DIR_RPG of 0, +1, or -1.
+                                                  698:   ; DIR_RPG = +1 for CW change, 0 for no change, and -1 for CCW change.
+                                                  699:   ; (This is a modified version from the lab5_orig.asm)
+                                                  700:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  701:   	
+                                                  702:   RPG:
+0250  6A1F     CLRF 0x1F, ACCESS                  703:           CLRF	DIR_RPG, a	; Clear for "no change" return value.
+0252  5083     MOVF PORTD, W, ACCESS              704:           MOVF	PORTD, w, a	; Copy PORTD into W.
+0254  6E20     MOVWF 0x20, ACCESS                 705:           MOVWF	RPG_TEMP, a	;  and RPG_TEMP.
+0256  1821     XORWF 0x21, W, ACCESS              706:           XORWF	OLDPORTD, w, a	; Check for any change?
+0258  0B03     ANDLW 0x3                          707:           ANDLW	00000011B	; Masks just the RPG pins          
+025A  E00B     BZ 0x272                           708:           BZ  L8		; If zero, RPG has not moved, ->return
+                                                  709:   			; But if the two bits have changed then...
+                                                  710:   	; Form what a CCW change would produce.          	
+025C  3021     RRCF 0x21, W, ACCESS               711:   	RRCF	OLDPORTD, w, a	; Rotate right once into carry bit   
+025E  E302     BNC 0x264                          712:   	BNC	L9	; If no carry, then bit 0 was a 0 -> branch to L9
+0260  92E8     BCF WREG, 1, ACCESS                713:           BCF	WREG, 1, a	; Otherwise, bit 0 was a 1. Then clear bit 1
+                                                  714:   				; to simulate what a CCW change would produce
+0262  D001     BRA 0x266                          715:           BRA	L10	; Branch to compare if RPG actually matches new CCW pattern in WREG
+                                                  716:   L9:
+0264  82E8     BSF WREG, 1, ACCESS                717:           BSF	WREG, 1, a  ; Set bit 1 since there was no carry
+                                                  718:   			    ; again to simulate what CCW would produce
+                                                  719:   L10:			    ; Test direction of RPG
+0266  1820     XORWF 0x20, W, ACCESS              720:           XORWF	RPG_TEMP, w, a	; Did the RPG actually change to this output?
+0268  0B03     ANDLW 0x3                          721:           ANDLW	00000011B	; Masks the RPG pins
+026A  E102     BNZ 0x270                          722:           BNZ	L11		; If not zero, then branch to L11 for CW case
+026C  061F     DECF 0x1F, F, ACCESS               723:           DECF	DIR_RPG, f, a	; If zero then change DIR_RPG to -1, must be CCW. 
+026E  D001     BRA 0x272                          724:           BRA	L8		; Done so branch to return
+                                                  725:   L11:	; CW case 
+0270  2A1F     INCF 0x1F, F, ACCESS               726:           INCF	DIR_RPG, f, a	; Change DIR_RPG to +1 for CW.
+                                                  727:   L8:
+0272  C020     MOVFF 0x20, 0x21                   728:           MOVFF	RPG_TEMP, OLDPORTD  ; Save current RPG state as OLDPORTD
+0276  0012     RETURN 0                           729:           RETURN
+                                                  730:   // </editor-fold>
+                                                  731:   	
+                                                  732:   ;;;;;;; HiPriISR interrupt service routine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  733:   ; // <editor-fold defaultstate="collapsed" desc="High Priority ISR">
+                                                  734:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+                                                  735:   
+                                                  736:   HiPriISR:                        ; High-priority interrupt service routine
+0278  A2A4     BTFSS PIR3, 1, ACCESS              737:           BTFSS	PIR3, 1, a	; Test CCP1IF bit <1> for this interrupt
+027A  D002     BRA 0x280                          738:           BRA	HP1
+027C  D81D     RCALL 0x2B8                        739:           RCALL	CCP1handler	; Call CCP1handler for blinking RD4 LED
+027E  D7FC     BRA 0x278                          740:           BRA	HiPriISR
+                                                  741:   HP1:
+0280  A4A4     BTFSS PIR3, 2, ACCESS              742:           BTFSS	PIR3, 2, a	; Test CCP1IF bit <1> for this interrupt
+0282  D002     BRA 0x288                          743:           BRA	HP2
+0284  D835     RCALL 0x2F0                        744:           RCALL	CCP2handler	; Call CCP1handler for blinking RD4 LED
+0286  D7FC     BRA 0x280                          745:           BRA	HP1
+                                                  746:   HP2:
+0288  0011     RETFIE 1                           747:           RETFIE  1	    ; Return and restore STATUS, WREG, and BSR
+                                                  748:   			    ; from shadow registers
+                                                  749:   // </editor-fold>
+                                                  750:   			    
+                                                  751:   ;;;;;;; LoPriISR interrupt service routine ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  752:   ; // <editor-fold defaultstate="collapsed" desc="Low Priority ISR">
+                                                  753:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  754:   			    
+                                                  755:   LoPriISR:				; Low-priority interrupt service routine
+028A  CFD8     MOVFF STATUS, 0xF                  756:           MOVFF	STATUS, STATUS_TEMP	; Set aside STATUS and WREG
+028E  6E0E     MOVWF 0xE, ACCESS                  757:           MOVWF	WREG_TEMP, a
+0290  CFE0     MOVFF BSR, 0x10                    758:   	MOVFF	BSR, BSR_TEMP        
+                                                  759:   LP1:
+0294  A2A4     BTFSS PIR3, 1, ACCESS              760:           BTFSS	PIR3, 1, a	; Test CCP1IF bit <1> for this interrupt
+0296  D002     BRA 0x29C                          761:           BRA	LP2
+0298  D80F     RCALL 0x2B8                        762:           RCALL	CCP1handler	; Call CCP1handler for blinking RD4 LED
+029A  D7FC     BRA 0x294                          763:           BRA	LP1
+                                                  764:   LP2:
+029C  A4A4     BTFSS PIR3, 2, ACCESS              765:           BTFSS	PIR3, 2, a	; Test CCP1IF bit <1> for this interrupt
+029E  D002     BRA 0x2A4                          766:           BRA	LP3
+02A0  D827     RCALL 0x2F0                        767:           RCALL	CCP2handler	; Call CCP1handler for blinking RD4 LED
+02A2  D7FC     BRA 0x29C                          768:           BRA	LP2
+                                                  769:   LP3:
+02A4  A09E     BTFSS PIR1, 0, ACCESS              770:           BTFSS	PIR1, 0, a	; Test TMR1IF bit <0> for this interrupt
+02A6  D002     BRA 0x2AC                          771:           BRA	LP4
+02A8  D83F     RCALL 0x328                        772:           RCALL	TMR1handler	; Call TMR1handler for timing with CCP1
+02AA  D7F4     BRA 0x294                          773:           BRA	LP1
+                                                  774:   LP4:
+02AC  500E     MOVF 0xE, W, ACCESS                775:           MOVF	WREG_TEMP, w, a	    ; Restore WREG and STATUS
+02AE  C00F     MOVFF 0xF, STATUS                  776:           MOVFF	STATUS_TEMP, STATUS
+02B2  C010     MOVFF 0x10, BSR                    777:   	MOVFF	BSR_TEMP, BSR        
+02B6  0010     RETFIE 0                           778:           RETFIE			; Return from interrupt, reenabling GIEL
+                                                  779:   // </editor-fold>
+                                                  780:   	
+                                                  781:   ;;;;;;;; CCP1 Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  782:   ; // <editor-fold defaultstate="collapsed" desc="CCP1 Handler Subroutine">
+                                                  783:   ; ECCP1 is used for the Alive LED
+                                                  784:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  785:   
+                                                  786:   CCP1handler:			; First must test of TMR1IF occurred at the same time
+02B8  A09E     BTFSS PIR1, 0, ACCESS              787:           BTFSS	PIR1, 0, a	; If TMR1's overflow flag is set? skip to test CCP bit7
+02BA  D004     BRA 0x2C4                          788:           BRA	CCP1Test	; If TMR1F was clear, branch to check extension bytes
+02BC  BEBD     BTFSC CCPR1H, 7, ACCESS            789:           BTFSC	CCPR1H, 7, a	; Is bit 7 a 0? Then TMR1/CCP just rolled over, need to inc TMR1X
+02BE  D002     BRA 0x2C4                          790:           BRA	CCP1Test	; Is bit 7 a 1? Then let TMR1handler inc TMR1X 
+02C0  2A11     INCF 0x11, F, ACCESS               791:           INCF	TMR1X, f, a	; TMR1/CCP just rolled over, must increment TMR1 extension
+02C2  909E     BCF PIR1, 0, ACCESS                792:           BCF	PIR1, 0, a	; and clear TMR1IF bit <0> flag 
+                                                  793:   				;(Since TMR1 handler was unable to and arrived here first!)
+                                                  794:   CCP1Test:
+02C4  5011     MOVF 0x11, W, ACCESS               795:           MOVF	TMR1X, w, a	; Check whether extensions are equal
+02C6  5C12     SUBWF 0x12, W, ACCESS              796:           SUBWF	CCPR1X, w, a	; by subtracting TMR1X and CCPR1X, check if 0
+02C8  E110     BNZ 0x2EA                          797:           BNZ	CCP1Exit		; If not, branch to return
+02CA  788C     BTG LATD, 4, ACCESS                798:           BTG	LATD, 4, a	; Manually toggle RD4
+02CC  A2A5     BTFSS IPR3, 1, ACCESS              799:   	BTFSS	IPR3, 1, a	; Check if ECCP1 is Hi or Lo Pri Interrupt
+02CE  D007     BRA 0x2DE                          800:   	BRA	LoPriCCP1
+                                                  801:   HiPriCCP1:  ; LED just turned ON - set CCP1 to trigger when it should turn off
+02D0  5000     MOVF 0x0, W, ACCESS                802:   	MOVF	low AliveON, w, a   ; and add half period to CCPR1 to add more pulse time
+02D2  26BC     ADDWF CCPR1, F, ACCESS             803:           ADDWF	CCPR1L, f, a
+02D4  5035     MOVF 0x35, W, ACCESS               804:           MOVF	high AliveON, w, a  ; Add to each of the 3 bytes to get 24 bit CCP
+02D6  22BD     ADDWFC CCPR1H, F, ACCESS           805:           ADDWFC	CCPR1H, f, a
+02D8  500C     MOVF 0xC, W, ACCESS                806:           MOVF	low highword AliveON, w, a
+02DA  2212     ADDWFC 0x12, F, ACCESS             807:           ADDWFC	CCPR1X, f, a
+02DC  D006     BRA 0x2EA                          808:   	BRA	CCP1Exit
+                                                  809:   LoPriCCP1:  ; LED just turned OFF - set CCP1 to trigger when it should turn on
+02DE  5000     MOVF 0x0, W, ACCESS                810:   	MOVF	low AliveOFF, w, a   ; and add half period to CCPR1 to add more pulse time
+02E0  26BC     ADDWF CCPR1, F, ACCESS             811:           ADDWF	CCPR1L, f, a
+02E2  50D4     MOVF SPBRGH1, W, ACCESS            812:           MOVF	high AliveOFF, w, a  ; Add to each of the 3 bytes to get 24 bit CCP
+02E4  22BD     ADDWFC CCPR1H, F, ACCESS           813:           ADDWFC	CCPR1H, f, a
+02E6  5030     MOVF 0x30, W, ACCESS               814:           MOVF	low highword AliveOFF, w, a
+02E8  2212     ADDWFC 0x12, F, ACCESS             815:           ADDWFC	CCPR1X, f, a
+                                                  816:   CCP1Exit:
+02EA  92A4     BCF PIR3, 1, ACCESS                817:           BCF	PIR3, 1, a	; Clear the CCP1IF bit <1> interrupt flag
+02EC  72A5     BTG IPR3, 1, ACCESS                818:   	BTG	IPR3, 1, a	; Toggle ECCP1 Int. pri. bit
+02EE  0012     RETURN 0                           819:           RETURN
+                                                  820:   // </editor-fold>
+                                                  821:   	
+                                                  822:   ;;;;;;;; CCP2 Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  823:   ; // <editor-fold defaultstate="collapsed" desc="CCP2 Handler Subroutine">
+                                                  824:   ; ECCP2 is used for the PWM
+                                                  825:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  826:   
+                                                  827:   CCP2handler:			; First must test of TMR1IF occurred at the same time
+02F0  A09E     BTFSS PIR1, 0, ACCESS              828:           BTFSS	PIR1, 0, a	; If TMR1's overflow flag is set? skip to test CCP bit7
+02F2  D004     BRA 0x2FC                          829:           BRA	CCP2Test	; If TMR1F was clear, branch to check extension bytes
+02F4  BEBD     BTFSC CCPR1H, 7, ACCESS            830:           BTFSC	CCPR1H, 7, a	; Is bit 7 a 0? Then TMR1/CCP just rolled over, need to inc TMR1X
+02F6  D002     BRA 0x2FC                          831:           BRA	CCP2Test	; Is bit 7 a 1? Then let TMR1handler inc TMR1X 
+02F8  2A11     INCF 0x11, F, ACCESS               832:           INCF	TMR1X, f, a	; TMR1/CCP just rolled over, must increment TMR1 extension
+02FA  909E     BCF PIR1, 0, ACCESS                833:           BCF	PIR1, 0, a	; and clear TMR1IF bit <0> flag 
+                                                  834:   				;(Since TMR1 handler was unable to and arrived here first!)
+                                                  835:   CCP2Test:
+02FC  5011     MOVF 0x11, W, ACCESS               836:           MOVF	TMR1X, w, a	; Check whether extensions are equal
+02FE  5C13     SUBWF 0x13, W, ACCESS              837:           SUBWF	CCPR2X, w, a	; by subtracting TMR1X and CCPR2X, check if 0
+0300  E110     BNZ 0x322                          838:           BNZ	CCP2Exit	; If not, branch to return
+0302  748B     BTG LATC, 2, ACCESS                839:           BTG	LATC, 2, a	; Manually toggle RC2
+0304  A4A5     BTFSS IPR3, 2, ACCESS              840:   	BTFSS	IPR3, 2, a	; Check if ECCP2 is Hi or Lo Pri Interrupt
+0306  D007     BRA 0x316                          841:   	BRA	LoPriCCP2
+                                                  842:   HiPriCCP2:  ; PWM just turned ON - set CCP2 to trigger when it should turn off
+0308  501A     MOVF 0x1A, W, ACCESS               843:   	MOVF	low PWMON, w, a   ; and add half period to CCPR1 to add more pulse time
+030A  264F     ADDWF 0x4F, F, ACCESS              844:           ADDWF	CCPR2L, f, a
+030C  5000     MOVF 0x0, W, ACCESS                845:           MOVF	high PWMON, w, a  ; Add to each of the 3 bytes to get 24 bit CCP
+030E  2250     ADDWFC 0x50, F, ACCESS             846:           ADDWFC	CCPR2H, f, a
+0310  5000     MOVF 0x0, W, ACCESS                847:           MOVF	low highword PWMON, w, a
+0312  2213     ADDWFC 0x13, F, ACCESS             848:           ADDWFC	CCPR2X, f, a
+0314  D006     BRA 0x322                          849:   	BRA	CCP2Exit
+                                                  850:   LoPriCCP2:  ; PWM just turned OFF - set CCP2 to trigger when it should turn on
+0316  501C     MOVF 0x1C, W, ACCESS               851:   	MOVF	low PWMOFF, w, a   ; and add half period to CCPR1 to add more pulse time
+0318  264F     ADDWF 0x4F, F, ACCESS              852:           ADDWF	CCPR2L, f, a
+031A  5000     MOVF 0x0, W, ACCESS                853:           MOVF	high PWMOFF, w, a  ; Add to each of the 3 bytes to get 24 bit CCP
+031C  2250     ADDWFC 0x50, F, ACCESS             854:           ADDWFC	CCPR2H, f, a
+031E  5000     MOVF 0x0, W, ACCESS                855:           MOVF	low highword PWMOFF, w, a
+0320  2213     ADDWFC 0x13, F, ACCESS             856:           ADDWFC	CCPR2X, f, a
+                                                  857:   CCP2Exit:
+0322  94A4     BCF PIR3, 2, ACCESS                858:           BCF	PIR3, 2, a	; Clear the CCP1IF bit <1> interrupt flag
+0324  74A5     BTG IPR3, 2, ACCESS                859:   	BTG	IPR3, 2, a	; Toggle ECCP1 Int. pri. bit
+0326  0012     RETURN 0                           860:           RETURN
+                                                  861:   // </editor-fold>
+                                                  862:   	
+                                                  863:   ;;;;;;;; TMR Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  864:   ; // <editor-fold defaultstate="collapsed" desc="TMR1 Handler Subroutine">
+                                                  865:   ; ECCP2 is used for the PWM
+                                                  866:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  867:   TMR1handler:
+0328  2A11     INCF 0x11, F, ACCESS               868:           INCF	TMR1X, f, a	;Increment Timer1 extension
+032A  909E     BCF PIR1, 0, ACCESS                869:           BCF	PIR1, 0, a	;Clear TMR1IF flag and return to service routine
+032C  0012     RETURN 0                           870:           RETURN
+                                                  871:   // </editor-fold>
+                                                  872:   	
+                                                  873:   ;;;;;;;; RPGUpdate Handler ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  874:   ; // <editor-fold defaultstate="collapsed" desc="RPG Update Subroutine">
+                                                  875:   ; Used to update the PWM when the RPG is turned
+                                                  876:   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  877:   
+                                                  878:   RPGUpdate:
+032E  501F     MOVF 0x1F, W, ACCESS               879:       MOVF DIR_RPG, w, a	; Move DIR_RPG into WREG
+0330  E621     BN 0x374                           880:       BN RPG_Subtract	; If negative, branch to subtract time
+                                                  881:   RPG_ADD:
+0332  5022     MOVF 0x22, W, ACCESS               882:       MOVF PWMNow, w, a	; Move current value to WREG
+0334  5C64     SUBWF OSCCON2, W, ACCESS           883:       SUBWF PWMMAX, w, a	; Check if PWMNow is 100 (e.g. 6% duty cycle, 2ms)
+0336  E01D     BZ 0x372                           884:       BZ RPG_ADD_Exit	; if so, get out
+0338  0E01     MOVLW 0x1                          885:       MOVLW 1		; Add the 100 back plus the extra for the turn of the RPG
+033A  2622     ADDWF 0x22, F, ACCESS              886:       ADDWF PWMNow, f, a	; Move the result to PWMNow
+033C  6AD8     CLRF STATUS, ACCESS                887:       CLRF STATUS, a	; Increase timer time
+033E  0E28     MOVLW 0x28                         888:       MOVLW 40		; Move low byte of PWMOn into WREG
+0340  261A     ADDWF 0x1A, F, ACCESS              889:       ADDWF PWMON, f, a	; Add to low bytes
+0342  0E00     MOVLW 0x0                          890:       MOVLW 0		; high byte of 40 is 0
+0344  221B     ADDWFC 0x1B, F, ACCESS             891:       ADDWFC PWMON+1, f, a; Add carry to high byte
+0346  0E28     MOVLW 0x28                         892:       MOVLW 40		; Move low byte of change in PWMOFF into WREG
+                                                  893:       ; Very quick and not efficient way to change PWM Off time
+0348  5E1C     SUBWF 0x1C, F, ACCESS              894:       SUBWF PWMOFF, f, a	; Subtract from low bytes
+034A  0E00     MOVLW 0x0                          895:       MOVLW 0		; high byte of 40 is 0
+034C  5A1D     SUBWFB 0x1D, F, ACCESS             896:       SUBWFB PWMOFF+1, f, a; Subtract carry from high byte
+034E  5A1E     SUBWFB 0x1E, F, ACCESS             897:       SUBWFB PWMOFF+2, f, a; Subtract carry from low highword byte
+                                                  898:   RPG_ADD_Check_Hundred:
+0350  5009     MOVF 0x9, W, ACCESS                899:       MOVF PW+7, w, a	; Move current hundredths to WREG
+0352  5C39     SUBWF 0x39, W, ACCESS              900:       SUBWF strMax, w, a	; Subtract current num from max
+0354  E002     BZ 0x35A                           901:       BZ RPG_ADD_Handle_Hundred_Rollover	; If ==9, handle rollver
+0356  2A09     INCF 0x9, F, ACCESS                902:       INCF PW+7, f, a	; Increment hundredth's place
+0358  D00C     BRA 0x372                          903:       BRA RPG_ADD_Exit
+                                                  904:   RPG_ADD_Handle_Hundred_Rollover:
+035A  0E30     MOVLW 0x30                         905:       MOVLF 0x30, PW+7, a ; Reset hundredths to 0
+035C  0100     MOVLB 0x0
+035E  6E09     MOVWF 0x9, ACCESS
+0360  5008     MOVF 0x8, W, ACCESS                906:       MOVF PW+6, w, a	; Move current tenths to WREG
+0362  5C39     SUBWF 0x39, W, ACCESS              907:       SUBWF strMax, w, a	; Subtract current num from max
+0364  E002     BZ 0x36A                           908:       BZ RPG_ADD_Handle_Ten_Rollover ; If ==9, handle rollover
+0366  2A08     INCF 0x8, F, ACCESS                909:       INCF PW+6, f, a	; Increment tenths if not
+0368  D004     BRA 0x372                          910:       BRA RPG_ADD_Exit
+                                                  911:   RPG_ADD_Handle_Ten_Rollover:
+036A  0E30     MOVLW 0x30                         912:       MOVLF 0x30, PW+6, a ; Reset tenths to 0
+036C  0100     MOVLB 0x0
+036E  6E08     MOVWF 0x8, ACCESS
+0370  2806     INCF 0x6, W, ACCESS                913:       INCF PW+4, w, a	; Increment ones place
+                                                  914:   RPG_ADD_Exit:
+0372  0012     RETURN 0                           915:       RETURN	; Get outta here!
+                                                  916:   
+                                                  917:   RPG_Subtract:
+0374  5022     MOVF 0x22, W, ACCESS               918:       MOVF PWMNow, w, a	; Move current value to WREG
+0376  5C00     SUBWF 0x0, W, ACCESS               919:       SUBWF PWMMIN, w, a	; Check if PWMNow is 0 (e.g. 5% duty cycle, 1ms)
+0378  E057     BZ 0x428                           920:       BZ RPG_Subtract_Exit; if so, get out
+037A  0E01     MOVLW 0x1                          921:       MOVLW 1		; Add the 100 back plus the extra for the turn of the RPG
+037C  5E22     SUBWF 0x22, F, ACCESS              922:       SUBWF PWMNow, f, a	; Move the result to PWMNow
+037E  6AD8     CLRF STATUS, ACCESS                923:       CLRF STATUS, a	; Reset status reg
+0380  0E28     MOVLW 0x28                         924:       MOVLW 40		; Move low byte of change in PWMON into WREG
+0382  5E1A     SUBWF 0x1A, F, ACCESS              925:       SUBWF PWMON, f, a	; Add to low bytes
+0384  0E00     MOVLW 0x0                          926:       MOVLW 0		; high byte of 40 is 0
+0386  5A1B     SUBWFB 0x1B, F, ACCESS             927:       SUBWFB PWMON+1, f, a; Add carry to high byte
+0388  0E28     MOVLW 0x28                         928:       MOVLW 40		; Move low byte of change in PWMOFF into WREG
+038A  261C     ADDWF 0x1C, F, ACCESS              929:       ADDWF PWMOFF, f, a	; Add to low bytes
+038C  0E00     MOVLW 0x0                          930:       MOVLW 0		; high byte of 40 is 0
+038E  221D     ADDWFC 0x1D, F, ACCESS             931:       ADDWFC PWMOFF+1, f, a; Add carry to high byte
+0390  221E     ADDWFC 0x1E, F, ACCESS             932:       ADDWFC PWMOFF+2, f, a; Add carry to low highword byte
+                                                  933:   RPG_SUBTRACT_Handle_One_Rollover:
+0392  0E32     MOVLW 0x32                         934:       MOVLW 0x32	; Move 2 to WREG
+0394  5C06     SUBWF 0x6, W, ACCESS               935:       SUBWF PW+4, w, a	; Check if ones place is 2
+0396  E101     BNZ 0x39A                          936:       BNZ RPG_SUBTRACT_Check_Hundred ; If !=2, jump to check the hundredths
+0398  0406     DECF 0x6, W, ACCESS                937:       DECF PW+4, w, a	; Decrement ones place
+                                                  938:   RPG_SUBTRACT_Check_Hundred:
+039A  5009     MOVF 0x9, W, ACCESS                939:       MOVF PW+7, w, a	; Move current hundredths to WREG
+039C  5C30     SUBWF 0x30, W, ACCESS              940:       SUBWF strMin, w, a	; Subtract current num from min
+039E  E002     BZ 0x3A4                           941:       BZ RPG_SUBTRACT_Handle_Hundred_Rollover	; If ==0x30 (0), handle rollover
+03A0  0609     DECF 0x9, F, ACCESS                942:       DECF PW+7, f, a	; Decrement hundredth's place
+03A2  D7E7     BRA 0x372                          943:       BRA RPG_ADD_Exit
+                                                  944:   RPG_SUBTRACT_Handle_Hundred_Rollover:
+03A4  0E39     MOVLW 0x39                         945:       MOVLF 0x39, PW+7, a  ; Reset hundredths to 9
+03A6  0100     MOVLB 0x0
+03A8  6E09     MOVWF 0x9, ACCESS
+03AA  0608     DECF 0x8, F, ACCESS                946:       DECF PW+6, f, a	    ; Decrement te tenths place
+                                                  947:   RPG_SUBTRACT_Exit:
+03AC  0012     RETURN 0                           948:       RETURN	; Get outta here!
+                                                  949:   // </editor-fold>
+                                                  950:       
+                                                  951:       

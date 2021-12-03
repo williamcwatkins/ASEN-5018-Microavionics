@@ -1,0 +1,753 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$build/default/production/lab5_orig.o
+resetVec CODE 0 6 6 6 1
+LoPriISR_Vec CODE 0 1C 1C 4 1
+code CODE 0 3B2 3B2 C2 1
+HiPriISR_Vec CODE 0 C C 4 1
+udata_bank1 BANK1 1 100 100 2 1
+udata_acs COMRAM 1 23 23 B 1
+config CONFIG 4 300000 300000 E 1
+$build/default/production/Watkins_William_Lab5.o
+resetVec CODE 0 0 0 6 1
+romData CONST 0 474 474 1C 1
+LoPriISR_Vec CODE 0 18 18 4 1
+code CODE 0 20 20 392 1
+HiPriISR_Vec CODE 0 8 8 4 1
+udata_bank1 BANK1 1 102 102 2 1
+udata_acs COMRAM 1 0 0 23 1
+config CONFIG 4 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 60-FF 1
+RAM 104-F15 1
+SFR F16-FFF 1
+BANK0 60-FF 1
+BANK1 104-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 10-17 1
+CONST 490-1FFFF 1
+IDLOC 200000-200007 1
+SMALLCONST 1000-1FFFF 1
+CODE 10-17 1
+CODE 490-1FFFF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EFF 1
+BANK15 F00-F15 1
+BIGRAM 10-17 1
+BIGRAM 490-F15 1
+COMRAM 2E-5F 1
+EEDATA F00000-F003FF 1
+MEDIUMCONST 1000-FFFF 1
+MEDIUMCONST 11000-1FFFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$build/default/production/lab5_orig.o
+1C LoPriISR_Vec CODE >283:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+C HiPriISR_Vec CODE >278:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+6 resetVec CODE >271:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+8 resetVec CODE >272:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3B2 code CODE >317:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3B4 code CODE >319:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3B6 code CODE >328:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3B8 code CODE >328:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3BA code CODE >328:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3BC code CODE >329:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3BE code CODE >329:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3C0 code CODE >329:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3C2 code CODE >330:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3C4 code CODE >330:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3C6 code CODE >330:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3C8 code CODE >332:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3CA code CODE >333:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3CC code CODE >334:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3CE code CODE >334:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3D0 code CODE >334:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3D2 code CODE >335:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3D4 code CODE >335:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3D6 code CODE >335:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3D8 code CODE >336:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3DA code CODE >337:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3DC code CODE >337:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3DE code CODE >337:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3E0 code CODE >338:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3E2 code CODE >339:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3E4 code CODE >340:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3E6 code CODE >341:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3E8 code CODE >342:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3EA code CODE >342:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3EC code CODE >342:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3EE code CODE >345:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3F0 code CODE >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3F2 code CODE >347:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3F4 code CODE >348:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3F6 code CODE >349:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3F8 code CODE >351:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3FA code CODE >361:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3FC code CODE >362:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+3FE code CODE >363:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+400 code CODE >364:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+402 code CODE >365:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+404 code CODE >366:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+406 code CODE >369:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+408 code CODE >370:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+40A code CODE >371:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+40C code CODE >373:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+40E code CODE >375:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+410 code CODE >378:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+412 code CODE >379:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+414 code CODE >380:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+416 code CODE >381:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+418 code CODE >382:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+41A code CODE >384:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+41C code CODE >386:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+420 code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+422 code CODE >394:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+424 code CODE >400:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+428 code CODE >401:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+42A code CODE >402:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+42E code CODE >404:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+430 code CODE >405:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+432 code CODE >406:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+434 code CODE >407:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+436 code CODE >409:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+438 code CODE >410:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+43A code CODE >411:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+43C code CODE >412:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+43E code CODE >414:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+440 code CODE >415:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+444 code CODE >416:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+448 code CODE >417:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+44A code CODE >421:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+44C code CODE >422:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+44E code CODE >423:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+450 code CODE >424:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+452 code CODE >425:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+454 code CODE >426:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+456 code CODE >429:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+458 code CODE >430:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+45A code CODE >431:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+45C code CODE >432:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+45E code CODE >433:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+460 code CODE >434:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+462 code CODE >435:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+464 code CODE >436:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+466 code CODE >437:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+468 code CODE >438:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+46A code CODE >440:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+46C code CODE >441:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+46E code CODE >445:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+470 code CODE >446:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+472 code CODE >447:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\lab5_orig.asm
+$build/default/production/Watkins_William_Lab5.o
+474 romData CONST >374:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+47B romData CONST >377:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+485 romData CONST >381:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+18 LoPriISR_Vec CODE >328:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+8 HiPriISR_Vec CODE >323:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+0 resetVec CODE >316:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2 resetVec CODE >317:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+20 code CODE >390:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+22 code CODE >392:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+24 code CODE >393:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+26 code CODE >394:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+28 code CODE >395:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A code CODE >396:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C code CODE >397:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E code CODE >405:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+30 code CODE >405:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+32 code CODE >405:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+34 code CODE >406:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+36 code CODE >406:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+38 code CODE >406:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A code CODE >407:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3C code CODE >407:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3E code CODE >407:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+40 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+42 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+44 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+46 code CODE >409:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+48 code CODE >409:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+4A code CODE >409:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+4C code CODE >410:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+4E code CODE >410:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+50 code CODE >410:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+52 code CODE >411:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+54 code CODE >411:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+56 code CODE >411:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+58 code CODE >412:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+5A code CODE >412:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+5C code CODE >412:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+5E code CODE >413:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+60 code CODE >413:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+62 code CODE >413:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+64 code CODE >414:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+66 code CODE >414:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+68 code CODE >414:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+6A code CODE >415:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+6C code CODE >415:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+6E code CODE >415:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+70 code CODE >417:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+72 code CODE >417:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+74 code CODE >417:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+76 code CODE >418:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+78 code CODE >418:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+7A code CODE >418:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+7C code CODE >419:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+7E code CODE >420:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+80 code CODE >421:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+82 code CODE >421:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+84 code CODE >421:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+86 code CODE >422:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+88 code CODE >423:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+8A code CODE >424:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+8C code CODE >425:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+8E code CODE >426:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+90 code CODE >427:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+92 code CODE >428:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+94 code CODE >428:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+96 code CODE >428:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+98 code CODE >431:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+9A code CODE >431:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+9C code CODE >431:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+9E code CODE >432:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+A0 code CODE >432:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+A2 code CODE >432:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+A4 code CODE >433:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+A6 code CODE >433:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+A8 code CODE >433:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+AA code CODE >434:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+AC code CODE >434:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+AE code CODE >434:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+B0 code CODE >437:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+B2 code CODE >437:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+B4 code CODE >437:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+B6 code CODE >438:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+B8 code CODE >438:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+BA code CODE >438:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+BC code CODE >439:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+BE code CODE >439:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+C0 code CODE >439:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+C2 code CODE >440:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+C4 code CODE >440:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+C6 code CODE >440:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+C8 code CODE >443:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+CA code CODE >443:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+CC code CODE >443:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+CE code CODE >444:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+D0 code CODE >444:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+D2 code CODE >444:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+D4 code CODE >445:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+D6 code CODE >445:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+D8 code CODE >445:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+DA code CODE >446:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+DC code CODE >447:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+DE code CODE >448:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+E0 code CODE >449:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+E2 code CODE >450:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+E4 code CODE >453:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+E6 code CODE >454:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+E8 code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+EA code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+EC code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+EE code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+F0 code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+F2 code CODE >457:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+F4 code CODE >458:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+F6 code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+F8 code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+FA code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+FC code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+FE code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+100 code CODE >461:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+102 code CODE >462:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+104 code CODE >463:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+106 code CODE >463:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+108 code CODE >463:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+10A code CODE >464:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+10C code CODE >464:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+10E code CODE >464:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+110 code CODE >465:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+112 code CODE >465:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+114 code CODE >465:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+116 code CODE >466:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+118 code CODE >466:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+11A code CODE >466:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+11C code CODE >467:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+11E code CODE >467:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+120 code CODE >467:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+122 code CODE >468:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+124 code CODE >468:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+126 code CODE >468:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+128 code CODE >469:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+12A code CODE >469:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+12C code CODE >469:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+12E code CODE >470:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+130 code CODE >470:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+132 code CODE >470:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+134 code CODE >471:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+136 code CODE >471:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+138 code CODE >471:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+13A code CODE >472:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+13C code CODE >472:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+13E code CODE >472:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+140 code CODE >473:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+142 code CODE >473:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+144 code CODE >473:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+146 code CODE >474:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+14A code CODE >477:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+14C code CODE >478:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+14E code CODE >479:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+150 code CODE >480:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+152 code CODE >482:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+154 code CODE >483:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+156 code CODE >484:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+158 code CODE >485:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+15A code CODE >487:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+15C code CODE >488:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+15E code CODE >489:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+160 code CODE >490:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+162 code CODE >492:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+164 code CODE >494:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+166 code CODE >508:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+168 code CODE >509:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+16A code CODE >510:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+16C code CODE >511:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+16E code CODE >511:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+170 code CODE >511:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+172 code CODE >512:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+174 code CODE >512:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+176 code CODE >512:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+178 code CODE >513:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+17A code CODE >514:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+17C code CODE >523:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+180 code CODE >524:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+182 code CODE >525:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+184 code CODE >538:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+186 code CODE >538:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+188 code CODE >538:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+18A code CODE >539:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+18C code CODE >541:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+18E code CODE >542:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+190 code CODE >543:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+192 code CODE >544:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+194 code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+196 code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+198 code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+19A code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+19C code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+19E code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1A0 code CODE >546:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1A2 code CODE >548:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1A4 code CODE >549:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1A6 code CODE >550:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1A8 code CODE >551:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1AA code CODE >552:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1AC code CODE >553:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1AE code CODE >554:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1B0 code CODE >555:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1B2 code CODE >556:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1B4 code CODE >558:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1B6 code CODE >559:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1B8 code CODE >560:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1BA code CODE >561:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1BC code CODE >562:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1BE code CODE >563:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1C0 code CODE >564:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1C2 code CODE >565:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1C4 code CODE >566:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1C6 code CODE >567:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1C8 code CODE >568:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1CA code CODE >569:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1CC code CODE >582:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1CE code CODE >583:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1D0 code CODE >584:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1D2 code CODE >584:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1D4 code CODE >584:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1D6 code CODE >585:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1D8 code CODE >585:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1DA code CODE >585:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1DC code CODE >586:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1DE code CODE >587:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1E0 code CODE >603:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1E2 code CODE >604:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1E4 code CODE >606:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1E6 code CODE >607:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1E8 code CODE >608:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1EA code CODE >625:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1EC code CODE >626:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1EE code CODE >627:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1F0 code CODE >628:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1F2 code CODE >629:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1F4 code CODE >631:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1F6 code CODE >632:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1F8 code CODE >633:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1FA code CODE >634:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1FC code CODE >635:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+1FE code CODE >636:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+200 code CODE >637:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+202 code CODE >638:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+204 code CODE >639:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+206 code CODE >641:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+208 code CODE >642:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+20A code CODE >643:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+20C code CODE >644:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+20E code CODE >645:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+210 code CODE >646:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+212 code CODE >647:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+214 code CODE >648:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+216 code CODE >649:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+218 code CODE >651:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+21A code CODE >652:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+21C code CODE >653:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+21E code CODE >654:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+220 code CODE >655:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+222 code CODE >670:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+224 code CODE >672:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+226 code CODE >673:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+228 code CODE >674:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+22A code CODE >675:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+22C code CODE >676:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+22E code CODE >677:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+230 code CODE >678:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+232 code CODE >679:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+234 code CODE >680:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+236 code CODE >682:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+238 code CODE >683:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+23A code CODE >684:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+23C code CODE >685:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+23E code CODE >686:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+240 code CODE >687:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+242 code CODE >688:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+244 code CODE >689:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+246 code CODE >690:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+248 code CODE >692:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+24A code CODE >693:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+24C code CODE >694:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+24E code CODE >695:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+250 code CODE >707:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+252 code CODE >708:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+254 code CODE >709:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+256 code CODE >710:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+258 code CODE >711:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+25A code CODE >712:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+25C code CODE >715:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+25E code CODE >716:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+260 code CODE >717:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+262 code CODE >719:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+264 code CODE >721:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+266 code CODE >724:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+268 code CODE >725:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+26A code CODE >726:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+26C code CODE >727:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+26E code CODE >728:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+270 code CODE >730:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+272 code CODE >732:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+276 code CODE >733:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+278 code CODE >741:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+27A code CODE >742:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+27C code CODE >743:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+27E code CODE >744:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+280 code CODE >746:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+282 code CODE >747:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+284 code CODE >748:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+286 code CODE >749:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+288 code CODE >751:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+28A code CODE >760:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+28E code CODE >761:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+290 code CODE >762:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+294 code CODE >764:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+296 code CODE >765:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+298 code CODE >766:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+29A code CODE >767:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+29C code CODE >769:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+29E code CODE >770:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A0 code CODE >771:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A2 code CODE >772:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A4 code CODE >774:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A6 code CODE >775:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2A8 code CODE >776:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2AA code CODE >777:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2AC code CODE >779:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2AE code CODE >780:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2B2 code CODE >781:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2B6 code CODE >782:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2B8 code CODE >791:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2BA code CODE >792:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2BC code CODE >793:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2BE code CODE >794:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C0 code CODE >795:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C2 code CODE >796:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C4 code CODE >799:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C6 code CODE >800:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2C8 code CODE >801:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2CA code CODE >803:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2CC code CODE >804:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2CE code CODE >806:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2D0 code CODE >807:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2D2 code CODE >808:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2D4 code CODE >809:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2D6 code CODE >810:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2D8 code CODE >811:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2DA code CODE >812:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2DC code CODE >813:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2DE code CODE >815:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E0 code CODE >816:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E2 code CODE >817:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E4 code CODE >818:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E6 code CODE >819:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2E8 code CODE >820:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2EA code CODE >821:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2EC code CODE >823:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2EE code CODE >824:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2F0 code CODE >825:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2F2 code CODE >834:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2F4 code CODE >835:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2F6 code CODE >836:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2F8 code CODE >837:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2FA code CODE >838:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2FC code CODE >839:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+2FE code CODE >842:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+300 code CODE >843:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+302 code CODE >844:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+304 code CODE >845:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+306 code CODE >846:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+308 code CODE >848:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+30A code CODE >849:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+30C code CODE >850:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+30E code CODE >851:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+310 code CODE >852:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+312 code CODE >853:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+314 code CODE >854:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+316 code CODE >855:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+318 code CODE >857:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+31A code CODE >858:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+31C code CODE >859:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+31E code CODE >860:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+320 code CODE >861:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+322 code CODE >862:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+324 code CODE >863:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+326 code CODE >865:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+328 code CODE >866:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+32A code CODE >867:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+32C code CODE >875:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+32E code CODE >876:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+330 code CODE >877:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+332 code CODE >886:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+334 code CODE >887:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+336 code CODE >889:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+338 code CODE >890:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+33A code CODE >891:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+33C code CODE >892:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+33E code CODE >893:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+340 code CODE >894:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+342 code CODE >895:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+344 code CODE >896:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+346 code CODE >897:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+348 code CODE >898:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+34A code CODE >899:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+34C code CODE >901:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+34E code CODE >902:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+350 code CODE >903:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+352 code CODE >904:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+354 code CODE >906:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+356 code CODE >907:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+358 code CODE >908:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+35A code CODE >909:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+35C code CODE >910:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+35E code CODE >912:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+360 code CODE >912:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+362 code CODE >912:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+364 code CODE >913:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+366 code CODE >914:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+368 code CODE >915:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+36A code CODE >916:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+36C code CODE >917:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+36E code CODE >919:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+370 code CODE >919:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+372 code CODE >919:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+374 code CODE >920:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+376 code CODE >922:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+378 code CODE >925:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+37A code CODE >926:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+37C code CODE >927:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+37E code CODE >928:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+380 code CODE >929:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+382 code CODE >930:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+384 code CODE >931:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+386 code CODE >932:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+388 code CODE >933:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+38A code CODE >934:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+38C code CODE >935:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+38E code CODE >936:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+390 code CODE >937:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+392 code CODE >938:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+394 code CODE >939:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+396 code CODE >941:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+398 code CODE >942:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+39A code CODE >943:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+39C code CODE >944:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+39E code CODE >946:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A0 code CODE >947:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A2 code CODE >948:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A4 code CODE >949:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A6 code CODE >950:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3A8 code CODE >952:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3AA code CODE >952:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3AC code CODE >952:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3AE code CODE >953:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+3B0 code CODE >955:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab5Ex\Watkins_William_Lab5.asm
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__Hspace_0 490 0 ABS 0 - -
+__Hspace_1 104 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__Hspace_4 60000E 0 ABS 0 - -
+__Hudata_bank0 20 0 ABS 0 udata_bank0 -
+__Hudata_bank1 20 0 ABS 0 udata_bank1 -
+__Hudata_bank2 20 0 ABS 0 udata_bank2 -
+__Hudata_bank3 20 0 ABS 0 udata_bank3 -
+__Hudata_bank4 20 0 ABS 0 udata_bank4 -
+__Hudata_bank5 20 0 ABS 0 udata_bank5 -
+__Hudata_bank6 20 0 ABS 0 udata_bank6 -
+__Hudata_bank7 20 0 ABS 0 udata_bank7 -
+__Hudata_bank8 20 0 ABS 0 udata_bank8 -
+__Hudata_bank9 20 0 ABS 0 udata_bank9 -
+PWMON 1A 0 COMRAM 1 udata_acs build/default/production/Watkins_William_Lab5.o
+__LresetVec 0 0 CODE 0 resetVec -
+__Hudata_bank10 20 0 ABS 0 udata_bank10 -
+__Hudata_bank11 20 0 ABS 0 udata_bank11 -
+__Hudata_bank12 20 0 ABS 0 udata_bank12 -
+__Hudata_bank13 20 0 ABS 0 udata_bank13 -
+__Hudata_bank14 20 0 ABS 0 udata_bank14 -
+__Hudata_bank15 20 0 ABS 0 udata_bank15 -
+__HresetVec C 0 CODE 0 resetVec -
+isa$xinst 0 0 ABS 0 - build/default/production/Watkins_William_Lab5.o
+__LromData 20 0 ABS 0 romData -
+__Hedata 20 0 ABS 0 edata -
+__Hudata 20 0 ABS 0 udata -
+__Hconfig 30000E 0 CONFIG 4 config -
+__Ledata 20 0 ABS 0 edata -
+__Ludata 20 0 ABS 0 udata -
+__Hcode 20 0 ABS 0 code -
+__Hdata 20 0 ABS 0 data -
+__Lcode 20 0 ABS 0 code -
+__Ldata 20 0 ABS 0 data -
+__S0 490 0 ABS 0 - -
+__S1 104 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+__Ludata_bank10 20 0 ABS 0 udata_bank10 -
+__Ludata_bank11 20 0 ABS 0 udata_bank11 -
+__Ludata_bank12 20 0 ABS 0 udata_bank12 -
+__Ludata_bank13 20 0 ABS 0 udata_bank13 -
+__Ludata_bank14 20 0 ABS 0 udata_bank14 -
+__Ludata_bank15 20 0 ABS 0 udata_bank15 -
+__HLoPriISR_Vec 20 0 CODE 0 LoPriISR_Vec -
+__Lconfig 0 0 CONFIG 4 config -
+isa$std 1 0 ABS 0 - build/default/production/Watkins_William_Lab5.o
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__Lspace_4 0 0 ABS 0 - -
+__HromData 20 0 ABS 0 romData -
+__HHiPriISR_Vec 10 0 CODE 0 HiPriISR_Vec -
+PWMOFF 1C 0 COMRAM 1 udata_acs build/default/production/Watkins_William_Lab5.o
+PWMNow 22 0 COMRAM 1 udata_acs build/default/production/Watkins_William_Lab5.o
+__Ludata_bank0 20 0 ABS 0 udata_bank0 -
+__Ludata_bank1 20 0 ABS 0 udata_bank1 -
+__Ludata_bank2 20 0 ABS 0 udata_bank2 -
+__Ludata_bank3 20 0 ABS 0 udata_bank3 -
+__Ludata_bank4 20 0 ABS 0 udata_bank4 -
+__Ludata_bank5 20 0 ABS 0 udata_bank5 -
+__Ludata_bank6 20 0 ABS 0 udata_bank6 -
+__Ludata_bank7 20 0 ABS 0 udata_bank7 -
+__Ludata_bank8 20 0 ABS 0 udata_bank8 -
+__Ludata_bank9 20 0 ABS 0 udata_bank9 -
+__LLoPriISR_Vec 18 0 CODE 0 LoPriISR_Vec -
+__Hudata_acs 20 0 ABS 0 udata_acs -
+__LHiPriISR_Vec 8 0 CODE 0 HiPriISR_Vec -
+__Ludata_acs 20 0 ABS 0 udata_acs -
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+resetVec 0 0 0 C 1
+romData 0 474 474 1C 1
+LoPriISR_Vec 0 18 18 45C 1
+HiPriISR_Vec 0 8 8 8 1
+udata_bank1 1 100 100 4 1
+udata_acs 1 0 0 2E 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES

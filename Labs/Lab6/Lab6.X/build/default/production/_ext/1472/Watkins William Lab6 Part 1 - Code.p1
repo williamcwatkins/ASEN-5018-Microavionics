@@ -1,0 +1,2585 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"229 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 229: void Initial(void);
+[v _Initial `(v ~T0 @X0 0 ef ]
+"246
+[; ;../Watkins William Lab6 Part 1 - Code.c: 246: void updateDAC(void);
+[v _updateDAC `(v ~T0 @X0 0 ef ]
+"10532 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"9570
+[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
+"10718
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"9906
+[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
+"10656
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"9794
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
+"10780
+[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
+"10024
+[s S448 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S448 . LATE0 LATE1 LATE2 LATE3 LATE4 LATE5 LATE6 LATE7 ]
+"10034
+[s S449 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S449 . LE0 LE1 LE2 LE3 LE4 LE5 LE6 LE7 ]
+"10023
+[u S447 `S448 1 `S449 1 ]
+[n S447 . . . ]
+"10045
+[v _LATEbits `VS447 ~T0 @X0 0 e@3981 ]
+"10600
+[s S465 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S465 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"10599
+[u S464 `S465 1 ]
+[n S464 . . ]
+"10611
+[v _TRISBbits `VS464 ~T0 @X0 0 e@3987 ]
+"10594
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"9682
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"1305
+[v _ANCON0 `Vuc ~T0 @X0 0 e@3877 ]
+"1193
+[v _ANCON1 `Vuc ~T0 @X0 0 e@3876 ]
+"1081
+[v _ANCON2 `Vuc ~T0 @X0 0 e@3875 ]
+"14355
+[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
+"14257
+[s S631 :3 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S631 . CHSN VNCFG VCFG TRIGSEL ]
+"14263
+[s S632 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S632 . CHSN0 CHSN1 CHSN2 . VCFG0 VCFG1 TRIGSEL0 TRIGSEL1 ]
+"14273
+[s S633 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S633 . . CHSN3 VCFG01 VCFG11 ]
+"14256
+[u S630 `S631 1 `S632 1 `S633 1 ]
+[n S630 . . . . ]
+"14280
+[v _ADCON1bits `VS630 ~T0 @X0 0 e@4033 ]
+"14180
+[v _ADCON2 `Vuc ~T0 @X0 0 e@4032 ]
+"16722
+[v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
+"16819
+[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
+"16799
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"16174
+[v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
+"13054
+[v _T3CON `Vuc ~T0 @X0 0 e@4017 ]
+"13721
+[v _CCP1CON `Vuc ~T0 @X0 0 e@4027 ]
+"1797
+[s S74 :3 `uc 1 :3 `uc 1 :2 `uc 1 ]
+[n S74 . C1TSEL C2TSEL C3TSEL ]
+"1802
+[s S75 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S75 . C1TSEL0 C1TSEL1 C1TSEL2 C2TSEL0 C2TSEL1 C2TSEL2 C3TSEL0 C3TSEL1 ]
+"1796
+[u S73 `S74 1 `S75 1 ]
+[n S73 . . . ]
+"1813
+[v _CCPTMRS0bits `VS73 ~T0 @X0 0 e@3885 ]
+"13940
+[v _CCPR1H `Vuc ~T0 @X0 0 e@4029 ]
+"13920
+[v _CCPR1L `Vuc ~T0 @X0 0 e@4028 ]
+"3502
+[v _CCP3CON `Vuc ~T0 @X0 0 e@3913 ]
+"3611
+[v _CCPR3H `Vuc ~T0 @X0 0 e@3915 ]
+"3591
+[v _CCPR3L `Vuc ~T0 @X0 0 e@3914 ]
+"12548
+[v _TXSTA1 `Vuc ~T0 @X0 0 e@4012 ]
+"12210
+[v _RCSTA1 `Vuc ~T0 @X0 0 e@4011 ]
+"5352
+[v _BAUDCON1 `Vuc ~T0 @X0 0 e@3941 ]
+"12912
+[v _SPBRG1 `Vuc ~T0 @X0 0 e@4015 ]
+"15130
+[s S666 :2 `uc 1 :1 `uc 1 ]
+[n S666 . . R_NOT_W ]
+"15134
+[s S667 :5 `uc 1 :1 `uc 1 ]
+[n S667 . . D_NOT_A ]
+"15138
+[s S668 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S668 . BF UA R_nW S P D_nA CKE SMP ]
+"15148
+[s S669 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S669 . . R . D ]
+"15154
+[s S670 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S670 . . R_W . D_A ]
+"15160
+[s S671 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S671 . . nW . nA ]
+"15166
+[s S672 :2 `uc 1 :1 `uc 1 ]
+[n S672 . . NOT_WRITE ]
+"15170
+[s S673 :5 `uc 1 :1 `uc 1 ]
+[n S673 . . NOT_ADDRESS ]
+"15174
+[s S674 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S674 . . nWRITE . nADDRESS ]
+"15180
+[s S675 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S675 . . READ_WRITE . DATA_ADDRESS ]
+"15186
+[s S676 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S676 . . I2C_READ I2C_START I2C_STOP I2C_DAT ]
+"15193
+[s S677 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S677 . BF1 UA1 RW START STOP DA CKE1 SMP1 ]
+"15203
+[s S678 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S678 . . RW1 START1 STOP1 DA1 ]
+"15210
+[s S679 :2 `uc 1 :1 `uc 1 ]
+[n S679 . . NOT_W ]
+"15214
+[s S680 :5 `uc 1 :1 `uc 1 ]
+[n S680 . . NOT_A ]
+"15129
+[u S665 `S666 1 `S667 1 `S668 1 `S669 1 `S670 1 `S671 1 `S672 1 `S673 1 `S674 1 `S675 1 `S676 1 `S677 1 `S678 1 `S679 1 `S680 1 ]
+[n S665 . . . . . . . . . . . . . . . . ]
+"15219
+[v _SSP1STATbits `VS665 ~T0 @X0 0 e@4039 ]
+"14892
+[s S658 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S658 . SSPM CKP SSPEN SSPOV WCOL ]
+"14899
+[s S659 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S659 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"14905
+[s S660 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S660 . SSPM01 SSPM11 SSPM21 SSPM31 CKP1 SSPEN1 SSPOV1 WCOL1 ]
+"14891
+[u S657 `S658 1 `S659 1 `S660 1 ]
+[n S657 . . . . ]
+"14916
+[v _SSP1CON1bits `VS657 ~T0 @X0 0 e@4038 ]
+"16329
+[s S729 :1 `uc 1 ]
+[n S729 . NOT_BOR ]
+"16332
+[s S730 :1 `uc 1 :1 `uc 1 ]
+[n S730 . . NOT_POR ]
+"16336
+[s S731 :2 `uc 1 :1 `uc 1 ]
+[n S731 . . NOT_PD ]
+"16340
+[s S732 :3 `uc 1 :1 `uc 1 ]
+[n S732 . . NOT_TO ]
+"16344
+[s S733 :4 `uc 1 :1 `uc 1 ]
+[n S733 . . NOT_RI ]
+"16348
+[s S734 :5 `uc 1 :1 `uc 1 ]
+[n S734 . . NOT_CM ]
+"16352
+[s S735 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S735 . nBOR nPOR nPD nTO nRI nCM SBOREN IPEN ]
+"16362
+[s S736 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S736 . BOR POR PD TO RI CM ]
+"16328
+[u S728 `S729 1 `S730 1 `S731 1 `S732 1 `S733 1 `S734 1 `S735 1 `S736 1 ]
+[n S728 . . . . . . . . . ]
+"16371
+[v _RCONbits `VS728 ~T0 @X0 0 e@4048 ]
+"17550
+[s S804 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S804 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"17560
+[s S805 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S805 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"17570
+[s S806 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S806 . . GIEL GIEH ]
+"17549
+[u S803 `S804 1 `S805 1 `S806 1 ]
+[n S803 . . . . ]
+"17576
+[v _INTCONbits `VS803 ~T0 @X0 0 e@4082 ]
+"17457
+[s S800 :7 `uc 1 :1 `uc 1 ]
+[n S800 . . NOT_RBPU ]
+"17461
+[s S801 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S801 . RBIP INT3IP TMR0IP INTEDG3 INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"17471
+[s S802 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S802 . . INT3P T0IP . RBPU ]
+"17456
+[u S799 `S800 1 `S801 1 `S802 1 ]
+[n S799 . . . . ]
+"17479
+[v _INTCON2bits `VS799 ~T0 @X0 0 e@4081 ]
+"16728
+[s S749 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S749 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"16736
+[s S750 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S750 . T0PS0 T0PS1 T0PS2 ]
+"16727
+[u S748 `S749 1 `S750 1 ]
+[n S748 . . . ]
+"16742
+[v _T0CONbits `VS748 ~T0 @X0 0 e@4053 ]
+"56 ../LCDroutinesEasyPic.h
+[; ;../LCDroutinesEasyPic.h: 56: void InitLCD( void );
+[v _InitLCD `(v ~T0 @X0 0 ef ]
+"231 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 231: void readADC(void);
+[v _readADC `(v ~T0 @X0 0 ef ]
+"14361 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S635 :1 `uc 1 :1 `uc 1 ]
+[n S635 . . GO_NOT_DONE ]
+"14365
+[s S636 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
+[n S636 . ADON GO_nDONE CHS ]
+"14370
+[s S637 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S637 . . DONE CHS0 CHS1 CHS2 CHS3 CHS4 ]
+"14379
+[s S638 :1 `uc 1 :1 `uc 1 ]
+[n S638 . . GO ]
+"14383
+[s S639 :1 `uc 1 :1 `uc 1 ]
+[n S639 . . NOT_DONE ]
+"14387
+[s S640 :1 `uc 1 :1 `uc 1 ]
+[n S640 . . nDONE ]
+"14391
+[s S641 :1 `uc 1 :1 `uc 1 ]
+[n S641 . . GODONE ]
+"14395
+[s S642 :1 `uc 1 :1 `uc 1 ]
+[n S642 . . GO_DONE ]
+"14360
+[u S634 `S635 1 `S636 1 `S637 1 `S638 1 `S639 1 `S640 1 `S641 1 `S642 1 ]
+[n S634 . . . . . . . . . ]
+"14400
+[v _ADCON0bits `VS634 ~T0 @X0 0 e@4034 ]
+"113 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+[v F6435 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\pic18.h
+[v __delay `JF6435 ~T0 @X0 0 e ]
+[p i __delay ]
+"14480 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[v _ADRES `Vus ~T0 @X0 0 e@4035 ]
+"67 ../LCDroutinesEasyPic.h
+[; ;../LCDroutinesEasyPic.h: 67: void DisplayC( const char *LCDStr );
+[v _DisplayC `(v ~T0 @X0 0 ef1`*Cuc ]
+[t ~ __interrupt . k ]
+[t T97 __interrupt ]
+"11292 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S490 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S490 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
+"11302
+[s S491 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S491 . . SSPIF TXIF RCIF ]
+"11291
+[u S489 `S490 1 `S491 1 ]
+[n S489 . . . ]
+"11309
+[v _PIR1bits `VS489 ~T0 @X0 0 e@3998 ]
+"238 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 238: void EUSARTCommandHandler(void);
+[v _EUSARTCommandHandler `(v ~T0 @X0 0 ef ]
+"11209 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S487 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S487 . TMR1IE TMR2IE TMR1GIE SSP1IE TX1IE RC1IE ADIE PSPIE ]
+"11219
+[s S488 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S488 . . SSPIE TXIE RCIE ]
+"11208
+[u S486 `S487 1 `S488 1 ]
+[n S486 . . . ]
+"11226
+[v _PIE1bits `VS486 ~T0 @X0 0 e@3997 ]
+"244 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 244: void sendNext(void);
+[v _sendNext `(v ~T0 @X0 0 ef ]
+[t T98 __interrupt low_priority ]
+"17185 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[v _WREG `Vuc ~T0 @X0 0 e@4072 ]
+"16839
+[v _STATUS `Vuc ~T0 @X0 0 e@4056 ]
+"17044
+[v _BSR `Vuc ~T0 @X0 0 e@4064 ]
+"11779
+[s S509 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S509 . RTCCIF CCP1IF CCP2IF CTMUIF TX2IF RC2IF . TMR5GIF ]
+"11789
+[s S510 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S510 . . RXBNIF . TXBNIF ]
+"11778
+[u S508 `S509 1 `S510 1 ]
+[n S508 . . . ]
+"11796
+[v _PIR3bits `VS508 ~T0 @X0 0 e@4004 ]
+"236 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 236: void CCP1Handler(void);
+[v _CCP1Handler `(v ~T0 @X0 0 ef ]
+"13471 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S598 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S598 . CCP3IF CCP4IF CCP5IF CCP6IF CCP7IF CCP8IF CCP9IF CCP10IF ]
+"13470
+[u S597 `S598 1 ]
+[n S597 . . ]
+"13482
+[v _PIR4bits `VS597 ~T0 @X0 0 e@4023 ]
+"237 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 237: void CCP3Handler(void);
+[v _CCP3Handler `(v ~T0 @X0 0 ef ]
+"233
+[; ;../Watkins William Lab6 Part 1 - Code.c: 233: void TMR0Handler(void);
+[v _TMR0Handler `(v ~T0 @X0 0 ef ]
+"234
+[; ;../Watkins William Lab6 Part 1 - Code.c: 234: void TMR1Handler(void);
+[v _TMR1Handler `(v ~T0 @X0 0 ef ]
+"11530 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S499 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S499 . TMR3GIF TMR3IF HLVDIF BCL1IF BCL2IF SSP2IF . OSCFIF ]
+"11540
+[s S500 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S500 . . LVDIF BCLIF ]
+"11529
+[u S498 `S499 1 `S500 1 ]
+[n S498 . . . ]
+"11546
+[v _PIR2bits `VS498 ~T0 @X0 0 e@4001 ]
+"235 ../Watkins William Lab6 Part 1 - Code.c
+[; ;../Watkins William Lab6 Part 1 - Code.c: 235: void TMR3Handler(void);
+[v _TMR3Handler `(v ~T0 @X0 0 ef ]
+"245
+[; ;../Watkins William Lab6 Part 1 - Code.c: 245: void aliveLED(void);
+[v _aliveLED `(v ~T0 @X0 0 ef ]
+"12221 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S530 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S530 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"12231
+[s S531 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S531 . RCD8 . ADEN . RC9 ]
+"12238
+[s S532 :6 `uc 1 :1 `uc 1 ]
+[n S532 . . NOT_RC8 ]
+"12242
+[s S533 :6 `uc 1 :1 `uc 1 ]
+[n S533 . . nRC8 ]
+"12246
+[s S534 :6 `uc 1 :1 `uc 1 ]
+[n S534 . . RC8_9 ]
+"12250
+[s S535 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S535 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
+"12260
+[s S536 :5 `uc 1 :1 `uc 1 ]
+[n S536 . . SRENA ]
+"12220
+[u S529 `S530 1 `S531 1 `S532 1 `S533 1 `S534 1 `S535 1 `S536 1 ]
+[n S529 . . . . . . . . ]
+"12265
+[v _RCSTA1bits `VS529 ~T0 @X0 0 e@4011 ]
+"12874
+[v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
+"9912
+[s S445 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S445 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"9922
+[s S446 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S446 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"9911
+[u S444 `S445 1 `S446 1 ]
+[n S444 . . . ]
+"9933
+[v _LATDbits `VS444 ~T0 @X0 0 e@3980 ]
+"12836
+[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
+"16025
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@4041 ]
+"10018
+[v _LATE `Vuc ~T0 @X0 0 e@3981 ]
+"54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[; <" PMD3 equ 0F16h ;# ">
+"116
+[; <" PMD2 equ 0F17h ;# ">
+"178
+[; <" PMD1 equ 0F18h ;# ">
+"240
+[; <" PMD0 equ 0F19h ;# ">
+"317
+[; <" PSTR3CON equ 0F1Ah ;# ">
+"428
+[; <" PSTR2CON equ 0F1Bh ;# ">
+"617
+[; <" TXREG2 equ 0F1Ch ;# ">
+"637
+[; <" RCREG2 equ 0F1Dh ;# ">
+"657
+[; <" SPBRG2 equ 0F1Eh ;# ">
+"677
+[; <" SPBRGH2 equ 0F1Fh ;# ">
+"697
+[; <" BAUDCON2 equ 0F20h ;# ">
+"820
+[; <" TXSTA2 equ 0F21h ;# ">
+"947
+[; <" RCSTA2 equ 0F22h ;# ">
+"1083
+[; <" ANCON2 equ 0F23h ;# ">
+"1195
+[; <" ANCON1 equ 0F24h ;# ">
+"1307
+[; <" ANCON0 equ 0F25h ;# ">
+"1419
+[; <" MEMCON equ 0F26h ;# ">
+"1480
+[; <" ODCON3 equ 0F27h ;# ">
+"1513
+[; <" ODCON2 equ 0F28h ;# ">
+"1575
+[; <" ODCON1 equ 0F29h ;# ">
+"1614
+[; <" REFOCON equ 0F2Ah ;# ">
+"1679
+[; <" CCPTMRS2 equ 0F2Bh ;# ">
+"1726
+[; <" CCPTMRS1 equ 0F2Ch ;# ">
+"1793
+[; <" CCPTMRS0 equ 0F2Dh ;# ">
+"1875
+[; <" CM3CON equ 0F2Eh ;# ">
+"1880
+[; <" CM3CON1 equ 0F2Eh ;# ">
+"2127
+[; <" CM2CON equ 0F2Fh ;# ">
+"2132
+[; <" CM2CON1 equ 0F2Fh ;# ">
+"2379
+[; <" T12CON equ 0F30h ;# ">
+"2450
+[; <" PR12 equ 0F31h ;# ">
+"2470
+[; <" TMR12 equ 0F32h ;# ">
+"2490
+[; <" T10CON equ 0F33h ;# ">
+"2561
+[; <" PR10 equ 0F34h ;# ">
+"2581
+[; <" TMR10 equ 0F35h ;# ">
+"2601
+[; <" T8CON equ 0F36h ;# ">
+"2672
+[; <" PR8 equ 0F37h ;# ">
+"2692
+[; <" TMR8 equ 0F38h ;# ">
+"2712
+[; <" T6CON equ 0F39h ;# ">
+"2783
+[; <" PR6 equ 0F3Ah ;# ">
+"2803
+[; <" TMR6 equ 0F3Bh ;# ">
+"2823
+[; <" T7GCON equ 0F3Ch ;# ">
+"2927
+[; <" T7CON equ 0F3Dh ;# ">
+"3029
+[; <" TMR7 equ 0F3Eh ;# ">
+"3036
+[; <" TMR7L equ 0F3Eh ;# ">
+"3106
+[; <" TMR7H equ 0F3Fh ;# ">
+"3126
+[; <" CCP10CON equ 0F40h ;# ">
+"3205
+[; <" CCPR10 equ 0F41h ;# ">
+"3212
+[; <" CCPR10L equ 0F41h ;# ">
+"3232
+[; <" CCPR10H equ 0F42h ;# ">
+"3252
+[; <" CCP9CON equ 0F43h ;# ">
+"3331
+[; <" CCPR9 equ 0F44h ;# ">
+"3338
+[; <" CCPR9L equ 0F44h ;# ">
+"3358
+[; <" CCPR9H equ 0F45h ;# ">
+"3378
+[; <" CCP8CON equ 0F46h ;# ">
+"3457
+[; <" CCPR8 equ 0F47h ;# ">
+"3464
+[; <" CCPR8L equ 0F47h ;# ">
+"3484
+[; <" CCPR8H equ 0F48h ;# ">
+"3504
+[; <" CCP3CON equ 0F49h ;# ">
+"3586
+[; <" CCPR3 equ 0F4Ah ;# ">
+"3593
+[; <" CCPR3L equ 0F4Ah ;# ">
+"3613
+[; <" CCPR3H equ 0F4Bh ;# ">
+"3633
+[; <" ECCP3DEL equ 0F4Ch ;# ">
+"3703
+[; <" ECCP3AS equ 0F4Dh ;# ">
+"3785
+[; <" CCP2CON equ 0F4Eh ;# ">
+"3790
+[; <" ECCP2CON equ 0F4Eh ;# ">
+"3977
+[; <" CCPR2 equ 0F4Fh ;# ">
+"3984
+[; <" CCPR2L equ 0F4Fh ;# ">
+"4004
+[; <" CCPR2H equ 0F50h ;# ">
+"4024
+[; <" ECCP2DEL equ 0F51h ;# ">
+"4029
+[; <" PWM2CON equ 0F51h ;# ">
+"4162
+[; <" ECCP2AS equ 0F52h ;# ">
+"4244
+[; <" PADCFG1 equ 0F53h ;# ">
+"4299
+[; <" CM1CON equ 0F54h ;# ">
+"4304
+[; <" CM1CON1 equ 0F54h ;# ">
+"4579
+[; <" CTMUICON equ 0F55h ;# ">
+"4655
+[; <" CTMUCONL equ 0F56h ;# ">
+"4733
+[; <" CTMUCONH equ 0F57h ;# ">
+"4790
+[; <" ALRMVAL equ 0F58h ;# ">
+"4797
+[; <" ALRMVALL equ 0F58h ;# ">
+"4817
+[; <" ALRMVALH equ 0F59h ;# ">
+"4837
+[; <" ALRMRPT equ 0F5Ah ;# ">
+"4907
+[; <" ALRMCFG equ 0F5Bh ;# ">
+"4983
+[; <" RTCVAL equ 0F5Ch ;# ">
+"4990
+[; <" RTCVALL equ 0F5Ch ;# ">
+"5010
+[; <" RTCVALH equ 0F5Dh ;# ">
+"5080
+[; <" RTCCAL equ 0F5Eh ;# ">
+"5150
+[; <" RTCCFG equ 0F5Fh ;# ">
+"5215
+[; <" PIE6 equ 0F60h ;# ">
+"5254
+[; <" EEDATA equ 0F61h ;# ">
+"5274
+[; <" EEADR equ 0F62h ;# ">
+"5294
+[; <" EEADRH equ 0F63h ;# ">
+"5314
+[; <" OSCCON2 equ 0F64h ;# ">
+"5354
+[; <" BAUDCON1 equ 0F65h ;# ">
+"5359
+[; <" BAUDCTL equ 0F65h ;# ">
+"5363
+[; <" BAUDCON equ 0F65h ;# ">
+"5861
+[; <" SSP2CON2 equ 0F66h ;# ">
+"6039
+[; <" SSP2CON1 equ 0F67h ;# ">
+"6159
+[; <" SSP2STAT equ 0F68h ;# ">
+"6586
+[; <" SSP2ADD equ 0F69h ;# ">
+"6656
+[; <" SSP2MSK equ 0F69h ;# ">
+"6726
+[; <" SSP2BUF equ 0F6Ah ;# ">
+"6746
+[; <" T4CON equ 0F6Bh ;# ">
+"6817
+[; <" PR4 equ 0F6Ch ;# ">
+"6837
+[; <" TMR4 equ 0F6Dh ;# ">
+"6857
+[; <" CCP7CON equ 0F6Eh ;# ">
+"6936
+[; <" CCPR7 equ 0F6Fh ;# ">
+"6943
+[; <" CCPR7L equ 0F6Fh ;# ">
+"6963
+[; <" CCPR7H equ 0F70h ;# ">
+"6983
+[; <" CCP6CON equ 0F71h ;# ">
+"7062
+[; <" CCPR6 equ 0F72h ;# ">
+"7069
+[; <" CCPR6L equ 0F72h ;# ">
+"7089
+[; <" CCPR6H equ 0F73h ;# ">
+"7109
+[; <" CCP5CON equ 0F74h ;# ">
+"7188
+[; <" CCPR5 equ 0F75h ;# ">
+"7195
+[; <" CCPR5L equ 0F75h ;# ">
+"7215
+[; <" CCPR5H equ 0F76h ;# ">
+"7235
+[; <" CCP4CON equ 0F77h ;# ">
+"7314
+[; <" CCPR4 equ 0F78h ;# ">
+"7321
+[; <" CCPR4L equ 0F78h ;# ">
+"7341
+[; <" CCPR4H equ 0F79h ;# ">
+"7361
+[; <" T5GCON equ 0F7Ah ;# ">
+"7465
+[; <" T5CON equ 0F7Bh ;# ">
+"7567
+[; <" TMR5 equ 0F7Ch ;# ">
+"7574
+[; <" TMR5L equ 0F7Ch ;# ">
+"7594
+[; <" TMR5H equ 0F7Dh ;# ">
+"7614
+[; <" EECON2 equ 0F7Eh ;# ">
+"7634
+[; <" EECON1 equ 0F7Fh ;# ">
+"7700
+[; <" PORTA equ 0F80h ;# ">
+"7892
+[; <" PORTB equ 0F81h ;# ">
+"8078
+[; <" PORTC equ 0F82h ;# ">
+"8260
+[; <" PORTD equ 0F83h ;# ">
+"8501
+[; <" PORTE equ 0F84h ;# ">
+"8854
+[; <" PORTF equ 0F85h ;# ">
+"9039
+[; <" PORTG equ 0F86h ;# ">
+"9250
+[; <" PORTH equ 0F87h ;# ">
+"9460
+[; <" PORTJ equ 0F88h ;# ">
+"9572
+[; <" LATA equ 0F89h ;# ">
+"9684
+[; <" LATB equ 0F8Ah ;# ">
+"9796
+[; <" LATC equ 0F8Bh ;# ">
+"9908
+[; <" LATD equ 0F8Ch ;# ">
+"10020
+[; <" LATE equ 0F8Dh ;# ">
+"10132
+[; <" LATF equ 0F8Eh ;# ">
+"10234
+[; <" LATG equ 0F8Fh ;# ">
+"10310
+[; <" LATH equ 0F90h ;# ">
+"10422
+[; <" LATJ equ 0F91h ;# ">
+"10534
+[; <" TRISA equ 0F92h ;# ">
+"10596
+[; <" TRISB equ 0F93h ;# ">
+"10658
+[; <" TRISC equ 0F94h ;# ">
+"10720
+[; <" TRISD equ 0F95h ;# ">
+"10782
+[; <" TRISE equ 0F96h ;# ">
+"10844
+[; <" TRISF equ 0F97h ;# ">
+"10901
+[; <" TRISG equ 0F98h ;# ">
+"10945
+[; <" TRISH equ 0F99h ;# ">
+"11007
+[; <" TRISJ equ 0F9Ah ;# ">
+"11069
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"11139
+[; <" PSTR1CON equ 0F9Ch ;# ">
+"11205
+[; <" PIE1 equ 0F9Dh ;# ">
+"11288
+[; <" PIR1 equ 0F9Eh ;# ">
+"11371
+[; <" IPR1 equ 0F9Fh ;# ">
+"11454
+[; <" PIE2 equ 0FA0h ;# ">
+"11526
+[; <" PIR2 equ 0FA1h ;# ">
+"11598
+[; <" IPR2 equ 0FA2h ;# ">
+"11670
+[; <" PIE3 equ 0FA3h ;# ">
+"11775
+[; <" PIR3 equ 0FA4h ;# ">
+"11848
+[; <" IPR3 equ 0FA5h ;# ">
+"11921
+[; <" PIR6 equ 0FA6h ;# ">
+"11960
+[; <" PSPCON equ 0FA7h ;# ">
+"11999
+[; <" HLVDCON equ 0FA8h ;# ">
+"12069
+[; <" IPR6 equ 0FA9h ;# ">
+"12108
+[; <" T1GCON equ 0FAAh ;# ">
+"12212
+[; <" RCSTA1 equ 0FABh ;# ">
+"12217
+[; <" RCSTA equ 0FABh ;# ">
+"12550
+[; <" TXSTA1 equ 0FACh ;# ">
+"12555
+[; <" TXSTA equ 0FACh ;# ">
+"12838
+[; <" TXREG1 equ 0FADh ;# ">
+"12843
+[; <" TXREG equ 0FADh ;# ">
+"12876
+[; <" RCREG1 equ 0FAEh ;# ">
+"12881
+[; <" RCREG equ 0FAEh ;# ">
+"12914
+[; <" SPBRG1 equ 0FAFh ;# ">
+"12919
+[; <" SPBRG equ 0FAFh ;# ">
+"12952
+[; <" T3GCON equ 0FB0h ;# ">
+"13056
+[; <" T3CON equ 0FB1h ;# ">
+"13167
+[; <" TMR3 equ 0FB2h ;# ">
+"13174
+[; <" TMR3L equ 0FB2h ;# ">
+"13194
+[; <" TMR3H equ 0FB3h ;# ">
+"13214
+[; <" CMSTAT equ 0FB4h ;# ">
+"13219
+[; <" CMSTATUS equ 0FB4h ;# ">
+"13320
+[; <" CVRCON equ 0FB5h ;# ">
+"13405
+[; <" PIE4 equ 0FB6h ;# ">
+"13467
+[; <" PIR4 equ 0FB7h ;# ">
+"13529
+[; <" IPR4 equ 0FB8h ;# ">
+"13599
+[; <" PIE5 equ 0FB9h ;# ">
+"13661
+[; <" PIR5 equ 0FBAh ;# ">
+"13723
+[; <" CCP1CON equ 0FBBh ;# ">
+"13728
+[; <" ECCP1CON equ 0FBBh ;# ">
+"13915
+[; <" CCPR1 equ 0FBCh ;# ">
+"13922
+[; <" CCPR1L equ 0FBCh ;# ">
+"13942
+[; <" CCPR1H equ 0FBDh ;# ">
+"13962
+[; <" ECCP1DEL equ 0FBEh ;# ">
+"13967
+[; <" PWM1CON equ 0FBEh ;# ">
+"14100
+[; <" ECCP1AS equ 0FBFh ;# ">
+"14182
+[; <" ADCON2 equ 0FC0h ;# ">
+"14253
+[; <" ADCON1 equ 0FC1h ;# ">
+"14357
+[; <" ADCON0 equ 0FC2h ;# ">
+"14482
+[; <" ADRES equ 0FC3h ;# ">
+"14489
+[; <" ADRESL equ 0FC3h ;# ">
+"14509
+[; <" ADRESH equ 0FC4h ;# ">
+"14529
+[; <" SSP1CON2 equ 0FC5h ;# ">
+"14534
+[; <" SSPCON2 equ 0FC5h ;# ">
+"14883
+[; <" SSP1CON1 equ 0FC6h ;# ">
+"14888
+[; <" SSPCON1 equ 0FC6h ;# ">
+"15121
+[; <" SSP1STAT equ 0FC7h ;# ">
+"15126
+[; <" SSPSTAT equ 0FC7h ;# ">
+"15719
+[; <" SSP1ADD equ 0FC8h ;# ">
+"15724
+[; <" SSPADD equ 0FC8h ;# ">
+"15957
+[; <" SSP1MSK equ 0FC8h ;# ">
+"16027
+[; <" SSP1BUF equ 0FC9h ;# ">
+"16032
+[; <" SSPBUF equ 0FC9h ;# ">
+"16065
+[; <" T2CON equ 0FCAh ;# ">
+"16136
+[; <" PR2 equ 0FCBh ;# ">
+"16156
+[; <" TMR2 equ 0FCCh ;# ">
+"16176
+[; <" T1CON equ 0FCDh ;# ">
+"16278
+[; <" TMR1 equ 0FCEh ;# ">
+"16285
+[; <" TMR1L equ 0FCEh ;# ">
+"16305
+[; <" TMR1H equ 0FCFh ;# ">
+"16325
+[; <" RCON equ 0FD0h ;# ">
+"16478
+[; <" WDTCON equ 0FD1h ;# ">
+"16538
+[; <" IPR5 equ 0FD2h ;# ">
+"16627
+[; <" OSCCON equ 0FD3h ;# ">
+"16704
+[; <" SPBRGH1 equ 0FD4h ;# ">
+"16724
+[; <" T0CON equ 0FD5h ;# ">
+"16794
+[; <" TMR0 equ 0FD6h ;# ">
+"16801
+[; <" TMR0L equ 0FD6h ;# ">
+"16821
+[; <" TMR0H equ 0FD7h ;# ">
+"16841
+[; <" STATUS equ 0FD8h ;# ">
+"16912
+[; <" FSR2 equ 0FD9h ;# ">
+"16919
+[; <" FSR2L equ 0FD9h ;# ">
+"16939
+[; <" FSR2H equ 0FDAh ;# ">
+"16946
+[; <" PLUSW2 equ 0FDBh ;# ">
+"16966
+[; <" PREINC2 equ 0FDCh ;# ">
+"16986
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"17006
+[; <" POSTINC2 equ 0FDEh ;# ">
+"17026
+[; <" INDF2 equ 0FDFh ;# ">
+"17046
+[; <" BSR equ 0FE0h ;# ">
+"17053
+[; <" FSR1 equ 0FE1h ;# ">
+"17060
+[; <" FSR1L equ 0FE1h ;# ">
+"17080
+[; <" FSR1H equ 0FE2h ;# ">
+"17087
+[; <" PLUSW1 equ 0FE3h ;# ">
+"17107
+[; <" PREINC1 equ 0FE4h ;# ">
+"17127
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"17147
+[; <" POSTINC1 equ 0FE6h ;# ">
+"17167
+[; <" INDF1 equ 0FE7h ;# ">
+"17187
+[; <" WREG equ 0FE8h ;# ">
+"17207
+[; <" FSR0 equ 0FE9h ;# ">
+"17214
+[; <" FSR0L equ 0FE9h ;# ">
+"17234
+[; <" FSR0H equ 0FEAh ;# ">
+"17241
+[; <" PLUSW0 equ 0FEBh ;# ">
+"17261
+[; <" PREINC0 equ 0FECh ;# ">
+"17281
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"17301
+[; <" POSTINC0 equ 0FEEh ;# ">
+"17321
+[; <" INDF0 equ 0FEFh ;# ">
+"17341
+[; <" INTCON3 equ 0FF0h ;# ">
+"17453
+[; <" INTCON2 equ 0FF1h ;# ">
+"17546
+[; <" INTCON equ 0FF2h ;# ">
+"17663
+[; <" PROD equ 0FF3h ;# ">
+"17670
+[; <" PRODL equ 0FF3h ;# ">
+"17690
+[; <" PRODH equ 0FF4h ;# ">
+"17710
+[; <" TABLAT equ 0FF5h ;# ">
+"17732
+[; <" TBLPTR equ 0FF6h ;# ">
+"17739
+[; <" TBLPTRL equ 0FF6h ;# ">
+"17759
+[; <" TBLPTRH equ 0FF7h ;# ">
+"17779
+[; <" TBLPTRU equ 0FF8h ;# ">
+"17788
+[; <" PCLAT equ 0FF9h ;# ">
+"17795
+[; <" PC equ 0FF9h ;# ">
+"17802
+[; <" PCL equ 0FF9h ;# ">
+"17822
+[; <" PCLATH equ 0FFAh ;# ">
+"17842
+[; <" PCLATU equ 0FFBh ;# ">
+"17849
+[; <" STKPTR equ 0FFCh ;# ">
+"17923
+[; <" TOS equ 0FFDh ;# ">
+"17930
+[; <" TOSL equ 0FFDh ;# ">
+"17950
+[; <" TOSH equ 0FFEh ;# ">
+"17970
+[; <" TOSU equ 0FFFh ;# ">
+"132 ../Watkins William Lab6 Part 1 - Code.c
+[p x FOSC=HS1   PWRTEN=ON   BOREN=ON   BORV=2   PLLCFG=OFF ]
+"133
+[p x WDTEN=OFF   CCP2MX=PORTC   XINST=OFF ]
+"142
+[v _tempWREG `uc ~T0 @X0 1 e ]
+[i _tempWREG
+-> -> 0 `i `uc
+]
+"143
+[v _tempSTATUS `uc ~T0 @X0 1 e ]
+[i _tempSTATUS
+-> -> 0 `i `uc
+]
+"144
+[v _tempBSR `uc ~T0 @X0 1 e ]
+[i _tempBSR
+-> -> 0 `i `uc
+]
+"148
+[v _LED_count `uc ~T0 @X0 1 e ]
+[i _LED_count
+-> -> 1 `i `uc
+]
+"149
+[v _oldLATD `uc ~T0 @X0 1 e ]
+[i _oldLATD
+-> -> 0 `i `uc
+]
+"154
+[v _row1LCD `uc ~T0 @X0 -> 9 `i e ]
+[i _row1LCD
+:U ..
+-> -> 128 `i `uc
+-> -> 84 `ui `uc
+-> -> 61 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 67 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"155
+[v _row2LCD `uc ~T0 @X0 -> 10 `i e ]
+[i _row2LCD
+:U ..
+-> -> 192 `i `uc
+-> -> 80 `ui `uc
+-> -> 84 `ui `uc
+-> -> 61 `ui `uc
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 86 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"157
+[v _tempLCD `uc ~T0 @X0 -> 6 `i e ]
+[i _tempLCD
+:U ..
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"158
+[v _potLCD `uc ~T0 @X0 -> 6 `i e ]
+[i _potLCD
+:U ..
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"160
+[v _temp `d ~T0 @X0 1 e ]
+[i _temp
+-> -> 0 `i `d
+]
+"161
+[v _pot `d ~T0 @X0 1 e ]
+[i _pot
+-> -> 0 `i `d
+]
+"165
+[v _sensor `uc ~T0 @X0 1 e ]
+[i _sensor
+-> -> 0 `i `uc
+]
+"166
+[v _firstread `uc ~T0 @X0 1 e ]
+[i _firstread
+-> -> 1 `i `uc
+]
+"168
+[v _temperature `us ~T0 @X0 1 e ]
+[i _temperature
+-> -> 0 `i `us
+]
+"169
+[v _potentiometer `us ~T0 @X0 1 e ]
+[i _potentiometer
+-> -> 0 `i `us
+]
+"170
+[v _trash `us ~T0 @X0 1 e ]
+[i _trash
+-> -> 0 `i `us
+]
+"175
+[v _sendPOT `uc ~T0 @X0 1 e ]
+[i _sendPOT
+-> -> 0 `i `uc
+]
+"176
+[v _sendTEMP `uc ~T0 @X0 1 e ]
+[i _sendTEMP
+-> -> 0 `i `uc
+]
+"177
+[v _sendCONT `uc ~T0 @X0 1 e ]
+[i _sendCONT
+-> -> 0 `i `uc
+]
+"178
+[v _sendERROR `uc ~T0 @X0 1 e ]
+[i _sendERROR
+-> -> 0 `i `uc
+]
+"179
+[v _temporary `uc ~T0 @X0 1 e ]
+[i _temporary
+-> -> 0 `i `uc
+]
+"180
+[v _buffer `uc ~T0 @X0 -> 10 `i e ]
+"181
+[v _byteToSend `uc ~T0 @X0 1 e ]
+[i _byteToSend
+-> -> 0 `i `uc
+]
+"183
+[v _tempSend `uc ~T0 @X0 -> 6 `i e ]
+[i _tempSend
+:U ..
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 67 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"184
+[v _potSend `uc ~T0 @X0 -> 6 `i e ]
+[i _potSend
+:U ..
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 86 `ui `uc
+-> -> 0 `i `uc
+..
+]
+"185
+[v _contSend `uc ~T0 @X0 -> 19 `i e ]
+[i _contSend
+:U ..
+-> -> 84 `ui `uc
+-> -> 61 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 67 `ui `uc
+-> -> 59 `ui `uc
+-> -> 32 `ui `uc
+-> -> 80 `ui `uc
+-> -> 84 `ui `uc
+-> -> 61 `ui `uc
+-> -> 48 `ui `uc
+-> -> 46 `ui `uc
+-> -> 48 `ui `uc
+-> -> 48 `ui `uc
+-> -> 86 `ui `uc
+-> -> 10 `i `uc
+-> -> 0 `i `uc
+..
+]
+"187
+[v _sendI `uc ~T0 @X0 1 e ]
+[i _sendI
+-> -> 0 `i `uc
+]
+"188
+[v _i `uc ~T0 @X0 1 e ]
+[i _i
+-> -> 0 `i `uc
+]
+"189
+[v _rxFin `uc ~T0 @X0 1 e ]
+[i _rxFin
+-> -> 0 `i `uc
+]
+"194
+[v _timeON `Cul ~T0 @X0 1 e ]
+[i _timeON
+-> -> 400000 `l `ul
+]
+"195
+[v _timeOFF `Cul ~T0 @X0 1 e ]
+[i _timeOFF
+-> -> 3600000 `l `ul
+]
+"197
+[v _currentCCPR3 `ul ~T0 @X0 1 e ]
+[i _currentCCPR3
+-> -> -> 0 `i `l `ul
+]
+"198
+[v _currentTMR3 `ul ~T0 @X0 1 e ]
+[i _currentTMR3
+-> -> -> 0 `i `l `ul
+]
+"199
+[v _DTIMEONL `uc ~T0 @X0 1 e ]
+[i _DTIMEONL
+-> -> 0 `i `uc
+]
+"200
+[v _DTIMEONH `uc ~T0 @X0 1 e ]
+[i _DTIMEONH
+-> -> 0 `i `uc
+]
+"201
+[v _DTIMEONX `uc ~T0 @X0 1 e ]
+[i _DTIMEONX
+-> -> 0 `i `uc
+]
+"202
+[v _DTIMEOFFL `uc ~T0 @X0 1 e ]
+[i _DTIMEOFFL
+-> -> 0 `i `uc
+]
+"203
+[v _DTIMEOFFH `uc ~T0 @X0 1 e ]
+[i _DTIMEOFFH
+-> -> 0 `i `uc
+]
+"204
+[v _DTIMEOFFX `uc ~T0 @X0 1 e ]
+[i _DTIMEOFFX
+-> -> 0 `i `uc
+]
+"206
+[v _TMR3X `uc ~T0 @X0 1 e ]
+[i _TMR3X
+-> -> 0 `i `uc
+]
+"207
+[v _CCPR3X `uc ~T0 @X0 1 e ]
+[i _CCPR3X
+-> -> 0 `i `uc
+]
+"212
+[v _DACUpdate `uc ~T0 @X0 1 e ]
+[i _DACUpdate
+-> -> 1 `i `uc
+]
+"213
+[v _upDown `uc ~T0 @X0 1 e ]
+[i _upDown
+-> -> 0 `i `uc
+]
+"215
+[v _DACInterval `Cus ~T0 @X0 1 e ]
+[i _DACInterval
+-> -> 3906 `i `us
+]
+"216
+[v _currentBin `us ~T0 @X0 1 e ]
+[i _currentBin
+-> -> 0 `i `us
+]
+"217
+[v _DACTemp `us ~T0 @X0 1 e ]
+[i _DACTemp
+-> -> 12288 `i `us
+]
+"218
+[v _trashSPI `uc ~T0 @X0 1 e ]
+[i _trashSPI
+-> -> 0 `i `uc
+]
+"219
+[v _DTIMEDACL `uc ~T0 @X0 1 e ]
+[i _DTIMEDACL
+-> -> 0 `i `uc
+]
+"220
+[v _DTIMEDACH `uc ~T0 @X0 1 e ]
+[i _DTIMEDACH
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"253
+[; ;../Watkins William Lab6 Part 1 - Code.c: 253: void main() {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"254
+[; ;../Watkins William Lab6 Part 1 - Code.c: 254:     Initial();
+[e ( _Initial ..  ]
+"255
+[; ;../Watkins William Lab6 Part 1 - Code.c: 255:     while(1) {
+[e :U 833 ]
+{
+"270
+[; ;../Watkins William Lab6 Part 1 - Code.c: 270:         if(DACUpdate == 1)
+[e $ ! == -> _DACUpdate `i -> 1 `i 835  ]
+"271
+[; ;../Watkins William Lab6 Part 1 - Code.c: 271:             updateDAC();
+[e ( _updateDAC ..  ]
+[e :U 835 ]
+"273
+[; ;../Watkins William Lab6 Part 1 - Code.c: 273:      }
+}
+[e :U 832 ]
+[e $U 833  ]
+[e :U 834 ]
+"274
+[; ;../Watkins William Lab6 Part 1 - Code.c: 274: }
+[e :UE 831 ]
+}
+"284
+[; ;../Watkins William Lab6 Part 1 - Code.c: 284: void Initial() {
+[v _Initial `(v ~T0 @X0 1 ef ]
+{
+[e :U _Initial ]
+[f ]
+"288
+[; ;../Watkins William Lab6 Part 1 - Code.c: 288:     TRISA = 0b00101001;
+[e = _TRISA -> -> 41 `i `uc ]
+"289
+[; ;../Watkins William Lab6 Part 1 - Code.c: 289:     LATA = 0;
+[e = _LATA -> -> 0 `i `uc ]
+"290
+[; ;../Watkins William Lab6 Part 1 - Code.c: 290:     TRISD = 0b00001111;
+[e = _TRISD -> -> 15 `i `uc ]
+"291
+[; ;../Watkins William Lab6 Part 1 - Code.c: 291:     LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"292
+[; ;../Watkins William Lab6 Part 1 - Code.c: 292:     TRISC = 0b10010011;
+[e = _TRISC -> -> 147 `i `uc ]
+"293
+[; ;../Watkins William Lab6 Part 1 - Code.c: 293:     LATC = 0;
+[e = _LATC -> -> 0 `i `uc ]
+"294
+[; ;../Watkins William Lab6 Part 1 - Code.c: 294:     TRISE = 0b00000000;
+[e = _TRISE -> -> 0 `i `uc ]
+"295
+[; ;../Watkins William Lab6 Part 1 - Code.c: 295:     LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+"300
+[; ;../Watkins William Lab6 Part 1 - Code.c: 300:     TRISBbits.TRISB4 = 0;
+[e = . . _TRISBbits 0 4 -> -> 0 `i `uc ]
+"301
+[; ;../Watkins William Lab6 Part 1 - Code.c: 301:     TRISBbits.TRISB5 = 0;
+[e = . . _TRISBbits 0 5 -> -> 0 `i `uc ]
+"302
+[; ;../Watkins William Lab6 Part 1 - Code.c: 302:     TRISB = 0b11000000;
+[e = _TRISB -> -> 192 `i `uc ]
+"305
+[; ;../Watkins William Lab6 Part 1 - Code.c: 305:     LATB = 0;
+[e = _LATB -> -> 0 `i `uc ]
+"311
+[; ;../Watkins William Lab6 Part 1 - Code.c: 311:     ANCON0 = 0b00001001;
+[e = _ANCON0 -> -> 9 `i `uc ]
+"312
+[; ;../Watkins William Lab6 Part 1 - Code.c: 312:     ANCON1 = 0;
+[e = _ANCON1 -> -> 0 `i `uc ]
+"313
+[; ;../Watkins William Lab6 Part 1 - Code.c: 313:     ANCON2 = 0;
+[e = _ANCON2 -> -> 0 `i `uc ]
+"315
+[; ;../Watkins William Lab6 Part 1 - Code.c: 315:     ADCON0 = 0b00001100;
+[e = _ADCON0 -> -> 12 `i `uc ]
+"316
+[; ;../Watkins William Lab6 Part 1 - Code.c: 316:     ADCON1bits.VCFG = 0b00;
+[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
+"317
+[; ;../Watkins William Lab6 Part 1 - Code.c: 317:     ADCON1bits.VNCFG = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+"318
+[; ;../Watkins William Lab6 Part 1 - Code.c: 318:     ADCON2 = 0b10010101;
+[e = _ADCON2 -> -> 149 `i `uc ]
+"323
+[; ;../Watkins William Lab6 Part 1 - Code.c: 323:     T0CON = 0b00000100;
+[e = _T0CON -> -> 4 `i `uc ]
+"324
+[; ;../Watkins William Lab6 Part 1 - Code.c: 324:     TMR0H = 0x0B;
+[e = _TMR0H -> -> 11 `i `uc ]
+"325
+[; ;../Watkins William Lab6 Part 1 - Code.c: 325:     TMR0L = 0xDC;
+[e = _TMR0L -> -> 220 `i `uc ]
+"328
+[; ;../Watkins William Lab6 Part 1 - Code.c: 328:     T1CON = 0b00000010;
+[e = _T1CON -> -> 2 `i `uc ]
+"331
+[; ;../Watkins William Lab6 Part 1 - Code.c: 331:     T3CON = 0b00000010;
+[e = _T3CON -> -> 2 `i `uc ]
+"338
+[; ;../Watkins William Lab6 Part 1 - Code.c: 338:     DTIMEONL = timeON & 0xFF;
+[e = _DTIMEONL -> & _timeON -> -> -> 255 `i `l `ul `uc ]
+"339
+[; ;../Watkins William Lab6 Part 1 - Code.c: 339:     DTIMEONH = timeON>>8 & 0xFF;
+[e = _DTIMEONH -> & >> _timeON -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"340
+[; ;../Watkins William Lab6 Part 1 - Code.c: 340:     DTIMEONX = timeON>>16 & 0xFF;
+[e = _DTIMEONX -> & >> _timeON -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"342
+[; ;../Watkins William Lab6 Part 1 - Code.c: 342:     DTIMEOFFL = timeOFF & 0xFF;
+[e = _DTIMEOFFL -> & _timeOFF -> -> -> 255 `i `l `ul `uc ]
+"343
+[; ;../Watkins William Lab6 Part 1 - Code.c: 343:     DTIMEOFFH = timeOFF>>8 & 0xFF;
+[e = _DTIMEOFFH -> & >> _timeOFF -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"344
+[; ;../Watkins William Lab6 Part 1 - Code.c: 344:     DTIMEOFFX = timeOFF>>16 & 0xFF;
+[e = _DTIMEOFFX -> & >> _timeOFF -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"346
+[; ;../Watkins William Lab6 Part 1 - Code.c: 346:     DTIMEDACL = DACInterval & 0xFF;
+[e = _DTIMEDACL -> & -> _DACInterval `ui -> -> 255 `i `ui `uc ]
+"347
+[; ;../Watkins William Lab6 Part 1 - Code.c: 347:     DTIMEDACH = DACInterval>>8 & 0xFF;
+[e = _DTIMEDACH -> & >> -> _DACInterval `ui -> 8 `i -> -> 255 `i `ui `uc ]
+"350
+[; ;../Watkins William Lab6 Part 1 - Code.c: 350:     CCP1CON = 0b00001010;
+[e = _CCP1CON -> -> 10 `i `uc ]
+"351
+[; ;../Watkins William Lab6 Part 1 - Code.c: 351:     CCPTMRS0bits.C1TSEL = 0;
+[e = . . _CCPTMRS0bits 0 0 -> -> 0 `i `uc ]
+"352
+[; ;../Watkins William Lab6 Part 1 - Code.c: 352:     CCPR1H = DTIMEDACH;
+[e = _CCPR1H -> _DTIMEDACH `uc ]
+"353
+[; ;../Watkins William Lab6 Part 1 - Code.c: 353:     CCPR1L = DTIMEDACL;
+[e = _CCPR1L -> _DTIMEDACL `uc ]
+"356
+[; ;../Watkins William Lab6 Part 1 - Code.c: 356:     CCP3CON = 0b00001010;
+[e = _CCP3CON -> -> 10 `i `uc ]
+"357
+[; ;../Watkins William Lab6 Part 1 - Code.c: 357:     CCPTMRS0bits.C3TSEL = 0b01;
+[e = . . _CCPTMRS0bits 0 2 -> -> 1 `i `uc ]
+"358
+[; ;../Watkins William Lab6 Part 1 - Code.c: 358:     CCPR3X = DTIMEONX;
+[e = _CCPR3X _DTIMEONX ]
+"359
+[; ;../Watkins William Lab6 Part 1 - Code.c: 359:     CCPR3H = DTIMEONH;
+[e = _CCPR3H -> _DTIMEONH `uc ]
+"360
+[; ;../Watkins William Lab6 Part 1 - Code.c: 360:     CCPR3L = DTIMEONL;
+[e = _CCPR3L -> _DTIMEONL `uc ]
+"365
+[; ;../Watkins William Lab6 Part 1 - Code.c: 365:     TXSTA1 = 0b00100000;
+[e = _TXSTA1 -> -> 32 `i `uc ]
+"366
+[; ;../Watkins William Lab6 Part 1 - Code.c: 366:     RCSTA1 = 0b00010000;
+[e = _RCSTA1 -> -> 16 `i `uc ]
+"367
+[; ;../Watkins William Lab6 Part 1 - Code.c: 367:     BAUDCON1 = 0b01000000;
+[e = _BAUDCON1 -> -> 64 `i `uc ]
+"368
+[; ;../Watkins William Lab6 Part 1 - Code.c: 368:     SPBRG1 = 12;
+[e = _SPBRG1 -> -> 12 `i `uc ]
+"372
+[; ;../Watkins William Lab6 Part 1 - Code.c: 372:     SSP1STATbits.SMP = 1;
+[e = . . _SSP1STATbits 2 7 -> -> 1 `i `uc ]
+"374
+[; ;../Watkins William Lab6 Part 1 - Code.c: 374:     SSP1STATbits.CKE = 1;
+[e = . . _SSP1STATbits 2 6 -> -> 1 `i `uc ]
+"375
+[; ;../Watkins William Lab6 Part 1 - Code.c: 375:     SSP1CON1bits.CKP = 0;
+[e = . . _SSP1CON1bits 0 1 -> -> 0 `i `uc ]
+"376
+[; ;../Watkins William Lab6 Part 1 - Code.c: 376:     SSP1CON1bits.SSPM = 0b0000;
+[e = . . _SSP1CON1bits 0 0 -> -> 0 `i `uc ]
+"381
+[; ;../Watkins William Lab6 Part 1 - Code.c: 381:     RCONbits.IPEN = 1;
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+"382
+[; ;../Watkins William Lab6 Part 1 - Code.c: 382:     INTCONbits.GIEL = 1;
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+"383
+[; ;../Watkins William Lab6 Part 1 - Code.c: 383:     INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"386
+[; ;../Watkins William Lab6 Part 1 - Code.c: 386:     INTCON2bits.TMR0IP = 0;
+[e = . . _INTCON2bits 1 2 -> -> 0 `i `uc ]
+"387
+[; ;../Watkins William Lab6 Part 1 - Code.c: 387:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"388
+[; ;../Watkins William Lab6 Part 1 - Code.c: 388:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"421
+[; ;../Watkins William Lab6 Part 1 - Code.c: 421:     LATD = 0b00100000;
+[e = _LATD -> -> 32 `i `uc ]
+"422
+[; ;../Watkins William Lab6 Part 1 - Code.c: 422:     T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+"423
+[; ;../Watkins William Lab6 Part 1 - Code.c: 423:     while(LED_count < 4) {}
+[e $U 837  ]
+[e :U 838 ]
+{
+}
+[e :U 837 ]
+[e $ < -> _LED_count `i -> 4 `i 838  ]
+[e :U 839 ]
+"429
+[; ;../Watkins William Lab6 Part 1 - Code.c: 429:     InitLCD();
+[e ( _InitLCD ..  ]
+"436
+[; ;../Watkins William Lab6 Part 1 - Code.c: 436:     SSP1CON1bits.SSPEN = 1;
+[e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
+"443
+[; ;../Watkins William Lab6 Part 1 - Code.c: 443: }
+[e :UE 836 ]
+}
+"459
+[; ;../Watkins William Lab6 Part 1 - Code.c: 459: void handleADC() {
+[v _handleADC `(v ~T0 @X0 1 ef ]
+{
+[e :U _handleADC ]
+[f ]
+"460
+[; ;../Watkins William Lab6 Part 1 - Code.c: 460:     readADC();
+[e ( _readADC ..  ]
+"461
+[; ;../Watkins William Lab6 Part 1 - Code.c: 461:     ADCON0bits.CHS = 0b00000;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+"462
+[; ;../Watkins William Lab6 Part 1 - Code.c: 462:     firstread = 1;
+[e = _firstread -> -> 1 `i `uc ]
+"463
+[; ;../Watkins William Lab6 Part 1 - Code.c: 463:     sensor = 1;
+[e = _sensor -> -> 1 `i `uc ]
+"464
+[; ;../Watkins William Lab6 Part 1 - Code.c: 464:     readADC();
+[e ( _readADC ..  ]
+"465
+[; ;../Watkins William Lab6 Part 1 - Code.c: 465:     ADCON0bits.CHS = 0b00011;
+[e = . . _ADCON0bits 1 2 -> -> 3 `i `uc ]
+"466
+[; ;../Watkins William Lab6 Part 1 - Code.c: 466:     firstread = 1;
+[e = _firstread -> -> 1 `i `uc ]
+"467
+[; ;../Watkins William Lab6 Part 1 - Code.c: 467:     sensor = 0;
+[e = _sensor -> -> 0 `i `uc ]
+"470
+[; ;../Watkins William Lab6 Part 1 - Code.c: 470:     temp = temperature * 0.0806;
+[e = _temp * -> -> _temperature `ui `d .0.0806 ]
+"471
+[; ;../Watkins William Lab6 Part 1 - Code.c: 471:     pot = potentiometer * 0.000806;
+[e = _pot * -> -> _potentiometer `ui `d .0.000806 ]
+"474
+[; ;../Watkins William Lab6 Part 1 - Code.c: 474:     sprintf(potLCD, "%f", pot);
+[e ( _sprintf (1 , (. , &U _potLCD :s 1C _pot ]
+"475
+[; ;../Watkins William Lab6 Part 1 - Code.c: 475:     row2LCD[4] = potLCD[0];
+[e = *U + &U _row2LCD * -> -> -> 4 `i `ui `ux -> -> # *U &U _row2LCD `ui `ux *U + &U _potLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"476
+[; ;../Watkins William Lab6 Part 1 - Code.c: 476:     row2LCD[6] = potLCD[2];
+[e = *U + &U _row2LCD * -> -> -> 6 `i `ui `ux -> -> # *U &U _row2LCD `ui `ux *U + &U _potLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"477
+[; ;../Watkins William Lab6 Part 1 - Code.c: 477:     row2LCD[7] = potLCD[3];
+[e = *U + &U _row2LCD * -> -> -> 7 `i `ui `ux -> -> # *U &U _row2LCD `ui `ux *U + &U _potLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"478
+[; ;../Watkins William Lab6 Part 1 - Code.c: 478:     potSend[0] = potLCD[0];
+[e = *U + &U _potSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _potSend `ui `ux *U + &U _potLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"479
+[; ;../Watkins William Lab6 Part 1 - Code.c: 479:     potSend[2] = potLCD[2];
+[e = *U + &U _potSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _potSend `ui `ux *U + &U _potLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"480
+[; ;../Watkins William Lab6 Part 1 - Code.c: 480:     potSend[3] = potLCD[3];
+[e = *U + &U _potSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _potSend `ui `ux *U + &U _potLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"481
+[; ;../Watkins William Lab6 Part 1 - Code.c: 481:     contSend[12] = potLCD[0];
+[e = *U + &U _contSend * -> -> -> 12 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _potLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"482
+[; ;../Watkins William Lab6 Part 1 - Code.c: 482:     contSend[14] = potLCD[2];
+[e = *U + &U _contSend * -> -> -> 14 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _potLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"483
+[; ;../Watkins William Lab6 Part 1 - Code.c: 483:     contSend[15] = potLCD[3];
+[e = *U + &U _contSend * -> -> -> 15 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _potLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _potLCD `ui `ux ]
+"486
+[; ;../Watkins William Lab6 Part 1 - Code.c: 486:     sprintf(tempLCD, "%f", temp);
+[e ( _sprintf (1 , (. , &U _tempLCD :s 2C _temp ]
+"488
+[; ;../Watkins William Lab6 Part 1 - Code.c: 488:     if (temp<10.0) {
+[e $ ! < _temp .10.0 841  ]
+{
+"489
+[; ;../Watkins William Lab6 Part 1 - Code.c: 489:         row1LCD[3] = '0';
+[e = *U + &U _row1LCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux -> -> 48 `ui `uc ]
+"490
+[; ;../Watkins William Lab6 Part 1 - Code.c: 490:         row1LCD[4] = tempLCD[0];
+[e = *U + &U _row1LCD * -> -> -> 4 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"491
+[; ;../Watkins William Lab6 Part 1 - Code.c: 491:         row1LCD[6] = tempLCD[2];
+[e = *U + &U _row1LCD * -> -> -> 6 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux *U + &U _tempLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"492
+[; ;../Watkins William Lab6 Part 1 - Code.c: 492:         tempSend[0] = '0';
+[e = *U + &U _tempSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempSend `ui `ux -> -> 48 `ui `uc ]
+"493
+[; ;../Watkins William Lab6 Part 1 - Code.c: 493:         tempSend[1] = tempLCD[0];
+[e = *U + &U _tempSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _tempSend `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"494
+[; ;../Watkins William Lab6 Part 1 - Code.c: 494:         tempSend[3] = tempLCD[2];
+[e = *U + &U _tempSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _tempSend `ui `ux *U + &U _tempLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"495
+[; ;../Watkins William Lab6 Part 1 - Code.c: 495:         contSend[2] = '0';
+[e = *U + &U _contSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _contSend `ui `ux -> -> 48 `ui `uc ]
+"496
+[; ;../Watkins William Lab6 Part 1 - Code.c: 496:         contSend[3] = tempLCD[0];
+[e = *U + &U _contSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"497
+[; ;../Watkins William Lab6 Part 1 - Code.c: 497:         contSend[5] = tempLCD[2];
+[e = *U + &U _contSend * -> -> -> 5 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _tempLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"498
+[; ;../Watkins William Lab6 Part 1 - Code.c: 498:     }
+}
+[e $U 842  ]
+"499
+[; ;../Watkins William Lab6 Part 1 - Code.c: 499:     else {
+[e :U 841 ]
+{
+"500
+[; ;../Watkins William Lab6 Part 1 - Code.c: 500:         row1LCD[3] = tempLCD[0];
+[e = *U + &U _row1LCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"501
+[; ;../Watkins William Lab6 Part 1 - Code.c: 501:         row1LCD[4] = tempLCD[1];
+[e = *U + &U _row1LCD * -> -> -> 4 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux *U + &U _tempLCD * -> -> -> 1 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"502
+[; ;../Watkins William Lab6 Part 1 - Code.c: 502:         row1LCD[6] = tempLCD[3];
+[e = *U + &U _row1LCD * -> -> -> 6 `i `ui `ux -> -> # *U &U _row1LCD `ui `ux *U + &U _tempLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"503
+[; ;../Watkins William Lab6 Part 1 - Code.c: 503:         tempSend[0] = tempLCD[0];
+[e = *U + &U _tempSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempSend `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"504
+[; ;../Watkins William Lab6 Part 1 - Code.c: 504:         tempSend[1] = tempLCD[1];
+[e = *U + &U _tempSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _tempSend `ui `ux *U + &U _tempLCD * -> -> -> 1 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"505
+[; ;../Watkins William Lab6 Part 1 - Code.c: 505:         tempSend[3] = tempLCD[3];
+[e = *U + &U _tempSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _tempSend `ui `ux *U + &U _tempLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"506
+[; ;../Watkins William Lab6 Part 1 - Code.c: 506:         contSend[2] = tempLCD[0];
+[e = *U + &U _contSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _tempLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"507
+[; ;../Watkins William Lab6 Part 1 - Code.c: 507:         contSend[3] = tempLCD[1];
+[e = *U + &U _contSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _tempLCD * -> -> -> 1 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"508
+[; ;../Watkins William Lab6 Part 1 - Code.c: 508:         contSend[5] = tempLCD[3];
+[e = *U + &U _contSend * -> -> -> 5 `i `ui `ux -> -> # *U &U _contSend `ui `ux *U + &U _tempLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _tempLCD `ui `ux ]
+"509
+[; ;../Watkins William Lab6 Part 1 - Code.c: 509:     }
+}
+[e :U 842 ]
+"510
+[; ;../Watkins William Lab6 Part 1 - Code.c: 510: }
+[e :UE 840 ]
+}
+"521
+[; ;../Watkins William Lab6 Part 1 - Code.c: 521: void readADC() {
+[v _readADC `(v ~T0 @X0 1 ef ]
+{
+[e :U _readADC ]
+[f ]
+"522
+[; ;../Watkins William Lab6 Part 1 - Code.c: 522:     _delay((unsigned long)((4)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 4 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"523
+[; ;../Watkins William Lab6 Part 1 - Code.c: 523:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"524
+[; ;../Watkins William Lab6 Part 1 - Code.c: 524:     while(ADCON0bits.GO) {}
+[e $U 844  ]
+[e :U 845 ]
+{
+}
+[e :U 844 ]
+[e $ != -> . . _ADCON0bits 3 1 `i -> 0 `i 845  ]
+[e :U 846 ]
+"525
+[; ;../Watkins William Lab6 Part 1 - Code.c: 525:     trash = ADRES;
+[e = _trash _ADRES ]
+"526
+[; ;../Watkins William Lab6 Part 1 - Code.c: 526:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"527
+[; ;../Watkins William Lab6 Part 1 - Code.c: 527:     while(ADCON0bits.GO) {}
+[e $U 847  ]
+[e :U 848 ]
+{
+}
+[e :U 847 ]
+[e $ != -> . . _ADCON0bits 3 1 `i -> 0 `i 848  ]
+[e :U 849 ]
+"528
+[; ;../Watkins William Lab6 Part 1 - Code.c: 528:     if (sensor != 1) {
+[e $ ! != -> _sensor `i -> 1 `i 850  ]
+{
+"529
+[; ;../Watkins William Lab6 Part 1 - Code.c: 529:         temperature = ADRES;
+[e = _temperature _ADRES ]
+"530
+[; ;../Watkins William Lab6 Part 1 - Code.c: 530:     }
+}
+[e $U 851  ]
+"531
+[; ;../Watkins William Lab6 Part 1 - Code.c: 531:     else if(sensor == 1) {
+[e :U 850 ]
+[e $ ! == -> _sensor `i -> 1 `i 852  ]
+{
+"532
+[; ;../Watkins William Lab6 Part 1 - Code.c: 532:         potentiometer = ADRES;
+[e = _potentiometer _ADRES ]
+"533
+[; ;../Watkins William Lab6 Part 1 - Code.c: 533:     }
+}
+[e :U 852 ]
+[e :U 851 ]
+"534
+[; ;../Watkins William Lab6 Part 1 - Code.c: 534: }
+[e :UE 843 ]
+}
+"544
+[; ;../Watkins William Lab6 Part 1 - Code.c: 544: void displayLCD() {
+[v _displayLCD `(v ~T0 @X0 1 ef ]
+{
+[e :U _displayLCD ]
+[f ]
+"545
+[; ;../Watkins William Lab6 Part 1 - Code.c: 545:     DisplayC(row1LCD);
+[e ( _DisplayC (1 -> &U _row1LCD `*Cuc ]
+"546
+[; ;../Watkins William Lab6 Part 1 - Code.c: 546:     DisplayC(row2LCD);
+[e ( _DisplayC (1 -> &U _row2LCD `*Cuc ]
+"547
+[; ;../Watkins William Lab6 Part 1 - Code.c: 547: }
+[e :UE 853 ]
+}
+[v $root$_HiPriISR `(v ~T0 @X0 0 e ]
+"562
+[; ;../Watkins William Lab6 Part 1 - Code.c: 562: void __attribute__((picinterrupt(("")))) HiPriISR(void) {
+[v _HiPriISR `(v ~T97 @X0 1 ef ]
+{
+[e :U _HiPriISR ]
+[f ]
+"563
+[; ;../Watkins William Lab6 Part 1 - Code.c: 563:     while(1)
+[e :U 856 ]
+"564
+[; ;../Watkins William Lab6 Part 1 - Code.c: 564:     {
+{
+"565
+[; ;../Watkins William Lab6 Part 1 - Code.c: 565:         if(PIR1bits.RC1IF)
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 858  ]
+"566
+[; ;../Watkins William Lab6 Part 1 - Code.c: 566:         {
+{
+"567
+[; ;../Watkins William Lab6 Part 1 - Code.c: 567:             EUSARTCommandHandler();
+[e ( _EUSARTCommandHandler ..  ]
+"568
+[; ;../Watkins William Lab6 Part 1 - Code.c: 568:             continue;
+[e $U 855  ]
+"569
+[; ;../Watkins William Lab6 Part 1 - Code.c: 569:         }
+}
+[e :U 858 ]
+"571
+[; ;../Watkins William Lab6 Part 1 - Code.c: 571:         if(PIR1bits.TX1IF && PIE1bits.TX1IE)
+[e $ ! && != -> . . _PIR1bits 0 4 `i -> 0 `i != -> . . _PIE1bits 0 4 `i -> 0 `i 859  ]
+"572
+[; ;../Watkins William Lab6 Part 1 - Code.c: 572:         {
+{
+"573
+[; ;../Watkins William Lab6 Part 1 - Code.c: 573:             sendNext();
+[e ( _sendNext ..  ]
+"574
+[; ;../Watkins William Lab6 Part 1 - Code.c: 574:             continue;
+[e $U 855  ]
+"575
+[; ;../Watkins William Lab6 Part 1 - Code.c: 575:         }
+}
+[e :U 859 ]
+"576
+[; ;../Watkins William Lab6 Part 1 - Code.c: 576:         break;
+[e $U 857  ]
+"577
+[; ;../Watkins William Lab6 Part 1 - Code.c: 577:     }
+}
+[e :U 855 ]
+[e $U 856  ]
+[e :U 857 ]
+"578
+[; ;../Watkins William Lab6 Part 1 - Code.c: 578: }
+[e :UE 854 ]
+}
+[v $root$_LoPriISR `(v ~T0 @X0 0 e ]
+"589
+[; ;../Watkins William Lab6 Part 1 - Code.c: 589: void __attribute__((picinterrupt(("low_priority")))) LoPriISR(void)
+[v _LoPriISR `(v ~T98 @X0 1 ef ]
+"590
+[; ;../Watkins William Lab6 Part 1 - Code.c: 590: {
+{
+[e :U _LoPriISR ]
+[f ]
+"592
+[; ;../Watkins William Lab6 Part 1 - Code.c: 592:     tempWREG = WREG;
+[e = _tempWREG -> _WREG `uc ]
+"593
+[; ;../Watkins William Lab6 Part 1 - Code.c: 593:     tempSTATUS = STATUS;
+[e = _tempSTATUS -> _STATUS `uc ]
+"594
+[; ;../Watkins William Lab6 Part 1 - Code.c: 594:     tempBSR = BSR;
+[e = _tempBSR -> _BSR `uc ]
+"595
+[; ;../Watkins William Lab6 Part 1 - Code.c: 595:     while(1) {
+[e :U 862 ]
+{
+"596
+[; ;../Watkins William Lab6 Part 1 - Code.c: 596:         if(PIR3bits.CCP1IF)
+[e $ ! != -> . . _PIR3bits 0 1 `i -> 0 `i 864  ]
+"597
+[; ;../Watkins William Lab6 Part 1 - Code.c: 597:         {
+{
+"598
+[; ;../Watkins William Lab6 Part 1 - Code.c: 598:             CCP1Handler();
+[e ( _CCP1Handler ..  ]
+"599
+[; ;../Watkins William Lab6 Part 1 - Code.c: 599:             continue;
+[e $U 861  ]
+"600
+[; ;../Watkins William Lab6 Part 1 - Code.c: 600:         }
+}
+[e :U 864 ]
+"601
+[; ;../Watkins William Lab6 Part 1 - Code.c: 601:         if(PIR4bits.CCP3IF)
+[e $ ! != -> . . _PIR4bits 0 0 `i -> 0 `i 865  ]
+"602
+[; ;../Watkins William Lab6 Part 1 - Code.c: 602:         {
+{
+"603
+[; ;../Watkins William Lab6 Part 1 - Code.c: 603:             CCP3Handler();
+[e ( _CCP3Handler ..  ]
+"604
+[; ;../Watkins William Lab6 Part 1 - Code.c: 604:             continue;
+[e $U 861  ]
+"605
+[; ;../Watkins William Lab6 Part 1 - Code.c: 605:         }
+}
+[e :U 865 ]
+"606
+[; ;../Watkins William Lab6 Part 1 - Code.c: 606:         if(INTCONbits.TMR0IF)
+[e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 866  ]
+"607
+[; ;../Watkins William Lab6 Part 1 - Code.c: 607:         {
+{
+"608
+[; ;../Watkins William Lab6 Part 1 - Code.c: 608:             TMR0Handler();
+[e ( _TMR0Handler ..  ]
+"609
+[; ;../Watkins William Lab6 Part 1 - Code.c: 609:             continue;
+[e $U 861  ]
+"610
+[; ;../Watkins William Lab6 Part 1 - Code.c: 610:         }
+}
+[e :U 866 ]
+"611
+[; ;../Watkins William Lab6 Part 1 - Code.c: 611:         if(PIR1bits.TMR1IF)
+[e $ ! != -> . . _PIR1bits 0 0 `i -> 0 `i 867  ]
+"612
+[; ;../Watkins William Lab6 Part 1 - Code.c: 612:         {
+{
+"613
+[; ;../Watkins William Lab6 Part 1 - Code.c: 613:             TMR1Handler();
+[e ( _TMR1Handler ..  ]
+"614
+[; ;../Watkins William Lab6 Part 1 - Code.c: 614:             continue;
+[e $U 861  ]
+"615
+[; ;../Watkins William Lab6 Part 1 - Code.c: 615:         }
+}
+[e :U 867 ]
+"616
+[; ;../Watkins William Lab6 Part 1 - Code.c: 616:         if(PIR2bits.TMR3IF)
+[e $ ! != -> . . _PIR2bits 0 1 `i -> 0 `i 868  ]
+"617
+[; ;../Watkins William Lab6 Part 1 - Code.c: 617:         {
+{
+"618
+[; ;../Watkins William Lab6 Part 1 - Code.c: 618:             TMR3Handler();
+[e ( _TMR3Handler ..  ]
+"619
+[; ;../Watkins William Lab6 Part 1 - Code.c: 619:             continue;
+[e $U 861  ]
+"620
+[; ;../Watkins William Lab6 Part 1 - Code.c: 620:         }
+}
+[e :U 868 ]
+"621
+[; ;../Watkins William Lab6 Part 1 - Code.c: 621:         break;
+[e $U 863  ]
+"622
+[; ;../Watkins William Lab6 Part 1 - Code.c: 622:     }
+}
+[e :U 861 ]
+[e $U 862  ]
+[e :U 863 ]
+"623
+[; ;../Watkins William Lab6 Part 1 - Code.c: 623:     WREG = tempWREG;
+[e = _WREG -> _tempWREG `uc ]
+"624
+[; ;../Watkins William Lab6 Part 1 - Code.c: 624:     STATUS = tempSTATUS;
+[e = _STATUS -> _tempSTATUS `uc ]
+"625
+[; ;../Watkins William Lab6 Part 1 - Code.c: 625:     BSR = tempBSR;
+[e = _BSR -> _tempBSR `uc ]
+"626
+[; ;../Watkins William Lab6 Part 1 - Code.c: 626: }
+[e :UE 860 ]
+}
+"640
+[; ;../Watkins William Lab6 Part 1 - Code.c: 640: void CCP1Handler() {
+[v _CCP1Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _CCP1Handler ]
+[f ]
+"643
+[; ;../Watkins William Lab6 Part 1 - Code.c: 643:     if(PIR1bits.TMR1IF)
+[e $ ! != -> . . _PIR1bits 0 0 `i -> 0 `i 870  ]
+"644
+[; ;../Watkins William Lab6 Part 1 - Code.c: 644:         PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[e :U 870 ]
+"646
+[; ;../Watkins William Lab6 Part 1 - Code.c: 646:     DACUpdate = 1;
+[e = _DACUpdate -> -> 1 `i `uc ]
+"649
+[; ;../Watkins William Lab6 Part 1 - Code.c: 649:     DACTemp = (CCPR1H<<8) | CCPR1L;
+[e = _DACTemp -> | << -> _CCPR1H `i -> 8 `i -> _CCPR1L `i `us ]
+"650
+[; ;../Watkins William Lab6 Part 1 - Code.c: 650:     DACTemp = DACTemp + DACInterval;
+[e = _DACTemp -> + -> _DACTemp `ui -> _DACInterval `ui `us ]
+"651
+[; ;../Watkins William Lab6 Part 1 - Code.c: 651:     CCPR1H = DACTemp>>8 & 0xFF;
+[e = _CCPR1H -> & >> -> _DACTemp `ui -> 8 `i -> -> 255 `i `ui `uc ]
+"652
+[; ;../Watkins William Lab6 Part 1 - Code.c: 652:     CCPR1L = DACTemp & 0xFF;
+[e = _CCPR1L -> & -> _DACTemp `ui -> -> 255 `i `ui `uc ]
+"654
+[; ;../Watkins William Lab6 Part 1 - Code.c: 654:     PIR3bits.CCP1IF = 0;
+[e = . . _PIR3bits 0 1 -> -> 0 `i `uc ]
+"655
+[; ;../Watkins William Lab6 Part 1 - Code.c: 655: }
+[e :UE 869 ]
+}
+"665
+[; ;../Watkins William Lab6 Part 1 - Code.c: 665: void CCP3Handler() {
+[v _CCP3Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _CCP3Handler ]
+[f ]
+"668
+[; ;../Watkins William Lab6 Part 1 - Code.c: 668:     if(PIR1bits.TMR1IF && CCPR3H & 0b10000000)
+[e $ ! && != -> . . _PIR1bits 0 0 `i -> 0 `i != & -> _CCPR3H `i -> 128 `i -> 0 `i 872  ]
+"669
+[; ;../Watkins William Lab6 Part 1 - Code.c: 669:     {
+{
+"670
+[; ;../Watkins William Lab6 Part 1 - Code.c: 670:         TMR3X++;
+[e ++ _TMR3X -> -> 1 `i `uc ]
+"671
+[; ;../Watkins William Lab6 Part 1 - Code.c: 671:         PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"672
+[; ;../Watkins William Lab6 Part 1 - Code.c: 672:     }
+}
+[e :U 872 ]
+"673
+[; ;../Watkins William Lab6 Part 1 - Code.c: 673:     if(CCPR3X == TMR3X)
+[e $ ! == -> _CCPR3X `i -> _TMR3X `i 873  ]
+"674
+[; ;../Watkins William Lab6 Part 1 - Code.c: 674:     {
+{
+"675
+[; ;../Watkins William Lab6 Part 1 - Code.c: 675:         aliveLED();
+[e ( _aliveLED ..  ]
+"676
+[; ;../Watkins William Lab6 Part 1 - Code.c: 676:     }
+}
+[e :U 873 ]
+"677
+[; ;../Watkins William Lab6 Part 1 - Code.c: 677:     PIR4bits.CCP3IF = 0;
+[e = . . _PIR4bits 0 0 -> -> 0 `i `uc ]
+"678
+[; ;../Watkins William Lab6 Part 1 - Code.c: 678: }
+[e :UE 871 ]
+}
+"687
+[; ;../Watkins William Lab6 Part 1 - Code.c: 687: void TMR0Handler() {
+[v _TMR0Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _TMR0Handler ]
+[f ]
+"688
+[; ;../Watkins William Lab6 Part 1 - Code.c: 688:     T0CONbits.TMR0ON = 0;
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+"689
+[; ;../Watkins William Lab6 Part 1 - Code.c: 689:     TMR0H = 0x0B;
+[e = _TMR0H -> -> 11 `i `uc ]
+"690
+[; ;../Watkins William Lab6 Part 1 - Code.c: 690:     TMR0L = 0xDC;
+[e = _TMR0L -> -> 220 `i `uc ]
+"691
+[; ;../Watkins William Lab6 Part 1 - Code.c: 691:     LED_count++;
+[e ++ _LED_count -> -> 1 `i `uc ]
+"693
+[; ;../Watkins William Lab6 Part 1 - Code.c: 693:     if(LED_count > 3)
+[e $ ! > -> _LED_count `i -> 3 `i 875  ]
+"694
+[; ;../Watkins William Lab6 Part 1 - Code.c: 694:     {
+{
+"695
+[; ;../Watkins William Lab6 Part 1 - Code.c: 695:         INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"696
+[; ;../Watkins William Lab6 Part 1 - Code.c: 696:         LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"697
+[; ;../Watkins William Lab6 Part 1 - Code.c: 697:         return;
+[e $UE 874  ]
+"698
+[; ;../Watkins William Lab6 Part 1 - Code.c: 698:     }
+}
+[e :U 875 ]
+"699
+[; ;../Watkins William Lab6 Part 1 - Code.c: 699:     oldLATD = ((char) LATD<<1);
+[e = _oldLATD -> << -> -> _LATD `uc `i -> 1 `i `uc ]
+"700
+[; ;../Watkins William Lab6 Part 1 - Code.c: 700:     LATD = oldLATD;
+[e = _LATD -> _oldLATD `uc ]
+"702
+[; ;../Watkins William Lab6 Part 1 - Code.c: 702:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"703
+[; ;../Watkins William Lab6 Part 1 - Code.c: 703:     T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+"704
+[; ;../Watkins William Lab6 Part 1 - Code.c: 704: }
+[e :UE 874 ]
+}
+"714
+[; ;../Watkins William Lab6 Part 1 - Code.c: 714: void TMR1Handler() {
+[v _TMR1Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _TMR1Handler ]
+[f ]
+"716
+[; ;../Watkins William Lab6 Part 1 - Code.c: 716:     PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"717
+[; ;../Watkins William Lab6 Part 1 - Code.c: 717: }
+[e :UE 876 ]
+}
+"727
+[; ;../Watkins William Lab6 Part 1 - Code.c: 727: void TMR3Handler() {
+[v _TMR3Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _TMR3Handler ]
+[f ]
+"728
+[; ;../Watkins William Lab6 Part 1 - Code.c: 728:     TMR3X++;
+[e ++ _TMR3X -> -> 1 `i `uc ]
+"729
+[; ;../Watkins William Lab6 Part 1 - Code.c: 729:     PIR2bits.TMR3IF = 0;
+[e = . . _PIR2bits 0 1 -> -> 0 `i `uc ]
+"730
+[; ;../Watkins William Lab6 Part 1 - Code.c: 730: }
+[e :UE 877 ]
+}
+"740
+[; ;../Watkins William Lab6 Part 1 - Code.c: 740: void EUSARTCommandHandler() {
+[v _EUSARTCommandHandler `(v ~T0 @X0 1 ef ]
+{
+[e :U _EUSARTCommandHandler ]
+[f ]
+"741
+[; ;../Watkins William Lab6 Part 1 - Code.c: 741:     if(RCSTA1bits.FERR)
+[e $ ! != -> . . _RCSTA1bits 0 2 `i -> 0 `i 879  ]
+"742
+[; ;../Watkins William Lab6 Part 1 - Code.c: 742:     {
+{
+"743
+[; ;../Watkins William Lab6 Part 1 - Code.c: 743:         temporary = RCREG1;
+[e = _temporary -> _RCREG1 `uc ]
+"744
+[; ;../Watkins William Lab6 Part 1 - Code.c: 744:         return;
+[e $UE 878  ]
+"745
+[; ;../Watkins William Lab6 Part 1 - Code.c: 745:     }
+}
+[e :U 879 ]
+"746
+[; ;../Watkins William Lab6 Part 1 - Code.c: 746:     if(RCSTA1bits.OERR)
+[e $ ! != -> . . _RCSTA1bits 0 1 `i -> 0 `i 880  ]
+"747
+[; ;../Watkins William Lab6 Part 1 - Code.c: 747:     {
+{
+"748
+[; ;../Watkins William Lab6 Part 1 - Code.c: 748:         RCSTA1bits.CREN = 0;
+[e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
+"749
+[; ;../Watkins William Lab6 Part 1 - Code.c: 749:         RCSTA1bits.CREN = 1;
+[e = . . _RCSTA1bits 0 4 -> -> 1 `i `uc ]
+"750
+[; ;../Watkins William Lab6 Part 1 - Code.c: 750:         return;
+[e $UE 878  ]
+"751
+[; ;../Watkins William Lab6 Part 1 - Code.c: 751:     }
+}
+[e :U 880 ]
+"752
+[; ;../Watkins William Lab6 Part 1 - Code.c: 752:     buffer[i] = RCREG1;
+[e = *U + &U _buffer * -> _i `ux -> -> # *U &U _buffer `ui `ux -> _RCREG1 `uc ]
+"753
+[; ;../Watkins William Lab6 Part 1 - Code.c: 753:     if(buffer[i] != 0x0A)
+[e $ ! != -> *U + &U _buffer * -> _i `ux -> -> # *U &U _buffer `ui `ux `i -> 10 `i 881  ]
+"754
+[; ;../Watkins William Lab6 Part 1 - Code.c: 754:     {
+{
+"755
+[; ;../Watkins William Lab6 Part 1 - Code.c: 755:         i++;
+[e ++ _i -> -> 1 `i `uc ]
+"756
+[; ;../Watkins William Lab6 Part 1 - Code.c: 756:     }
+}
+[e $U 882  ]
+"757
+[; ;../Watkins William Lab6 Part 1 - Code.c: 757:     else
+[e :U 881 ]
+"758
+[; ;../Watkins William Lab6 Part 1 - Code.c: 758:     {
+{
+"759
+[; ;../Watkins William Lab6 Part 1 - Code.c: 759:         rxFin = 1;
+[e = _rxFin -> -> 1 `i `uc ]
+"761
+[; ;../Watkins William Lab6 Part 1 - Code.c: 761:     }
+}
+[e :U 882 ]
+"762
+[; ;../Watkins William Lab6 Part 1 - Code.c: 762: }
+[e :UE 878 ]
+}
+"772
+[; ;../Watkins William Lab6 Part 1 - Code.c: 772: void aliveLED() {
+[v _aliveLED `(v ~T0 @X0 1 ef ]
+{
+[e :U _aliveLED ]
+[f ]
+"773
+[; ;../Watkins William Lab6 Part 1 - Code.c: 773:     if(LATDbits.LATD4)
+[e $ ! != -> . . _LATDbits 0 4 `i -> 0 `i 884  ]
+"774
+[; ;../Watkins William Lab6 Part 1 - Code.c: 774:         {
+{
+"775
+[; ;../Watkins William Lab6 Part 1 - Code.c: 775:             LATDbits.LATD4 = 0;
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+"776
+[; ;../Watkins William Lab6 Part 1 - Code.c: 776:             currentCCPR3 = CCPR3X<<16 | CCPR3H<<8 | CCPR3L;
+[e = _currentCCPR3 -> -> | | << -> _CCPR3X `i -> 16 `i << -> _CCPR3H `i -> 8 `i -> _CCPR3L `i `l `ul ]
+"777
+[; ;../Watkins William Lab6 Part 1 - Code.c: 777:             currentCCPR3 += timeOFF;
+[e =+ _currentCCPR3 _timeOFF ]
+"778
+[; ;../Watkins William Lab6 Part 1 - Code.c: 778:             CCPR3X = currentCCPR3>>16 & 0xFF;
+[e = _CCPR3X -> & >> _currentCCPR3 -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"779
+[; ;../Watkins William Lab6 Part 1 - Code.c: 779:             CCPR3H = currentCCPR3>>8 & 0xFF;
+[e = _CCPR3H -> & >> _currentCCPR3 -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"780
+[; ;../Watkins William Lab6 Part 1 - Code.c: 780:             CCPR3L = currentCCPR3 & 0xFF;
+[e = _CCPR3L -> & _currentCCPR3 -> -> -> 255 `i `l `ul `uc ]
+"781
+[; ;../Watkins William Lab6 Part 1 - Code.c: 781:         }
+}
+[e $U 885  ]
+"782
+[; ;../Watkins William Lab6 Part 1 - Code.c: 782:         else
+[e :U 884 ]
+"783
+[; ;../Watkins William Lab6 Part 1 - Code.c: 783:         {
+{
+"784
+[; ;../Watkins William Lab6 Part 1 - Code.c: 784:             LATDbits.LATD4 = 1;
+[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
+"785
+[; ;../Watkins William Lab6 Part 1 - Code.c: 785:             currentCCPR3 = CCPR3X<<16 | CCPR3H<<8 | CCPR3L;
+[e = _currentCCPR3 -> -> | | << -> _CCPR3X `i -> 16 `i << -> _CCPR3H `i -> 8 `i -> _CCPR3L `i `l `ul ]
+"786
+[; ;../Watkins William Lab6 Part 1 - Code.c: 786:             currentCCPR3 += timeON;
+[e =+ _currentCCPR3 _timeON ]
+"787
+[; ;../Watkins William Lab6 Part 1 - Code.c: 787:             CCPR3X = currentCCPR3>>16 & 0xFF;
+[e = _CCPR3X -> & >> _currentCCPR3 -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"788
+[; ;../Watkins William Lab6 Part 1 - Code.c: 788:             CCPR3H = currentCCPR3>>8 & 0xFF;
+[e = _CCPR3H -> & >> _currentCCPR3 -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"789
+[; ;../Watkins William Lab6 Part 1 - Code.c: 789:             CCPR3L = currentCCPR3 & 0xFF;
+[e = _CCPR3L -> & _currentCCPR3 -> -> -> 255 `i `l `ul `uc ]
+"790
+[; ;../Watkins William Lab6 Part 1 - Code.c: 790:         }
+}
+[e :U 885 ]
+"791
+[; ;../Watkins William Lab6 Part 1 - Code.c: 791: }
+[e :UE 883 ]
+}
+"805
+[; ;../Watkins William Lab6 Part 1 - Code.c: 805: void readCommand() {
+[v _readCommand `(v ~T0 @X0 1 ef ]
+{
+[e :U _readCommand ]
+[f ]
+"807
+[; ;../Watkins William Lab6 Part 1 - Code.c: 807:     switch(i)
+[e $U 888  ]
+"808
+[; ;../Watkins William Lab6 Part 1 - Code.c: 808:     {
+{
+"809
+[; ;../Watkins William Lab6 Part 1 - Code.c: 809:         case 4:
+[e :U 889 ]
+"810
+[; ;../Watkins William Lab6 Part 1 - Code.c: 810:             sendTEMP = 1;
+[e = _sendTEMP -> -> 1 `i `uc ]
+"811
+[; ;../Watkins William Lab6 Part 1 - Code.c: 811:             break;
+[e $U 887  ]
+"813
+[; ;../Watkins William Lab6 Part 1 - Code.c: 813:         case 5:
+[e :U 890 ]
+"814
+[; ;../Watkins William Lab6 Part 1 - Code.c: 814:             sendPOT = 1;
+[e = _sendPOT -> -> 1 `i `uc ]
+"815
+[; ;../Watkins William Lab6 Part 1 - Code.c: 815:             break;
+[e $U 887  ]
+"817
+[; ;../Watkins William Lab6 Part 1 - Code.c: 817:         case 8:
+[e :U 891 ]
+"818
+[; ;../Watkins William Lab6 Part 1 - Code.c: 818:             sendCONT = 1;
+[e = _sendCONT -> -> 1 `i `uc ]
+"819
+[; ;../Watkins William Lab6 Part 1 - Code.c: 819:             break;
+[e $U 887  ]
+"821
+[; ;../Watkins William Lab6 Part 1 - Code.c: 821:         case 9:
+[e :U 892 ]
+"822
+[; ;../Watkins William Lab6 Part 1 - Code.c: 822:             sendCONT = 0;
+[e = _sendCONT -> -> 0 `i `uc ]
+"823
+[; ;../Watkins William Lab6 Part 1 - Code.c: 823:             break;
+[e $U 887  ]
+"825
+[; ;../Watkins William Lab6 Part 1 - Code.c: 825:         default:
+[e :U 893 ]
+"826
+[; ;../Watkins William Lab6 Part 1 - Code.c: 826:             sendERROR = 1;
+[e = _sendERROR -> -> 1 `i `uc ]
+"827
+[; ;../Watkins William Lab6 Part 1 - Code.c: 827:     }
+}
+[e $U 887  ]
+[e :U 888 ]
+[e [\ -> _i `i , $ -> 4 `i 889
+ , $ -> 5 `i 890
+ , $ -> 8 `i 891
+ , $ -> 9 `i 892
+ 893 ]
+[e :U 887 ]
+"828
+[; ;../Watkins William Lab6 Part 1 - Code.c: 828:     i = 0;
+[e = _i -> -> 0 `i `uc ]
+"829
+[; ;../Watkins William Lab6 Part 1 - Code.c: 829:     rxFin = 0;
+[e = _rxFin -> -> 0 `i `uc ]
+"830
+[; ;../Watkins William Lab6 Part 1 - Code.c: 830: }
+[e :UE 886 ]
+}
+"840
+[; ;../Watkins William Lab6 Part 1 - Code.c: 840: void sendContinuous() {
+[v _sendContinuous `(v ~T0 @X0 1 ef ]
+{
+[e :U _sendContinuous ]
+[f ]
+"841
+[; ;../Watkins William Lab6 Part 1 - Code.c: 841:     PIE1bits.TX1IE = 1;
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+"842
+[; ;../Watkins William Lab6 Part 1 - Code.c: 842:     TXREG1 = contSend[sendI];
+[e = _TXREG1 -> *U + &U _contSend * -> _sendI `ux -> -> # *U &U _contSend `ui `ux `uc ]
+"843
+[; ;../Watkins William Lab6 Part 1 - Code.c: 843:     sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"844
+[; ;../Watkins William Lab6 Part 1 - Code.c: 844: }
+[e :UE 894 ]
+}
+"854
+[; ;../Watkins William Lab6 Part 1 - Code.c: 854: void sendTemperature() {
+[v _sendTemperature `(v ~T0 @X0 1 ef ]
+{
+[e :U _sendTemperature ]
+[f ]
+"855
+[; ;../Watkins William Lab6 Part 1 - Code.c: 855:     PIE1bits.TX1IE = 1;
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+"856
+[; ;../Watkins William Lab6 Part 1 - Code.c: 856:     TXREG1 = tempSend[sendI];
+[e = _TXREG1 -> *U + &U _tempSend * -> _sendI `ux -> -> # *U &U _tempSend `ui `ux `uc ]
+"857
+[; ;../Watkins William Lab6 Part 1 - Code.c: 857:     sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"858
+[; ;../Watkins William Lab6 Part 1 - Code.c: 858: }
+[e :UE 895 ]
+}
+"868
+[; ;../Watkins William Lab6 Part 1 - Code.c: 868: void sendPotentiometer() {
+[v _sendPotentiometer `(v ~T0 @X0 1 ef ]
+{
+[e :U _sendPotentiometer ]
+[f ]
+"869
+[; ;../Watkins William Lab6 Part 1 - Code.c: 869:     PIE1bits.TX1IE = 1;
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+"870
+[; ;../Watkins William Lab6 Part 1 - Code.c: 870:     TXREG1 = potSend[sendI];
+[e = _TXREG1 -> *U + &U _potSend * -> _sendI `ux -> -> # *U &U _potSend `ui `ux `uc ]
+"871
+[; ;../Watkins William Lab6 Part 1 - Code.c: 871:     sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"872
+[; ;../Watkins William Lab6 Part 1 - Code.c: 872: }
+[e :UE 896 ]
+}
+"882
+[; ;../Watkins William Lab6 Part 1 - Code.c: 882: void sendNext() {
+[v _sendNext `(v ~T0 @X0 1 ef ]
+{
+[e :U _sendNext ]
+[f ]
+"887
+[; ;../Watkins William Lab6 Part 1 - Code.c: 887:     if(sendTEMP == 1 && sendI < 5)
+[e $ ! && == -> _sendTEMP `i -> 1 `i < -> _sendI `i -> 5 `i 898  ]
+"888
+[; ;../Watkins William Lab6 Part 1 - Code.c: 888:     {
+{
+"889
+[; ;../Watkins William Lab6 Part 1 - Code.c: 889:         TXREG1 = tempSend[sendI];
+[e = _TXREG1 -> *U + &U _tempSend * -> _sendI `ux -> -> # *U &U _tempSend `ui `ux `uc ]
+"890
+[; ;../Watkins William Lab6 Part 1 - Code.c: 890:         sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"891
+[; ;../Watkins William Lab6 Part 1 - Code.c: 891:         PIR1bits.TX1IF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"892
+[; ;../Watkins William Lab6 Part 1 - Code.c: 892:     }
+}
+[e $U 899  ]
+"893
+[; ;../Watkins William Lab6 Part 1 - Code.c: 893:     else if(sendPOT == 1 && sendI < 5)
+[e :U 898 ]
+[e $ ! && == -> _sendPOT `i -> 1 `i < -> _sendI `i -> 5 `i 900  ]
+"894
+[; ;../Watkins William Lab6 Part 1 - Code.c: 894:     {
+{
+"895
+[; ;../Watkins William Lab6 Part 1 - Code.c: 895:         TXREG1 = potSend[sendI];
+[e = _TXREG1 -> *U + &U _potSend * -> _sendI `ux -> -> # *U &U _potSend `ui `ux `uc ]
+"896
+[; ;../Watkins William Lab6 Part 1 - Code.c: 896:         sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"897
+[; ;../Watkins William Lab6 Part 1 - Code.c: 897:         PIR1bits.TX1IF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"898
+[; ;../Watkins William Lab6 Part 1 - Code.c: 898:     }
+}
+[e $U 901  ]
+"899
+[; ;../Watkins William Lab6 Part 1 - Code.c: 899:     else if(sendCONT == 1 && sendI < 17)
+[e :U 900 ]
+[e $ ! && == -> _sendCONT `i -> 1 `i < -> _sendI `i -> 17 `i 902  ]
+"900
+[; ;../Watkins William Lab6 Part 1 - Code.c: 900:     {
+{
+"901
+[; ;../Watkins William Lab6 Part 1 - Code.c: 901:         TXREG1 = potSend[sendI];
+[e = _TXREG1 -> *U + &U _potSend * -> _sendI `ux -> -> # *U &U _potSend `ui `ux `uc ]
+"902
+[; ;../Watkins William Lab6 Part 1 - Code.c: 902:         sendI++;
+[e ++ _sendI -> -> 1 `i `uc ]
+"903
+[; ;../Watkins William Lab6 Part 1 - Code.c: 903:         PIR1bits.TX1IF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"904
+[; ;../Watkins William Lab6 Part 1 - Code.c: 904:     }
+}
+[e $U 903  ]
+"906
+[; ;../Watkins William Lab6 Part 1 - Code.c: 906:     else
+[e :U 902 ]
+"907
+[; ;../Watkins William Lab6 Part 1 - Code.c: 907:     {
+{
+"908
+[; ;../Watkins William Lab6 Part 1 - Code.c: 908:         sendTEMP = 0;
+[e = _sendTEMP -> -> 0 `i `uc ]
+"909
+[; ;../Watkins William Lab6 Part 1 - Code.c: 909:         sendPOT = 0;
+[e = _sendPOT -> -> 0 `i `uc ]
+"910
+[; ;../Watkins William Lab6 Part 1 - Code.c: 910:         sendCONT = 0;
+[e = _sendCONT -> -> 0 `i `uc ]
+"911
+[; ;../Watkins William Lab6 Part 1 - Code.c: 911:         sendI = 0;
+[e = _sendI -> -> 0 `i `uc ]
+"912
+[; ;../Watkins William Lab6 Part 1 - Code.c: 912:         PIE1bits.TX1IE = 0;
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"914
+[; ;../Watkins William Lab6 Part 1 - Code.c: 914:         PIR1bits.TX1IF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"915
+[; ;../Watkins William Lab6 Part 1 - Code.c: 915:     }
+}
+[e :U 903 ]
+[e :U 901 ]
+[e :U 899 ]
+"916
+[; ;../Watkins William Lab6 Part 1 - Code.c: 916: }
+[e :UE 897 ]
+}
+"928
+[; ;../Watkins William Lab6 Part 1 - Code.c: 928: void updateDAC() {
+[v _updateDAC `(v ~T0 @X0 1 ef ]
+{
+[e :U _updateDAC ]
+[f ]
+"930
+[; ;../Watkins William Lab6 Part 1 - Code.c: 930:     LATEbits.LATE0 = 0;
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+"931
+[; ;../Watkins William Lab6 Part 1 - Code.c: 931:     DACTemp = DACTemp | currentBin;
+[e = _DACTemp -> | -> _DACTemp `ui -> _currentBin `ui `us ]
+"932
+[; ;../Watkins William Lab6 Part 1 - Code.c: 932:     SSP1BUF = DACTemp>>8;
+[e = _SSP1BUF -> >> -> _DACTemp `ui -> 8 `i `uc ]
+"933
+[; ;../Watkins William Lab6 Part 1 - Code.c: 933:     while(SSP1STATbits.BF == 0){}
+[e $U 905  ]
+[e :U 906 ]
+{
+}
+[e :U 905 ]
+[e $ == -> . . _SSP1STATbits 2 0 `i -> 0 `i 906  ]
+[e :U 907 ]
+"934
+[; ;../Watkins William Lab6 Part 1 - Code.c: 934:     trashSPI = SSP1BUF;
+[e = _trashSPI -> _SSP1BUF `uc ]
+"935
+[; ;../Watkins William Lab6 Part 1 - Code.c: 935:     SSP1BUF = DACTemp & 0xFF;
+[e = _SSP1BUF -> & -> _DACTemp `ui -> -> 255 `i `ui `uc ]
+"936
+[; ;../Watkins William Lab6 Part 1 - Code.c: 936:     while(SSP1STATbits.BF == 0){}
+[e $U 908  ]
+[e :U 909 ]
+{
+}
+[e :U 908 ]
+[e $ == -> . . _SSP1STATbits 2 0 `i -> 0 `i 909  ]
+[e :U 910 ]
+"937
+[; ;../Watkins William Lab6 Part 1 - Code.c: 937:     trashSPI = SSP1BUF;
+[e = _trashSPI -> _SSP1BUF `uc ]
+"938
+[; ;../Watkins William Lab6 Part 1 - Code.c: 938:     LATE = 1;
+[e = _LATE -> -> 1 `i `uc ]
+"940
+[; ;../Watkins William Lab6 Part 1 - Code.c: 940:     if(upDown == 0)
+[e $ ! == -> _upDown `i -> 0 `i 911  ]
+"941
+[; ;../Watkins William Lab6 Part 1 - Code.c: 941:     {
+{
+"942
+[; ;../Watkins William Lab6 Part 1 - Code.c: 942:         if(currentBin == 4092)
+[e $ ! == -> _currentBin `ui -> -> 4092 `i `ui 912  ]
+"943
+[; ;../Watkins William Lab6 Part 1 - Code.c: 943:         {
+{
+"944
+[; ;../Watkins William Lab6 Part 1 - Code.c: 944:             upDown = 1;
+[e = _upDown -> -> 1 `i `uc ]
+"945
+[; ;../Watkins William Lab6 Part 1 - Code.c: 945:             currentBin -= 4;
+[e =- _currentBin -> -> 4 `i `us ]
+"947
+[; ;../Watkins William Lab6 Part 1 - Code.c: 947:         }
+}
+[e $U 913  ]
+"948
+[; ;../Watkins William Lab6 Part 1 - Code.c: 948:         else
+[e :U 912 ]
+"949
+[; ;../Watkins William Lab6 Part 1 - Code.c: 949:         {
+{
+"950
+[; ;../Watkins William Lab6 Part 1 - Code.c: 950:             currentBin += 4;
+[e =+ _currentBin -> -> 4 `i `us ]
+"951
+[; ;../Watkins William Lab6 Part 1 - Code.c: 951:         }
+}
+[e :U 913 ]
+"952
+[; ;../Watkins William Lab6 Part 1 - Code.c: 952:     }
+}
+[e $U 914  ]
+"953
+[; ;../Watkins William Lab6 Part 1 - Code.c: 953:     else
+[e :U 911 ]
+"954
+[; ;../Watkins William Lab6 Part 1 - Code.c: 954:     {
+{
+"955
+[; ;../Watkins William Lab6 Part 1 - Code.c: 955:         if(currentBin == 0)
+[e $ ! == -> _currentBin `ui -> -> 0 `i `ui 915  ]
+"956
+[; ;../Watkins William Lab6 Part 1 - Code.c: 956:         {
+{
+"957
+[; ;../Watkins William Lab6 Part 1 - Code.c: 957:             upDown = 0;
+[e = _upDown -> -> 0 `i `uc ]
+"958
+[; ;../Watkins William Lab6 Part 1 - Code.c: 958:             currentBin += 4;
+[e =+ _currentBin -> -> 4 `i `us ]
+"960
+[; ;../Watkins William Lab6 Part 1 - Code.c: 960:         }
+}
+[e $U 916  ]
+"961
+[; ;../Watkins William Lab6 Part 1 - Code.c: 961:         else
+[e :U 915 ]
+"962
+[; ;../Watkins William Lab6 Part 1 - Code.c: 962:         {
+{
+"963
+[; ;../Watkins William Lab6 Part 1 - Code.c: 963:             currentBin -= 4;
+[e =- _currentBin -> -> 4 `i `us ]
+"964
+[; ;../Watkins William Lab6 Part 1 - Code.c: 964:         }
+}
+[e :U 916 ]
+"965
+[; ;../Watkins William Lab6 Part 1 - Code.c: 965:     }
+}
+[e :U 914 ]
+"969
+[; ;../Watkins William Lab6 Part 1 - Code.c: 969: }
+[e :UE 904 ]
+}
+[p f _sprintf 8396800 ]
+[a 1C 37 102 0 ]
+[a 2C 37 102 0 ]

@@ -1,0 +1,397 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$build/default/debug/_ext/1472/lab4_example_picas.o
+resetVec CODE 0 0 0 6 1
+romData CONST 0 1A2 1A2 1D 1
+LoPriISR_Vec CODE 0 18 18 4 1
+code CODE 0 1C 1C 186 1
+HiPriISR_Vec CODE 0 8 8 4 1
+udata_bank1 BANK1 1 100 100 2 1
+udata_acs COMRAM 1 0 0 D 1
+config CONFIG 4 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 60-FF 1
+RAM 102-F15 1
+SFR F16-FFF 1
+BANK0 60-FF 1
+BANK1 102-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 6-7 1
+CONST C-17 1
+CONST 1BF-1FFFF 1
+IDLOC 200000-200007 1
+SMALLCONST 1000-1FFFF 1
+CODE 6-7 1
+CODE C-17 1
+CODE 1BF-1FFFF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EFF 1
+BANK15 F00-F15 1
+BIGRAM 6-7 1
+BIGRAM C-17 1
+BIGRAM 1BF-F15 1
+COMRAM D-5F 1
+EEDATA F00000-F003FF 1
+MEDIUMCONST 1000-FFFF 1
+MEDIUMCONST 11000-1FFFF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$build/default/debug/_ext/1472/lab4_example_picas.o
+1A2 romData CONST >329:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1A9 romData CONST >332:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1B0 romData CONST >339:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1B7 romData CONST >343:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1B8 romData CONST >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1B9 romData CONST >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1BA romData CONST >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1BB romData CONST >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1BC romData CONST >346:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1BD romData CONST >347:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1BE romData CONST >348:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+18 LoPriISR_Vec CODE >312:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+8 HiPriISR_Vec CODE >307:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+0 resetVec CODE >300:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+2 resetVec CODE >301:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1C code CODE >356:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1E code CODE >358:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+20 code CODE >359:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+22 code CODE >360:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+24 code CODE >361:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+28 code CODE >361:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+2C code CODE >362:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+2E code CODE >363:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+30 code CODE >369:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+32 code CODE >369:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+34 code CODE >369:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+36 code CODE >370:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+38 code CODE >370:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+3A code CODE >370:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+3C code CODE >371:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+3E code CODE >371:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+40 code CODE >371:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+42 code CODE >372:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+44 code CODE >372:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+46 code CODE >372:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+48 code CODE >373:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+4A code CODE >373:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+4C code CODE >373:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+4E code CODE >374:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+50 code CODE >374:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+52 code CODE >374:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+54 code CODE >376:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+56 code CODE >376:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+58 code CODE >376:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+5A code CODE >377:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+5C code CODE >377:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+5E code CODE >377:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+60 code CODE >378:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+62 code CODE >378:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+64 code CODE >378:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+66 code CODE >379:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+68 code CODE >379:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+6A code CODE >379:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+6C code CODE >381:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+6E code CODE >381:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+70 code CODE >381:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+72 code CODE >382:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+74 code CODE >384:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+76 code CODE >385:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+78 code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+7A code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+7C code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+7E code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+80 code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+82 code CODE >387:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+84 code CODE >388:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+86 code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+88 code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+8A code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+8C code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+8E code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+90 code CODE >389:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+92 code CODE >390:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+94 code CODE >392:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+96 code CODE >402:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+98 code CODE >402:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+9A code CODE >402:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+9C code CODE >404:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+9E code CODE >405:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+A0 code CODE >406:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+A2 code CODE >407:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+A4 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+A6 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+A8 code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+AA code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+AC code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+AE code CODE >408:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+B0 code CODE >409:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+B2 code CODE >411:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+B4 code CODE >412:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+B6 code CODE >413:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+B8 code CODE >414:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+BA code CODE >415:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+BC code CODE >416:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+BE code CODE >417:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+C0 code CODE >418:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+C2 code CODE >419:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+C4 code CODE >421:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+C6 code CODE >422:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+C8 code CODE >423:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+CA code CODE >424:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+CC code CODE >425:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+CE code CODE >426:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+D0 code CODE >427:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+D2 code CODE >428:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+D4 code CODE >429:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+D6 code CODE >430:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+D8 code CODE >431:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+DA code CODE >432:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+DC code CODE >445:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+DE code CODE >446:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+E0 code CODE >448:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+E2 code CODE >449:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+E4 code CODE >450:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+E6 code CODE >464:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+E8 code CODE >465:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+EA code CODE >466:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+EC code CODE >467:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+EE code CODE >468:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+F0 code CODE >470:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+F2 code CODE >471:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+F4 code CODE >472:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+F6 code CODE >473:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+F8 code CODE >474:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+FA code CODE >475:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+FC code CODE >476:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+FE code CODE >477:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+100 code CODE >478:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+102 code CODE >480:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+104 code CODE >481:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+106 code CODE >482:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+108 code CODE >483:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+10A code CODE >484:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+10C code CODE >485:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+10E code CODE >486:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+110 code CODE >487:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+112 code CODE >488:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+114 code CODE >490:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+116 code CODE >491:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+118 code CODE >492:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+11A code CODE >493:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+11C code CODE >494:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+11E code CODE >506:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+120 code CODE >508:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+122 code CODE >509:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+124 code CODE >510:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+126 code CODE >511:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+128 code CODE >512:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+12A code CODE >513:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+12C code CODE >514:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+12E code CODE >515:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+130 code CODE >516:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+132 code CODE >518:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+134 code CODE >519:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+136 code CODE >520:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+138 code CODE >521:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+13A code CODE >522:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+13C code CODE >523:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+13E code CODE >524:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+140 code CODE >525:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+142 code CODE >526:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+144 code CODE >528:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+146 code CODE >529:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+148 code CODE >530:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+14A code CODE >531:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+14C code CODE >541:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+14E code CODE >542:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+150 code CODE >543:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+152 code CODE >544:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+154 code CODE >544:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+156 code CODE >544:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+158 code CODE >545:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+15A code CODE >547:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+15C code CODE >560:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+15E code CODE >561:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+160 code CODE >562:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+162 code CODE >562:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+164 code CODE >562:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+166 code CODE >563:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+168 code CODE >563:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+16A code CODE >563:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+16C code CODE >564:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+16E code CODE >565:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+170 code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+172 code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+174 code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+176 code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+178 code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+17A code CODE >573:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+17C code CODE >574:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+17E code CODE >575:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+182 code CODE >577:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+184 code CODE >578:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+186 code CODE >579:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+188 code CODE >580:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+18A code CODE >581:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+18C code CODE >582:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+18E code CODE >583:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+190 code CODE >584:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+192 code CODE >586:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+196 code CODE >587:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+198 code CODE >587:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+19A code CODE >587:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+19C code CODE >588:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+19E code CODE >589:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+1A0 code CODE >590:C:\Users\Will\Universal Documents\Academics\CU Boulder\2021\Fall 2021\Microavionics\Labs\Lab 4/lab4_example_picas.asm
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__Hspace_0 1BF 0 ABS 0 - -
+__Hspace_1 102 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__Hspace_4 60000E 0 ABS 0 - -
+__Hudata_bank0 1C 0 ABS 0 udata_bank0 -
+__Hudata_bank1 1C 0 ABS 0 udata_bank1 -
+__Hudata_bank2 1C 0 ABS 0 udata_bank2 -
+__Hudata_bank3 1C 0 ABS 0 udata_bank3 -
+__Hudata_bank4 1C 0 ABS 0 udata_bank4 -
+__Hudata_bank5 1C 0 ABS 0 udata_bank5 -
+__Hudata_bank6 1C 0 ABS 0 udata_bank6 -
+__Hudata_bank7 1C 0 ABS 0 udata_bank7 -
+__Hudata_bank8 1C 0 ABS 0 udata_bank8 -
+__Hudata_bank9 1C 0 ABS 0 udata_bank9 -
+__LresetVec 0 0 CODE 0 resetVec -
+__Hudata_bank10 1C 0 ABS 0 udata_bank10 -
+__Hudata_bank11 1C 0 ABS 0 udata_bank11 -
+__Hudata_bank12 1C 0 ABS 0 udata_bank12 -
+__Hudata_bank13 1C 0 ABS 0 udata_bank13 -
+__Hudata_bank14 1C 0 ABS 0 udata_bank14 -
+__Hudata_bank15 1C 0 ABS 0 udata_bank15 -
+__HresetVec 6 0 CODE 0 resetVec -
+isa$xinst 0 0 ABS 0 - build/default/debug/_ext/1472/lab4_example_picas.o
+__LromData 1C 0 ABS 0 romData -
+__Hedata 1C 0 ABS 0 edata -
+__Hudata 1C 0 ABS 0 udata -
+__Hconfig 30000E 0 CONFIG 4 config -
+__Ledata 1C 0 ABS 0 edata -
+__Ludata 1C 0 ABS 0 udata -
+__Hcode 1C 0 ABS 0 code -
+__Hdata 1C 0 ABS 0 data -
+__Lcode 1C 0 ABS 0 code -
+__Ldata 1C 0 ABS 0 data -
+__S0 1BF 0 ABS 0 - -
+__S1 102 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+__Ludata_bank10 1C 0 ABS 0 udata_bank10 -
+__Ludata_bank11 1C 0 ABS 0 udata_bank11 -
+__Ludata_bank12 1C 0 ABS 0 udata_bank12 -
+__Ludata_bank13 1C 0 ABS 0 udata_bank13 -
+__Ludata_bank14 1C 0 ABS 0 udata_bank14 -
+__Ludata_bank15 1C 0 ABS 0 udata_bank15 -
+__HLoPriISR_Vec 1C 0 CODE 0 LoPriISR_Vec -
+__Lconfig 0 0 CONFIG 4 config -
+isa$std 1 0 ABS 0 - build/default/debug/_ext/1472/lab4_example_picas.o
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__Lspace_4 0 0 ABS 0 - -
+__HromData 1C 0 ABS 0 romData -
+__HHiPriISR_Vec C 0 CODE 0 HiPriISR_Vec -
+__Ludata_bank0 1C 0 ABS 0 udata_bank0 -
+__Ludata_bank1 1C 0 ABS 0 udata_bank1 -
+__Ludata_bank2 1C 0 ABS 0 udata_bank2 -
+__Ludata_bank3 1C 0 ABS 0 udata_bank3 -
+__Ludata_bank4 1C 0 ABS 0 udata_bank4 -
+__Ludata_bank5 1C 0 ABS 0 udata_bank5 -
+__Ludata_bank6 1C 0 ABS 0 udata_bank6 -
+__Ludata_bank7 1C 0 ABS 0 udata_bank7 -
+__Ludata_bank8 1C 0 ABS 0 udata_bank8 -
+__Ludata_bank9 1C 0 ABS 0 udata_bank9 -
+__LLoPriISR_Vec 18 0 CODE 0 LoPriISR_Vec -
+__Hudata_acs 1C 0 ABS 0 udata_acs -
+__LHiPriISR_Vec 8 0 CODE 0 HiPriISR_Vec -
+__Ludata_acs 1C 0 ABS 0 udata_acs -
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+resetVec 0 0 0 6 1
+romData 0 1A2 1A2 1D 1
+LoPriISR_Vec 0 18 18 18A 1
+HiPriISR_Vec 0 8 8 4 1
+udata_bank1 1 100 100 2 1
+udata_acs 1 0 0 D 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES
