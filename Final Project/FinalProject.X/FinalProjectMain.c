@@ -3,28 +3,16 @@
  * Date  : 1 December 2021
  * 
  * Description:
- * [POSSIBLE]
- *  On power up, the PIC uses V-USB and bit-banging to etablish communication 
- *      with the PC as an HID compatible keyboard using USB 1.11.
  * 
- * [CONFIRMED]
  *  After establishing communication with the PC, the following occurs forever:
  *      The RPG is polled every 2ms or better
- *          When the RPG has been through an entire cycle, a "KEY_VOLUMEUP" or 
- *          "KEY_VOLUMEDOWN" HID keyboard stroke (rep'd by 0x80 and 0x81)
- *          is sent to the computer via EUSART 2
- *      The key matrix (consisting of 3 column inputs and 1 row input) is
- *          continuously polled.
+ *          When the keypresses are sent, the number of cycles the RPG has been 
+ *          through is sent as continuous Volume Up or Down commands
+ *      The keys are continuously polled.
  *          When a key is detected as pressed, the software debounce routine is
  *              called.  Once the debounce routine has completed, the keypress
- *              is stored using the corresponding keystroke code in a FIFO stack.
- *          If another keystroke (or rpg movement) is detected within 10ms of
- *              the keystroke storage, the process for saving that input is 
- *              completed.  If not, all of the keypresses in the storage stack are 
- *              sent via EUSART 2 to the PC, beginning with the first keypress.
- *          At the conclusion of the debounce routine, an LED on PORT J is lit up
- *              for 1 second, before being shut off.
- * 
+ *              is stored.
+ *      
  *******************************************************************************
  * Program Hierarchy
  * 
@@ -41,28 +29,19 @@
  * 
  * Initial()
  *  Setup I/O
- *  Setup timers
- *  Setup ECCP
  *  Setup EUSART 2
  *  Setup Interrupts
  *  Final config to run
  * 
- * HiPriISR
- *  Handle loading next byte into txreg
- * 
- * LoPriISR
- *  Handle ECCP 1 Rollover
- *  Handle Timer 1 Rollover
- * 
- * EUSARTHandler()
- * CCP1Handler()
- * TMR1Handler()
- * 
- * sendData()
- * 
  * pollRPG()
  * pollMatrix()
  * debounceRoutine()
+ * 
+ * HiPriISR
+ *  Handle loading next byte into txreg
+ * 
+ * sendData()
+ * 
  *******************************************************************************
  * Program Philosophy
  * 
@@ -71,15 +50,10 @@
  * The functions are arranged in a like way.
  * 
  * Most processes are handled in the mainline code.  This includes sampling the 
- * RPG for changes, polling the keyboard matrix, and sending the first byte in 
- * the keypress stack.
+ * RPG for changes, polling the keys, and sending the keycode and volume change.
  * 
  * The High Priority ISR handles loading the next byte in the keypress stack 
  * into the transmit register for EUSART 2.
- * 
- * The Low Priority ISR handles the interrupts triggered by rollovers.  
- * Specifically, the ECCP 1 rollover, used for determining when 10 ms has passed;
- * as well as the Timer 1 rollover.
  * 
  ******************************************************************************/
 
@@ -98,35 +72,323 @@
 // <editor-fold defaultstate="collapsed" desc="Global Variables">
 /******************************************************************************
  * Global variables
+ * 
+ * This section is a modified version of the one from my Lab 6 code, found in 
+ * "Watkins_William_Lab6_Part2.c"
  ******************************************************************************/
+
+// <editor-fold defaultstate="collapsed" desc="Button Press Vars">
+// Implementing a stack for the button presses
+short buttonStack[5];   // storing buttons presses
+char maxSize = 3;       // assume the maximum consecutive presses is 4
+signed char top = -1;   // char for implementing a software stack (FIFO)
+char readyToSend = 0;   // Flag for indicating if data is ready to be sent.
+char keypress = 0;
+char buttonPress = 0;
+char byteToSave = 0;
+signed short debouncedVar = 0;
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="RPG Vars">
+signed char rpgDir;
+char oldPortD = 0;
+char rpgTemp;
+// </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="EUSART Vars">
 // Flags set when the corresponding command has been received
-char sendPOT = 0;
-char sendTEMP = 0;
-char sendCONT = 0;
-char sendERROR = 0; // flag that error occurred and need to send command again (if I get to it)
 char temporary = 0; // Temp var for throwing away framing error byte
 char buffer[10];    // Array for storing incoming data (largest packet size is 8)
-char checkTEMP[10] = {'T','E','M','P', 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00};
-char checkPOT[10] = {'P','O','T', 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-char checkCONTON[10] = {'C','O','N','T', '_', 'O', 'N', 0x0A, 0x00, 0x00};
-char checkCONTOFF[10] = {'C','O','N','T', '_', 'O', 'F', 'F', 0x0A, 0x00};
 char byteToSend = 0;// Next byte to send
 // Strings to send via EUSART
-char tempSend[7] = {'0', '0', '.', '0', 'C', 0x0A, 0x00};
-char potSend[7]  = {'0', '.', '0', '0', 'V', 0x0A, 0x00};
-char contSend[19] = {'T', '=', '0', '0', '.', '0', 'C', ';', ' ', 
-                    'P', 'T', '=', '0', '.', '0', '0', 'V', 0x0A, 0x00};
+char keypressList[10];  // Storing the bytes to send 
+char keyCodes[5] = {0xA8, 0xAB, 0xAC, 0xAE, 0x00};    // Mute, Next, 
+                        // Previous, Play/Pause
+char volumeControls[3]  = {0xA9, 0xAA, 0x00};   // Vol Up, Vol Down
 char sendI = 0; // Index for current string
-char i = 0;     // Index for receiving data
-char rxFin = 0; // Flag for if receiving is finished, triggered on "\n"
 // </editor-fold>
 
 // </editor-fold>
 
-// * The software debounce routine uses a 16 bit variable
-// *              (specifically, an unsigned short) to determine when the switch
-// *              has finished bouncing.  Once the port detects a high state on 
-// *              the desired input pin, it begins shifting the state of the input
-// *              pin into the unsigned short.  Once the variable 
+// <editor-fold defaultstate="collapsed" desc="Function Prototypes">
+/******************************************************************************
+ * Function prototypes
+ ******************************************************************************/
+void Initial(void);         // Function to initialize hardware and interrupts
+void TMR1Handler(void);     // Interrupt handler for TMR1 for input delay
+void CCP1Handler(void);     // Interrupt handler for CCP1 for input delay
+void sendData(void);        // loads next byte into TXREG1
+void pollRPG(void);         // Polls the RPG for an update
+void pollMatrix(void);      // Polls the key matrix for a button press
+void debounceRoutine(void); // Debounces a keypress
+int isEmpty(void);
+int isFull(void);           
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="Mainline Code">
+/******************************************************************************
+ * main()
+ ******************************************************************************/
+void main() {
+    Initial();                 // Initialize everything
+    while(1) {
+        pollRPG();
+        pollMatrix();
+        if(readyToSend == 1)
+            sendData();
+//     }  
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="Initial()">
+/******************************************************************************
+ * Initial()
+ *
+ * This subroutine performs all initializations of variables and registers.  This
+ * is a modified version of the one found in "Watkins_William_Lab6_Part2.c" from
+ * my Lab 6 code.
+ ******************************************************************************/
+
+void Initial() {
+    
+    // <editor-fold defaultstate="collapsed" desc="IO Port Config">
+    // Configure the IO ports
+    TRISA   = 0b00101001;
+    LATA    = 0;
+    TRISD   = 0b00001111;
+    LATD    = 0;
+    TRISC   = 0b10010011;
+    LATC    = 0;
+    TRISE   = 0b00000000;
+    LATEbits.LATE0    = 1;
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Timer 0, 1, 3 Config">
+    
+    // Initializing TMR1 for input delay
+    T1CON = 0b00000010;             // 16-bit, Fosc/4, no prescale
+    
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="CCP Config">
+    
+    // CCP 1
+    CCP1CON = 0b00001010;       // Set CCP1 to Compare mode
+    CCPTMRS0bits.C1TSEL = 0;    // Set CCP1 Timer to TMR1
+    CCPR1 = inputDelay;
+    
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="EUSART 1 Config">
+    TXSTA1 = 0b00100000;            // Async, 8N1, 19200 baud, 16MHz, Transmit enable
+    RCSTA1 = 0b00010000;            // Async, 8N1, Receive enable
+    BAUDCON1 = 0b01000000;          // 8-bit mode
+    SPBRG1 = 12;                    // Load value of 12 into baud reg - Gives 19230.8 baud
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Interrupt Config">
+    // Configuring Interrupts
+    RCONbits.IPEN = 1;              // Enable priority levels
+    INTCONbits.GIEL = 1;            // Enable low-priority interrupts to CPU
+    INTCONbits.GIEH = 1;            // Enable all interrupts
+    
+    // Timer 1
+    IPR1bits.TMR1IP = 0;            // Assign low priority to TMR1 interrupts
+    PIE1bits.TMR1IE = 1;            // Enable TMR1 interrupts
+    PIR1bits.TMR1IF = 0;            // Clear the interrupt flag
+    
+    // CCP 1
+    IPR3bits.CCP1IP = 0;            // Assign low priority to CCP1 interrupts
+    PIE3bits.CCP1IE = 1;            // Enable CCP1 interrupts
+    PIR3bits.CCP1IF = 0;            // Clear interrupt flag
+    
+    // EUSART 1
+    IPR1bits.TX1IP = 1;             // Assign high priority to tx interrupts
+    PIE1bits.TX1IE = 0;             // Disable EUSART 1 Transmit interrupts (for now)
+    
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Final Config to Start">
+    
+    // EUSART Comms
+    RCSTA1bits.SPEN = 1;        // Enable Serial port
+
+    // Turn on Timers
+//    T1CONbits.TMR1ON = 1; // for copying to 
+
+    // </editor-fold>
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="Primary Functions">
+
+// <editor-fold defaultstate="collapsed" desc="pollRPG()">
+/******************************************************************************
+ * pollRPG function
+ *
+ * Polls the status of the RPG and compares it to the previous value.  Count
+ * increases or decreases according to the direction the RPG is turned.
+ ******************************************************************************/
+
+void pollRPG() {
+    rpgDir = 0;
+    rpgTemp = (PORTD ^ oldPortD) & 0x03;
+    if(rpgTemp == 0)
+        return;
+    switch(oldPortD)
+    {
+        case 0:
+            oldPortD = 2;
+            break;
+        case 2:
+            oldPortD = 3;
+            break;
+        case 3:
+            oldPortD = 1;
+            break;
+        case 1:
+            oldPortD = 0;
+            break;
+    }
+    rpgTemp = oldPortD ^ rpgTemp;
+    if(rpgTemp == 0)
+    {
+        rpgDir = 1;
+    }
+    else
+    {
+        rpgDir = -1;
+    }
+    oldPortD = rpgTemp;
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="pollMatrix()">
+/******************************************************************************
+ * pollMatrix function
+ *
+ * Polls the keyboard matrix and stores the appropriate keycodes in a buffer to 
+ * send.  Assumes only one button pressed at a time.
+ ******************************************************************************/
+
+void pollMatrix() {
+    if((PORTD & 0b11110000) == 0)
+        return;
+    debounceRoutine();
+    buttonPress = PORTD & 0b11110000;
+    switch(buttonPress)
+    {
+        case 0b10000000:
+            byteToSend = 0xA8;
+//            push(0xA8);
+            break;
+        case 0b01000000:
+            byteToSend = 0xAC;
+//            push(0xAC);
+            break;
+        case 0b00100000:
+            byteToSend = 0xAE;
+//            push(0xAE);
+            break;
+        case 0b00010000:
+            byteToSend = 0xAB;
+//            push(0xAB);
+            break;
+    }
+}
+
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="debounceRoutine()">
+/******************************************************************************
+ * debounceRoutine function
+ *
+ * Debounces a keypress by waiting until a short is greater than 4095, while the
+ * state of the pin in question is continuously shifted into the short
+ ******************************************************************************/
+
+void debounceRoutine() {
+    while(debouncedVar != 4095)
+    { 
+        buttonPress = PORTD & 0b11110000;
+        if(buttonPress >= 1)
+        {
+            debouncedVar = (debouncedVar<<1) | 0x01;
+        }
+        else
+        {
+            debouncedVar = debouncedVar<<1;
+        }
+    }
+    debouncedVar = 0;
+}
+
+// </editor-fold>
+
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="Interrupt Service Routines">
+
+// <editor-fold defaultstate="collapsed" desc="HiPriISR">
+/******************************************************************************
+ * HiPriISR interrupt service routine
+ *
+ * Handles all high-priority interrupts.  Currently only triggered by EUSART 
+ * commands and TX flag.  Not implemented yet.
+ ******************************************************************************/
+
+void __interrupt() HiPriISR(void) {
+    while(1)
+    {
+        if(PIR1bits.TX1IF && PIE1bits.TX1IE)
+        {
+            sendData();
+            continue;
+        }
+        break;
+    }
+}	
+//</editor-fold>
+
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="Interrupt Handlers">
+
+// <editor-fold defaultstate="collapsed" desc="sendData()">
+/******************************************************************************
+ * sendData interrupt service routine.
+ *
+ * Sends the next byte of data
+ ******************************************************************************/
+
+void sendData() {
+    if(keypress == 1)
+    {
+        TXREG1 = byteToSend;
+        PIE1bits.TX1IE = 1;
+        keypress = 0;
+    }
+    else if(rpgDir != 0)
+    {
+        switch(rpgDir)
+        {
+            case 1: 
+                TXREG1 = 0xA9;
+                PIE1bits.TX1IE = 1;
+                rpgDir = 0;
+                break;
+            case -1:
+                TXREG1 = 0xAA;
+                PIE1bits.TX1IE = 1;
+                rpgDir = 0;
+                break;
+        }
+    }
+    else
+    {
+        PIE1bits.TX1IE = 0;
+    }
+}
+// </editor-fold>
+
+// </editor-fold>

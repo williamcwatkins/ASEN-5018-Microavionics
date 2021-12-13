@@ -1,0 +1,1281 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"138 C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 138: void Initial(void);
+[v _Initial `(v ~T0 @X0 0 ef ]
+"12836 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
+"10532
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"9570
+[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
+"10718
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"9906
+[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
+"10656
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"9794
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
+"10780
+[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
+"10024
+[s S448 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S448 . LATE0 LATE1 LATE2 LATE3 LATE4 LATE5 LATE6 LATE7 ]
+"10034
+[s S449 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S449 . LE0 LE1 LE2 LE3 LE4 LE5 LE6 LE7 ]
+"10023
+[u S447 `S448 1 `S449 1 ]
+[n S447 . . . ]
+"10045
+[v _LATEbits `VS447 ~T0 @X0 0 e@3981 ]
+"16174
+[v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
+"13721
+[v _CCP1CON `Vuc ~T0 @X0 0 e@4027 ]
+"1797
+[s S74 :3 `uc 1 :3 `uc 1 :2 `uc 1 ]
+[n S74 . C1TSEL C2TSEL C3TSEL ]
+"1802
+[s S75 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S75 . C1TSEL0 C1TSEL1 C1TSEL2 C2TSEL0 C2TSEL1 C2TSEL2 C3TSEL0 C3TSEL1 ]
+"1796
+[u S73 `S74 1 `S75 1 ]
+[n S73 . . . ]
+"1813
+[v _CCPTMRS0bits `VS73 ~T0 @X0 0 e@3885 ]
+"13913
+[v _CCPR1 `Vus ~T0 @X0 0 e@4028 ]
+"12548
+[v _TXSTA1 `Vuc ~T0 @X0 0 e@4012 ]
+"12210
+[v _RCSTA1 `Vuc ~T0 @X0 0 e@4011 ]
+"5352
+[v _BAUDCON1 `Vuc ~T0 @X0 0 e@3941 ]
+"12912
+[v _SPBRG1 `Vuc ~T0 @X0 0 e@4015 ]
+"16329
+[s S729 :1 `uc 1 ]
+[n S729 . NOT_BOR ]
+"16332
+[s S730 :1 `uc 1 :1 `uc 1 ]
+[n S730 . . NOT_POR ]
+"16336
+[s S731 :2 `uc 1 :1 `uc 1 ]
+[n S731 . . NOT_PD ]
+"16340
+[s S732 :3 `uc 1 :1 `uc 1 ]
+[n S732 . . NOT_TO ]
+"16344
+[s S733 :4 `uc 1 :1 `uc 1 ]
+[n S733 . . NOT_RI ]
+"16348
+[s S734 :5 `uc 1 :1 `uc 1 ]
+[n S734 . . NOT_CM ]
+"16352
+[s S735 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S735 . nBOR nPOR nPD nTO nRI nCM SBOREN IPEN ]
+"16362
+[s S736 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S736 . BOR POR PD TO RI CM ]
+"16328
+[u S728 `S729 1 `S730 1 `S731 1 `S732 1 `S733 1 `S734 1 `S735 1 `S736 1 ]
+[n S728 . . . . . . . . . ]
+"16371
+[v _RCONbits `VS728 ~T0 @X0 0 e@4048 ]
+"17550
+[s S804 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S804 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"17560
+[s S805 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S805 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"17570
+[s S806 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S806 . . GIEL GIEH ]
+"17549
+[u S803 `S804 1 `S805 1 `S806 1 ]
+[n S803 . . . . ]
+"17576
+[v _INTCONbits `VS803 ~T0 @X0 0 e@4082 ]
+"11375
+[s S493 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S493 . TMR1IP TMR2IP TMR1GIP SSP1IP TX1IP RC1IP ADIP PSPIP ]
+"11385
+[s S494 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S494 . . SSPIP TXIP RCIP ]
+"11374
+[u S492 `S493 1 `S494 1 ]
+[n S492 . . . ]
+"11392
+[v _IPR1bits `VS492 ~T0 @X0 0 e@3999 ]
+"11209
+[s S487 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S487 . TMR1IE TMR2IE TMR1GIE SSP1IE TX1IE RC1IE ADIE PSPIE ]
+"11219
+[s S488 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S488 . . SSPIE TXIE RCIE ]
+"11208
+[u S486 `S487 1 `S488 1 ]
+[n S486 . . . ]
+"11226
+[v _PIE1bits `VS486 ~T0 @X0 0 e@3997 ]
+"11292
+[s S490 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S490 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
+"11302
+[s S491 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S491 . . SSPIF TXIF RCIF ]
+"11291
+[u S489 `S490 1 `S491 1 ]
+[n S489 . . . ]
+"11309
+[v _PIR1bits `VS489 ~T0 @X0 0 e@3998 ]
+"11852
+[s S512 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S512 . RTCCIP CCP1IP CCP2IP CTMUIP TX2IP RC2IP . TMR5GIP ]
+"11862
+[s S513 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S513 . . RXBNIP . TXBNIP ]
+"11851
+[u S511 `S512 1 `S513 1 ]
+[n S511 . . . ]
+"11869
+[v _IPR3bits `VS511 ~T0 @X0 0 e@4005 ]
+"11674
+[s S505 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S505 . RTCCIE CCP1IE CCP2IE CTMUIE TX2IE RC2IE . TMR5GIE ]
+"11684
+[s S506 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S506 . RXB0IE RXB1IE TXB0IE TXB1IE TXB2IE ]
+"11691
+[s S507 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S507 . . RXBNIE . TXBNIE ]
+"11673
+[u S504 `S505 1 `S506 1 `S507 1 ]
+[n S504 . . . . ]
+"11698
+[v _PIE3bits `VS504 ~T0 @X0 0 e@4003 ]
+"11779
+[s S509 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S509 . RTCCIF CCP1IF CCP2IF CTMUIF TX2IF RC2IF . TMR5GIF ]
+"11789
+[s S510 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S510 . . RXBNIF . TXBNIF ]
+"11778
+[u S508 `S509 1 `S510 1 ]
+[n S508 . . . ]
+"11796
+[v _PIR3bits `VS508 ~T0 @X0 0 e@4004 ]
+"12221
+[s S530 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S530 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"12231
+[s S531 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S531 . RCD8 . ADEN . RC9 ]
+"12238
+[s S532 :6 `uc 1 :1 `uc 1 ]
+[n S532 . . NOT_RC8 ]
+"12242
+[s S533 :6 `uc 1 :1 `uc 1 ]
+[n S533 . . nRC8 ]
+"12246
+[s S534 :6 `uc 1 :1 `uc 1 ]
+[n S534 . . RC8_9 ]
+"12250
+[s S535 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S535 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
+"12260
+[s S536 :5 `uc 1 :1 `uc 1 ]
+[n S536 . . SRENA ]
+"12220
+[u S529 `S530 1 `S531 1 `S532 1 `S533 1 `S534 1 `S535 1 `S536 1 ]
+[n S529 . . . . . . . . ]
+"12265
+[v _RCSTA1bits `VS529 ~T0 @X0 0 e@4011 ]
+"8258
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+[t ~ __interrupt . k ]
+[t T97 __interrupt ]
+[t T98 __interrupt low_priority ]
+"140 C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 140: void CCP1Handler(void);
+[v _CCP1Handler `(v ~T0 @X0 0 ef ]
+"139
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 139: void TMR1Handler(void);
+[v _TMR1Handler `(v ~T0 @X0 0 ef ]
+"16180 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S720 :2 `uc 1 :1 `uc 1 ]
+[n S720 . . NOT_T1SYNC ]
+"16184
+[s S721 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S721 . TMR1ON RD16 nT1SYNC SOSCEN T1CKPS TMR1CS ]
+"16192
+[s S722 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S722 . . T1CKPS0 T1CKPS1 TMR1CS0 TMR1CS1 ]
+"16199
+[s S723 :3 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S723 . . T1OSCEN . T1RD16 ]
+"16179
+[u S719 `S720 1 `S721 1 `S722 1 `S723 1 ]
+[n S719 . . . . . ]
+"16206
+[v _T1CONbits `VS719 ~T0 @X0 0 e@4045 ]
+"16276
+[v _TMR1 `Vus ~T0 @X0 0 e@4046 ]
+"54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[; <" PMD3 equ 0F16h ;# ">
+"116
+[; <" PMD2 equ 0F17h ;# ">
+"178
+[; <" PMD1 equ 0F18h ;# ">
+"240
+[; <" PMD0 equ 0F19h ;# ">
+"317
+[; <" PSTR3CON equ 0F1Ah ;# ">
+"428
+[; <" PSTR2CON equ 0F1Bh ;# ">
+"617
+[; <" TXREG2 equ 0F1Ch ;# ">
+"637
+[; <" RCREG2 equ 0F1Dh ;# ">
+"657
+[; <" SPBRG2 equ 0F1Eh ;# ">
+"677
+[; <" SPBRGH2 equ 0F1Fh ;# ">
+"697
+[; <" BAUDCON2 equ 0F20h ;# ">
+"820
+[; <" TXSTA2 equ 0F21h ;# ">
+"947
+[; <" RCSTA2 equ 0F22h ;# ">
+"1083
+[; <" ANCON2 equ 0F23h ;# ">
+"1195
+[; <" ANCON1 equ 0F24h ;# ">
+"1307
+[; <" ANCON0 equ 0F25h ;# ">
+"1419
+[; <" MEMCON equ 0F26h ;# ">
+"1480
+[; <" ODCON3 equ 0F27h ;# ">
+"1513
+[; <" ODCON2 equ 0F28h ;# ">
+"1575
+[; <" ODCON1 equ 0F29h ;# ">
+"1614
+[; <" REFOCON equ 0F2Ah ;# ">
+"1679
+[; <" CCPTMRS2 equ 0F2Bh ;# ">
+"1726
+[; <" CCPTMRS1 equ 0F2Ch ;# ">
+"1793
+[; <" CCPTMRS0 equ 0F2Dh ;# ">
+"1875
+[; <" CM3CON equ 0F2Eh ;# ">
+"1880
+[; <" CM3CON1 equ 0F2Eh ;# ">
+"2127
+[; <" CM2CON equ 0F2Fh ;# ">
+"2132
+[; <" CM2CON1 equ 0F2Fh ;# ">
+"2379
+[; <" T12CON equ 0F30h ;# ">
+"2450
+[; <" PR12 equ 0F31h ;# ">
+"2470
+[; <" TMR12 equ 0F32h ;# ">
+"2490
+[; <" T10CON equ 0F33h ;# ">
+"2561
+[; <" PR10 equ 0F34h ;# ">
+"2581
+[; <" TMR10 equ 0F35h ;# ">
+"2601
+[; <" T8CON equ 0F36h ;# ">
+"2672
+[; <" PR8 equ 0F37h ;# ">
+"2692
+[; <" TMR8 equ 0F38h ;# ">
+"2712
+[; <" T6CON equ 0F39h ;# ">
+"2783
+[; <" PR6 equ 0F3Ah ;# ">
+"2803
+[; <" TMR6 equ 0F3Bh ;# ">
+"2823
+[; <" T7GCON equ 0F3Ch ;# ">
+"2927
+[; <" T7CON equ 0F3Dh ;# ">
+"3029
+[; <" TMR7 equ 0F3Eh ;# ">
+"3036
+[; <" TMR7L equ 0F3Eh ;# ">
+"3106
+[; <" TMR7H equ 0F3Fh ;# ">
+"3126
+[; <" CCP10CON equ 0F40h ;# ">
+"3205
+[; <" CCPR10 equ 0F41h ;# ">
+"3212
+[; <" CCPR10L equ 0F41h ;# ">
+"3232
+[; <" CCPR10H equ 0F42h ;# ">
+"3252
+[; <" CCP9CON equ 0F43h ;# ">
+"3331
+[; <" CCPR9 equ 0F44h ;# ">
+"3338
+[; <" CCPR9L equ 0F44h ;# ">
+"3358
+[; <" CCPR9H equ 0F45h ;# ">
+"3378
+[; <" CCP8CON equ 0F46h ;# ">
+"3457
+[; <" CCPR8 equ 0F47h ;# ">
+"3464
+[; <" CCPR8L equ 0F47h ;# ">
+"3484
+[; <" CCPR8H equ 0F48h ;# ">
+"3504
+[; <" CCP3CON equ 0F49h ;# ">
+"3586
+[; <" CCPR3 equ 0F4Ah ;# ">
+"3593
+[; <" CCPR3L equ 0F4Ah ;# ">
+"3613
+[; <" CCPR3H equ 0F4Bh ;# ">
+"3633
+[; <" ECCP3DEL equ 0F4Ch ;# ">
+"3703
+[; <" ECCP3AS equ 0F4Dh ;# ">
+"3785
+[; <" CCP2CON equ 0F4Eh ;# ">
+"3790
+[; <" ECCP2CON equ 0F4Eh ;# ">
+"3977
+[; <" CCPR2 equ 0F4Fh ;# ">
+"3984
+[; <" CCPR2L equ 0F4Fh ;# ">
+"4004
+[; <" CCPR2H equ 0F50h ;# ">
+"4024
+[; <" ECCP2DEL equ 0F51h ;# ">
+"4029
+[; <" PWM2CON equ 0F51h ;# ">
+"4162
+[; <" ECCP2AS equ 0F52h ;# ">
+"4244
+[; <" PADCFG1 equ 0F53h ;# ">
+"4299
+[; <" CM1CON equ 0F54h ;# ">
+"4304
+[; <" CM1CON1 equ 0F54h ;# ">
+"4579
+[; <" CTMUICON equ 0F55h ;# ">
+"4655
+[; <" CTMUCONL equ 0F56h ;# ">
+"4733
+[; <" CTMUCONH equ 0F57h ;# ">
+"4790
+[; <" ALRMVAL equ 0F58h ;# ">
+"4797
+[; <" ALRMVALL equ 0F58h ;# ">
+"4817
+[; <" ALRMVALH equ 0F59h ;# ">
+"4837
+[; <" ALRMRPT equ 0F5Ah ;# ">
+"4907
+[; <" ALRMCFG equ 0F5Bh ;# ">
+"4983
+[; <" RTCVAL equ 0F5Ch ;# ">
+"4990
+[; <" RTCVALL equ 0F5Ch ;# ">
+"5010
+[; <" RTCVALH equ 0F5Dh ;# ">
+"5080
+[; <" RTCCAL equ 0F5Eh ;# ">
+"5150
+[; <" RTCCFG equ 0F5Fh ;# ">
+"5215
+[; <" PIE6 equ 0F60h ;# ">
+"5254
+[; <" EEDATA equ 0F61h ;# ">
+"5274
+[; <" EEADR equ 0F62h ;# ">
+"5294
+[; <" EEADRH equ 0F63h ;# ">
+"5314
+[; <" OSCCON2 equ 0F64h ;# ">
+"5354
+[; <" BAUDCON1 equ 0F65h ;# ">
+"5359
+[; <" BAUDCTL equ 0F65h ;# ">
+"5363
+[; <" BAUDCON equ 0F65h ;# ">
+"5861
+[; <" SSP2CON2 equ 0F66h ;# ">
+"6039
+[; <" SSP2CON1 equ 0F67h ;# ">
+"6159
+[; <" SSP2STAT equ 0F68h ;# ">
+"6586
+[; <" SSP2ADD equ 0F69h ;# ">
+"6656
+[; <" SSP2MSK equ 0F69h ;# ">
+"6726
+[; <" SSP2BUF equ 0F6Ah ;# ">
+"6746
+[; <" T4CON equ 0F6Bh ;# ">
+"6817
+[; <" PR4 equ 0F6Ch ;# ">
+"6837
+[; <" TMR4 equ 0F6Dh ;# ">
+"6857
+[; <" CCP7CON equ 0F6Eh ;# ">
+"6936
+[; <" CCPR7 equ 0F6Fh ;# ">
+"6943
+[; <" CCPR7L equ 0F6Fh ;# ">
+"6963
+[; <" CCPR7H equ 0F70h ;# ">
+"6983
+[; <" CCP6CON equ 0F71h ;# ">
+"7062
+[; <" CCPR6 equ 0F72h ;# ">
+"7069
+[; <" CCPR6L equ 0F72h ;# ">
+"7089
+[; <" CCPR6H equ 0F73h ;# ">
+"7109
+[; <" CCP5CON equ 0F74h ;# ">
+"7188
+[; <" CCPR5 equ 0F75h ;# ">
+"7195
+[; <" CCPR5L equ 0F75h ;# ">
+"7215
+[; <" CCPR5H equ 0F76h ;# ">
+"7235
+[; <" CCP4CON equ 0F77h ;# ">
+"7314
+[; <" CCPR4 equ 0F78h ;# ">
+"7321
+[; <" CCPR4L equ 0F78h ;# ">
+"7341
+[; <" CCPR4H equ 0F79h ;# ">
+"7361
+[; <" T5GCON equ 0F7Ah ;# ">
+"7465
+[; <" T5CON equ 0F7Bh ;# ">
+"7567
+[; <" TMR5 equ 0F7Ch ;# ">
+"7574
+[; <" TMR5L equ 0F7Ch ;# ">
+"7594
+[; <" TMR5H equ 0F7Dh ;# ">
+"7614
+[; <" EECON2 equ 0F7Eh ;# ">
+"7634
+[; <" EECON1 equ 0F7Fh ;# ">
+"7700
+[; <" PORTA equ 0F80h ;# ">
+"7892
+[; <" PORTB equ 0F81h ;# ">
+"8078
+[; <" PORTC equ 0F82h ;# ">
+"8260
+[; <" PORTD equ 0F83h ;# ">
+"8501
+[; <" PORTE equ 0F84h ;# ">
+"8854
+[; <" PORTF equ 0F85h ;# ">
+"9039
+[; <" PORTG equ 0F86h ;# ">
+"9250
+[; <" PORTH equ 0F87h ;# ">
+"9460
+[; <" PORTJ equ 0F88h ;# ">
+"9572
+[; <" LATA equ 0F89h ;# ">
+"9684
+[; <" LATB equ 0F8Ah ;# ">
+"9796
+[; <" LATC equ 0F8Bh ;# ">
+"9908
+[; <" LATD equ 0F8Ch ;# ">
+"10020
+[; <" LATE equ 0F8Dh ;# ">
+"10132
+[; <" LATF equ 0F8Eh ;# ">
+"10234
+[; <" LATG equ 0F8Fh ;# ">
+"10310
+[; <" LATH equ 0F90h ;# ">
+"10422
+[; <" LATJ equ 0F91h ;# ">
+"10534
+[; <" TRISA equ 0F92h ;# ">
+"10596
+[; <" TRISB equ 0F93h ;# ">
+"10658
+[; <" TRISC equ 0F94h ;# ">
+"10720
+[; <" TRISD equ 0F95h ;# ">
+"10782
+[; <" TRISE equ 0F96h ;# ">
+"10844
+[; <" TRISF equ 0F97h ;# ">
+"10901
+[; <" TRISG equ 0F98h ;# ">
+"10945
+[; <" TRISH equ 0F99h ;# ">
+"11007
+[; <" TRISJ equ 0F9Ah ;# ">
+"11069
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"11139
+[; <" PSTR1CON equ 0F9Ch ;# ">
+"11205
+[; <" PIE1 equ 0F9Dh ;# ">
+"11288
+[; <" PIR1 equ 0F9Eh ;# ">
+"11371
+[; <" IPR1 equ 0F9Fh ;# ">
+"11454
+[; <" PIE2 equ 0FA0h ;# ">
+"11526
+[; <" PIR2 equ 0FA1h ;# ">
+"11598
+[; <" IPR2 equ 0FA2h ;# ">
+"11670
+[; <" PIE3 equ 0FA3h ;# ">
+"11775
+[; <" PIR3 equ 0FA4h ;# ">
+"11848
+[; <" IPR3 equ 0FA5h ;# ">
+"11921
+[; <" PIR6 equ 0FA6h ;# ">
+"11960
+[; <" PSPCON equ 0FA7h ;# ">
+"11999
+[; <" HLVDCON equ 0FA8h ;# ">
+"12069
+[; <" IPR6 equ 0FA9h ;# ">
+"12108
+[; <" T1GCON equ 0FAAh ;# ">
+"12212
+[; <" RCSTA1 equ 0FABh ;# ">
+"12217
+[; <" RCSTA equ 0FABh ;# ">
+"12550
+[; <" TXSTA1 equ 0FACh ;# ">
+"12555
+[; <" TXSTA equ 0FACh ;# ">
+"12838
+[; <" TXREG1 equ 0FADh ;# ">
+"12843
+[; <" TXREG equ 0FADh ;# ">
+"12876
+[; <" RCREG1 equ 0FAEh ;# ">
+"12881
+[; <" RCREG equ 0FAEh ;# ">
+"12914
+[; <" SPBRG1 equ 0FAFh ;# ">
+"12919
+[; <" SPBRG equ 0FAFh ;# ">
+"12952
+[; <" T3GCON equ 0FB0h ;# ">
+"13056
+[; <" T3CON equ 0FB1h ;# ">
+"13167
+[; <" TMR3 equ 0FB2h ;# ">
+"13174
+[; <" TMR3L equ 0FB2h ;# ">
+"13194
+[; <" TMR3H equ 0FB3h ;# ">
+"13214
+[; <" CMSTAT equ 0FB4h ;# ">
+"13219
+[; <" CMSTATUS equ 0FB4h ;# ">
+"13320
+[; <" CVRCON equ 0FB5h ;# ">
+"13405
+[; <" PIE4 equ 0FB6h ;# ">
+"13467
+[; <" PIR4 equ 0FB7h ;# ">
+"13529
+[; <" IPR4 equ 0FB8h ;# ">
+"13599
+[; <" PIE5 equ 0FB9h ;# ">
+"13661
+[; <" PIR5 equ 0FBAh ;# ">
+"13723
+[; <" CCP1CON equ 0FBBh ;# ">
+"13728
+[; <" ECCP1CON equ 0FBBh ;# ">
+"13915
+[; <" CCPR1 equ 0FBCh ;# ">
+"13922
+[; <" CCPR1L equ 0FBCh ;# ">
+"13942
+[; <" CCPR1H equ 0FBDh ;# ">
+"13962
+[; <" ECCP1DEL equ 0FBEh ;# ">
+"13967
+[; <" PWM1CON equ 0FBEh ;# ">
+"14100
+[; <" ECCP1AS equ 0FBFh ;# ">
+"14182
+[; <" ADCON2 equ 0FC0h ;# ">
+"14253
+[; <" ADCON1 equ 0FC1h ;# ">
+"14357
+[; <" ADCON0 equ 0FC2h ;# ">
+"14482
+[; <" ADRES equ 0FC3h ;# ">
+"14489
+[; <" ADRESL equ 0FC3h ;# ">
+"14509
+[; <" ADRESH equ 0FC4h ;# ">
+"14529
+[; <" SSP1CON2 equ 0FC5h ;# ">
+"14534
+[; <" SSPCON2 equ 0FC5h ;# ">
+"14883
+[; <" SSP1CON1 equ 0FC6h ;# ">
+"14888
+[; <" SSPCON1 equ 0FC6h ;# ">
+"15121
+[; <" SSP1STAT equ 0FC7h ;# ">
+"15126
+[; <" SSPSTAT equ 0FC7h ;# ">
+"15719
+[; <" SSP1ADD equ 0FC8h ;# ">
+"15724
+[; <" SSPADD equ 0FC8h ;# ">
+"15957
+[; <" SSP1MSK equ 0FC8h ;# ">
+"16027
+[; <" SSP1BUF equ 0FC9h ;# ">
+"16032
+[; <" SSPBUF equ 0FC9h ;# ">
+"16065
+[; <" T2CON equ 0FCAh ;# ">
+"16136
+[; <" PR2 equ 0FCBh ;# ">
+"16156
+[; <" TMR2 equ 0FCCh ;# ">
+"16176
+[; <" T1CON equ 0FCDh ;# ">
+"16278
+[; <" TMR1 equ 0FCEh ;# ">
+"16285
+[; <" TMR1L equ 0FCEh ;# ">
+"16305
+[; <" TMR1H equ 0FCFh ;# ">
+"16325
+[; <" RCON equ 0FD0h ;# ">
+"16478
+[; <" WDTCON equ 0FD1h ;# ">
+"16538
+[; <" IPR5 equ 0FD2h ;# ">
+"16627
+[; <" OSCCON equ 0FD3h ;# ">
+"16704
+[; <" SPBRGH1 equ 0FD4h ;# ">
+"16724
+[; <" T0CON equ 0FD5h ;# ">
+"16794
+[; <" TMR0 equ 0FD6h ;# ">
+"16801
+[; <" TMR0L equ 0FD6h ;# ">
+"16821
+[; <" TMR0H equ 0FD7h ;# ">
+"16841
+[; <" STATUS equ 0FD8h ;# ">
+"16912
+[; <" FSR2 equ 0FD9h ;# ">
+"16919
+[; <" FSR2L equ 0FD9h ;# ">
+"16939
+[; <" FSR2H equ 0FDAh ;# ">
+"16946
+[; <" PLUSW2 equ 0FDBh ;# ">
+"16966
+[; <" PREINC2 equ 0FDCh ;# ">
+"16986
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"17006
+[; <" POSTINC2 equ 0FDEh ;# ">
+"17026
+[; <" INDF2 equ 0FDFh ;# ">
+"17046
+[; <" BSR equ 0FE0h ;# ">
+"17053
+[; <" FSR1 equ 0FE1h ;# ">
+"17060
+[; <" FSR1L equ 0FE1h ;# ">
+"17080
+[; <" FSR1H equ 0FE2h ;# ">
+"17087
+[; <" PLUSW1 equ 0FE3h ;# ">
+"17107
+[; <" PREINC1 equ 0FE4h ;# ">
+"17127
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"17147
+[; <" POSTINC1 equ 0FE6h ;# ">
+"17167
+[; <" INDF1 equ 0FE7h ;# ">
+"17187
+[; <" WREG equ 0FE8h ;# ">
+"17207
+[; <" FSR0 equ 0FE9h ;# ">
+"17214
+[; <" FSR0L equ 0FE9h ;# ">
+"17234
+[; <" FSR0H equ 0FEAh ;# ">
+"17241
+[; <" PLUSW0 equ 0FEBh ;# ">
+"17261
+[; <" PREINC0 equ 0FECh ;# ">
+"17281
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"17301
+[; <" POSTINC0 equ 0FEEh ;# ">
+"17321
+[; <" INDF0 equ 0FEFh ;# ">
+"17341
+[; <" INTCON3 equ 0FF0h ;# ">
+"17453
+[; <" INTCON2 equ 0FF1h ;# ">
+"17546
+[; <" INTCON equ 0FF2h ;# ">
+"17663
+[; <" PROD equ 0FF3h ;# ">
+"17670
+[; <" PRODL equ 0FF3h ;# ">
+"17690
+[; <" PRODH equ 0FF4h ;# ">
+"17710
+[; <" TABLAT equ 0FF5h ;# ">
+"17732
+[; <" TBLPTR equ 0FF6h ;# ">
+"17739
+[; <" TBLPTRL equ 0FF6h ;# ">
+"17759
+[; <" TBLPTRH equ 0FF7h ;# ">
+"17779
+[; <" TBLPTRU equ 0FF8h ;# ">
+"17788
+[; <" PCLAT equ 0FF9h ;# ">
+"17795
+[; <" PC equ 0FF9h ;# ">
+"17802
+[; <" PCL equ 0FF9h ;# ">
+"17822
+[; <" PCLATH equ 0FFAh ;# ">
+"17842
+[; <" PCLATU equ 0FFBh ;# ">
+"17849
+[; <" STKPTR equ 0FFCh ;# ">
+"17923
+[; <" TOS equ 0FFDh ;# ">
+"17930
+[; <" TOSL equ 0FFDh ;# ">
+"17950
+[; <" TOSH equ 0FFEh ;# ">
+"17970
+[; <" TOSU equ 0FFFh ;# ">
+"90 C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c
+[p x FOSC=HS1   PWRTEN=ON   BOREN=ON   BORV=2   PLLCFG=OFF ]
+"91
+[p x WDTEN=OFF   CCP2MX=PORTC   XINST=OFF ]
+"104
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 104: short buttonStack[4];
+[v _buttonStack `s ~T0 @X0 -> 4 `i e ]
+"105
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 105: char maxSize = 4;
+[v _maxSize `uc ~T0 @X0 1 e ]
+[i _maxSize
+-> -> 4 `i `uc
+]
+"106
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 106: signed char top = -1;
+[v _top `c ~T0 @X0 1 e ]
+[i _top
+-> -U -> 1 `i `c
+]
+"107
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 107: char readyToSend = 0;
+[v _readyToSend `uc ~T0 @X0 1 e ]
+[i _readyToSend
+-> -> 0 `i `uc
+]
+"109
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 109: char count = 0;
+[v _count `uc ~T0 @X0 1 e ]
+[i _count
+-> -> 0 `i `uc
+]
+"110
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 110: const unsigned short inputDelay = 40000;
+[v _inputDelay `Cus ~T0 @X0 1 e ]
+[i _inputDelay
+-> -> 40000 `l `us
+]
+"114
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 114: signed char rpgDir;
+[v _rpgDir `c ~T0 @X0 1 e ]
+"115
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 115: char oldPortD = 0;
+[v _oldPortD `uc ~T0 @X0 1 e ]
+[i _oldPortD
+-> -> 0 `i `uc
+]
+"116
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 116: char rpgTemp;
+[v _rpgTemp `uc ~T0 @X0 1 e ]
+"121
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 121: char temporary = 0;
+[v _temporary `uc ~T0 @X0 1 e ]
+[i _temporary
+-> -> 0 `i `uc
+]
+"122
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 122: char buffer[10];
+[v _buffer `uc ~T0 @X0 -> 10 `i e ]
+"123
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 123: char byteToSend = 0;
+[v _byteToSend `uc ~T0 @X0 1 e ]
+[i _byteToSend
+-> -> 0 `i `uc
+]
+"125
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 125: char keypressList[10];
+[v _keypressList `uc ~T0 @X0 -> 10 `i e ]
+"126
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 126: char keyCodes[5] = {0xA8, 0xAB, 0xAC, 0xAE, 0x00};
+[v _keyCodes `uc ~T0 @X0 -> 5 `i e ]
+[i _keyCodes
+:U ..
+-> -> 168 `i `uc
+-> -> 171 `i `uc
+-> -> 172 `i `uc
+-> -> 174 `i `uc
+-> -> 0 `i `uc
+..
+]
+"128
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 128: char volumeControls[3] = {0xA9, 0xAA, 0x00};
+[v _volumeControls `uc ~T0 @X0 -> 3 `i e ]
+[i _volumeControls
+:U ..
+-> -> 169 `i `uc
+-> -> 170 `i `uc
+-> -> 0 `i `uc
+..
+]
+"129
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 129: char sendI = 0;
+[v _sendI `uc ~T0 @X0 1 e ]
+[i _sendI
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"151
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 151: void main() {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"152
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 152:     Initial();
+[e ( _Initial ..  ]
+"153
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 153:     TXREG1 = 0xA8;
+[e = _TXREG1 -> -> 168 `i `uc ]
+"160
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 160: }
+[e :UE 831 ]
+}
+"172
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 172: void Initial() {
+[v _Initial `(v ~T0 @X0 1 ef ]
+{
+[e :U _Initial ]
+[f ]
+"176
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 176:     TRISA = 0b00101001;
+[e = _TRISA -> -> 41 `i `uc ]
+"177
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 177:     LATA = 0;
+[e = _LATA -> -> 0 `i `uc ]
+"178
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 178:     TRISD = 0b00001111;
+[e = _TRISD -> -> 15 `i `uc ]
+"179
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 179:     LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"180
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 180:     TRISC = 0b10010011;
+[e = _TRISC -> -> 147 `i `uc ]
+"181
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 181:     LATC = 0;
+[e = _LATC -> -> 0 `i `uc ]
+"182
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 182:     TRISE = 0b00000000;
+[e = _TRISE -> -> 0 `i `uc ]
+"183
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 183:     LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+"189
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 189:     T1CON = 0b00000010;
+[e = _T1CON -> -> 2 `i `uc ]
+"196
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 196:     CCP1CON = 0b00001010;
+[e = _CCP1CON -> -> 10 `i `uc ]
+"197
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 197:     CCPTMRS0bits.C1TSEL = 0;
+[e = . . _CCPTMRS0bits 0 0 -> -> 0 `i `uc ]
+"198
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 198:     CCPR1 = inputDelay;
+[e = _CCPR1 _inputDelay ]
+"203
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 203:     TXSTA1 = 0b00100000;
+[e = _TXSTA1 -> -> 32 `i `uc ]
+"204
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 204:     RCSTA1 = 0b00010000;
+[e = _RCSTA1 -> -> 16 `i `uc ]
+"205
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 205:     BAUDCON1 = 0b01000000;
+[e = _BAUDCON1 -> -> 64 `i `uc ]
+"206
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 206:     SPBRG1 = 12;
+[e = _SPBRG1 -> -> 12 `i `uc ]
+"211
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 211:     RCONbits.IPEN = 1;
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+"212
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 212:     INTCONbits.GIEL = 1;
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+"213
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 213:     INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"216
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 216:     IPR1bits.TMR1IP = 0;
+[e = . . _IPR1bits 0 0 -> -> 0 `i `uc ]
+"217
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 217:     PIE1bits.TMR1IE = 1;
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+"218
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 218:     PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"221
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 221:     IPR3bits.CCP1IP = 0;
+[e = . . _IPR3bits 0 1 -> -> 0 `i `uc ]
+"222
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 222:     PIE3bits.CCP1IE = 1;
+[e = . . _PIE3bits 0 1 -> -> 1 `i `uc ]
+"223
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 223:     PIR3bits.CCP1IF = 0;
+[e = . . _PIR3bits 0 1 -> -> 0 `i `uc ]
+"226
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 226:     IPR1bits.RC1IP = 1;
+[e = . . _IPR1bits 0 5 -> -> 1 `i `uc ]
+"227
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 227:     PIE1bits.RC1IE = 0;
+[e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
+"228
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 228:     PIR1bits.RC1IF = 0;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+"229
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 229:     IPR1bits.TX1IP = 1;
+[e = . . _IPR1bits 0 4 -> -> 1 `i `uc ]
+"230
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 230:     PIE1bits.TX1IE = 0;
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"237
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 237:     RCSTA1bits.SPEN = 1;
+[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
+"243
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 243: }
+[e :UE 832 ]
+}
+"256
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 256: void pollRPG() {
+[v _pollRPG `(v ~T0 @X0 1 ef ]
+{
+[e :U _pollRPG ]
+[f ]
+"257
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 257:     rpgDir = 0;
+[e = _rpgDir -> -> 0 `i `c ]
+"258
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 258:     rpgTemp = (PORTD ^ oldPortD) & 0x03;
+[e = _rpgTemp -> & ^ -> _PORTD `i -> _oldPortD `i -> 3 `i `uc ]
+"259
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 259:     if(rpgTemp == 0)
+[e $ ! == -> _rpgTemp `i -> 0 `i 834  ]
+"260
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 260:         return;
+[e $UE 833  ]
+[e :U 834 ]
+"261
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 261:     switch(oldPortD)
+[e $U 836  ]
+"262
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 262:     {
+{
+"263
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 263:         case 0:
+[e :U 837 ]
+"264
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 264:             oldPortD = 2;
+[e = _oldPortD -> -> 2 `i `uc ]
+"265
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 265:             break;
+[e $U 835  ]
+"266
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 266:         case 2:
+[e :U 838 ]
+"267
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 267:             oldPortD = 3;
+[e = _oldPortD -> -> 3 `i `uc ]
+"268
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 268:             break;
+[e $U 835  ]
+"269
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 269:         case 3:
+[e :U 839 ]
+"270
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 270:             oldPortD = 1;
+[e = _oldPortD -> -> 1 `i `uc ]
+"271
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 271:             break;
+[e $U 835  ]
+"272
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 272:         case 1:
+[e :U 840 ]
+"273
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 273:             oldPortD = 0;
+[e = _oldPortD -> -> 0 `i `uc ]
+"274
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 274:             break;
+[e $U 835  ]
+"275
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 275:     }
+}
+[e $U 835  ]
+[e :U 836 ]
+[e [\ -> _oldPortD `i , $ -> 0 `i 837
+ , $ -> 2 `i 838
+ , $ -> 3 `i 839
+ , $ -> 1 `i 840
+ 835 ]
+[e :U 835 ]
+"276
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 276:     rpgTemp = oldPortD ^ rpgTemp;
+[e = _rpgTemp -> ^ -> _oldPortD `i -> _rpgTemp `i `uc ]
+"277
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 277:     if(rpgTemp == 0)
+[e $ ! == -> _rpgTemp `i -> 0 `i 841  ]
+"278
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 278:     {
+{
+"279
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 279:         count++;
+[e ++ _count -> -> 1 `i `uc ]
+"280
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 280:     }
+}
+[e $U 842  ]
+"281
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 281:     else
+[e :U 841 ]
+"282
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 282:     {
+{
+"283
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 283:         count--;
+[e -- _count -> -> 1 `i `uc ]
+"284
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 284:     }
+}
+[e :U 842 ]
+"285
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 285:     oldPortD = rpgTemp;
+[e = _oldPortD _rpgTemp ]
+"286
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 286: }
+[e :UE 833 ]
+}
+"297
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 297: void pollMatrix() {
+[v _pollMatrix `(v ~T0 @X0 1 ef ]
+{
+[e :U _pollMatrix ]
+[f ]
+"298
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 298:     if((PORTD & 0b11110000) == 0)
+[e $ ! == & -> _PORTD `i -> 240 `i -> 0 `i 844  ]
+"299
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 299:         return;
+[e $UE 843  ]
+[e :U 844 ]
+"301
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 301: }
+[e :UE 843 ]
+}
+[v $root$_HiPriISR `(v ~T0 @X0 0 e ]
+"317
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 317: void __attribute__((picinterrupt(("")))) HiPriISR(void) {
+[v _HiPriISR `(v ~T97 @X0 1 ef ]
+{
+[e :U _HiPriISR ]
+[f ]
+"318
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 318:     while(1)
+[e :U 847 ]
+"319
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 319:     {
+{
+"320
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 320:         if(PIR1bits.RC1IF)
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 849  ]
+"321
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 321:         {
+{
+"323
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 323:             continue;
+[e $U 846  ]
+"324
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 324:         }
+}
+[e :U 849 ]
+"326
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 326:         if(PIR1bits.TX1IF && PIE1bits.TX1IE)
+[e $ ! && != -> . . _PIR1bits 0 4 `i -> 0 `i != -> . . _PIE1bits 0 4 `i -> 0 `i 850  ]
+"327
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 327:         {
+{
+"329
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 329:             continue;
+[e $U 846  ]
+"330
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 330:         }
+}
+[e :U 850 ]
+"331
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 331:         break;
+[e $U 848  ]
+"332
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 332:     }
+}
+[e :U 846 ]
+[e $U 847  ]
+[e :U 848 ]
+"333
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 333: }
+[e :UE 845 ]
+}
+[v $root$_LoPriISR `(v ~T0 @X0 0 e ]
+"344
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 344: void __attribute__((picinterrupt(("low_priority")))) LoPriISR(void)
+[v _LoPriISR `(v ~T98 @X0 1 ef ]
+"345
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 345: {
+{
+[e :U _LoPriISR ]
+[f ]
+"346
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 346:     while(1) {
+[e :U 853 ]
+{
+"347
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 347:         if(PIR3bits.CCP1IF)
+[e $ ! != -> . . _PIR3bits 0 1 `i -> 0 `i 855  ]
+"348
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 348:         {
+{
+"349
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 349:             CCP1Handler();
+[e ( _CCP1Handler ..  ]
+"350
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 350:             continue;
+[e $U 852  ]
+"351
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 351:         }
+}
+[e :U 855 ]
+"352
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 352:         if(PIR1bits.TMR1IF)
+[e $ ! != -> . . _PIR1bits 0 0 `i -> 0 `i 856  ]
+"353
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 353:         {
+{
+"354
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 354:             TMR1Handler();
+[e ( _TMR1Handler ..  ]
+"355
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 355:             continue;
+[e $U 852  ]
+"356
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 356:         }
+}
+[e :U 856 ]
+"357
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 357:         break;
+[e $U 854  ]
+"358
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 358:     }
+}
+[e :U 852 ]
+[e $U 853  ]
+[e :U 854 ]
+"359
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 359: }
+[e :UE 851 ]
+}
+"373
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 373: void CCP1Handler() {
+[v _CCP1Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _CCP1Handler ]
+[f ]
+"376
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 376:     if(PIR1bits.TMR1IF)
+[e $ ! != -> . . _PIR1bits 0 0 `i -> 0 `i 858  ]
+"377
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 377:         PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[e :U 858 ]
+"379
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 379:     T1CONbits.TMR1ON = 0;
+[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
+"380
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 380:     TMR1 = 0;
+[e = _TMR1 -> -> 0 `i `us ]
+"382
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 382:     readyToSend = readyToSend | 0b00000100;
+[e = _readyToSend -> | -> _readyToSend `i -> 4 `i `uc ]
+"384
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 384:     PIR3bits.CCP1IF = 0;
+[e = . . _PIR3bits 0 1 -> -> 0 `i `uc ]
+"385
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 385: }
+[e :UE 857 ]
+}
+"395
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 395: void TMR1Handler() {
+[v _TMR1Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _TMR1Handler ]
+[f ]
+"397
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 397:     PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"398
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 398: }
+[e :UE 859 ]
+}
