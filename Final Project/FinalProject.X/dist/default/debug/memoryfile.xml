@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\FinalProject.X.production.hex">
+  <executable name="dist/default/debug\FinalProject.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>131072</length>
-      <used>882</used>
-      <free>130190</free>
+      <used>1034</used>
+      <free>130038</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

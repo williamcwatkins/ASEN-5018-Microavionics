@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Mon Dec 13 04:03:48 2021
+                                                                                               Mon Dec 13 09:53:09 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F87K22
@@ -9,1082 +9,1632 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
      3                           	pagewidth 120
      4                           	opt	flic
      5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
-     6                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	nvCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
      7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
      8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
      9                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
     10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
     11                           	psect	text0,global,reloc=2,class=CODE,delta=1
     12                           	psect	text1,global,reloc=2,class=CODE,delta=1
-    13                           	psect	intcodelo,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
     14                           	psect	text3,global,reloc=2,class=CODE,delta=1
     15                           	psect	text4,global,reloc=2,class=CODE,delta=1
-    16                           	psect	intcode,global,reloc=2,class=CODE,delta=1
-    17                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
-    18                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    19                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    20                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    21                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
-    22                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
-    23  0000                     
-    24                           ; Version 2.20
-    25                           ; Generated 05/05/2020 GMT
-    26                           ; 
-    27                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    28                           ; All rights reserved.
-    29                           ; 
-    30                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    21                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    22                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    23                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    24  0000                     
+    25                           ; Version 2.20
+    26                           ; Generated 05/05/2020 GMT
+    27                           ; 
+    28                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    29                           ; All rights reserved.
+    30                           ; 
+    31                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    31                           ; 
-    32                           ; Redistribution and use in source and binary forms, with or without modification, are
-    33                           ; permitted provided that the following conditions are met:
-    34                           ; 
-    35                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    32                           ; 
+    33                           ; Redistribution and use in source and binary forms, with or without modification, are
+    34                           ; permitted provided that the following conditions are met:
+    35                           ; 
+    36                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    36                           ;        conditions and the following disclaimer.
-    37                           ; 
-    38                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    37                           ;        conditions and the following disclaimer.
+    38                           ; 
+    39                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    39                           ;        of conditions and the following disclaimer in the documentation and/or other
-    40                           ;        materials provided with the distribution.
-    41                           ; 
-    42                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    40                           ;        of conditions and the following disclaimer in the documentation and/or other
+    41                           ;        materials provided with the distribution.
+    42                           ; 
+    43                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    43                           ;        software without specific prior written permission.
-    44                           ; 
-    45                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    46                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    44                           ;        software without specific prior written permission.
+    45                           ; 
+    46                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    47                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    47                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    48                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    48                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    49                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    50                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    49                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    50                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    51                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    51                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    52                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    52                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    53                           ; 
+    53                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     54                           ; 
-    55                           ; Code-generator required, PIC18F87K22 Definitions
-    56                           ; 
-    57                           ; SFR Addresses
-    58  0000                     
-    59                           	psect	idataCOMRAM
-    60  001104                     __pidataCOMRAM:
-    61                           	callstack 0
-    62                           
-    63                           ;initializer for _keyCodes
-    64  001104  A8                 	db	168
-    65  001105  AB                 	db	171
-    66  001106  AC                 	db	172
-    67  001107  AE                 	db	174
-    68  001108  00                 	db	0
-    69                           
-    70                           ;initializer for _volumeControls
-    71  001109  A9                 	db	169
-    72  00110A  AA                 	db	170
-    73  00110B  00                 	db	0
-    74                           
-    75                           ;initializer for _top
-    76  00110C  FF                 	db	255
-    77                           
-    78                           ;initializer for _maxSize
-    79  00110D  04                 	db	4
-    80                           
-    81                           	psect	smallconst
-    82  001000                     __psmallconst:
-    83                           	callstack 0
-    84  001000  00                 	db	0
-    85  001001  9C40               	dw	40000
-    86  001003                     __end_of_inputDelay:
-    87                           	callstack 0
-    88  0000                     _CCPTMRS0bits	set	3885
-    89  0000                     _TMR1	set	4046
-    90  0000                     _CCPR1	set	4028
-    91  0000                     _T1CONbits	set	4045
-    92  0000                     _PORTD	set	3971
-    93  0000                     _RCSTA1bits	set	4011
-    94  0000                     _PIR3bits	set	4004
-    95  0000                     _PIE3bits	set	4003
-    96  0000                     _IPR3bits	set	4005
-    97  0000                     _PIR1bits	set	3998
-    98  0000                     _PIE1bits	set	3997
-    99  0000                     _IPR1bits	set	3999
-   100  0000                     _INTCONbits	set	4082
-   101  0000                     _RCONbits	set	4048
-   102  0000                     _SPBRG1	set	4015
-   103  0000                     _BAUDCON1	set	3941
-   104  0000                     _RCSTA1	set	4011
-   105  0000                     _TXSTA1	set	4012
-   106  0000                     _CCP1CON	set	4027
-   107  0000                     _T1CON	set	4045
-   108  0000                     _LATEbits	set	3981
-   109  0000                     _TRISE	set	3990
-   110  0000                     _LATC	set	3979
-   111  0000                     _TRISC	set	3988
-   112  0000                     _LATD	set	3980
-   113  0000                     _TRISD	set	3989
-   114  0000                     _LATA	set	3977
-   115  0000                     _TRISA	set	3986
-   116  0000                     _TXREG1	set	4013
-   117  001003  00                 	db	0	; dummy byte at the end
-   118  0000                     
-   119                           ; #config settings
-   120                           
-   121                           	psect	cinit
-   122  001068                     __pcinit:
-   123                           	callstack 0
-   124  001068                     start_initialization:
-   125                           	callstack 0
-   126  001068                     __initialization:
-   127                           	callstack 0
-   128                           
-   129                           ; Initialize objects allocated to COMRAM (10 bytes)
-   130                           ; load TBLPTR registers with __pidataCOMRAM
-   131  001068  0E04               	movlw	low __pidataCOMRAM
-   132  00106A  6EF6               	movwf	tblptrl,c
-   133  00106C  0E11               	movlw	high __pidataCOMRAM
-   134  00106E  6EF7               	movwf	tblptrh,c
-   135  001070  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
-   136  001072  6EF8               	movwf	tblptru,c
-   137  001074  EE00  F025         	lfsr	0,__pdataCOMRAM
-   138  001078  EE10 F00A          	lfsr	1,10
-   139  00107C                     copy_data0:
-   140  00107C  0009               	tblrd		*+
-   141  00107E  CFF5 FFEE          	movff	tablat,postinc0
-   142  001082  50E5               	movf	postdec1,w,c
-   143  001084  50E1               	movf	fsr1l,w,c
-   144  001086  E1FA               	bnz	copy_data0
-   145                           
-   146                           ; Clear objects allocated to COMRAM (36 bytes)
-   147  001088  EE00  F001         	lfsr	0,__pbssCOMRAM
-   148  00108C  0E24               	movlw	36
-   149  00108E                     clear_0:
-   150  00108E  6AEE               	clrf	postinc0,c
-   151  001090  06E8               	decf	wreg,f,c
-   152  001092  E1FD               	bnz	clear_0
-   153  001094                     end_of_initialization:
-   154                           	callstack 0
-   155  001094                     __end_of__initialization:
-   156                           	callstack 0
-   157  001094  9032               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   158  001096  9232               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   159  001098  0100               	movlb	0
-   160  00109A  EF7C  F008         	goto	_main	;jump to C main() function
-   161                           
-   162                           	psect	bssCOMRAM
-   163  000001                     __pbssCOMRAM:
-   164                           	callstack 0
-   165  000001                     _keypressList:
+    55                           ; 
+    56                           ; Code-generator required, PIC18F87K22 Definitions
+    57                           ; 
+    58                           ; SFR Addresses
+    59  0000                     
+    60                           	psect	idataCOMRAM
+    61  00036C                     __pidataCOMRAM:
+    62                           	callstack 0
+    63                           
+    64                           ;initializer for _keyCodes
+    65  00036C  A8                 	db	168
+    66  00036D  AB                 	db	171
+    67  00036E  AC                 	db	172
+    68  00036F  AE                 	db	174
+    69  000370  00                 	db	0
+    70                           
+    71                           ;initializer for _volumeControls
+    72  000371  A9                 	db	169
+    73  000372  AA                 	db	170
+    74  000373  00                 	db	0
+    75                           
+    76                           ;initializer for _top
+    77  000374  FF                 	db	255
+    78                           
+    79                           ;initializer for _maxSize
+    80  000375  03                 	db	3
+    81                           
+    82                           	psect	nvCOMRAM
+    83  00003A                     __pnvCOMRAM:
+    84                           	callstack 0
+    85  00003A                     _rpgTemp:
+    86                           	callstack 0
+    87  00003A                     	ds	1
+    88  0000                     _TXREG1	set	4013
+    89  0000                     _PORTD	set	3971
+    90  0000                     _RCSTA1bits	set	4011
+    91  0000                     _PIR3bits	set	4004
+    92  0000                     _PIE3bits	set	4003
+    93  0000                     _IPR3bits	set	4005
+    94  0000                     _PIR1bits	set	3998
+    95  0000                     _PIE1bits	set	3997
+    96  0000                     _IPR1bits	set	3999
+    97  0000                     _INTCONbits	set	4082
+    98  0000                     _RCONbits	set	4048
+    99  0000                     _SPBRG1	set	4015
+   100  0000                     _BAUDCON1	set	3941
+   101  0000                     _RCSTA1	set	4011
+   102  0000                     _TXSTA1	set	4012
+   103  0000                     _T1CON	set	4045
+   104  0000                     _LATEbits	set	3981
+   105  0000                     _TRISE	set	3990
+   106  0000                     _LATC	set	3979
+   107  0000                     _TRISC	set	3988
+   108  0000                     _LATD	set	3980
+   109  0000                     _TRISD	set	3989
+   110  0000                     _LATA	set	3977
+   111  0000                     _TRISA	set	3986
+   112                           
+   113                           ; #config settings
+   114                           
+   115                           	psect	cinit
+   116  000322                     __pcinit:
+   117                           	callstack 0
+   118  000322                     start_initialization:
+   119                           	callstack 0
+   120  000322                     __initialization:
+   121                           	callstack 0
+   122                           
+   123                           ; Initialize objects allocated to COMRAM (10 bytes)
+   124                           ; load TBLPTR registers with __pidataCOMRAM
+   125  000322  0E6C               	movlw	low __pidataCOMRAM
+   126  000324  6EF6               	movwf	tblptrl,c
+   127  000326  0E03               	movlw	high __pidataCOMRAM
+   128  000328  6EF7               	movwf	tblptrh,c
+   129  00032A  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   130  00032C  6EF8               	movwf	tblptru,c
+   131  00032E  EE00  F02A         	lfsr	0,__pdataCOMRAM
+   132  000332  EE10 F00A          	lfsr	1,10
+   133  000336                     copy_data0:
+   134  000336  0009               	tblrd		*+
+   135  000338  CFF5 FFEE          	movff	tablat,postinc0
+   136  00033C  50E5               	movf	postdec1,w,c
+   137  00033E  50E1               	movf	fsr1l,w,c
+   138  000340  E1FA               	bnz	copy_data0
+   139                           
+   140                           ; Clear objects allocated to COMRAM (41 bytes)
+   141  000342  EE00  F001         	lfsr	0,__pbssCOMRAM
+   142  000346  0E29               	movlw	41
+   143  000348                     clear_0:
+   144  000348  6AEE               	clrf	postinc0,c
+   145  00034A  06E8               	decf	wreg,f,c
+   146  00034C  E1FD               	bnz	clear_0
+   147  00034E                     end_of_initialization:
+   148                           	callstack 0
+   149  00034E                     __end_of__initialization:
+   150                           	callstack 0
+   151  00034E  903B               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   152  000350  923B               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   153  000352  0100               	movlb	0
+   154  000354  EFAC  F001         	goto	_main	;jump to C main() function
+   155                           
+   156                           	psect	bssCOMRAM
+   157  000001                     __pbssCOMRAM:
+   158                           	callstack 0
+   159  000001                     _keypressList:
+   160                           	callstack 0
+   161  000001                     	ds	10
+   162  00000B                     _buffer:
+   163                           	callstack 0
+   164  00000B                     	ds	10
+   165  000015                     _buttonStack:
    166                           	callstack 0
-   167  000001                     	ds	10
-   168  00000B                     _buffer:
+   167  000015                     	ds	10
+   168  00001F                     _debouncedVar:
    169                           	callstack 0
-   170  00000B                     	ds	10
-   171  000015                     _buttonStack:
+   170  00001F                     	ds	2
+   171  000021                     _sendI:
    172                           	callstack 0
-   173  000015                     	ds	8
-   174  00001D                     _sendI:
+   173  000021                     	ds	1
+   174  000022                     _byteToSend:
    175                           	callstack 0
-   176  00001D                     	ds	1
-   177  00001E                     _byteToSend:
+   176  000022                     	ds	1
+   177  000023                     _temporary:
    178                           	callstack 0
-   179  00001E                     	ds	1
-   180  00001F                     _temporary:
+   179  000023                     	ds	1
+   180  000024                     _oldPortD:
    181                           	callstack 0
-   182  00001F                     	ds	1
-   183  000020                     _rpgTemp:
+   182  000024                     	ds	1
+   183  000025                     _rpgDir:
    184                           	callstack 0
-   185  000020                     	ds	1
-   186  000021                     _oldPortD:
+   185  000025                     	ds	1
+   186  000026                     _byteToSave:
    187                           	callstack 0
-   188  000021                     	ds	1
-   189  000022                     _rpgDir:
+   188  000026                     	ds	1
+   189  000027                     _buttonPress:
    190                           	callstack 0
-   191  000022                     	ds	1
-   192  000023                     _count:
+   191  000027                     	ds	1
+   192  000028                     _keypress:
    193                           	callstack 0
-   194  000023                     	ds	1
-   195  000024                     _readyToSend:
+   194  000028                     	ds	1
+   195  000029                     _readyToSend:
    196                           	callstack 0
-   197  000024                     	ds	1
+   197  000029                     	ds	1
    198                           
    199                           	psect	dataCOMRAM
-   200  000025                     __pdataCOMRAM:
+   200  00002A                     __pdataCOMRAM:
    201                           	callstack 0
-   202  000025                     _keyCodes:
+   202  00002A                     _keyCodes:
    203                           	callstack 0
-   204  000025                     	ds	5
-   205  00002A                     _volumeControls:
+   204  00002A                     	ds	5
+   205  00002F                     _volumeControls:
    206                           	callstack 0
-   207  00002A                     	ds	3
-   208  00002D                     _top:
+   207  00002F                     	ds	3
+   208  000032                     _top:
    209                           	callstack 0
-   210  00002D                     	ds	1
-   211  00002E                     _maxSize:
+   210  000032                     	ds	1
+   211  000033                     _maxSize:
    212                           	callstack 0
-   213  00002E                     	ds	1
+   213  000033                     	ds	1
    214                           
    215                           	psect	cstackCOMRAM
-   216  00002F                     __pcstackCOMRAM:
+   216  000034                     __pcstackCOMRAM:
    217                           	callstack 0
-   218  00002F                     ??_LoPriISR:
+   218  000034                     ??i2_sendData:
    219                           
    220                           ; 1 bytes @ 0x0
-   221  00002F                     	ds	3
-   222  000032                     
-   223                           ; 1 bytes @ 0x3
-   224 ;;
-   225 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   226 ;;
-   227 ;; *************** function _main *****************
-   228 ;; Defined at:
-   229 ;;		line 151 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+   221  000034                     	ds	2
+   222  000036                     ??_pollRPG:
+   223  000036                     ??_sendData:
+   224  000036                     ??_debounceRoutine:
+   225  000036                     
+   226                           ; 1 bytes @ 0x2
+   227  000036                     	ds	2
+   228  000038                     ??_pollMatrix:
+   229                           
+   230                           ; 1 bytes @ 0x4
+   231  000038                     	ds	2
+   232  00003A                     
+   233                           ; 1 bytes @ 0x6
+   234 ;;
+   235 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   236 ;;
+   237 ;; *************** function _main *****************
+   238 ;; Defined at:
+   239 ;;		line 132 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
       +in.c"
-   230 ;; Parameters:    Size  Location     Type
-   231 ;;		None
-   232 ;; Auto vars:     Size  Location     Type
-   233 ;;		None
-   234 ;; Return value:  Size  Location     Type
-   235 ;;                  1    wreg      void 
-   236 ;; Registers used:
-   237 ;;		wreg, status,2, cstack
-   238 ;; Tracked objects:
-   239 ;;		On entry : 0/0
-   240 ;;		On exit  : 0/0
-   241 ;;		Unchanged: 0/0
-   242 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   240 ;; Parameters:    Size  Location     Type
+   241 ;;		None
+   242 ;; Auto vars:     Size  Location     Type
+   243 ;;		None
+   244 ;; Return value:  Size  Location     Type
+   245 ;;                  1    wreg      void 
+   246 ;; Registers used:
+   247 ;;		wreg, status,2, status,0, cstack
+   248 ;; Tracked objects:
+   249 ;;		On entry : 0/0
+   250 ;;		On exit  : 0/0
+   251 ;;		Unchanged: 0/0
+   252 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   243 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   253 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   244 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   254 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   245 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   255 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   246 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   256 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   247 ;;Total ram usage:        0 bytes
-   248 ;; Hardware stack levels required when called: 4
-   249 ;; This function calls:
-   250 ;;		_Initial
-   251 ;; This function is called by:
-   252 ;;		Startup code after reset
-   253 ;; This function uses a non-reentrant model
-   254 ;;
-   255                           
-   256                           	psect	text0
-   257  0010F8                     __ptext0:
-   258                           	callstack 0
-   259  0010F8                     _main:
-   260                           	callstack 27
-   261  0010F8                     
-   262                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 152:     Initial();
-   263  0010F8  EC02  F008         	call	_Initial	;wreg free
-   264  0010FC                     
-   265                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 153:     TXREG1 = 0xA8;
-   266  0010FC  0EA8               	movlw	168
-   267  0010FE  6EAD               	movwf	173,c	;volatile
-   268  001100  EF31  F000         	goto	start
-   269  001104                     __end_of_main:
-   270                           	callstack 0
-   271                           
-   272 ;; *************** function _Initial *****************
-   273 ;; Defined at:
-   274 ;;		line 172 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+   257 ;;Total ram usage:        0 bytes
+   258 ;; Hardware stack levels required when called: 4
+   259 ;; This function calls:
+   260 ;;		_Initial
+   261 ;;		_pollMatrix
+   262 ;;		_pollRPG
+   263 ;;		_sendData
+   264 ;; This function is called by:
+   265 ;;		Startup code after reset
+   266 ;; This function uses a non-reentrant model
+   267 ;;
+   268                           
+   269                           	psect	text0
+   270  000358                     __ptext0:
+   271                           	callstack 0
+   272  000358                     _main:
+   273                           	callstack 27
+   274  000358                     
+   275                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 133:     Initial();
+   276  000358  EC6B  F001         	call	_Initial	;wreg free
+   277  00035C                     l988:
+   278                           
+   279                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 135:         pollRPG();
+   280  00035C  EC1B  F000         	call	_pollRPG	;wreg free
+   281  000360                     
+   282                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 136:         pollMatrix();
+   283  000360  ECF9  F000         	call	_pollMatrix	;wreg free
+   284                           
+   285                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 137:         if(readyToSend == 1)
+   286  000364  EFAE  F001         	goto	l988
+   287  000368  EF19  F000         	goto	start
+   288  00036C                     __end_of_main:
+   289                           	callstack 0
+   290                           
+   291 ;; *************** function _sendData *****************
+   292 ;; Defined at:
+   293 ;;		line 364 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
       +in.c"
-   275 ;; Parameters:    Size  Location     Type
-   276 ;;		None
-   277 ;; Auto vars:     Size  Location     Type
-   278 ;;		None
-   279 ;; Return value:  Size  Location     Type
-   280 ;;                  1    wreg      void 
-   281 ;; Registers used:
-   282 ;;		wreg, status,2
-   283 ;; Tracked objects:
-   284 ;;		On entry : 0/0
-   285 ;;		On exit  : 0/0
-   286 ;;		Unchanged: 0/0
-   287 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   294 ;; Parameters:    Size  Location     Type
+   295 ;;		None
+   296 ;; Auto vars:     Size  Location     Type
+   297 ;;		None
+   298 ;; Return value:  Size  Location     Type
+   299 ;;                  1    wreg      void 
+   300 ;; Registers used:
+   301 ;;		wreg, status,2, status,0
+   302 ;; Tracked objects:
+   303 ;;		On entry : 0/0
+   304 ;;		On exit  : 0/0
+   305 ;;		Unchanged: 0/0
+   306 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   288 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   307 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   289 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   308 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   290 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   309 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   291 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   310 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   292 ;;Total ram usage:        0 bytes
-   293 ;; Hardware stack levels used: 1
-   294 ;; Hardware stack levels required when called: 3
-   295 ;; This function calls:
-   296 ;;		Nothing
-   297 ;; This function is called by:
-   298 ;;		_main
-   299 ;; This function uses a non-reentrant model
-   300 ;;
-   301                           
-   302                           	psect	text1
-   303  001004                     __ptext1:
-   304                           	callstack 0
-   305  001004                     _Initial:
-   306                           	callstack 27
-   307  001004                     
-   308                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 176:     TRISA = 0b00101001;
-   309  001004  0E29               	movlw	41
-   310  001006  6E92               	movwf	146,c	;volatile
-   311                           
-   312                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 177:     LATA = 0;
-   313  001008  0E00               	movlw	0
-   314  00100A  6E89               	movwf	137,c	;volatile
-   315                           
-   316                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 178:     TRISD = 0b00001111;
-   317  00100C  0E0F               	movlw	15
-   318  00100E  6E95               	movwf	149,c	;volatile
-   319                           
-   320                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 179:     LATD = 0;
-   321  001010  0E00               	movlw	0
-   322  001012  6E8C               	movwf	140,c	;volatile
-   323                           
-   324                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 180:     TRISC = 0b10010011;
-   325  001014  0E93               	movlw	147
-   326  001016  6E94               	movwf	148,c	;volatile
-   327                           
-   328                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 181:     LATC = 0;
-   329  001018  0E00               	movlw	0
-   330  00101A  6E8B               	movwf	139,c	;volatile
-   331                           
-   332                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 182:     TRISE = 0b00000000;
-   333  00101C  0E00               	movlw	0
-   334  00101E  6E96               	movwf	150,c	;volatile
-   335  001020                     
+   311 ;;Total ram usage:        2 bytes
+   312 ;; Hardware stack levels used: 1
+   313 ;; Hardware stack levels required when called: 2
+   314 ;; This function calls:
+   315 ;;		Nothing
+   316 ;; This function is called by:
+   317 ;;		_main
+   318 ;; This function uses a non-reentrant model
+   319 ;;
+   320                           
+   321                           	psect	text1
+   322  0000D6                     __ptext1:
+   323                           	callstack 0
+   324  0000D6                     _sendData:
+   325                           	callstack 28
+   326  0000D6                     
+   327                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 365:     if(keypress == 1)
+   328  0000D6  0428               	decf	_keypress^0,w,c
+   329  0000D8  A4D8               	btfss	status,2,c
+   330  0000DA  EF71  F000         	goto	u61
+   331  0000DE  EF73  F000         	goto	u60
+   332  0000E2                     u61:
+   333  0000E2  EF7A  F000         	goto	l932
+   334  0000E6                     u60:
+   335  0000E6                     
    336                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 183:     LATEbits.LATE0 = 1;
-   337  001020  808D               	bsf	141,0,c	;volatile
+      +                          alProjectMain.c: 366:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 367:         TXREG1 = byteToSend;
+   337  0000E6  C022  FFAD         	movff	_byteToSend,4013	;volatile
    338                           
    339                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 189:     T1CON = 0b00000010;
-   340  001022  0E02               	movlw	2
-   341  001024  6ECD               	movwf	205,c	;volatile
-   342                           
-   343                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 196:     CCP1CON = 0b00001010;
-   344  001026  0E0A               	movlw	10
-   345  001028  6EBB               	movwf	187,c	;volatile
-   346                           
-   347                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 197:     CCPTMRS0bits.C1TSEL = 0;
-   348  00102A  0EF8               	movlw	-8
-   349  00102C  010F               	movlb	15	; () banked
-   350  00102E  172D               	andwf	45,f,b	;volatile
-   351                           
-   352                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 198:     CCPR1 = inputDelay;
-   353  001030  0E9C               	movlw	156
-   354  001032  6EBD               	movwf	189,c	;volatile
-   355  001034  0E40               	movlw	64
-   356  001036  6EBC               	movwf	188,c	;volatile
-   357                           
-   358                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 203:     TXSTA1 = 0b00100000;
-   359  001038  0E20               	movlw	32
-   360  00103A  6EAC               	movwf	172,c	;volatile
-   361                           
-   362                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 204:     RCSTA1 = 0b00010000;
-   363  00103C  0E10               	movlw	16
-   364  00103E  6EAB               	movwf	171,c	;volatile
+      +                          alProjectMain.c: 368:         PIE1bits.TX1IE = 1;
+   340  0000EA  889D               	bsf	157,4,c	;volatile
+   341  0000EC                     
+   342                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 369:         keypress = 0;
+   343  0000EC  0E00               	movlw	0
+   344  0000EE  6E28               	movwf	_keypress^0,c
+   345                           
+   346                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 370:     }
+   347  0000F0  EFB1  F000         	goto	l156
+   348  0000F4                     l932:
+   349  0000F4  5025               	movf	_rpgDir^0,w,c
+   350  0000F6  B4D8               	btfsc	status,2,c
+   351  0000F8  EF80  F000         	goto	u71
+   352  0000FC  EF82  F000         	goto	u70
+   353  000100                     u71:
+   354  000100  EFB0  F000         	goto	l150
+   355  000104                     u70:
+   356  000104  EF92  F000         	goto	l946
+   357  000108                     l936:
+   358                           
+   359                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 376:                 TXREG1 = 0xA9;
+   360  000108  0EA9               	movlw	169
+   361  00010A  6EAD               	movwf	173,c	;volatile
+   362  00010C                     
+   363                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 377:                 PIE1bits.TX1IE = 1;
+   364  00010C  889D               	bsf	157,4,c	;volatile
    365                           
    366                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 205:     BAUDCON1 = 0b01000000;
-   367  001040  0E40               	movlw	64
-   368  001042  6E65               	movwf	101,c	;volatile
+      +                          alProjectMain.c: 378:                 rpgDir = 0;
+   367  00010E  0E00               	movlw	0
+   368  000110  6E25               	movwf	_rpgDir^0,c
    369                           
    370                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 206:     SPBRG1 = 12;
-   371  001044  0E0C               	movlw	12
-   372  001046  6EAF               	movwf	175,c	;volatile
-   373  001048                     
-   374                           ; BSR set to: 15
-   375                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 211:     RCONbits.IPEN = 1;
-   376  001048  8ED0               	bsf	208,7,c	;volatile
-   377  00104A                     
-   378                           ; BSR set to: 15
-   379                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 212:     INTCONbits.GIEL = 1;
-   380  00104A  8CF2               	bsf	242,6,c	;volatile
-   381  00104C                     
-   382                           ; BSR set to: 15
-   383                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 213:     INTCONbits.GIEH = 1;
-   384  00104C  8EF2               	bsf	242,7,c	;volatile
-   385  00104E                     
-   386                           ; BSR set to: 15
-   387                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 216:     IPR1bits.TMR1IP = 0;
-   388  00104E  909F               	bcf	159,0,c	;volatile
-   389  001050                     
-   390                           ; BSR set to: 15
-   391                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 217:     PIE1bits.TMR1IE = 1;
-   392  001050  809D               	bsf	157,0,c	;volatile
-   393  001052                     
-   394                           ; BSR set to: 15
-   395                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 218:     PIR1bits.TMR1IF = 0;
-   396  001052  909E               	bcf	158,0,c	;volatile
-   397  001054                     
-   398                           ; BSR set to: 15
-   399                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 221:     IPR3bits.CCP1IP = 0;
-   400  001054  92A5               	bcf	165,1,c	;volatile
-   401  001056                     
-   402                           ; BSR set to: 15
-   403                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 222:     PIE3bits.CCP1IE = 1;
-   404  001056  82A3               	bsf	163,1,c	;volatile
-   405  001058                     
-   406                           ; BSR set to: 15
-   407                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 223:     PIR3bits.CCP1IF = 0;
-   408  001058  92A4               	bcf	164,1,c	;volatile
-   409  00105A                     
-   410                           ; BSR set to: 15
-   411                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 226:     IPR1bits.RC1IP = 1;
-   412  00105A  8A9F               	bsf	159,5,c	;volatile
-   413  00105C                     
-   414                           ; BSR set to: 15
-   415                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 227:     PIE1bits.RC1IE = 0;
-   416  00105C  9A9D               	bcf	157,5,c	;volatile
-   417  00105E                     
-   418                           ; BSR set to: 15
-   419                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 228:     PIR1bits.RC1IF = 0;
-   420  00105E  9A9E               	bcf	158,5,c	;volatile
-   421  001060                     
-   422                           ; BSR set to: 15
-   423                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 229:     IPR1bits.TX1IP = 1;
-   424  001060  889F               	bsf	159,4,c	;volatile
-   425  001062                     
-   426                           ; BSR set to: 15
-   427                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 230:     PIE1bits.TX1IE = 0;
-   428  001062  989D               	bcf	157,4,c	;volatile
-   429  001064                     
-   430                           ; BSR set to: 15
-   431                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 237:     RCSTA1bits.SPEN = 1;
-   432  001064  8EAB               	bsf	171,7,c	;volatile
-   433  001066                     
-   434                           ; BSR set to: 15
-   435  001066  0012               	return		;funcret
-   436  001068                     __end_of_Initial:
-   437                           	callstack 0
-   438                           
-   439 ;; *************** function _LoPriISR *****************
-   440 ;; Defined at:
-   441 ;;		line 344 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+      +                          alProjectMain.c: 379:                 break;
+   371  000112  EFB1  F000         	goto	l156
+   372  000116                     l940:
+   373                           
+   374                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 381:                 TXREG1 = 0xAA;
+   375  000116  0EAA               	movlw	170
+   376  000118  6EAD               	movwf	173,c	;volatile
+   377  00011A                     
+   378                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 382:                 PIE1bits.TX1IE = 1;
+   379  00011A  889D               	bsf	157,4,c	;volatile
+   380                           
+   381                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 383:                 rpgDir = 0;
+   382  00011C  0E00               	movlw	0
+   383  00011E  6E25               	movwf	_rpgDir^0,c
+   384                           
+   385                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 384:                 break;
+   386  000120  EFB1  F000         	goto	l156
+   387  000124                     l946:
+   388  000124  C025  F036         	movff	_rpgDir,??_sendData
+   389  000128  6A37               	clrf	(??_sendData+1)^0,c
+   390  00012A  BE36               	btfsc	??_sendData^0,7,c
+   391  00012C  0637               	decf	(??_sendData+1)^0,f,c
+   392                           
+   393                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 2 sub-sw
+      +                          itches
+   394                           ; Switch size 1, requested type "simple"
+   395                           ; Number of cases is 2, Range of values is 0 to 255
+   396                           ; switch strategies available:
+   397                           ; Name         Instructions Cycles
+   398                           ; simple_byte            7     4 (average)
+   399                           ;	Chosen strategy is simple_byte
+   400  00012E  5037               	movf	(??_sendData+1)^0,w,c
+   401  000130  0A00               	xorlw	0	; case 0
+   402  000132  B4D8               	btfsc	status,2,c
+   403  000134  EFA2  F000         	goto	l1022
+   404  000138  0AFF               	xorlw	255	; case 255
+   405  00013A  B4D8               	btfsc	status,2,c
+   406  00013C  EFA9  F000         	goto	l1024
+   407  000140  EFB1  F000         	goto	l156
+   408  000144                     l1022:
+   409                           
+   410                           ; Switch size 1, requested type "simple"
+   411                           ; Number of cases is 1, Range of values is 1 to 1
+   412                           ; switch strategies available:
+   413                           ; Name         Instructions Cycles
+   414                           ; simple_byte            4     3 (average)
+   415                           ;	Chosen strategy is simple_byte
+   416  000144  5036               	movf	??_sendData^0,w,c
+   417  000146  0A01               	xorlw	1	; case 1
+   418  000148  B4D8               	btfsc	status,2,c
+   419  00014A  EF84  F000         	goto	l936
+   420  00014E  EFB1  F000         	goto	l156
+   421  000152                     l1024:
+   422                           
+   423                           ; Switch size 1, requested type "simple"
+   424                           ; Number of cases is 1, Range of values is 255 to 255
+   425                           ; switch strategies available:
+   426                           ; Name         Instructions Cycles
+   427                           ; simple_byte            4     3 (average)
+   428                           ;	Chosen strategy is simple_byte
+   429  000152  5036               	movf	??_sendData^0,w,c
+   430  000154  0AFF               	xorlw	255	; case 255
+   431  000156  B4D8               	btfsc	status,2,c
+   432  000158  EF8B  F000         	goto	l940
+   433  00015C  EFB1  F000         	goto	l156
+   434  000160                     l150:
+   435                           
+   436                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 388:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 389:         PIE1bits.TX1IE = 0;
+   437  000160  989D               	bcf	157,4,c	;volatile
+   438  000162                     l156:
+   439  000162  0012               	return		;funcret
+   440  000164                     __end_of_sendData:
+   441                           	callstack 0
+   442                           
+   443 ;; *************** function _pollRPG *****************
+   444 ;; Defined at:
+   445 ;;		line 233 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
       +in.c"
-   442 ;; Parameters:    Size  Location     Type
-   443 ;;		None
-   444 ;; Auto vars:     Size  Location     Type
-   445 ;;		None
-   446 ;; Return value:  Size  Location     Type
-   447 ;;                  1    wreg      void 
-   448 ;; Registers used:
-   449 ;;		wreg, status,2, status,0, cstack
-   450 ;; Tracked objects:
-   451 ;;		On entry : 0/0
-   452 ;;		On exit  : 0/0
-   453 ;;		Unchanged: 0/0
-   454 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   446 ;; Parameters:    Size  Location     Type
+   447 ;;		None
+   448 ;; Auto vars:     Size  Location     Type
+   449 ;;		None
+   450 ;; Return value:  Size  Location     Type
+   451 ;;                  1    wreg      void 
+   452 ;; Registers used:
+   453 ;;		wreg, status,2, status,0
+   454 ;; Tracked objects:
+   455 ;;		On entry : 0/0
+   456 ;;		On exit  : 0/0
+   457 ;;		Unchanged: 0/0
+   458 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   455 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   459 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   456 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   460 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   457 ;;      Temps:          3       0       0       0       0       0       0       0       0       0       0       0       
+   461 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   458 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+   462 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   459 ;;Total ram usage:        3 bytes
-   460 ;; Hardware stack levels used: 1
-   461 ;; Hardware stack levels required when called: 2
-   462 ;; This function calls:
-   463 ;;		_CCP1Handler
-   464 ;;		_TMR1Handler
-   465 ;; This function is called by:
-   466 ;;		Interrupt level 1
-   467 ;; This function uses a non-reentrant model
-   468 ;;
-   469                           
-   470                           	psect	intcodelo
-   471  000018                     __pintcodelo:
-   472                           	callstack 0
-   473  000018                     _LoPriISR:
-   474                           	callstack 27
-   475                           
-   476                           ; BSR set to: 15
-   477                           ;incstack = 0
-   478  000018  8032               	bsf	int$flags,0,c	;set compiler interrupt flag (level 1)
-   479  00001A  CFD8 F02F          	movff	status,??_LoPriISR
-   480  00001E  CFE8 F030          	movff	wreg,??_LoPriISR+1
-   481  000022  CFE0 F031          	movff	bsr,??_LoPriISR+2
-   482  000026                     i1l135:
-   483                           
-   484                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 347:         if(PIR3bits.CCP1IF)
-   485  000026  A2A4               	btfss	164,1,c	;volatile
-   486  000028  EF18  F000         	goto	i1u7_21
-   487  00002C  EF1A  F000         	goto	i1u7_20
-   488  000030                     i1u7_21:
-   489  000030  EF1E  F000         	goto	i1l136
-   490  000034                     i1u7_20:
-   491  000034                     
-   492                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 348:         {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/F
-      +                          inal Project/FinalProject.X/FinalProjectMain.c: 349:             CCP1Handler();
-   493  000034  EC6A  F008         	call	_CCP1Handler	;wreg free
-   494                           
-   495                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 350:             continue;
-   496  000038  EF13  F000         	goto	i1l135
-   497  00003C                     i1l136:
-   498                           
-   499                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 352:         if(PIR1bits.TMR1IF)
-   500  00003C  A09E               	btfss	158,0,c	;volatile
-   501  00003E  EF23  F000         	goto	i1u8_21
-   502  000042  EF25  F000         	goto	i1u8_20
-   503  000046                     i1u8_21:
-   504  000046  EF29  F000         	goto	i1l140
-   505  00004A                     i1u8_20:
-   506  00004A                     
-   507                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 353:         {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/F
-      +                          inal Project/FinalProject.X/FinalProjectMain.c: 354:             TMR1Handler();
-   508  00004A  EC87  F008         	call	_TMR1Handler	;wreg free
-   509                           
-   510                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 355:             continue;
-   511  00004E  EF13  F000         	goto	i1l135
-   512  000052                     i1l140:
-   513  000052  C031  FFE0         	movff	??_LoPriISR+2,bsr
-   514  000056  C030  FFE8         	movff	??_LoPriISR+1,wreg
-   515  00005A  C02F  FFD8         	movff	??_LoPriISR,status
-   516  00005E  9032               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   517  000060  0010               	retfie	
-   518  000062                     __end_of_LoPriISR:
-   519                           	callstack 0
-   520                           
-   521 ;; *************** function _TMR1Handler *****************
-   522 ;; Defined at:
-   523 ;;		line 395 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
-      +in.c"
-   524 ;; Parameters:    Size  Location     Type
-   525 ;;		None
-   526 ;; Auto vars:     Size  Location     Type
-   527 ;;		None
-   528 ;; Return value:  Size  Location     Type
-   529 ;;                  1    wreg      void 
-   530 ;; Registers used:
-   531 ;;		None
-   532 ;; Tracked objects:
-   533 ;;		On entry : 0/0
-   534 ;;		On exit  : 0/0
-   535 ;;		Unchanged: 0/0
-   536 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12  BANK13  BANK14  BANK15
-   537 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   538 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   539 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   540 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   541 ;;Total ram usage:        0 bytes
-   542 ;; Hardware stack levels used: 1
-   543 ;; Hardware stack levels required when called: 1
-   544 ;; This function calls:
-   545 ;;		Nothing
-   546 ;; This function is called by:
-   547 ;;		_LoPriISR
-   548 ;; This function uses a non-reentrant model
-   549 ;;
-   550                           
-   551                           	psect	text3
-   552  00110E                     __ptext3:
-   553                           	callstack 0
-   554  00110E                     _TMR1Handler:
-   555                           	callstack 27
-   556  00110E                     
-   557                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 397:     PIR1bits.TMR1IF = 0;
-   558  00110E  909E               	bcf	158,0,c	;volatile
-   559  001110  0012               	return		;funcret
-   560  001112                     __end_of_TMR1Handler:
-   561                           	callstack 0
-   562                           
-   563 ;; *************** function _CCP1Handler *****************
-   564 ;; Defined at:
-   565 ;;		line 373 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
-      +in.c"
-   566 ;; Parameters:    Size  Location     Type
-   567 ;;		None
-   568 ;; Auto vars:     Size  Location     Type
-   569 ;;		None
-   570 ;; Return value:  Size  Location     Type
-   571 ;;                  1    wreg      void 
-   572 ;; Registers used:
-   573 ;;		wreg, status,2, status,0
-   574 ;; Tracked objects:
-   575 ;;		On entry : 0/0
-   576 ;;		On exit  : 0/0
-   577 ;;		Unchanged: 0/0
-   578 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12  BANK13  BANK14  BANK15
-   579 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   580 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   581 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   582 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-   583 ;;Total ram usage:        0 bytes
-   584 ;; Hardware stack levels used: 1
-   585 ;; Hardware stack levels required when called: 1
-   586 ;; This function calls:
-   587 ;;		Nothing
-   588 ;; This function is called by:
-   589 ;;		_LoPriISR
-   590 ;; This function uses a non-reentrant model
-   591 ;;
+   463 ;;Total ram usage:        2 bytes
+   464 ;; Hardware stack levels used: 1
+   465 ;; Hardware stack levels required when called: 2
+   466 ;; This function calls:
+   467 ;;		Nothing
+   468 ;; This function is called by:
+   469 ;;		_main
+   470 ;; This function uses a non-reentrant model
+   471 ;;
+   472                           
+   473                           	psect	text2
+   474  000036                     __ptext2:
+   475                           	callstack 0
+   476  000036                     _pollRPG:
+   477                           	callstack 28
+   478  000036                     
+   479                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 234:     rpgDir = 0;
+   480  000036  0E00               	movlw	0
+   481  000038  6E25               	movwf	_rpgDir^0,c
+   482  00003A                     
+   483                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 235:     rpgTemp = (PORTD ^ oldPortD) & 0x03;
+   484  00003A  5083               	movf	131,w,c	;volatile
+   485  00003C  1824               	xorwf	_oldPortD^0,w,c
+   486  00003E  0B03               	andlw	3
+   487  000040  6E3A               	movwf	_rpgTemp^0,c
+   488  000042                     
+   489                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 236:     if(rpgTemp == 0)
+   490  000042  503A               	movf	_rpgTemp^0,w,c
+   491  000044  A4D8               	btfss	status,2,c
+   492  000046  EF27  F000         	goto	u31
+   493  00004A  EF29  F000         	goto	u30
+   494  00004E                     u31:
+   495  00004E  EF3B  F000         	goto	l890
+   496  000052                     u30:
+   497  000052  EF6A  F000         	goto	l110
+   498  000056                     l880:
+   499                           
+   500                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 241:             oldPortD = 2;
+   501  000056  0E02               	movlw	2
+   502  000058  6E24               	movwf	_oldPortD^0,c
+   503                           
+   504                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 242:             break;
+   505  00005A  EF58  F000         	goto	l892
+   506  00005E                     l882:
+   507                           
+   508                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 244:             oldPortD = 3;
+   509  00005E  0E03               	movlw	3
+   510  000060  6E24               	movwf	_oldPortD^0,c
+   511                           
+   512                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 245:             break;
+   513  000062  EF58  F000         	goto	l892
+   514  000066                     l884:
+   515                           
+   516                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 247:             oldPortD = 1;
+   517  000066  0E01               	movlw	1
+   518  000068  6E24               	movwf	_oldPortD^0,c
+   519                           
+   520                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 248:             break;
+   521  00006A  EF58  F000         	goto	l892
+   522  00006E                     l886:
+   523                           
+   524                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 250:             oldPortD = 0;
+   525  00006E  0E00               	movlw	0
+   526  000070  6E24               	movwf	_oldPortD^0,c
+   527                           
+   528                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 251:             break;
+   529  000072  EF58  F000         	goto	l892
+   530  000076                     l890:
+   531  000076  5024               	movf	_oldPortD^0,w,c
+   532  000078  6E36               	movwf	??_pollRPG^0,c
+   533  00007A  6A37               	clrf	(??_pollRPG+1)^0,c
+   534                           
+   535                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   536                           ; Switch size 1, requested type "simple"
+   537                           ; Number of cases is 1, Range of values is 0 to 0
+   538                           ; switch strategies available:
+   539                           ; Name         Instructions Cycles
+   540                           ; simple_byte            4     3 (average)
+   541                           ;	Chosen strategy is simple_byte
+   542  00007C  5037               	movf	(??_pollRPG+1)^0,w,c
+   543  00007E  0A00               	xorlw	0	; case 0
+   544  000080  B4D8               	btfsc	status,2,c
+   545  000082  EF45  F000         	goto	l1026
+   546  000086  EF58  F000         	goto	l892
+   547  00008A                     l1026:
+   548                           
+   549                           ; Switch size 1, requested type "simple"
+   550                           ; Number of cases is 4, Range of values is 0 to 3
+   551                           ; switch strategies available:
+   552                           ; Name         Instructions Cycles
+   553                           ; simple_byte           13     7 (average)
+   554                           ;	Chosen strategy is simple_byte
+   555  00008A  5036               	movf	??_pollRPG^0,w,c
+   556  00008C  0A00               	xorlw	0	; case 0
+   557  00008E  B4D8               	btfsc	status,2,c
+   558  000090  EF2B  F000         	goto	l880
+   559  000094  0A01               	xorlw	1	; case 1
+   560  000096  B4D8               	btfsc	status,2,c
+   561  000098  EF37  F000         	goto	l886
+   562  00009C  0A03               	xorlw	3	; case 2
+   563  00009E  B4D8               	btfsc	status,2,c
+   564  0000A0  EF2F  F000         	goto	l882
+   565  0000A4  0A01               	xorlw	1	; case 3
+   566  0000A6  B4D8               	btfsc	status,2,c
+   567  0000A8  EF33  F000         	goto	l884
+   568  0000AC  EF58  F000         	goto	l892
+   569  0000B0                     l892:
+   570                           
+   571                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 253:     rpgTemp = oldPortD ^ rpgTemp;
+   572  0000B0  5024               	movf	_oldPortD^0,w,c
+   573  0000B2  183A               	xorwf	_rpgTemp^0,w,c
+   574  0000B4  6E3A               	movwf	_rpgTemp^0,c
+   575  0000B6                     
+   576                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 254:     if(rpgTemp == 0)
+   577  0000B6  503A               	movf	_rpgTemp^0,w,c
+   578  0000B8  A4D8               	btfss	status,2,c
+   579  0000BA  EF61  F000         	goto	u41
+   580  0000BE  EF63  F000         	goto	u40
+   581  0000C2                     u41:
+   582  0000C2  EF67  F000         	goto	l117
+   583  0000C6                     u40:
+   584  0000C6                     
+   585                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 255:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 256:         rpgDir = 1;
+   586  0000C6  0E01               	movlw	1
+   587  0000C8  6E25               	movwf	_rpgDir^0,c
+   588                           
+   589                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 257:     }
+   590  0000CA  EF68  F000         	goto	l118
+   591  0000CE                     l117:
    592                           
-   593                           	psect	text4
-   594  0010D4                     __ptext4:
-   595                           	callstack 0
-   596  0010D4                     _CCP1Handler:
-   597                           	callstack 27
-   598  0010D4                     
-   599                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 376:     if(PIR1bits.TMR1IF)
-   600  0010D4  A09E               	btfss	158,0,c	;volatile
-   601  0010D6  EF6F  F008         	goto	i1u1_21
-   602  0010DA  EF71  F008         	goto	i1u1_20
-   603  0010DE                     i1u1_21:
-   604  0010DE  EF72  F008         	goto	i1l143
-   605  0010E2                     i1u1_20:
-   606  0010E2                     
-   607                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 377:         PIR1bits.TMR1IF = 0;
-   608  0010E2  909E               	bcf	158,0,c	;volatile
-   609  0010E4                     i1l143:
-   610                           
-   611                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 379:     T1CONbits.TMR1ON = 0;
-   612  0010E4  90CD               	bcf	205,0,c	;volatile
-   613  0010E6                     
-   614                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 380:     TMR1 = 0;
-   615  0010E6  0E00               	movlw	0
-   616  0010E8  6ECF               	movwf	207,c	;volatile
-   617  0010EA  0E00               	movlw	0
-   618  0010EC  6ECE               	movwf	206,c	;volatile
-   619  0010EE                     
-   620                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 382:     readyToSend = readyToSend | 0b00000100;
-   621  0010EE  5024               	movf	_readyToSend^0,w,c
-   622  0010F0  0904               	iorlw	4
-   623  0010F2  6E24               	movwf	_readyToSend^0,c
-   624  0010F4                     
-   625                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 384:     PIR3bits.CCP1IF = 0;
-   626  0010F4  92A4               	bcf	164,1,c	;volatile
-   627  0010F6  0012               	return		;funcret
-   628  0010F8                     __end_of_CCP1Handler:
-   629                           	callstack 0
-   630                           
-   631 ;; *************** function _HiPriISR *****************
-   632 ;; Defined at:
-   633 ;;		line 317 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+   593                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 259:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 260:         rpgDir = -1;
+   594  0000CE  6825               	setf	_rpgDir^0,c
+   595  0000D0                     l118:
+   596                           
+   597                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 262:     oldPortD = rpgTemp;
+   598  0000D0  C03A  F024         	movff	_rpgTemp,_oldPortD
+   599  0000D4                     l110:
+   600  0000D4  0012               	return		;funcret
+   601  0000D6                     __end_of_pollRPG:
+   602                           	callstack 0
+   603                           
+   604 ;; *************** function _pollMatrix *****************
+   605 ;; Defined at:
+   606 ;;		line 274 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
       +in.c"
-   634 ;; Parameters:    Size  Location     Type
-   635 ;;		None
-   636 ;; Auto vars:     Size  Location     Type
-   637 ;;		None
-   638 ;; Return value:  Size  Location     Type
-   639 ;;                  1    wreg      void 
-   640 ;; Registers used:
-   641 ;;		None
-   642 ;; Tracked objects:
-   643 ;;		On entry : 0/0
-   644 ;;		On exit  : 0/0
-   645 ;;		Unchanged: 0/0
-   646 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   607 ;; Parameters:    Size  Location     Type
+   608 ;;		None
+   609 ;; Auto vars:     Size  Location     Type
+   610 ;;		None
+   611 ;; Return value:  Size  Location     Type
+   612 ;;                  1    wreg      void 
+   613 ;; Registers used:
+   614 ;;		wreg, status,2, status,0, cstack
+   615 ;; Tracked objects:
+   616 ;;		On entry : 0/0
+   617 ;;		On exit  : 0/0
+   618 ;;		Unchanged: 0/0
+   619 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   647 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   620 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   648 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   621 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   649 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   622 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   650 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   623 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   651 ;;Total ram usage:        0 bytes
-   652 ;; Hardware stack levels used: 1
-   653 ;; This function calls:
-   654 ;;		Nothing
-   655 ;; This function is called by:
-   656 ;;		Interrupt level 2
-   657 ;; This function uses a non-reentrant model
-   658 ;;
-   659                           
-   660                           	psect	intcode
-   661  000008                     __pintcode:
-   662                           	callstack 0
-   663  000008                     _HiPriISR:
-   664                           	callstack 27
-   665                           
-   666                           ;incstack = 0
-   667  000008  8232               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-   668  00000A  EF4F  F008         	goto	int_func
-   669                           
-   670                           	psect	intcode_body
-   671  00109E                     __pintcode_body:
-   672                           	callstack 27
-   673  00109E                     int_func:
-   674                           	callstack 27
-   675  00109E                     i2l125:
+   624 ;;Total ram usage:        2 bytes
+   625 ;; Hardware stack levels used: 1
+   626 ;; Hardware stack levels required when called: 3
+   627 ;; This function calls:
+   628 ;;		_debounceRoutine
+   629 ;; This function is called by:
+   630 ;;		_main
+   631 ;; This function uses a non-reentrant model
+   632 ;;
+   633                           
+   634                           	psect	text3
+   635  0001F2                     __ptext3:
+   636                           	callstack 0
+   637  0001F2                     _pollMatrix:
+   638                           	callstack 27
+   639  0001F2                     
+   640                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 275:     if((PORTD & 0b11110000) == 0)
+   641  0001F2  CF83 F038          	movff	3971,??_pollMatrix	;volatile
+   642  0001F6  0EF0               	movlw	240
+   643  0001F8  1638               	andwf	??_pollMatrix^0,f,c
+   644  0001FA  A4D8               	btfss	status,2,c
+   645  0001FC  EF02  F001         	goto	u51
+   646  000200  EF04  F001         	goto	u50
+   647  000204                     u51:
+   648  000204  EF06  F001         	goto	l906
+   649  000208                     u50:
+   650  000208  EF3A  F001         	goto	l122
+   651  00020C                     l906:
+   652                           
+   653                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 277:     debounceRoutine();
+   654  00020C  EC3B  F001         	call	_debounceRoutine	;wreg free
+   655  000210                     
+   656                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 278:     buttonPress = PORTD & 0b11110000;
+   657  000210  5083               	movf	131,w,c	;volatile
+   658  000212  0BF0               	andlw	240
+   659  000214  6E27               	movwf	_buttonPress^0,c
+   660                           
+   661                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 279:     switch(buttonPress)
+   662  000216  EF1D  F001         	goto	l920
+   663  00021A                     l910:
+   664                           
+   665                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 282:             byteToSend = 0xA8;
+   666  00021A  0EA8               	movlw	168
+   667  00021C  6E22               	movwf	_byteToSend^0,c
+   668                           
+   669                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 284:             break;
+   670  00021E  EF3A  F001         	goto	l122
+   671  000222                     l912:
+   672                           
+   673                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 286:             byteToSend = 0xAC;
+   674  000222  0EAC               	movlw	172
+   675  000224  6E22               	movwf	_byteToSend^0,c
    676                           
    677                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 319:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
-      +                           Project/FinalProject.X/FinalProjectMain.c: 320:         if(PIR1bits.RC1IF)
-   678  00109E  AA9E               	btfss	158,5,c	;volatile
-   679  0010A0  EF54  F008         	goto	i2u4_41
-   680  0010A4  EF56  F008         	goto	i2u4_40
-   681  0010A8                     i2u4_41:
-   682  0010A8  EF58  F008         	goto	i2l126
-   683  0010AC                     i2u4_40:
-   684  0010AC  EF4F  F008         	goto	i2l125
-   685  0010B0                     i2l126:
-   686                           
-   687                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
-      +                          alProjectMain.c: 326:         if(PIR1bits.TX1IF && PIE1bits.TX1IE)
-   688  0010B0  A89E               	btfss	158,4,c	;volatile
-   689  0010B2  EF5D  F008         	goto	i2u5_41
-   690  0010B6  EF5F  F008         	goto	i2u5_40
-   691  0010BA                     i2u5_41:
-   692  0010BA  EF68  F008         	goto	i2l130
-   693  0010BE                     i2u5_40:
-   694  0010BE  A89D               	btfss	157,4,c	;volatile
-   695  0010C0  EF64  F008         	goto	i2u6_41
-   696  0010C4  EF66  F008         	goto	i2u6_40
-   697  0010C8                     i2u6_41:
-   698  0010C8  EF68  F008         	goto	i2l130
-   699  0010CC                     i2u6_40:
-   700  0010CC  EF4F  F008         	goto	i2l125
-   701  0010D0                     i2l130:
-   702  0010D0  9232               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   703  0010D2  0011               	retfie		f
-   704  0010D4                     __end_of_HiPriISR:
-   705                           	callstack 0
-   706                           
-   707                           	psect	rparam
-   708  0000                     
-   709                           	psect	temp
-   710  000032                     btemp:
-   711                           	callstack 0
-   712  000032                     	ds	1
-   713  0000                     int$flags	set	btemp
-   714  0000                     wtemp8	set	btemp+1
-   715  0000                     ttemp5	set	btemp+1
-   716  0000                     ttemp6	set	btemp+4
-   717  0000                     ttemp7	set	btemp+8
-   718                           
-   719                           	psect	idloc
-   720                           
-   721                           ;Config register IDLOC0 @ 0x200000
-   722                           ;	unspecified, using default values
-   723  200000                     	org	2097152
-   724  200000  FF                 	db	255
-   725                           
-   726                           ;Config register IDLOC1 @ 0x200001
-   727                           ;	unspecified, using default values
-   728  200001                     	org	2097153
-   729  200001  FF                 	db	255
-   730                           
-   731                           ;Config register IDLOC2 @ 0x200002
-   732                           ;	unspecified, using default values
-   733  200002                     	org	2097154
-   734  200002  FF                 	db	255
-   735                           
-   736                           ;Config register IDLOC3 @ 0x200003
-   737                           ;	unspecified, using default values
-   738  200003                     	org	2097155
-   739  200003  FF                 	db	255
-   740                           
-   741                           ;Config register IDLOC4 @ 0x200004
-   742                           ;	unspecified, using default values
-   743  200004                     	org	2097156
-   744  200004  FF                 	db	255
-   745                           
-   746                           ;Config register IDLOC5 @ 0x200005
-   747                           ;	unspecified, using default values
-   748  200005                     	org	2097157
-   749  200005  FF                 	db	255
-   750                           
-   751                           ;Config register IDLOC6 @ 0x200006
-   752                           ;	unspecified, using default values
-   753  200006                     	org	2097158
-   754  200006  FF                 	db	255
-   755                           
-   756                           ;Config register IDLOC7 @ 0x200007
-   757                           ;	unspecified, using default values
-   758  200007                     	org	2097159
-   759  200007  FF                 	db	255
-   760                           
-   761                           	psect	config
-   762                           
-   763                           ;Config register CONFIG1L @ 0x300000
-   764                           ;	VREG Sleep Enable bit
-   765                           ;	RETEN = 0x1, unprogrammed default
-   766                           ;	LF-INTOSC Low-power Enable bit
-   767                           ;	INTOSCSEL = 0x1, unprogrammed default
-   768                           ;	SOSC Power Selection and mode Configuration bits
-   769                           ;	SOSCSEL = 0x3, unprogrammed default
-   770                           ;	Extended Instruction Set
-   771                           ;	XINST = OFF, Disabled
-   772  300000                     	org	3145728
-   773  300000  1D                 	db	29
-   774                           
-   775                           ;Config register CONFIG1H @ 0x300001
-   776                           ;	Oscillator
-   777                           ;	FOSC = HS1, HS oscillator (Medium power, 4 MHz - 16 MHz)
-   778                           ;	PLL x4 Enable bit
-   779                           ;	PLLCFG = OFF, Disabled
-   780                           ;	Fail-Safe Clock Monitor
-   781                           ;	FCMEN = 0x0, unprogrammed default
-   782                           ;	Internal External Oscillator Switch Over Mode
-   783                           ;	IESO = 0x0, unprogrammed default
-   784  300001                     	org	3145729
-   785  300001  03                 	db	3
-   786                           
-   787                           ;Config register CONFIG2L @ 0x300002
-   788                           ;	Power Up Timer
-   789                           ;	PWRTEN = ON, Enabled
-   790                           ;	Brown Out Detect
-   791                           ;	BOREN = ON, Controlled with SBOREN bit
-   792                           ;	Brown-out Reset Voltage bits
-   793                           ;	BORV = 2, 2.0V
-   794                           ;	BORMV Power level
-   795                           ;	BORPWR = 0x3, unprogrammed default
-   796  300002                     	org	3145730
-   797  300002  72                 	db	114
-   798                           
-   799                           ;Config register CONFIG2H @ 0x300003
-   800                           ;	Watchdog Timer
-   801                           ;	WDTEN = OFF, WDT disabled in hardware; SWDTEN bit disabled
-   802                           ;	Watchdog Postscaler
-   803                           ;	WDTPS = 0x1F, unprogrammed default
-   804  300003                     	org	3145731
-   805  300003  7C                 	db	124
-   806                           
-   807                           ;Config register CONFIG3L @ 0x300004
-   808                           ;	unspecified, using default values
-   809                           ;	RTCC Clock Select
-   810                           ;	RTCOSC = 0x1, unprogrammed default
-   811                           ;	External Address Shift bit
-   812                           ;	EASHFT = 0x1, unprogrammed default
-   813                           ;	Address Bus Width Select bits
-   814                           ;	ABW = 0x3, unprogrammed default
-   815                           ;	Data Bus Width
-   816                           ;	BW = 0x1, unprogrammed default
-   817                           ;	External Bus Wait
-   818                           ;	WAIT = 0x1, unprogrammed default
-   819  300004                     	org	3145732
-   820  300004  F9                 	db	249
-   821                           
-   822                           ;Config register CONFIG3H @ 0x300005
-   823                           ;	CCP2 Mux
-   824                           ;	CCP2MX = PORTC, RC1
-   825                           ;	ECCP Mux
-   826                           ;	ECCPMX = 0x1, unprogrammed default
-   827                           ;	MSSP address masking
-   828                           ;	MSSPMSK = 0x1, unprogrammed default
-   829                           ;	Master Clear Enable
-   830                           ;	MCLRE = 0x1, unprogrammed default
-   831  300005                     	org	3145733
-   832  300005  8B                 	db	139
-   833                           
-   834                           ;Config register CONFIG4L @ 0x300006
-   835                           ;	unspecified, using default values
-   836                           ;	Stack Overflow Reset
-   837                           ;	STVREN = 0x1, unprogrammed default
-   838                           ;	Boot Block Size
-   839                           ;	BBSIZ = 0x1, unprogrammed default
-   840                           ;	Background Debug
-   841                           ;	DEBUG = 0x1, unprogrammed default
-   842  300006                     	org	3145734
-   843  300006  91                 	db	145
-   844                           
-   845                           ; Padding undefined space
-   846  300007                     	org	3145735
-   847  300007  FF                 	db	255
-   848                           
-   849                           ;Config register CONFIG5L @ 0x300008
-   850                           ;	unspecified, using default values
-   851                           ;	Code Protect 00800-03FFF
-   852                           ;	CP0 = 0x1, unprogrammed default
-   853                           ;	Code Protect 04000-07FFF
-   854                           ;	CP1 = 0x1, unprogrammed default
-   855                           ;	Code Protect 08000-0BFFF
-   856                           ;	CP2 = 0x1, unprogrammed default
-   857                           ;	Code Protect 0C000-0FFFF
-   858                           ;	CP3 = 0x1, unprogrammed default
-   859                           ;	Code Protect 10000-13FFF
-   860                           ;	CP4 = 0x1, unprogrammed default
-   861                           ;	Code Protect 14000-17FFF
-   862                           ;	CP5 = 0x1, unprogrammed default
-   863                           ;	Code Protect 18000-1BFFF
-   864                           ;	CP6 = 0x1, unprogrammed default
-   865                           ;	Code Protect 1C000-1FFFF
-   866                           ;	CP7 = 0x1, unprogrammed default
-   867  300008                     	org	3145736
-   868  300008  FF                 	db	255
-   869                           
-   870                           ;Config register CONFIG5H @ 0x300009
-   871                           ;	unspecified, using default values
-   872                           ;	Code Protect Boot
-   873                           ;	CPB = 0x1, unprogrammed default
-   874                           ;	Data EE Read Protect
-   875                           ;	CPD = 0x1, unprogrammed default
-   876  300009                     	org	3145737
-   877  300009  C0                 	db	192
-   878                           
-   879                           ;Config register CONFIG6L @ 0x30000A
-   880                           ;	unspecified, using default values
-   881                           ;	Table Write Protect 00800-03FFF
-   882                           ;	WRT0 = 0x1, unprogrammed default
-   883                           ;	Table Write Protect 04000-07FFF
-   884                           ;	WRT1 = 0x1, unprogrammed default
-   885                           ;	Table Write Protect 08000-0BFFF
-   886                           ;	WRT2 = 0x1, unprogrammed default
-   887                           ;	Table Write Protect 0C000-0FFFF
-   888                           ;	WRT3 = 0x1, unprogrammed default
-   889                           ;	Table Write Protect 10000-13FFF
-   890                           ;	WRT4 = 0x1, unprogrammed default
-   891                           ;	Table Write Protect 14000-17FFF
-   892                           ;	WRT5 = 0x1, unprogrammed default
-   893                           ;	Table Write Protect 18000-1BFFF
-   894                           ;	WRT6 = 0x1, unprogrammed default
-   895                           ;	Table Write Protect 1C000-1FFFF
-   896                           ;	WRT7 = 0x1, unprogrammed default
-   897  30000A                     	org	3145738
-   898  30000A  FF                 	db	255
-   899                           
-   900                           ;Config register CONFIG6H @ 0x30000B
-   901                           ;	unspecified, using default values
-   902                           ;	Config. Write Protect
-   903                           ;	WRTC = 0x1, unprogrammed default
-   904                           ;	Table Write Protect Boot
-   905                           ;	WRTB = 0x1, unprogrammed default
-   906                           ;	Data EE Write Protect
-   907                           ;	WRTD = 0x1, unprogrammed default
-   908  30000B                     	org	3145739
-   909  30000B  E0                 	db	224
-   910                           
-   911                           ;Config register CONFIG7L @ 0x30000C
-   912                           ;	unspecified, using default values
-   913                           ;	Table Read Protect 00800-03FFF
-   914                           ;	EBRT0 = 0x1, unprogrammed default
-   915                           ;	Table Read Protect 04000-07FFF
-   916                           ;	EBRT1 = 0x1, unprogrammed default
-   917                           ;	Table Read Protect 08000-0BFFF
-   918                           ;	EBRT2 = 0x1, unprogrammed default
-   919                           ;	Table Read Protect 0C000-0FFFF
-   920                           ;	EBRT3 = 0x1, unprogrammed default
-   921                           ;	Table Read Protect 10000-13FFF
-   922                           ;	EBRT4 = 0x1, unprogrammed default
-   923                           ;	Table Read Protect 14000-17FFF
-   924                           ;	EBRT5 = 0x1, unprogrammed default
-   925                           ;	Table Read Protect 18000-1BFFF
-   926                           ;	EBRT6 = 0x1, unprogrammed default
-   927                           ;	Table Read Protect 1C000-1FFFF
-   928                           ;	EBRT7 = 0x1, unprogrammed default
-   929  30000C                     	org	3145740
-   930  30000C  FF                 	db	255
-   931                           
-   932                           ;Config register CONFIG7H @ 0x30000D
-   933                           ;	unspecified, using default values
-   934                           ;	Table Read Protect Boot
-   935                           ;	EBRTB = 0x1, unprogrammed default
-   936  30000D                     	org	3145741
-   937  30000D  40                 	db	64
-   938                           tosu	equ	0xFFF
-   939                           tosh	equ	0xFFE
-   940                           tosl	equ	0xFFD
-   941                           stkptr	equ	0xFFC
-   942                           pclatu	equ	0xFFB
-   943                           pclath	equ	0xFFA
-   944                           pcl	equ	0xFF9
-   945                           tblptru	equ	0xFF8
-   946                           tblptrh	equ	0xFF7
-   947                           tblptrl	equ	0xFF6
-   948                           tablat	equ	0xFF5
-   949                           prodh	equ	0xFF4
-   950                           prodl	equ	0xFF3
-   951                           indf0	equ	0xFEF
-   952                           postinc0	equ	0xFEE
-   953                           postdec0	equ	0xFED
-   954                           preinc0	equ	0xFEC
-   955                           plusw0	equ	0xFEB
-   956                           fsr0h	equ	0xFEA
-   957                           fsr0l	equ	0xFE9
-   958                           wreg	equ	0xFE8
-   959                           indf1	equ	0xFE7
-   960                           postinc1	equ	0xFE6
-   961                           postdec1	equ	0xFE5
-   962                           preinc1	equ	0xFE4
-   963                           plusw1	equ	0xFE3
-   964                           fsr1h	equ	0xFE2
-   965                           fsr1l	equ	0xFE1
-   966                           bsr	equ	0xFE0
-   967                           indf2	equ	0xFDF
-   968                           postinc2	equ	0xFDE
-   969                           postdec2	equ	0xFDD
-   970                           preinc2	equ	0xFDC
-   971                           plusw2	equ	0xFDB
-   972                           fsr2h	equ	0xFDA
-   973                           fsr2l	equ	0xFD9
-   974                           status	equ	0xFD8
+      +                          alProjectMain.c: 288:             break;
+   678  000226  EF3A  F001         	goto	l122
+   679  00022A                     l914:
+   680                           
+   681                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 290:             byteToSend = 0xAE;
+   682  00022A  0EAE               	movlw	174
+   683  00022C  6E22               	movwf	_byteToSend^0,c
+   684                           
+   685                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 292:             break;
+   686  00022E  EF3A  F001         	goto	l122
+   687  000232                     l916:
+   688                           
+   689                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 294:             byteToSend = 0xAB;
+   690  000232  0EAB               	movlw	171
+   691  000234  6E22               	movwf	_byteToSend^0,c
+   692                           
+   693                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 296:             break;
+   694  000236  EF3A  F001         	goto	l122
+   695  00023A                     l920:
+   696  00023A  5027               	movf	_buttonPress^0,w,c
+   697  00023C  6E38               	movwf	??_pollMatrix^0,c
+   698  00023E  6A39               	clrf	(??_pollMatrix+1)^0,c
+   699                           
+   700                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   701                           ; Switch size 1, requested type "simple"
+   702                           ; Number of cases is 1, Range of values is 0 to 0
+   703                           ; switch strategies available:
+   704                           ; Name         Instructions Cycles
+   705                           ; simple_byte            4     3 (average)
+   706                           ;	Chosen strategy is simple_byte
+   707  000240  5039               	movf	(??_pollMatrix+1)^0,w,c
+   708  000242  0A00               	xorlw	0	; case 0
+   709  000244  B4D8               	btfsc	status,2,c
+   710  000246  EF27  F001         	goto	l1028
+   711  00024A  EF3A  F001         	goto	l122
+   712  00024E                     l1028:
+   713                           
+   714                           ; Switch size 1, requested type "simple"
+   715                           ; Number of cases is 4, Range of values is 16 to 128
+   716                           ; switch strategies available:
+   717                           ; Name         Instructions Cycles
+   718                           ; simple_byte           13     7 (average)
+   719                           ;	Chosen strategy is simple_byte
+   720  00024E  5038               	movf	??_pollMatrix^0,w,c
+   721  000250  0A10               	xorlw	16	; case 16
+   722  000252  B4D8               	btfsc	status,2,c
+   723  000254  EF19  F001         	goto	l916
+   724  000258  0A30               	xorlw	48	; case 32
+   725  00025A  B4D8               	btfsc	status,2,c
+   726  00025C  EF15  F001         	goto	l914
+   727  000260  0A60               	xorlw	96	; case 64
+   728  000262  B4D8               	btfsc	status,2,c
+   729  000264  EF11  F001         	goto	l912
+   730  000268  0AC0               	xorlw	192	; case 128
+   731  00026A  B4D8               	btfsc	status,2,c
+   732  00026C  EF0D  F001         	goto	l910
+   733  000270  EF3A  F001         	goto	l122
+   734  000274                     l122:
+   735  000274  0012               	return		;funcret
+   736  000276                     __end_of_pollMatrix:
+   737                           	callstack 0
+   738                           
+   739 ;; *************** function _debounceRoutine *****************
+   740 ;; Defined at:
+   741 ;;		line 310 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+      +in.c"
+   742 ;; Parameters:    Size  Location     Type
+   743 ;;		None
+   744 ;; Auto vars:     Size  Location     Type
+   745 ;;		None
+   746 ;; Return value:  Size  Location     Type
+   747 ;;                  1    wreg      void 
+   748 ;; Registers used:
+   749 ;;		wreg, status,2, status,0
+   750 ;; Tracked objects:
+   751 ;;		On entry : 0/0
+   752 ;;		On exit  : 0/0
+   753 ;;		Unchanged: 0/0
+   754 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   755 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   756 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   757 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   758 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   759 ;;Total ram usage:        2 bytes
+   760 ;; Hardware stack levels used: 1
+   761 ;; Hardware stack levels required when called: 2
+   762 ;; This function calls:
+   763 ;;		Nothing
+   764 ;; This function is called by:
+   765 ;;		_pollMatrix
+   766 ;; This function uses a non-reentrant model
+   767 ;;
+   768                           
+   769                           	psect	text4
+   770  000276                     __ptext4:
+   771                           	callstack 0
+   772  000276                     _debounceRoutine:
+   773                           	callstack 27
+   774  000276                     
+   775                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 311:     while(debouncedVar != 4095)
+   776  000276  EF5B  F001         	goto	l131
+   777  00027A                     l834:
+   778                           
+   779                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 312:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 313:         buttonPress = PORTD & 0b1111000
+      +                          0;
+   780  00027A  5083               	movf	131,w,c	;volatile
+   781  00027C  0BF0               	andlw	240
+   782  00027E  6E27               	movwf	_buttonPress^0,c
+   783  000280                     
+   784                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 314:         if(buttonPress >= 1)
+   785  000280  5027               	movf	_buttonPress^0,w,c
+   786  000282  B4D8               	btfsc	status,2,c
+   787  000284  EF46  F001         	goto	u11
+   788  000288  EF48  F001         	goto	u10
+   789  00028C                     u11:
+   790  00028C  EF56  F001         	goto	l840
+   791  000290                     u10:
+   792  000290                     
+   793                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 315:         {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/F
+      +                          inal Project/FinalProject.X/FinalProjectMain.c: 316:             debouncedVar = (debounc
+      +                          edVar<<1) | 0x01;
+   794  000290  0E01               	movlw	1
+   795  000292  C01F  F036         	movff	_debouncedVar,??_debounceRoutine
+   796  000296  C020  F037         	movff	_debouncedVar+1,??_debounceRoutine+1
+   797  00029A  90D8               	bcf	status,0,c
+   798  00029C  3636               	rlcf	??_debounceRoutine^0,f,c
+   799  00029E  3637               	rlcf	(??_debounceRoutine+1)^0,f,c
+   800  0002A0  1036               	iorwf	??_debounceRoutine^0,w,c
+   801  0002A2  6E1F               	movwf	_debouncedVar^0,c
+   802  0002A4  5037               	movf	(??_debounceRoutine+1)^0,w,c
+   803  0002A6  6E20               	movwf	(_debouncedVar+1)^0,c
+   804                           
+   805                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 317:         }
+   806  0002A8  EF5B  F001         	goto	l131
+   807  0002AC                     l840:
+   808                           
+   809                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 319:         {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/F
+      +                          inal Project/FinalProject.X/FinalProjectMain.c: 320:             debouncedVar = debounce
+      +                          dVar<<1;
+   810  0002AC  90D8               	bcf	status,0,c
+   811  0002AE  341F               	rlcf	_debouncedVar^0,w,c
+   812  0002B0  6E1F               	movwf	_debouncedVar^0,c
+   813  0002B2  3420               	rlcf	(_debouncedVar+1)^0,w,c
+   814  0002B4  6E20               	movwf	(_debouncedVar+1)^0,c
+   815  0002B6                     l131:
+   816                           
+   817                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 311:     while(debouncedVar != 4095)
+   818  0002B6  281F               	incf	_debouncedVar^0,w,c
+   819  0002B8  E107               	bnz	u21
+   820  0002BA  0E0F               	movlw	15
+   821  0002BC  1820               	xorwf	(_debouncedVar+1)^0,w,c
+   822  0002BE  A4D8               	btfss	status,2,c
+   823  0002C0  EF64  F001         	goto	u21
+   824  0002C4  EF66  F001         	goto	u20
+   825  0002C8                     u21:
+   826  0002C8  EF3D  F001         	goto	l834
+   827  0002CC                     u20:
+   828  0002CC                     
+   829                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 323:     debouncedVar = 0;
+   830  0002CC  0E00               	movlw	0
+   831  0002CE  6E20               	movwf	(_debouncedVar+1)^0,c
+   832  0002D0  0E00               	movlw	0
+   833  0002D2  6E1F               	movwf	_debouncedVar^0,c
+   834  0002D4  0012               	return		;funcret
+   835  0002D6                     __end_of_debounceRoutine:
+   836                           	callstack 0
+   837                           
+   838 ;; *************** function _Initial *****************
+   839 ;; Defined at:
+   840 ;;		line 152 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+      +in.c"
+   841 ;; Parameters:    Size  Location     Type
+   842 ;;		None
+   843 ;; Auto vars:     Size  Location     Type
+   844 ;;		None
+   845 ;; Return value:  Size  Location     Type
+   846 ;;                  1    wreg      void 
+   847 ;; Registers used:
+   848 ;;		wreg, status,2
+   849 ;; Tracked objects:
+   850 ;;		On entry : 0/0
+   851 ;;		On exit  : 0/0
+   852 ;;		Unchanged: 0/0
+   853 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   854 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   855 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   856 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   857 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   858 ;;Total ram usage:        0 bytes
+   859 ;; Hardware stack levels used: 1
+   860 ;; Hardware stack levels required when called: 2
+   861 ;; This function calls:
+   862 ;;		Nothing
+   863 ;; This function is called by:
+   864 ;;		_main
+   865 ;; This function uses a non-reentrant model
+   866 ;;
+   867                           
+   868                           	psect	text5
+   869  0002D6                     __ptext5:
+   870                           	callstack 0
+   871  0002D6                     _Initial:
+   872                           	callstack 28
+   873  0002D6                     
+   874                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 156:     TRISA = 0b00101001;
+   875  0002D6  0E29               	movlw	41
+   876  0002D8  6E92               	movwf	146,c	;volatile
+   877                           
+   878                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 157:     LATA = 0;
+   879  0002DA  0E00               	movlw	0
+   880  0002DC  6E89               	movwf	137,c	;volatile
+   881                           
+   882                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 158:     TRISD = 0b00001111;
+   883  0002DE  0E0F               	movlw	15
+   884  0002E0  6E95               	movwf	149,c	;volatile
+   885                           
+   886                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 159:     LATD = 0;
+   887  0002E2  0E00               	movlw	0
+   888  0002E4  6E8C               	movwf	140,c	;volatile
+   889                           
+   890                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 160:     TRISC = 0b10010011;
+   891  0002E6  0E93               	movlw	147
+   892  0002E8  6E94               	movwf	148,c	;volatile
+   893                           
+   894                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 161:     LATC = 0;
+   895  0002EA  0E00               	movlw	0
+   896  0002EC  6E8B               	movwf	139,c	;volatile
+   897                           
+   898                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 162:     TRISE = 0b00000000;
+   899  0002EE  0E00               	movlw	0
+   900  0002F0  6E96               	movwf	150,c	;volatile
+   901  0002F2                     
+   902                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 163:     LATEbits.LATE0 = 1;
+   903  0002F2  808D               	bsf	141,0,c	;volatile
+   904                           
+   905                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 169:     T1CON = 0b00000010;
+   906  0002F4  0E02               	movlw	2
+   907  0002F6  6ECD               	movwf	205,c	;volatile
+   908                           
+   909                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 183:     TXSTA1 = 0b00100000;
+   910  0002F8  0E20               	movlw	32
+   911  0002FA  6EAC               	movwf	172,c	;volatile
+   912                           
+   913                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 184:     RCSTA1 = 0b00010000;
+   914  0002FC  0E10               	movlw	16
+   915  0002FE  6EAB               	movwf	171,c	;volatile
+   916                           
+   917                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 185:     BAUDCON1 = 0b01000000;
+   918  000300  0E40               	movlw	64
+   919  000302  6E65               	movwf	101,c	;volatile
+   920                           
+   921                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 186:     SPBRG1 = 12;
+   922  000304  0E0C               	movlw	12
+   923  000306  6EAF               	movwf	175,c	;volatile
+   924  000308                     
+   925                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 191:     RCONbits.IPEN = 1;
+   926  000308  8ED0               	bsf	208,7,c	;volatile
+   927  00030A                     
+   928                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 192:     INTCONbits.GIEL = 1;
+   929  00030A  8CF2               	bsf	242,6,c	;volatile
+   930  00030C                     
+   931                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 193:     INTCONbits.GIEH = 1;
+   932  00030C  8EF2               	bsf	242,7,c	;volatile
+   933  00030E                     
+   934                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 196:     IPR1bits.TMR1IP = 0;
+   935  00030E  909F               	bcf	159,0,c	;volatile
+   936  000310                     
+   937                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 197:     PIE1bits.TMR1IE = 1;
+   938  000310  809D               	bsf	157,0,c	;volatile
+   939  000312                     
+   940                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 198:     PIR1bits.TMR1IF = 0;
+   941  000312  909E               	bcf	158,0,c	;volatile
+   942  000314                     
+   943                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 201:     IPR3bits.CCP1IP = 0;
+   944  000314  92A5               	bcf	165,1,c	;volatile
+   945  000316                     
+   946                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 202:     PIE3bits.CCP1IE = 1;
+   947  000316  82A3               	bsf	163,1,c	;volatile
+   948  000318                     
+   949                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 203:     PIR3bits.CCP1IF = 0;
+   950  000318  92A4               	bcf	164,1,c	;volatile
+   951  00031A                     
+   952                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 206:     IPR1bits.TX1IP = 1;
+   953  00031A  889F               	bsf	159,4,c	;volatile
+   954  00031C                     
+   955                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 207:     PIE1bits.TX1IE = 0;
+   956  00031C  989D               	bcf	157,4,c	;volatile
+   957  00031E                     
+   958                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 214:     RCSTA1bits.SPEN = 1;
+   959  00031E  8EAB               	bsf	171,7,c	;volatile
+   960  000320  0012               	return		;funcret
+   961  000322                     __end_of_Initial:
+   962                           	callstack 0
+   963                           
+   964 ;; *************** function _HiPriISR *****************
+   965 ;; Defined at:
+   966 ;;		line 340 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+      +in.c"
+   967 ;; Parameters:    Size  Location     Type
+   968 ;;		None
+   969 ;; Auto vars:     Size  Location     Type
+   970 ;;		None
+   971 ;; Return value:  Size  Location     Type
+   972 ;;                  1    wreg      void 
+   973 ;; Registers used:
+   974 ;;		wreg, status,2, status,0, cstack
+   975 ;; Tracked objects:
+   976 ;;		On entry : 0/0
+   977 ;;		On exit  : 0/0
+   978 ;;		Unchanged: 0/0
+   979 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   980 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   981 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   982 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   983 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   984 ;;Total ram usage:        0 bytes
+   985 ;; Hardware stack levels used: 1
+   986 ;; Hardware stack levels required when called: 1
+   987 ;; This function calls:
+   988 ;;		i2_sendData
+   989 ;; This function is called by:
+   990 ;;		Interrupt level 2
+   991 ;; This function uses a non-reentrant model
+   992 ;;
+   993                           
+   994                           	psect	intcode
+   995  000008                     __pintcode:
+   996                           	callstack 0
+   997  000008                     _HiPriISR:
+   998                           	callstack 27
+   999                           
+  1000                           ;incstack = 0
+  1001  000008  823B               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+  1002  00000A                     i2l141:
+  1003                           
+  1004                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 342:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 343:         if(PIR1bits.TX1IF && PIE1bits.T
+      +                          X1IE)
+  1005  00000A  A89E               	btfss	158,4,c	;volatile
+  1006  00000C  EF0A  F000         	goto	i2u10_41
+  1007  000010  EF0C  F000         	goto	i2u10_40
+  1008  000014                     i2u10_41:
+  1009  000014  EF17  F000         	goto	i2l145
+  1010  000018                     i2u10_40:
+  1011  000018  A89D               	btfss	157,4,c	;volatile
+  1012  00001A  EF11  F000         	goto	i2u11_41
+  1013  00001E  EF13  F000         	goto	i2u11_40
+  1014  000022                     i2u11_41:
+  1015  000022  EF17  F000         	goto	i2l145
+  1016  000026                     i2u11_40:
+  1017  000026                     
+  1018                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 344:         {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/F
+      +                          inal Project/FinalProject.X/FinalProjectMain.c: 345:             sendData();
+  1019  000026  ECB2  F000         	call	i2_sendData	;wreg free
+  1020                           
+  1021                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 346:             continue;
+  1022  00002A  EF05  F000         	goto	i2l141
+  1023  00002E                     i2l145:
+  1024  00002E  923B               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1025  000030  0011               	retfie		f
+  1026  000032                     __end_of_HiPriISR:
+  1027                           	callstack 0
+  1028                           
+  1029 ;; *************** function i2_sendData *****************
+  1030 ;; Defined at:
+  1031 ;;		line 364 in file "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMa
+      +in.c"
+  1032 ;; Parameters:    Size  Location     Type
+  1033 ;;		None
+  1034 ;; Auto vars:     Size  Location     Type
+  1035 ;;		None
+  1036 ;; Return value:  Size  Location     Type
+  1037 ;;                  1    wreg      void 
+  1038 ;; Registers used:
+  1039 ;;		wreg, status,2, status,0
+  1040 ;; Tracked objects:
+  1041 ;;		On entry : 0/0
+  1042 ;;		On exit  : 0/0
+  1043 ;;		Unchanged: 0/0
+  1044 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1045 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1046 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1047 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1048 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1049 ;;Total ram usage:        2 bytes
+  1050 ;; Hardware stack levels used: 1
+  1051 ;; This function calls:
+  1052 ;;		Nothing
+  1053 ;; This function is called by:
+  1054 ;;		_HiPriISR
+  1055 ;; This function uses a non-reentrant model
+  1056 ;;
+  1057                           
+  1058                           	psect	text7
+  1059  000164                     __ptext7:
+  1060                           	callstack 0
+  1061  000164                     i2_sendData:
+  1062                           	callstack 27
+  1063  000164                     
+  1064                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 365:     if(keypress == 1)
+  1065  000164  0428               	decf	_keypress^0,w,c
+  1066  000166  A4D8               	btfss	status,2,c
+  1067  000168  EFB8  F000         	goto	i2u8_41
+  1068  00016C  EFBA  F000         	goto	i2u8_40
+  1069  000170                     i2u8_41:
+  1070  000170  EFC1  F000         	goto	i2l962
+  1071  000174                     i2u8_40:
+  1072  000174                     
+  1073                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 366:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 367:         TXREG1 = byteToSend;
+  1074  000174  C022  FFAD         	movff	_byteToSend,4013	;volatile
+  1075                           
+  1076                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 368:         PIE1bits.TX1IE = 1;
+  1077  000178  889D               	bsf	157,4,c	;volatile
+  1078  00017A                     
+  1079                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 369:         keypress = 0;
+  1080  00017A  0E00               	movlw	0
+  1081  00017C  6E28               	movwf	_keypress^0,c
+  1082                           
+  1083                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 370:     }
+  1084  00017E  EFF8  F000         	goto	i2l156
+  1085  000182                     i2l962:
+  1086  000182  5025               	movf	_rpgDir^0,w,c
+  1087  000184  B4D8               	btfsc	status,2,c
+  1088  000186  EFC7  F000         	goto	i2u9_41
+  1089  00018A  EFC9  F000         	goto	i2u9_40
+  1090  00018E                     i2u9_41:
+  1091  00018E  EFF7  F000         	goto	i2l150
+  1092  000192                     i2u9_40:
+  1093  000192  EFD9  F000         	goto	i2l976
+  1094  000196                     i2l966:
+  1095                           
+  1096                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 376:                 TXREG1 = 0xA9;
+  1097  000196  0EA9               	movlw	169
+  1098  000198  6EAD               	movwf	173,c	;volatile
+  1099  00019A                     
+  1100                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 377:                 PIE1bits.TX1IE = 1;
+  1101  00019A  889D               	bsf	157,4,c	;volatile
+  1102                           
+  1103                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 378:                 rpgDir = 0;
+  1104  00019C  0E00               	movlw	0
+  1105  00019E  6E25               	movwf	_rpgDir^0,c
+  1106                           
+  1107                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 379:                 break;
+  1108  0001A0  EFF8  F000         	goto	i2l156
+  1109  0001A4                     i2l970:
+  1110                           
+  1111                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 381:                 TXREG1 = 0xAA;
+  1112  0001A4  0EAA               	movlw	170
+  1113  0001A6  6EAD               	movwf	173,c	;volatile
+  1114  0001A8                     
+  1115                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 382:                 PIE1bits.TX1IE = 1;
+  1116  0001A8  889D               	bsf	157,4,c	;volatile
+  1117                           
+  1118                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 383:                 rpgDir = 0;
+  1119  0001AA  0E00               	movlw	0
+  1120  0001AC  6E25               	movwf	_rpgDir^0,c
+  1121                           
+  1122                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 384:                 break;
+  1123  0001AE  EFF8  F000         	goto	i2l156
+  1124  0001B2                     i2l976:
+  1125  0001B2  C025  F034         	movff	_rpgDir,??i2_sendData
+  1126  0001B6  6A35               	clrf	(??i2_sendData+1)^0,c
+  1127  0001B8  BE34               	btfsc	??i2_sendData^0,7,c
+  1128  0001BA  0635               	decf	(??i2_sendData+1)^0,f,c
+  1129                           
+  1130                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 2 sub-sw
+      +                          itches
+  1131                           ; Switch size 1, requested type "simple"
+  1132                           ; Number of cases is 2, Range of values is 0 to 255
+  1133                           ; switch strategies available:
+  1134                           ; Name         Instructions Cycles
+  1135                           ; simple_byte            7     4 (average)
+  1136                           ;	Chosen strategy is simple_byte
+  1137  0001BC  5035               	movf	(??i2_sendData+1)^0,w,c
+  1138  0001BE  0A00               	xorlw	0	; case 0
+  1139  0001C0  B4D8               	btfsc	status,2,c
+  1140  0001C2  EFE9  F000         	goto	i2l1030
+  1141  0001C6  0AFF               	xorlw	255	; case 255
+  1142  0001C8  B4D8               	btfsc	status,2,c
+  1143  0001CA  EFF0  F000         	goto	i2l1032
+  1144  0001CE  EFF8  F000         	goto	i2l156
+  1145  0001D2                     i2l1030:
+  1146                           
+  1147                           ; Switch size 1, requested type "simple"
+  1148                           ; Number of cases is 1, Range of values is 1 to 1
+  1149                           ; switch strategies available:
+  1150                           ; Name         Instructions Cycles
+  1151                           ; simple_byte            4     3 (average)
+  1152                           ;	Chosen strategy is simple_byte
+  1153  0001D2  5034               	movf	??i2_sendData^0,w,c
+  1154  0001D4  0A01               	xorlw	1	; case 1
+  1155  0001D6  B4D8               	btfsc	status,2,c
+  1156  0001D8  EFCB  F000         	goto	i2l966
+  1157  0001DC  EFF8  F000         	goto	i2l156
+  1158  0001E0                     i2l1032:
+  1159                           
+  1160                           ; Switch size 1, requested type "simple"
+  1161                           ; Number of cases is 1, Range of values is 255 to 255
+  1162                           ; switch strategies available:
+  1163                           ; Name         Instructions Cycles
+  1164                           ; simple_byte            4     3 (average)
+  1165                           ;	Chosen strategy is simple_byte
+  1166  0001E0  5034               	movf	??i2_sendData^0,w,c
+  1167  0001E2  0AFF               	xorlw	255	; case 255
+  1168  0001E4  B4D8               	btfsc	status,2,c
+  1169  0001E6  EFD2  F000         	goto	i2l970
+  1170  0001EA  EFF8  F000         	goto	i2l156
+  1171  0001EE                     i2l150:
+  1172                           
+  1173                           ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/Fin
+      +                          alProjectMain.c: 388:     {;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final
+      +                           Project/FinalProject.X/FinalProjectMain.c: 389:         PIE1bits.TX1IE = 0;
+  1174  0001EE  989D               	bcf	157,4,c	;volatile
+  1175  0001F0                     i2l156:
+  1176  0001F0  0012               	return		;funcret
+  1177  0001F2                     __end_ofi2_sendData:
+  1178                           	callstack 0
+  1179  0000                     
+  1180                           	psect	rparam
+  1181  0000                     
+  1182                           	psect	temp
+  1183  00003B                     btemp:
+  1184                           	callstack 0
+  1185  00003B                     	ds	1
+  1186  0000                     int$flags	set	btemp
+  1187  0000                     wtemp8	set	btemp+1
+  1188  0000                     ttemp5	set	btemp+1
+  1189  0000                     ttemp6	set	btemp+4
+  1190  0000                     ttemp7	set	btemp+8
+  1191                           
+  1192                           	psect	idloc
+  1193                           
+  1194                           ;Config register IDLOC0 @ 0x200000
+  1195                           ;	unspecified, using default values
+  1196  200000                     	org	2097152
+  1197  200000  FF                 	db	255
+  1198                           
+  1199                           ;Config register IDLOC1 @ 0x200001
+  1200                           ;	unspecified, using default values
+  1201  200001                     	org	2097153
+  1202  200001  FF                 	db	255
+  1203                           
+  1204                           ;Config register IDLOC2 @ 0x200002
+  1205                           ;	unspecified, using default values
+  1206  200002                     	org	2097154
+  1207  200002  FF                 	db	255
+  1208                           
+  1209                           ;Config register IDLOC3 @ 0x200003
+  1210                           ;	unspecified, using default values
+  1211  200003                     	org	2097155
+  1212  200003  FF                 	db	255
+  1213                           
+  1214                           ;Config register IDLOC4 @ 0x200004
+  1215                           ;	unspecified, using default values
+  1216  200004                     	org	2097156
+  1217  200004  FF                 	db	255
+  1218                           
+  1219                           ;Config register IDLOC5 @ 0x200005
+  1220                           ;	unspecified, using default values
+  1221  200005                     	org	2097157
+  1222  200005  FF                 	db	255
+  1223                           
+  1224                           ;Config register IDLOC6 @ 0x200006
+  1225                           ;	unspecified, using default values
+  1226  200006                     	org	2097158
+  1227  200006  FF                 	db	255
+  1228                           
+  1229                           ;Config register IDLOC7 @ 0x200007
+  1230                           ;	unspecified, using default values
+  1231  200007                     	org	2097159
+  1232  200007  FF                 	db	255
+  1233                           
+  1234                           	psect	config
+  1235                           
+  1236                           ;Config register CONFIG1L @ 0x300000
+  1237                           ;	VREG Sleep Enable bit
+  1238                           ;	RETEN = 0x1, unprogrammed default
+  1239                           ;	LF-INTOSC Low-power Enable bit
+  1240                           ;	INTOSCSEL = 0x1, unprogrammed default
+  1241                           ;	SOSC Power Selection and mode Configuration bits
+  1242                           ;	SOSCSEL = 0x3, unprogrammed default
+  1243                           ;	Extended Instruction Set
+  1244                           ;	XINST = OFF, Disabled
+  1245  300000                     	org	3145728
+  1246  300000  1D                 	db	29
+  1247                           
+  1248                           ;Config register CONFIG1H @ 0x300001
+  1249                           ;	Oscillator
+  1250                           ;	FOSC = HS1, HS oscillator (Medium power, 4 MHz - 16 MHz)
+  1251                           ;	PLL x4 Enable bit
+  1252                           ;	PLLCFG = OFF, Disabled
+  1253                           ;	Fail-Safe Clock Monitor
+  1254                           ;	FCMEN = 0x0, unprogrammed default
+  1255                           ;	Internal External Oscillator Switch Over Mode
+  1256                           ;	IESO = 0x0, unprogrammed default
+  1257  300001                     	org	3145729
+  1258  300001  03                 	db	3
+  1259                           
+  1260                           ;Config register CONFIG2L @ 0x300002
+  1261                           ;	Power Up Timer
+  1262                           ;	PWRTEN = ON, Enabled
+  1263                           ;	Brown Out Detect
+  1264                           ;	BOREN = ON, Controlled with SBOREN bit
+  1265                           ;	Brown-out Reset Voltage bits
+  1266                           ;	BORV = 2, 2.0V
+  1267                           ;	BORMV Power level
+  1268                           ;	BORPWR = 0x3, unprogrammed default
+  1269  300002                     	org	3145730
+  1270  300002  72                 	db	114
+  1271                           
+  1272                           ;Config register CONFIG2H @ 0x300003
+  1273                           ;	Watchdog Timer
+  1274                           ;	WDTEN = OFF, WDT disabled in hardware; SWDTEN bit disabled
+  1275                           ;	Watchdog Postscaler
+  1276                           ;	WDTPS = 0x1F, unprogrammed default
+  1277  300003                     	org	3145731
+  1278  300003  7C                 	db	124
+  1279                           
+  1280                           ;Config register CONFIG3L @ 0x300004
+  1281                           ;	unspecified, using default values
+  1282                           ;	RTCC Clock Select
+  1283                           ;	RTCOSC = 0x1, unprogrammed default
+  1284                           ;	External Address Shift bit
+  1285                           ;	EASHFT = 0x1, unprogrammed default
+  1286                           ;	Address Bus Width Select bits
+  1287                           ;	ABW = 0x3, unprogrammed default
+  1288                           ;	Data Bus Width
+  1289                           ;	BW = 0x1, unprogrammed default
+  1290                           ;	External Bus Wait
+  1291                           ;	WAIT = 0x1, unprogrammed default
+  1292  300004                     	org	3145732
+  1293  300004  F9                 	db	249
+  1294                           
+  1295                           ;Config register CONFIG3H @ 0x300005
+  1296                           ;	CCP2 Mux
+  1297                           ;	CCP2MX = PORTC, RC1
+  1298                           ;	ECCP Mux
+  1299                           ;	ECCPMX = 0x1, unprogrammed default
+  1300                           ;	MSSP address masking
+  1301                           ;	MSSPMSK = 0x1, unprogrammed default
+  1302                           ;	Master Clear Enable
+  1303                           ;	MCLRE = 0x1, unprogrammed default
+  1304  300005                     	org	3145733
+  1305  300005  8B                 	db	139
+  1306                           
+  1307                           ;Config register CONFIG4L @ 0x300006
+  1308                           ;	unspecified, using default values
+  1309                           ;	Stack Overflow Reset
+  1310                           ;	STVREN = 0x1, unprogrammed default
+  1311                           ;	Boot Block Size
+  1312                           ;	BBSIZ = 0x1, unprogrammed default
+  1313                           ;	Background Debug
+  1314                           ;	DEBUG = 0x1, unprogrammed default
+  1315  300006                     	org	3145734
+  1316  300006  91                 	db	145
+  1317                           
+  1318                           ; Padding undefined space
+  1319  300007                     	org	3145735
+  1320  300007  FF                 	db	255
+  1321                           
+  1322                           ;Config register CONFIG5L @ 0x300008
+  1323                           ;	unspecified, using default values
+  1324                           ;	Code Protect 00800-03FFF
+  1325                           ;	CP0 = 0x1, unprogrammed default
+  1326                           ;	Code Protect 04000-07FFF
+  1327                           ;	CP1 = 0x1, unprogrammed default
+  1328                           ;	Code Protect 08000-0BFFF
+  1329                           ;	CP2 = 0x1, unprogrammed default
+  1330                           ;	Code Protect 0C000-0FFFF
+  1331                           ;	CP3 = 0x1, unprogrammed default
+  1332                           ;	Code Protect 10000-13FFF
+  1333                           ;	CP4 = 0x1, unprogrammed default
+  1334                           ;	Code Protect 14000-17FFF
+  1335                           ;	CP5 = 0x1, unprogrammed default
+  1336                           ;	Code Protect 18000-1BFFF
+  1337                           ;	CP6 = 0x1, unprogrammed default
+  1338                           ;	Code Protect 1C000-1FFFF
+  1339                           ;	CP7 = 0x1, unprogrammed default
+  1340  300008                     	org	3145736
+  1341  300008  FF                 	db	255
+  1342                           
+  1343                           ;Config register CONFIG5H @ 0x300009
+  1344                           ;	unspecified, using default values
+  1345                           ;	Code Protect Boot
+  1346                           ;	CPB = 0x1, unprogrammed default
+  1347                           ;	Data EE Read Protect
+  1348                           ;	CPD = 0x1, unprogrammed default
+  1349  300009                     	org	3145737
+  1350  300009  C0                 	db	192
+  1351                           
+  1352                           ;Config register CONFIG6L @ 0x30000A
+  1353                           ;	unspecified, using default values
+  1354                           ;	Table Write Protect 00800-03FFF
+  1355                           ;	WRT0 = 0x1, unprogrammed default
+  1356                           ;	Table Write Protect 04000-07FFF
+  1357                           ;	WRT1 = 0x1, unprogrammed default
+  1358                           ;	Table Write Protect 08000-0BFFF
+  1359                           ;	WRT2 = 0x1, unprogrammed default
+  1360                           ;	Table Write Protect 0C000-0FFFF
+  1361                           ;	WRT3 = 0x1, unprogrammed default
+  1362                           ;	Table Write Protect 10000-13FFF
+  1363                           ;	WRT4 = 0x1, unprogrammed default
+  1364                           ;	Table Write Protect 14000-17FFF
+  1365                           ;	WRT5 = 0x1, unprogrammed default
+  1366                           ;	Table Write Protect 18000-1BFFF
+  1367                           ;	WRT6 = 0x1, unprogrammed default
+  1368                           ;	Table Write Protect 1C000-1FFFF
+  1369                           ;	WRT7 = 0x1, unprogrammed default
+  1370  30000A                     	org	3145738
+  1371  30000A  FF                 	db	255
+  1372                           
+  1373                           ;Config register CONFIG6H @ 0x30000B
+  1374                           ;	unspecified, using default values
+  1375                           ;	Config. Write Protect
+  1376                           ;	WRTC = 0x1, unprogrammed default
+  1377                           ;	Table Write Protect Boot
+  1378                           ;	WRTB = 0x1, unprogrammed default
+  1379                           ;	Data EE Write Protect
+  1380                           ;	WRTD = 0x1, unprogrammed default
+  1381  30000B                     	org	3145739
+  1382  30000B  E0                 	db	224
+  1383                           
+  1384                           ;Config register CONFIG7L @ 0x30000C
+  1385                           ;	unspecified, using default values
+  1386                           ;	Table Read Protect 00800-03FFF
+  1387                           ;	EBRT0 = 0x1, unprogrammed default
+  1388                           ;	Table Read Protect 04000-07FFF
+  1389                           ;	EBRT1 = 0x1, unprogrammed default
+  1390                           ;	Table Read Protect 08000-0BFFF
+  1391                           ;	EBRT2 = 0x1, unprogrammed default
+  1392                           ;	Table Read Protect 0C000-0FFFF
+  1393                           ;	EBRT3 = 0x1, unprogrammed default
+  1394                           ;	Table Read Protect 10000-13FFF
+  1395                           ;	EBRT4 = 0x1, unprogrammed default
+  1396                           ;	Table Read Protect 14000-17FFF
+  1397                           ;	EBRT5 = 0x1, unprogrammed default
+  1398                           ;	Table Read Protect 18000-1BFFF
+  1399                           ;	EBRT6 = 0x1, unprogrammed default
+  1400                           ;	Table Read Protect 1C000-1FFFF
+  1401                           ;	EBRT7 = 0x1, unprogrammed default
+  1402  30000C                     	org	3145740
+  1403  30000C  FF                 	db	255
+  1404                           
+  1405                           ;Config register CONFIG7H @ 0x30000D
+  1406                           ;	unspecified, using default values
+  1407                           ;	Table Read Protect Boot
+  1408                           ;	EBRTB = 0x1, unprogrammed default
+  1409  30000D                     	org	3145741
+  1410  30000D  40                 	db	64
+  1411                           tosu	equ	0xFFF
+  1412                           tosh	equ	0xFFE
+  1413                           tosl	equ	0xFFD
+  1414                           stkptr	equ	0xFFC
+  1415                           pclatu	equ	0xFFB
+  1416                           pclath	equ	0xFFA
+  1417                           pcl	equ	0xFF9
+  1418                           tblptru	equ	0xFF8
+  1419                           tblptrh	equ	0xFF7
+  1420                           tblptrl	equ	0xFF6
+  1421                           tablat	equ	0xFF5
+  1422                           prodh	equ	0xFF4
+  1423                           prodl	equ	0xFF3
+  1424                           indf0	equ	0xFEF
+  1425                           postinc0	equ	0xFEE
+  1426                           postdec0	equ	0xFED
+  1427                           preinc0	equ	0xFEC
+  1428                           plusw0	equ	0xFEB
+  1429                           fsr0h	equ	0xFEA
+  1430                           fsr0l	equ	0xFE9
+  1431                           wreg	equ	0xFE8
+  1432                           indf1	equ	0xFE7
+  1433                           postinc1	equ	0xFE6
+  1434                           postdec1	equ	0xFE5
+  1435                           preinc1	equ	0xFE4
+  1436                           plusw1	equ	0xFE3
+  1437                           fsr1h	equ	0xFE2
+  1438                           fsr1l	equ	0xFE1
+  1439                           bsr	equ	0xFE0
+  1440                           indf2	equ	0xFDF
+  1441                           postinc2	equ	0xFDE
+  1442                           postdec2	equ	0xFDD
+  1443                           preinc2	equ	0xFDC
+  1444                           plusw2	equ	0xFDB
+  1445                           fsr2h	equ	0xFDA
+  1446                           fsr2l	equ	0xFD9
+  1447                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
-    Constant    2
+    Constant    0
     Data        10
-    BSS         36
-    Persistent  0
+    BSS         41
+    Persistent  1
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM           94      3      49
+    COMRAM           94      6      58
     BANK0           160      0       0
     BANK1           256      0       0
     BANK2           256      0       0
@@ -1108,21 +1658,14 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMRAM
 
-    None.
-
-Critical Paths under _LoPriISR in COMRAM
-
-    None.
+    _main->_pollMatrix
+    _pollMatrix->_debounceRoutine
 
 Critical Paths under _HiPriISR in COMRAM
 
-    None.
+    _HiPriISR->i2_sendData
 
 Critical Paths under _main in BANK0
-
-    None.
-
-Critical Paths under _LoPriISR in BANK0
 
     None.
 
@@ -1134,19 +1677,11 @@ Critical Paths under _main in BANK1
 
     None.
 
-Critical Paths under _LoPriISR in BANK1
-
-    None.
-
 Critical Paths under _HiPriISR in BANK1
 
     None.
 
 Critical Paths under _main in BANK2
-
-    None.
-
-Critical Paths under _LoPriISR in BANK2
 
     None.
 
@@ -1158,19 +1693,11 @@ Critical Paths under _main in BANK3
 
     None.
 
-Critical Paths under _LoPriISR in BANK3
-
-    None.
-
 Critical Paths under _HiPriISR in BANK3
 
     None.
 
 Critical Paths under _main in BANK4
-
-    None.
-
-Critical Paths under _LoPriISR in BANK4
 
     None.
 
@@ -1182,19 +1709,11 @@ Critical Paths under _main in BANK5
 
     None.
 
-Critical Paths under _LoPriISR in BANK5
-
-    None.
-
 Critical Paths under _HiPriISR in BANK5
 
     None.
 
 Critical Paths under _main in BANK6
-
-    None.
-
-Critical Paths under _LoPriISR in BANK6
 
     None.
 
@@ -1206,19 +1725,11 @@ Critical Paths under _main in BANK7
 
     None.
 
-Critical Paths under _LoPriISR in BANK7
-
-    None.
-
 Critical Paths under _HiPriISR in BANK7
 
     None.
 
 Critical Paths under _main in BANK8
-
-    None.
-
-Critical Paths under _LoPriISR in BANK8
 
     None.
 
@@ -1230,19 +1741,11 @@ Critical Paths under _main in BANK9
 
     None.
 
-Critical Paths under _LoPriISR in BANK9
-
-    None.
-
 Critical Paths under _HiPriISR in BANK9
 
     None.
 
 Critical Paths under _main in BANK10
-
-    None.
-
-Critical Paths under _LoPriISR in BANK10
 
     None.
 
@@ -1254,19 +1757,11 @@ Critical Paths under _main in BANK11
 
     None.
 
-Critical Paths under _LoPriISR in BANK11
-
-    None.
-
 Critical Paths under _HiPriISR in BANK11
 
     None.
 
 Critical Paths under _main in BANK12
-
-    None.
-
-Critical Paths under _LoPriISR in BANK12
 
     None.
 
@@ -1278,10 +1773,6 @@ Critical Paths under _main in BANK13
 
     None.
 
-Critical Paths under _LoPriISR in BANK13
-
-    None.
-
 Critical Paths under _HiPriISR in BANK13
 
     None.
@@ -1290,19 +1781,11 @@ Critical Paths under _main in BANK14
 
     None.
 
-Critical Paths under _LoPriISR in BANK14
-
-    None.
-
 Critical Paths under _HiPriISR in BANK14
 
     None.
 
 Critical Paths under _main in BANK15
-
-    None.
-
-Critical Paths under _LoPriISR in BANK15
 
     None.
 
@@ -1317,27 +1800,34 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (0) _main                                                 0     0      0       0
                             _Initial
+                         _pollMatrix
+                            _pollRPG
+                           _sendData
+ ---------------------------------------------------------------------------------
+ (1) _sendData                                             2     2      0       0
+                                              2 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _pollRPG                                              2     2      0       0
+                                              2 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _pollMatrix                                           2     2      0       0
+                                              4 COMRAM     2     2      0
+                    _debounceRoutine
+ ---------------------------------------------------------------------------------
+ (2) _debounceRoutine                                      2     2      0       0
+                                              2 COMRAM     2     2      0
  ---------------------------------------------------------------------------------
  (1) _Initial                                              0     0      0       0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 1
+ Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (2) _LoPriISR                                             3     3      0       0
-                                              0 COMRAM     3     3      0
-                        _CCP1Handler
-                        _TMR1Handler
+ (3) _HiPriISR                                             0     0      0       0
+                         i2_sendData
  ---------------------------------------------------------------------------------
- (3) _TMR1Handler                                          0     0      0       0
- ---------------------------------------------------------------------------------
- (3) _CCP1Handler                                          0     0      0       0
- ---------------------------------------------------------------------------------
- Estimated maximum stack depth 3
- ---------------------------------------------------------------------------------
- (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
- ---------------------------------------------------------------------------------
- (4) _HiPriISR                                             0     0      0       0
+ (4) i2_sendData                                           2     2      0       0
+                                              0 COMRAM     2     2      0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 4
  ---------------------------------------------------------------------------------
@@ -1346,12 +1836,13 @@ Call Graph Tables:
 
  _main (ROOT)
    _Initial
-
- _LoPriISR (ROOT)
-   _CCP1Handler
-   _TMR1Handler
+   _pollMatrix
+     _debounceRoutine
+   _pollRPG
+   _sendData
 
  _HiPriISR (ROOT)
+   i2_sendData
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -1388,7 +1879,7 @@ BANK1              100      0       0       7        0.0%
 BITBANK0            A0      0       0       4        0.0%
 BANK0               A0      0       0       5        0.0%
 BITCOMRAM           5E      0       0       0        0.0%
-COMRAM              5E      3      31       1       52.1%
+COMRAM              5E      6      3A       1       61.7%
 BITBANK15           16      0       0      35        0.0%
 BANK15              16      0       0      36        0.0%
 BITSFR_1             0      0       0     200        0.0%
@@ -1397,71 +1888,89 @@ BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      31      12        0.0%
-DATA                 0      0      31       3        0.0%
+ABS                  0      0      3A      12        0.0%
+DATA                 0      0      3A       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Mon Dec 13 04:03:48 2021
+Symbol Table                                                                                   Mon Dec 13 09:53:09 2021
 
-                     bsr 000FE0     __size_of_CCP1Handler 0024                      l101 1100  
-                    l104 1066                      l831 104C                      l823 1004  
-                    l841 1056                      l833 104E                      l825 1020  
-                    l851 1060                      l843 1058                      l835 1050  
-                    l827 1048                      l853 1062                      l845 105A  
-                    l837 1052                      l829 104A                      l855 1064  
-                    l847 105C                      l839 1054                      l871 10FC  
-                    l849 105E                      l869 10F8                      _top 002D  
-                    wreg 000FE8                     _LATA 000F89                     _LATC 000F8B  
-                   _LATD 000F8C                     _TMR1 000FCE                     _main 10F8  
-                   fsr1l 000FE1                     btemp 0032                     start 0062  
-           ___param_bank 000000          __end_of_Initial 1068                    ?_main 002F  
-                  _CCPR1 000FBC                    _T1CON 000FCD                    i1l140 0052  
-                  i1l143 10E4                    i1l135 0026                    i1l144 10F6  
-                  i1l136 003C                    i1l147 1110                    i2l130 10D0  
-                  i2l125 109E                    i2l126 10B0                    i1l861 10E6  
-                  i1l917 0034                    i1l863 10EE                    i1l919 004A  
-                  i1l865 10F4                    i1l857 10D4                    i1l859 10E2  
-                  i1l867 110E                    i2l913 10BE                    _PORTD 000F83  
-                  _TRISA 000F92                    _TRISC 000F94                    _TRISD 000F95  
-                  _TRISE 000F96                    _count 0023                    _sendI 001D  
-                  tablat 000FF5                    ttemp5 0033                    ttemp6 0036  
-                  ttemp7 003A                    status 000FD8                    wtemp8 0033  
-       __end_of_HiPriISR 10D4          __initialization 1068         __end_of_LoPriISR 0062  
-           __end_of_main 1104                   ??_main 0032            __activetblptr 000003  
-                 _RCSTA1 000FAB                   _SPBRG1 000FAF                   i1u1_20 10E2  
-                 i1u1_21 10DE                   i1u7_20 0034                   i1u7_21 0030  
-                 i1u8_20 004A                   i1u8_21 0046                   i2u4_40 10AC  
-                 i2u4_41 10A8                   i2u5_40 10BE                   i2u5_41 10BA  
-                 i2u6_40 10CC                   i2u6_41 10C8                   _TXREG1 000FAD  
-                 _TXSTA1 000FAC             ?_TMR1Handler 002F                ??_Initial 0032  
-           _CCPTMRS0bits 000F2D                   _buffer 000B                   clear_0 108E  
-                 _rpgDir 0022                   isa$std 000001             __pdataCOMRAM 0025  
-           __mediumconst 0000                   tblptrh 000FF7                   tblptrl 000FF6  
-                 tblptru 000FF8               __accesstop 0060  __end_of__initialization 1094  
-          ___rparam_used 000001           __pcstackCOMRAM 002F                ?_HiPriISR 002F  
-              ?_LoPriISR 002F            ??_CCP1Handler 002F                  _CCP1CON 000FBB  
-             ??_HiPriISR 002F               ??_LoPriISR 002F                  _Initial 1004  
-                __Hparam 0000                  __Lparam 0000     __size_of_TMR1Handler 0004  
-             _byteToSend 001E             __psmallconst 1000                  __pcinit 1068  
-                __ramtop 1000                  __ptext0 10F8                  __ptext1 1004  
-                __ptext3 110E                  __ptext4 10D4                _T1CONbits 000FCD  
-                _maxSize 002E      __end_of_CCP1Handler 10F8               _inputDelay 1001  
-                _rpgTemp 0020           __pintcode_body 109E     end_of_initialization 1094  
-                int_func 109E                  postdec1 000FE5                  postinc0 000FEE  
-            _CCP1Handler 10D4            __pidataCOMRAM 1104      start_initialization 1068  
-      __size_of_HiPriISR 10CC        __size_of_LoPriISR 004A           _volumeControls 002A  
-            __pbssCOMRAM 0001                 ?_Initial 002F                __pintcode 0008  
-            __pintcodelo 0018              __smallconst 1000                 _BAUDCON1 000F65  
-               _LATEbits 000F8D            ??_TMR1Handler 002F                 _IPR1bits 000F9F  
-               _PIE1bits 000F9D                 _IPR3bits 000FA5                 _PIE3bits 000FA3  
-           _keypressList 0001                 _PIR1bits 000F9E                 _PIR3bits 000FA4  
-               _RCONbits 000FD0                _temporary 001F                 _HiPriISR 0008  
-              copy_data0 107C                 _LoPriISR 0018                 __Hrparam 0000  
-       __size_of_Initial 0064                 __Lrparam 0000      __end_of_TMR1Handler 1112  
-           ?_CCP1Handler 002F              _buttonStack 0015                 _keyCodes 0025  
-            _readyToSend 0024            __size_of_main 000C                 _oldPortD 0021  
-               isa$xinst 000000       __end_of_inputDelay 1003                 int$flags 0032  
-             _INTCONbits 000FF2                 intlevel1 0000                 intlevel2 0000  
-            _TMR1Handler 110E               _RCSTA1bits 000FAB  
+                      u10 0290                        u11 028C                        u20 02CC  
+                      u21 02C8                        u30 0052                        u31 004E  
+                      u40 00C6                        u41 00C2                        u50 0208  
+                      u51 0204                        u60 00E6                        u61 00E2  
+                      u70 0104                        u71 0100                       l110 00D4  
+                     l106 0320                       l122 0274                       l131 02B6  
+                     l117 00CE                       l118 00D0                       l150 0160  
+                     l136 02D4                       l156 0162                       l910 021A  
+                     l902 01F2                       l840 02AC                       l832 0276  
+                     l912 0222                       l920 023A                       l850 030A  
+                     l842 02CC                       l834 027A                       l914 022A  
+                     l906 020C                       l930 00EC                       l860 0314  
+                     l852 030C                       l844 02D6                       l836 0280  
+                     l916 0232                       l908 0210                       l940 0116  
+                     l932 00F4                       l870 031E                       l862 0316  
+                     l854 030E                       l846 02F2                       l838 0290  
+                     l942 011A                       l926 00D6                       l864 0318  
+                     l856 0310                       l848 0308                       l880 0056  
+                     l872 0036                       l936 0108                       l928 00E6  
+                     l866 031A                       l858 0312                       l882 005E  
+                     l890 0076                       l874 003A                       l938 010C  
+                     l946 0124                       l868 031C                       l884 0066  
+                     l892 00B0                       l876 0042                       l894 00B6  
+                     l886 006E                       l990 0360                       l896 00C6  
+                     l986 0358                       l988 035C                       _top 0032  
+                     wreg 000FE8                      l1022 0144                      l1024 0152  
+                    l1026 008A                      l1028 024E                      _LATA 000F89  
+                    _LATC 000F8B                      _LATD 000F8C                      _main 0358  
+                    fsr1l 000FE1                      btemp 003B                      start 0032  
+              i2_sendData 0164              ___param_bank 000000           __end_of_Initial 0322  
+                   ?_main 0034                     _T1CON 000FCD                     i2l141 000A  
+                   i2l150 01EE                     i2l145 002E                     i2l156 01F0  
+                   i2l960 017A                     i2l970 01A4                     i2l962 0182  
+                   i2l972 01A8                     i2l956 0164                     i2l966 0196  
+                   i2l958 0174                     i2l968 019A                     i2l976 01B2  
+                   i2l994 0018                     i2l996 0026                     _PORTD 000F83  
+                   _TRISA 000F92                     _TRISC 000F94                     _TRISD 000F95  
+                   _TRISE 000F96                     _sendI 0021           __end_of_pollRPG 00D6  
+                   tablat 000FF5                     ttemp5 003C                     ttemp6 003F  
+                   ttemp7 0043                     status 000FD8                     wtemp8 003C  
+       ??_debounceRoutine 0036          __end_of_HiPriISR 0032           __initialization 0322  
+            __end_of_main 036C                    ??_main 003A             __activetblptr 000003  
+                  i2l1030 01D2                    i2l1032 01E0                    _RCSTA1 000FAB  
+                  _SPBRG1 000FAF                    i2u8_40 0174                    i2u8_41 0170  
+                  i2u9_40 0192                    i2u9_41 018E                    _TXREG1 000FAD  
+                  _TXSTA1 000FAC               ?i2_sendData 0034                 ??_Initial 0036  
+                  _buffer 000B                    clear_0 0348                    _rpgDir 0025  
+                  isa$std 000001          __end_of_sendData 0164              __pdataCOMRAM 002A  
+               ??_pollRPG 0036                    tblptrh 000FF7                    tblptrl 000FF6  
+                  tblptru 000FF8                __accesstop 0060   __end_of__initialization 034E  
+           ___rparam_used 000001            __pcstackCOMRAM 0034              _debouncedVar 001F  
+               ?_HiPriISR 0034       __size_ofi2_sendData 008E                __pnvCOMRAM 003A  
+              ??_HiPriISR 0036           _debounceRoutine 0276                   i2u10_40 0018  
+                 i2u10_41 0014                   i2u11_40 0026                   i2u11_41 0022  
+               ?_sendData 0034                   _Initial 02D6                   __Hparam 0000  
+                 __Lparam 0000                _byteToSend 0022                _byteToSave 0026  
+                 __pcinit 0322                   __ramtop 1000                   __ptext0 0358  
+                 __ptext1 00D6                   __ptext2 0036                   __ptext3 01F2  
+                 __ptext4 0276                   __ptext5 02D6                   __ptext7 0164  
+                 _maxSize 0033                   _pollRPG 0036                   _rpgTemp 003A  
+    end_of_initialization 034E              ??i2_sendData 0034                ??_sendData 0036  
+              _pollMatrix 01F2                   postdec1 000FE5                   postinc0 000FEE  
+ __end_of_debounceRoutine 02D6        __end_ofi2_sendData 01F2             __pidataCOMRAM 036C  
+     start_initialization 0322         __size_of_HiPriISR 002A            _volumeControls 002F  
+             ?_pollMatrix 0034          ?_debounceRoutine 0034               __pbssCOMRAM 0001  
+                ?_Initial 0034         __size_of_sendData 008E                 __pintcode 0008  
+                _BAUDCON1 000F65                  ?_pollRPG 0034       __size_of_pollMatrix 0084  
+                _LATEbits 000F8D                  _IPR1bits 000F9F                  _PIE1bits 000F9D  
+                _IPR3bits 000FA5                  _PIE3bits 000FA3              _keypressList 0001  
+                _PIR1bits 000F9E                  _PIR3bits 000FA4                  _RCONbits 000FD0  
+               _temporary 0023                  _HiPriISR 0008                 copy_data0 0336  
+                __Hrparam 0000          __size_of_Initial 004C                  __Lrparam 0000  
+             _buttonPress 0027               _buttonStack 0015          __size_of_pollRPG 00A0  
+                _keyCodes 002A               _readyToSend 0029             __size_of_main 0014  
+                _oldPortD 0024                  _keypress 0028                  _sendData 00D6  
+            ??_pollMatrix 0038                  isa$xinst 000000                  int$flags 003B  
+              _INTCONbits 000FF2        __end_of_pollMatrix 0276                  intlevel2 0000  
+              _RCSTA1bits 000FAB  __size_of_debounceRoutine 0060  

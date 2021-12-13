@@ -3,12 +3,12 @@ Microchip MPLAB XC8 Compiler V2.32
 Linker command line:
 
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
-  -h+dist/default/production\FinalProject.X.production.sym \
-  --cmf=dist/default/production\FinalProject.X.production.cmf -z -Q18F87K22 \
-  -oC:\Users\Will\AppData\Local\Temp\xcAsu1s.4 --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/FinalProject.X.production.map -E1 \
-  -ver=XC8 Compiler --acfsm=1493 -ASTACK=060h-0F15h -pstack=STACK \
-  -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
+  -h+dist/default/debug\FinalProject.X.debug.sym \
+  --cmf=dist/default/debug\FinalProject.X.debug.cmf -z -Q18F87K22 \
+  -oC:\Users\Will\AppData\Local\Temp\xcAsf0g.4 --defsym=__MPLAB_BUILD=1 \
+  -Mdist/default/debug/FinalProject.X.debug.map -E1 -ver=XC8 Compiler \
+  --acfsm=1493 -ASTACK=060h-0F15h -pstack=STACK -ACODE=00h-01FFFFh \
+  -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
   -AMEDIUMCONST=01000h-0FFFFh,011000h-01FFFFh -ACOMRAM=01h-05Fh \
   -AABS1=00h-0F15h -ABIGRAM=01h-0F15h \
   -ARAM=060h-0FFh,0100h-01FFhx14,0F00h-0F15h -ABANK0=060h-0FFh \
@@ -26,8 +26,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Will\AppData\Local\Temp\xcAsu1s.o \
-  dist/default/production\FinalProject.X.production.o 
+  C:\Users\Will\AppData\Local\Temp\xcAsf0g.o \
+  dist/default/debug\FinalProject.X.debug.o 
 
 Object code version is 3.11
 
@@ -36,29 +36,29 @@ Machine type is 18F87K22
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Will\AppData\Local\Temp\xcAsu1s.o
+C:\Users\Will\AppData\Local\Temp\xcAsf0g.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                 32       32        4        4       0
                 reset_vec                             0        0        4        0       0
-dist/default/production\FinalProject.X.production.o
+dist/default/debug\FinalProject.X.debug.o
                 intcode                               8        8       2A        4       0
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 temp                                 3B       3B        1        1       1
-                text7                               164      164       8E        4       0
-                text5                               2D6      2D6       4C        4       0
-                text4                               276      276       60        4       0
-                text3                               1F2      1F2       84        4       0
-                text2                                36       36       A0        4       0
-                text1                                D6       D6       8E        4       0
-                text0                               358      358       14        4       0
+                text7                               2C0      2C0       92        4       0
+                text5                               352      352       46        4       0
+                text4                                36       36       B2        4       0
+                text3                               192      192       9C        4       0
+                text2                                E8       E8       AA        4       0
+                text1                               22E      22E       92        4       0
+                text0                               3CE      3CE       36        4       0
                 cstackCOMRAM                         34       34        6        1       1
                 dataCOMRAM                           2A       2A        A        1       1
                 bssCOMRAM                             1        1       29        1       1
-                cinit                               322      322       36        4       0
+                cinit                               398      398       36        4       0
                 nvCOMRAM                             3A       3A        1        1       1
-                idataCOMRAM                         36C      36C        A        4       0
+                idataCOMRAM                         404      404        A        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -67,15 +67,15 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8       2A         0
                 init                                 32       32        4         0
                 reset_vec                             0        0        4         0
-                text7                               164      164       8E         0
-                text5                               2D6      2D6       4C         0
-                text4                               276      276       60         0
-                text3                               1F2      1F2       84         0
-                text2                                36       36       A0         0
-                text1                                D6       D6       8E         0
-                text0                               358      358       14         0
-                cinit                               322      322       36         0
-                idataCOMRAM                         36C      36C        A         0
+                text7                               2C0      2C0       92         0
+                text5                               352      352       46         0
+                text4                                36       36       B2         0
+                text3                               192      192       9C         0
+                text2                                E8       E8       AA         0
+                text1                               22E      22E       92         0
+                text0                               3CE      3CE       36         0
+                cinit                               398      398       36         0
+                idataCOMRAM                         404      404        A         0
 
         CLASS   CONST          
 
@@ -146,7 +146,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 bssCOMRAM                      000001  00003B  00003C         1       1  COMRAM  
-                intcode                        000008  00036E  000376         4       0  CODE    
+                intcode                        000008  000406  00040E         4       0  CODE    
 
 
 UNUSED ADDRESS RANGES
@@ -170,10 +170,10 @@ UNUSED ADDRESS RANGES
         BANK9            000900-0009FF              100
         BIGRAM           00003C-000F15              EDA
         CODE             000004-000007                4
-                         000376-01FFFF            1FC8A
+                         00040E-01FFFF            1FBF2
         COMRAM           00003C-00005F               24
         CONST            000004-000007                4
-                         000376-01FFFF            1FC8A
+                         00040E-01FFFF            1FBF2
         EEDATA           F00000-F003FF              400
         MEDIUMCONST      001000-00FFFF             F000
                          011000-01FFFF             F000
@@ -189,7 +189,7 @@ _HiPriISR                 intcode      000008
 _INTCONbits               (abs)        000FF2
 _IPR1bits                 (abs)        000F9F
 _IPR3bits                 (abs)        000FA5
-_Initial                  text5        0002D6
+_Initial                  text5        000352
 _LATA                     (abs)        000F89
 _LATC                     (abs)        000F8B
 _LATD                     (abs)        000F8C
@@ -203,7 +203,6 @@ _RCONbits                 (abs)        000FD0
 _RCSTA1                   (abs)        000FAB
 _RCSTA1bits               (abs)        000FAB
 _SPBRG1                   (abs)        000FAF
-_T1CON                    (abs)        000FCD
 _TRISA                    (abs)        000F92
 _TRISC                    (abs)        000F94
 _TRISD                    (abs)        000F95
@@ -366,7 +365,7 @@ __Ltext3                  text3        000000
 __Ltext4                  text4        000000
 __Ltext5                  text5        000000
 __Ltext7                  text7        000000
-__S0                      (abs)        000376
+__S0                      (abs)        00040E
 __S1                      (abs)        00003C
 __S2                      (abs)        000000
 __S4                      (abs)        000000
@@ -380,30 +379,30 @@ ___sp                     stack        000000
 __accesstop               (abs)        000060
 __activetblptr            (abs)        000003
 __end_of_HiPriISR         intcode      000032
-__end_of_Initial          text5        000322
-__end_of__initialization  cinit        00034E
-__end_of_debounceRoutine  text4        0002D6
-__end_of_main             text0        00036C
-__end_of_pollMatrix       text3        000276
-__end_of_pollRPG          text2        0000D6
-__end_of_sendData         text1        000164
-__end_ofi2_sendData       text7        0001F2
-__initialization          cinit        000322
+__end_of_Initial          text5        000398
+__end_of__initialization  cinit        0003C4
+__end_of_debounceRoutine  text4        0000E8
+__end_of_main             text0        000404
+__end_of_pollMatrix       text3        00022E
+__end_of_pollRPG          text2        000192
+__end_of_sendData         text1        0002C0
+__end_ofi2_sendData       text7        000352
+__initialization          cinit        000398
 __mediumconst             mediumconst  000000
 __pbssCOMRAM              bssCOMRAM    000001
-__pcinit                  cinit        000322
+__pcinit                  cinit        000398
 __pcstackCOMRAM           cstackCOMRAM 000034
 __pdataCOMRAM             dataCOMRAM   00002A
-__pidataCOMRAM            idataCOMRAM  00036C
+__pidataCOMRAM            idataCOMRAM  000404
 __pintcode                intcode      000008
 __pnvCOMRAM               nvCOMRAM     00003A
-__ptext0                  text0        000358
-__ptext1                  text1        0000D6
-__ptext2                  text2        000036
-__ptext3                  text3        0001F2
-__ptext4                  text4        000276
-__ptext5                  text5        0002D6
-__ptext7                  text7        000164
+__ptext0                  text0        0003CE
+__ptext1                  text1        00022E
+__ptext2                  text2        0000E8
+__ptext3                  text3        000192
+__ptext4                  text4        000036
+__ptext5                  text5        000352
+__ptext7                  text7        0002C0
 __ramtop                  ramtop       001000
 __size_of_HiPriISR        (abs)        000000
 __size_of_Initial         (abs)        000000
@@ -419,27 +418,27 @@ _buttonPress              bssCOMRAM    000027
 _buttonStack              bssCOMRAM    000015
 _byteToSave               bssCOMRAM    000026
 _byteToSend               bssCOMRAM    000022
-_debounceRoutine          text4        000276
+_debounceRoutine          text4        000036
 _debouncedVar             bssCOMRAM    00001F
 _keyCodes                 dataCOMRAM   00002A
 _keypress                 bssCOMRAM    000028
 _keypressList             bssCOMRAM    000001
-_main                     text0        000358
+_main                     text0        0003CE
 _maxSize                  dataCOMRAM   000033
 _oldPortD                 bssCOMRAM    000024
-_pollMatrix               text3        0001F2
-_pollRPG                  text2        000036
+_pollMatrix               text3        000192
+_pollRPG                  text2        0000E8
 _readyToSend              bssCOMRAM    000029
 _rpgDir                   bssCOMRAM    000025
 _rpgTemp                  nvCOMRAM     00003A
-_sendData                 text1        0000D6
+_sendData                 text1        00022E
 _sendI                    bssCOMRAM    000021
 _temporary                bssCOMRAM    000023
 _top                      dataCOMRAM   000032
 _volumeControls           dataCOMRAM   00002F
 btemp                     temp         00003B
-end_of_initialization     cinit        00034E
-i2_sendData               text7        000164
+end_of_initialization     cinit        0003C4
+i2_sendData               text7        0002C0
 int$flags                 temp         00003B
 intlevel0                 text         000000
 intlevel1                 text         000000
@@ -450,7 +449,7 @@ isa$xinst                 (abs)        000000
 stackhi                   (abs)        000F15
 stacklo                   (abs)        000060
 start                     init         000032
-start_initialization      cinit        000322
+start_initialization      cinit        000398
 ttemp5                    temp         00003C
 ttemp6                    temp         00003F
 ttemp7                    temp         000043
@@ -461,19 +460,19 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c
-		_pollMatrix    		CODE           	01F2	0000	132
-		_pollRPG       		CODE           	0036	0000	160
-		_main          		CODE           	0358	0000	20
-		_Initial       		CODE           	02D6	0000	76
+		_pollMatrix    		CODE           	0192	0000	156
+		_pollRPG       		CODE           	00E8	0000	170
+		_main          		CODE           	03CE	0000	54
+		_Initial       		CODE           	0352	0000	70
 		_HiPriISR      		CODE           	0008	0000	42
-		_sendData      		CODE           	00D6	0000	142
-		_debounceRoutine		CODE           	0276	0000	96
+		_sendData      		CODE           	022E	0000	146
+		_debounceRoutine		CODE           	0036	0000	178
 
-C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c estimated size: 668
+C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c estimated size: 816
 
 shared
-		i2_sendData    		CODE           	0164	0000	142
-		__initialization		CODE           	0322	0000	44
+		i2_sendData    		CODE           	02C0	0000	146
+		__initialization		CODE           	0398	0000	44
 
-shared estimated size: 186
+shared estimated size: 190
 

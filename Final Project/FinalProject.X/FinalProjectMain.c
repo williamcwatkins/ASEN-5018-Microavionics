@@ -29,7 +29,7 @@
  * 
  * Initial()
  *  Setup I/O
- *  Setup EUSART 2
+ *  Setup EUSART 1
  *  Setup Interrupts
  *  Final config to run
  * 
@@ -53,7 +53,7 @@
  * RPG for changes, polling the keys, and sending the keycode and volume change.
  * 
  * The High Priority ISR handles loading the next byte in the keypress stack 
- * into the transmit register for EUSART 2.
+ * into the transmit register for EUSART 1.
  * 
  ******************************************************************************/
 
@@ -79,14 +79,10 @@
 
 // <editor-fold defaultstate="collapsed" desc="Button Press Vars">
 // Implementing a stack for the button presses
-short buttonStack[5];   // storing buttons presses
-char maxSize = 3;       // assume the maximum consecutive presses is 4
-signed char top = -1;   // char for implementing a software stack (FIFO)
 char readyToSend = 0;   // Flag for indicating if data is ready to be sent.
 char keypress = 0;
 char buttonPress = 0;
-char byteToSave = 0;
-signed short debouncedVar = 0;
+unsigned short debouncedVar = 0;
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="RPG Vars">
@@ -97,15 +93,11 @@ char rpgTemp;
 
 // <editor-fold defaultstate="collapsed" desc="EUSART Vars">
 // Flags set when the corresponding command has been received
-char temporary = 0; // Temp var for throwing away framing error byte
-char buffer[10];    // Array for storing incoming data (largest packet size is 8)
 char byteToSend = 0;// Next byte to send
 // Strings to send via EUSART
-char keypressList[10];  // Storing the bytes to send 
 char keyCodes[5] = {0xA8, 0xAB, 0xAC, 0xAE, 0x00};    // Mute, Next, 
                         // Previous, Play/Pause
 char volumeControls[3]  = {0xA9, 0xAA, 0x00};   // Vol Up, Vol Down
-char sendI = 0; // Index for current string
 // </editor-fold>
 
 // </editor-fold>
@@ -120,9 +112,7 @@ void CCP1Handler(void);     // Interrupt handler for CCP1 for input delay
 void sendData(void);        // loads next byte into TXREG1
 void pollRPG(void);         // Polls the RPG for an update
 void pollMatrix(void);      // Polls the key matrix for a button press
-void debounceRoutine(void); // Debounces a keypress
-int isEmpty(void);
-int isFull(void);           
+void debounceRoutine(void); // Debounces a keypress          
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Mainline Code">
@@ -134,9 +124,9 @@ void main() {
     while(1) {
         pollRPG();
         pollMatrix();
-        if(readyToSend == 1)
+        if(readyToSend == 1 && PIR1bits.TX1IF)
             sendData();
-//     }  
+     }  
 }
 // </editor-fold>
 
@@ -155,28 +145,12 @@ void Initial() {
     // Configure the IO ports
     TRISA   = 0b00101001;
     LATA    = 0;
-    TRISD   = 0b00001111;
+    TRISD   = 0b11111111;
     LATD    = 0;
     TRISC   = 0b10010011;
     LATC    = 0;
     TRISE   = 0b00000000;
     LATEbits.LATE0    = 1;
-    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="Timer 0, 1, 3 Config">
-    
-    // Initializing TMR1 for input delay
-    T1CON = 0b00000010;             // 16-bit, Fosc/4, no prescale
-    
-    // </editor-fold>
-    
-    // <editor-fold defaultstate="collapsed" desc="CCP Config">
-    
-    // CCP 1
-    CCP1CON = 0b00001010;       // Set CCP1 to Compare mode
-    CCPTMRS0bits.C1TSEL = 0;    // Set CCP1 Timer to TMR1
-    CCPR1 = inputDelay;
-    
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="EUSART 1 Config">
@@ -253,13 +227,15 @@ void pollRPG() {
     rpgTemp = oldPortD ^ rpgTemp;
     if(rpgTemp == 0)
     {
-        rpgDir = 1;
+        rpgDir = -1;
+        readyToSend = 1;
     }
     else
     {
-        rpgDir = -1;
+        rpgDir = 1;
+        readyToSend = 1;
     }
-    oldPortD = rpgTemp;
+    oldPortD = PORTD & 0b00000011;
 }
 // </editor-fold>
 
@@ -280,20 +256,21 @@ void pollMatrix() {
     {
         case 0b10000000:
             byteToSend = 0xA8;
-//            push(0xA8);
             break;
         case 0b01000000:
             byteToSend = 0xAC;
-//            push(0xAC);
             break;
         case 0b00100000:
             byteToSend = 0xAE;
-//            push(0xAE);
             break;
         case 0b00010000:
             byteToSend = 0xAB;
-//            push(0xAB);
             break;
+    }
+    if(buttonPress > 0)
+    {
+        readyToSend = 1;
+        keypress = 1;
     }
 }
 
@@ -308,7 +285,7 @@ void pollMatrix() {
  ******************************************************************************/
 
 void debounceRoutine() {
-    while(debouncedVar != 4095)
+    while((debouncedVar<<4) != 65520)
     { 
         buttonPress = PORTD & 0b11110000;
         if(buttonPress >= 1)
@@ -318,6 +295,11 @@ void debounceRoutine() {
         else
         {
             debouncedVar = debouncedVar<<1;
+        }
+        if(debouncedVar<<4 == 0)   
+        {
+            debouncedVar = 0;
+            break;
         }
     }
     debouncedVar = 0;
@@ -333,8 +315,8 @@ void debounceRoutine() {
 /******************************************************************************
  * HiPriISR interrupt service routine
  *
- * Handles all high-priority interrupts.  Currently only triggered by EUSART 
- * commands and TX flag.  Not implemented yet.
+ * Handles all high-priority interrupts.  Currently only triggered by EUSART TX 
+ * flag.
  ******************************************************************************/
 
 void __interrupt() HiPriISR(void) {
@@ -387,6 +369,7 @@ void sendData() {
     else
     {
         PIE1bits.TX1IE = 0;
+        readyToSend = 0;
     }
 }
 // </editor-fold>

@@ -9,7 +9,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "122
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 122: void pollMatrix(void);
 [v _pollMatrix `(v ~T0 @X0 0 ef ]
-"120
+"11292 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
+[s S490 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S490 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
+"11302
+[s S491 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S491 . . SSPIF TXIF RCIF ]
+"11291
+[u S489 `S490 1 `S491 1 ]
+[n S489 . . . ]
+"11309
+[v _PIR1bits `VS489 ~T0 @X0 0 e@3998 ]
+"120 C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 120: void sendData(void);
 [v _sendData `(v ~T0 @X0 0 ef ]
 "10532 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc/pic18f87k22.h
@@ -37,8 +48,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S447 . . . ]
 "10045
 [v _LATEbits `VS447 ~T0 @X0 0 e@3981 ]
-"16174
-[v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
 "12548
 [v _TXSTA1 `Vuc ~T0 @X0 0 e@4012 ]
 "12210
@@ -112,17 +121,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S486 . . . ]
 "11226
 [v _PIE1bits `VS486 ~T0 @X0 0 e@3997 ]
-"11292
-[s S490 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S490 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
-"11302
-[s S491 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S491 . . SSPIF TXIF RCIF ]
-"11291
-[u S489 `S490 1 `S491 1 ]
-[n S489 . . . ]
-"11309
-[v _PIR1bits `VS489 ~T0 @X0 0 e@3998 ]
 "11852
 [s S512 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S512 . RTCCIP CCP1IP CCP2IP CTMUIP TX2IP RC2IP . TMR5GIP ]
@@ -802,10 +800,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "89
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 89: signed short debouncedVar = 0;
-[v _debouncedVar `s ~T0 @X0 1 e ]
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 89: unsigned short debouncedVar = 0;
+[v _debouncedVar `us ~T0 @X0 1 e ]
 [i _debouncedVar
--> -> 0 `i `s
+-> -> 0 `i `us
 ]
 "93
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 93: signed char rpgDir;
@@ -886,8 +884,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 136:         pollMatrix();
 [e ( _pollMatrix ..  ]
 "137
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 137:         if(readyToSend == 1)
-[e $ ! == -> _readyToSend `i -> 1 `i 835  ]
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 137:         if(readyToSend == 1 && PIR1bits.TX1IF)
+[e $ ! && == -> _readyToSend `i -> 1 `i != -> . . _PIR1bits 0 4 `i -> 0 `i 835  ]
 "138
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 138:             sendData();
 [e ( _sendData ..  ]
@@ -915,8 +913,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 157:     LATA = 0;
 [e = _LATA -> -> 0 `i `uc ]
 "158
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 158:     TRISD = 0b00001111;
-[e = _TRISD -> -> 15 `i `uc ]
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 158:     TRISD = 0b11111111;
+[e = _TRISD -> -> 255 `i `uc ]
 "159
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 159:     LATD = 0;
 [e = _LATD -> -> 0 `i `uc ]
@@ -932,124 +930,121 @@ Version 4.0 HI-TECH Software Intermediate Code
 "163
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 163:     LATEbits.LATE0 = 1;
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-"169
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 169:     T1CON = 0b00000010;
-[e = _T1CON -> -> 2 `i `uc ]
-"183
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 183:     TXSTA1 = 0b00100000;
+"167
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 167:     TXSTA1 = 0b00100000;
 [e = _TXSTA1 -> -> 32 `i `uc ]
-"184
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 184:     RCSTA1 = 0b00010000;
+"168
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 168:     RCSTA1 = 0b00010000;
 [e = _RCSTA1 -> -> 16 `i `uc ]
-"185
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 185:     BAUDCON1 = 0b01000000;
+"169
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 169:     BAUDCON1 = 0b01000000;
 [e = _BAUDCON1 -> -> 64 `i `uc ]
-"186
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 186:     SPBRG1 = 12;
+"170
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 170:     SPBRG1 = 12;
 [e = _SPBRG1 -> -> 12 `i `uc ]
-"191
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 191:     RCONbits.IPEN = 1;
+"175
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 175:     RCONbits.IPEN = 1;
 [e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-"192
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 192:     INTCONbits.GIEL = 1;
+"176
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 176:     INTCONbits.GIEL = 1;
 [e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-"193
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 193:     INTCONbits.GIEH = 1;
+"177
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 177:     INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-"196
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 196:     IPR1bits.TMR1IP = 0;
+"180
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 180:     IPR1bits.TMR1IP = 0;
 [e = . . _IPR1bits 0 0 -> -> 0 `i `uc ]
-"197
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 197:     PIE1bits.TMR1IE = 1;
+"181
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 181:     PIE1bits.TMR1IE = 1;
 [e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"198
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 198:     PIR1bits.TMR1IF = 0;
+"182
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 182:     PIR1bits.TMR1IF = 0;
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"201
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 201:     IPR3bits.CCP1IP = 0;
+"185
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 185:     IPR3bits.CCP1IP = 0;
 [e = . . _IPR3bits 0 1 -> -> 0 `i `uc ]
-"202
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 202:     PIE3bits.CCP1IE = 1;
+"186
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 186:     PIE3bits.CCP1IE = 1;
 [e = . . _PIE3bits 0 1 -> -> 1 `i `uc ]
-"203
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 203:     PIR3bits.CCP1IF = 0;
+"187
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 187:     PIR3bits.CCP1IF = 0;
 [e = . . _PIR3bits 0 1 -> -> 0 `i `uc ]
-"206
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 206:     IPR1bits.TX1IP = 1;
+"190
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 190:     IPR1bits.TX1IP = 1;
 [e = . . _IPR1bits 0 4 -> -> 1 `i `uc ]
-"207
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 207:     PIE1bits.TX1IE = 0;
+"191
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 191:     PIE1bits.TX1IE = 0;
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"214
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 214:     RCSTA1bits.SPEN = 1;
+"198
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 198:     RCSTA1bits.SPEN = 1;
 [e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
-"220
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 220: }
+"204
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 204: }
 [e :UE 836 ]
 }
-"233
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 233: void pollRPG() {
+"217
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 217: void pollRPG() {
 [v _pollRPG `(v ~T0 @X0 1 ef ]
 {
 [e :U _pollRPG ]
 [f ]
-"234
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 234:     rpgDir = 0;
+"218
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 218:     rpgDir = 0;
 [e = _rpgDir -> -> 0 `i `c ]
-"235
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 235:     rpgTemp = (PORTD ^ oldPortD) & 0x03;
+"219
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 219:     rpgTemp = (PORTD ^ oldPortD) & 0x03;
 [e = _rpgTemp -> & ^ -> _PORTD `i -> _oldPortD `i -> 3 `i `uc ]
-"236
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 236:     if(rpgTemp == 0)
+"220
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 220:     if(rpgTemp == 0)
 [e $ ! == -> _rpgTemp `i -> 0 `i 838  ]
-"237
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 237:         return;
+"221
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 221:         return;
 [e $UE 837  ]
 [e :U 838 ]
-"238
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 238:     switch(oldPortD)
+"222
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 222:     switch(oldPortD)
 [e $U 840  ]
-"239
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 239:     {
+"223
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 223:     {
 {
-"240
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 240:         case 0:
+"224
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 224:         case 0:
 [e :U 841 ]
-"241
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 241:             oldPortD = 2;
+"225
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 225:             oldPortD = 2;
 [e = _oldPortD -> -> 2 `i `uc ]
-"242
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 242:             break;
+"226
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 226:             break;
 [e $U 839  ]
-"243
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 243:         case 2:
+"227
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 227:         case 2:
 [e :U 842 ]
-"244
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 244:             oldPortD = 3;
+"228
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 228:             oldPortD = 3;
 [e = _oldPortD -> -> 3 `i `uc ]
-"245
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 245:             break;
+"229
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 229:             break;
 [e $U 839  ]
-"246
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 246:         case 3:
+"230
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 230:         case 3:
 [e :U 843 ]
-"247
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 247:             oldPortD = 1;
+"231
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 231:             oldPortD = 1;
 [e = _oldPortD -> -> 1 `i `uc ]
-"248
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 248:             break;
+"232
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 232:             break;
 [e $U 839  ]
-"249
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 249:         case 1:
+"233
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 233:         case 1:
 [e :U 844 ]
-"250
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 250:             oldPortD = 0;
+"234
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 234:             oldPortD = 0;
 [e = _oldPortD -> -> 0 `i `uc ]
-"251
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 251:             break;
+"235
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 235:             break;
 [e $U 839  ]
-"252
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 252:     }
+"236
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 236:     }
 }
 [e $U 839  ]
 [e :U 840 ]
@@ -1059,105 +1054,111 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 1 `i 844
  839 ]
 [e :U 839 ]
-"253
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 253:     rpgTemp = oldPortD ^ rpgTemp;
+"237
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 237:     rpgTemp = oldPortD ^ rpgTemp;
 [e = _rpgTemp -> ^ -> _oldPortD `i -> _rpgTemp `i `uc ]
-"254
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 254:     if(rpgTemp == 0)
+"238
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 238:     if(rpgTemp == 0)
 [e $ ! == -> _rpgTemp `i -> 0 `i 845  ]
-"255
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 255:     {
+"239
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 239:     {
 {
-"256
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 256:         rpgDir = 1;
-[e = _rpgDir -> -> 1 `i `c ]
-"257
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 257:     }
+"240
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 240:         rpgDir = -1;
+[e = _rpgDir -> -U -> 1 `i `c ]
+"241
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 241:         readyToSend = 1;
+[e = _readyToSend -> -> 1 `i `uc ]
+"242
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 242:     }
 }
 [e $U 846  ]
-"258
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 258:     else
+"243
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 243:     else
 [e :U 845 ]
-"259
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 259:     {
+"244
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 244:     {
 {
-"260
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 260:         rpgDir = -1;
-[e = _rpgDir -> -U -> 1 `i `c ]
-"261
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 261:     }
+"245
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 245:         rpgDir = 1;
+[e = _rpgDir -> -> 1 `i `c ]
+"246
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 246:         readyToSend = 1;
+[e = _readyToSend -> -> 1 `i `uc ]
+"247
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 247:     }
 }
 [e :U 846 ]
-"262
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 262:     oldPortD = rpgTemp;
-[e = _oldPortD _rpgTemp ]
-"263
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 263: }
+"248
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 248:     oldPortD = PORTD & 0b00000011;
+[e = _oldPortD -> & -> _PORTD `i -> 3 `i `uc ]
+"249
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 249: }
 [e :UE 837 ]
 }
-"274
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 274: void pollMatrix() {
+"260
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 260: void pollMatrix() {
 [v _pollMatrix `(v ~T0 @X0 1 ef ]
 {
 [e :U _pollMatrix ]
 [f ]
-"275
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 275:     if((PORTD & 0b11110000) == 0)
+"261
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 261:     if((PORTD & 0b11110000) == 0)
 [e $ ! == & -> _PORTD `i -> 240 `i -> 0 `i 848  ]
-"276
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 276:         return;
+"262
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 262:         return;
 [e $UE 847  ]
 [e :U 848 ]
-"277
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 277:     debounceRoutine();
+"263
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 263:     debounceRoutine();
 [e ( _debounceRoutine ..  ]
-"278
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 278:     buttonPress = PORTD & 0b11110000;
+"264
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 264:     buttonPress = PORTD & 0b11110000;
 [e = _buttonPress -> & -> _PORTD `i -> 240 `i `uc ]
-"279
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 279:     switch(buttonPress)
+"265
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 265:     switch(buttonPress)
 [e $U 850  ]
-"280
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 280:     {
+"266
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 266:     {
 {
-"281
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 281:         case 0b10000000:
+"267
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 267:         case 0b10000000:
 [e :U 851 ]
-"282
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 282:             byteToSend = 0xA8;
+"268
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 268:             byteToSend = 0xA8;
 [e = _byteToSend -> -> 168 `i `uc ]
-"284
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 284:             break;
+"270
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 270:             break;
 [e $U 849  ]
-"285
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 285:         case 0b01000000:
+"271
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 271:         case 0b01000000:
 [e :U 852 ]
-"286
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 286:             byteToSend = 0xAC;
+"272
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 272:             byteToSend = 0xAC;
 [e = _byteToSend -> -> 172 `i `uc ]
-"288
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 288:             break;
+"274
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 274:             break;
 [e $U 849  ]
-"289
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 289:         case 0b00100000:
+"275
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 275:         case 0b00100000:
 [e :U 853 ]
-"290
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 290:             byteToSend = 0xAE;
+"276
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 276:             byteToSend = 0xAE;
 [e = _byteToSend -> -> 174 `i `uc ]
-"292
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 292:             break;
+"278
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 278:             break;
 [e $U 849  ]
-"293
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 293:         case 0b00010000:
+"279
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 279:         case 0b00010000:
 [e :U 854 ]
-"294
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 294:             byteToSend = 0xAB;
+"280
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 280:             byteToSend = 0xAB;
 [e = _byteToSend -> -> 171 `i `uc ]
-"296
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 296:             break;
+"282
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 282:             break;
 [e $U 849  ]
-"297
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 297:     }
+"283
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 283:     }
 }
 [e $U 849  ]
 [e :U 850 ]
@@ -1167,205 +1168,240 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 16 `i 854
  849 ]
 [e :U 849 ]
-"298
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 298: }
+"284
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 284:     if(buttonPress > 0)
+[e $ ! > -> _buttonPress `i -> 0 `i 855  ]
+"285
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 285:     {
+{
+"286
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 286:         readyToSend = 1;
+[e = _readyToSend -> -> 1 `i `uc ]
+"287
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 287:         keypress = 1;
+[e = _keypress -> -> 1 `i `uc ]
+"288
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 288:     }
+}
+[e :U 855 ]
+"289
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 289: }
 [e :UE 847 ]
 }
-"310
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 310: void debounceRoutine() {
+"301
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 301: void debounceRoutine() {
 [v _debounceRoutine `(v ~T0 @X0 1 ef ]
 {
 [e :U _debounceRoutine ]
 [f ]
-"311
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 311:     while(debouncedVar != 4095)
-[e $U 856  ]
-[e :U 857 ]
-"312
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 312:     {
+"302
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 302:     while((debouncedVar<<4) != 65520)
+[e $U 857  ]
+[e :U 858 ]
+"303
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 303:     {
 {
-"313
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 313:         buttonPress = PORTD & 0b11110000;
+"304
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 304:         buttonPress = PORTD & 0b11110000;
 [e = _buttonPress -> & -> _PORTD `i -> 240 `i `uc ]
-"314
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 314:         if(buttonPress >= 1)
-[e $ ! >= -> _buttonPress `i -> 1 `i 859  ]
-"315
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 315:         {
+"305
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 305:         if(buttonPress >= 1)
+[e $ ! >= -> _buttonPress `i -> 1 `i 860  ]
+"306
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 306:         {
 {
+"307
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 307:             debouncedVar = (debouncedVar<<1) | 0x01;
+[e = _debouncedVar -> | << -> _debouncedVar `ui -> 1 `i -> -> 1 `i `ui `us ]
+"308
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 308:         }
+}
+[e $U 861  ]
+"309
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 309:         else
+[e :U 860 ]
+"310
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 310:         {
+{
+"311
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 311:             debouncedVar = debouncedVar<<1;
+[e = _debouncedVar -> << -> _debouncedVar `ui -> 1 `i `us ]
+"312
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 312:         }
+}
+[e :U 861 ]
+"313
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 313:         if(debouncedVar<<4 == 0)
+[e $ ! == << -> _debouncedVar `ui -> 4 `i -> -> 0 `i `ui 862  ]
+"314
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 314:         {
+{
+"315
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 315:             debouncedVar = 0;
+[e = _debouncedVar -> -> 0 `i `us ]
 "316
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 316:             debouncedVar = (debouncedVar<<1) | 0x01;
-[e = _debouncedVar -> | << -> _debouncedVar `i -> 1 `i -> 1 `i `s ]
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 316:             break;
+[e $U 859  ]
 "317
 [; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 317:         }
 }
-[e $U 860  ]
+[e :U 862 ]
 "318
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 318:         else
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 318:     }
+}
+[e :U 857 ]
+"302
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 302:     while((debouncedVar<<4) != 65520)
+[e $ != -> << -> _debouncedVar `ui -> 4 `i `l -> 65520 `l 858  ]
 [e :U 859 ]
 "319
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 319:         {
-{
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 319:     debouncedVar = 0;
+[e = _debouncedVar -> -> 0 `i `us ]
 "320
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 320:             debouncedVar = debouncedVar<<1;
-[e = _debouncedVar -> << -> _debouncedVar `i -> 1 `i `s ]
-"321
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 321:         }
-}
-[e :U 860 ]
-"322
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 322:     }
-}
-[e :U 856 ]
-"311
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 311:     while(debouncedVar != 4095)
-[e $ != -> _debouncedVar `i -> 4095 `i 857  ]
-[e :U 858 ]
-"323
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 323:     debouncedVar = 0;
-[e = _debouncedVar -> -> 0 `i `s ]
-"324
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 324: }
-[e :UE 855 ]
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 320: }
+[e :UE 856 ]
 }
 [v $root$_HiPriISR `(v ~T0 @X0 0 e ]
-"340
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 340: void __attribute__((picinterrupt(("")))) HiPriISR(void) {
+"336
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 336: void __attribute__((picinterrupt(("")))) HiPriISR(void) {
 [v _HiPriISR `(v ~T97 @X0 1 ef ]
 {
 [e :U _HiPriISR ]
 [f ]
-"341
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 341:     while(1)
-[e :U 863 ]
-"342
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 342:     {
-{
-"343
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 343:         if(PIR1bits.TX1IF && PIE1bits.TX1IE)
-[e $ ! && != -> . . _PIR1bits 0 4 `i -> 0 `i != -> . . _PIE1bits 0 4 `i -> 0 `i 865  ]
-"344
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 344:         {
-{
-"345
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 345:             sendData();
-[e ( _sendData ..  ]
-"346
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 346:             continue;
-[e $U 862  ]
-"347
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 347:         }
-}
+"337
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 337:     while(1)
 [e :U 865 ]
-"348
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 348:         break;
+"338
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 338:     {
+{
+"339
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 339:         if(PIR1bits.TX1IF && PIE1bits.TX1IE)
+[e $ ! && != -> . . _PIR1bits 0 4 `i -> 0 `i != -> . . _PIE1bits 0 4 `i -> 0 `i 867  ]
+"340
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 340:         {
+{
+"341
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 341:             sendData();
+[e ( _sendData ..  ]
+"342
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 342:             continue;
 [e $U 864  ]
-"349
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 349:     }
+"343
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 343:         }
 }
-[e :U 862 ]
-[e $U 863  ]
+[e :U 867 ]
+"344
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 344:         break;
+[e $U 866  ]
+"345
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 345:     }
+}
 [e :U 864 ]
-"350
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 350: }
-[e :UE 861 ]
+[e $U 865  ]
+[e :U 866 ]
+"346
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 346: }
+[e :UE 863 ]
 }
-"364
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 364: void sendData() {
+"360
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 360: void sendData() {
 [v _sendData `(v ~T0 @X0 1 ef ]
 {
 [e :U _sendData ]
 [f ]
-"365
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 365:     if(keypress == 1)
-[e $ ! == -> _keypress `i -> 1 `i 867  ]
-"366
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 366:     {
+"361
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 361:     if(keypress == 1)
+[e $ ! == -> _keypress `i -> 1 `i 869  ]
+"362
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 362:     {
 {
-"367
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 367:         TXREG1 = byteToSend;
+"363
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 363:         TXREG1 = byteToSend;
 [e = _TXREG1 -> _byteToSend `uc ]
-"368
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 368:         PIE1bits.TX1IE = 1;
+"364
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 364:         PIE1bits.TX1IE = 1;
 [e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
-"369
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 369:         keypress = 0;
+"365
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 365:         keypress = 0;
 [e = _keypress -> -> 0 `i `uc ]
-"370
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 370:     }
-}
-[e $U 868  ]
-"371
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 371:     else if(rpgDir != 0)
-[e :U 867 ]
-[e $ ! != -> _rpgDir `i -> 0 `i 869  ]
-"372
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 372:     {
-{
-"373
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 373:         switch(rpgDir)
-[e $U 871  ]
-"374
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 374:         {
-{
-"375
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 375:             case 1:
-[e :U 872 ]
-"376
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 376:                 TXREG1 = 0xA9;
-[e = _TXREG1 -> -> 169 `i `uc ]
-"377
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 377:                 PIE1bits.TX1IE = 1;
-[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
-"378
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 378:                 rpgDir = 0;
-[e = _rpgDir -> -> 0 `i `c ]
-"379
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 379:                 break;
-[e $U 870  ]
-"380
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 380:             case -1:
-[e :U 873 ]
-"381
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 381:                 TXREG1 = 0xAA;
-[e = _TXREG1 -> -> 170 `i `uc ]
-"382
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 382:                 PIE1bits.TX1IE = 1;
-[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
-"383
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 383:                 rpgDir = 0;
-[e = _rpgDir -> -> 0 `i `c ]
-"384
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 384:                 break;
-[e $U 870  ]
-"385
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 385:         }
+"366
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 366:     }
 }
 [e $U 870  ]
-[e :U 871 ]
-[e [\ -> _rpgDir `i , $ -> 1 `i 872
- , $ -U -> 1 `i 873
- 870 ]
-[e :U 870 ]
-"386
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 386:     }
-}
-[e $U 874  ]
-"387
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 387:     else
+"367
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 367:     else if(rpgDir != 0)
 [e :U 869 ]
-"388
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 388:     {
+[e $ ! != -> _rpgDir `i -> 0 `i 871  ]
+"368
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 368:     {
 {
-"389
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 389:         PIE1bits.TX1IE = 0;
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"390
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 390:     }
-}
+"369
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 369:         switch(rpgDir)
+[e $U 873  ]
+"370
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 370:         {
+{
+"371
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 371:             case 1:
 [e :U 874 ]
-[e :U 868 ]
-"391
-[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 391: }
-[e :UE 866 ]
+"372
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 372:                 TXREG1 = 0xA9;
+[e = _TXREG1 -> -> 169 `i `uc ]
+"373
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 373:                 PIE1bits.TX1IE = 1;
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+"374
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 374:                 rpgDir = 0;
+[e = _rpgDir -> -> 0 `i `c ]
+"375
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 375:                 break;
+[e $U 872  ]
+"376
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 376:             case -1:
+[e :U 875 ]
+"377
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 377:                 TXREG1 = 0xAA;
+[e = _TXREG1 -> -> 170 `i `uc ]
+"378
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 378:                 PIE1bits.TX1IE = 1;
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+"379
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 379:                 rpgDir = 0;
+[e = _rpgDir -> -> 0 `i `c ]
+"380
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 380:                 break;
+[e $U 872  ]
+"381
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 381:         }
+}
+[e $U 872  ]
+[e :U 873 ]
+[e [\ -> _rpgDir `i , $ -> 1 `i 874
+ , $ -U -> 1 `i 875
+ 872 ]
+[e :U 872 ]
+"382
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 382:     }
+}
+[e $U 876  ]
+"383
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 383:     else
+[e :U 871 ]
+"384
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 384:     {
+{
+"385
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 385:         PIE1bits.TX1IE = 0;
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"386
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 386:         readyToSend = 0;
+[e = _readyToSend -> -> 0 `i `uc ]
+"387
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 387:     }
+}
+[e :U 876 ]
+[e :U 870 ]
+"388
+[; ;C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c: 388: }
+[e :UE 868 ]
 }

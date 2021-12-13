@@ -11278,7 +11278,7 @@ char readyToSend = 0;
 char keypress = 0;
 char buttonPress = 0;
 char byteToSave = 0;
-signed short debouncedVar = 0;
+unsigned short debouncedVar = 0;
 
 
 
@@ -11319,7 +11319,7 @@ void main() {
     while(1) {
         pollRPG();
         pollMatrix();
-        if(readyToSend == 1)
+        if(readyToSend == 1 && PIR1bits.TX1IF)
             sendData();
      }
 }
@@ -11330,7 +11330,7 @@ void Initial() {
 
     TRISA = 0b00101001;
     LATA = 0;
-    TRISD = 0b00001111;
+    TRISD = 0b11111111;
     LATD = 0;
     TRISC = 0b10010011;
     LATC = 0;
@@ -11339,10 +11339,6 @@ void Initial() {
 
 
 
-
-
-    T1CON = 0b00000010;
-# 183 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
     TXSTA1 = 0b00100000;
     RCSTA1 = 0b00010000;
     BAUDCON1 = 0b01000000;
@@ -11381,7 +11377,7 @@ void Initial() {
 
 
 }
-# 233 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
+# 217 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
 void pollRPG() {
     rpgDir = 0;
     rpgTemp = (PORTD ^ oldPortD) & 0x03;
@@ -11405,15 +11401,17 @@ void pollRPG() {
     rpgTemp = oldPortD ^ rpgTemp;
     if(rpgTemp == 0)
     {
-        rpgDir = 1;
+        rpgDir = -1;
+        readyToSend = 1;
     }
     else
     {
-        rpgDir = -1;
+        rpgDir = 1;
+        readyToSend = 1;
     }
-    oldPortD = rpgTemp;
+    oldPortD = PORTD & 0b00000011;
 }
-# 274 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
+# 260 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
 void pollMatrix() {
     if((PORTD & 0b11110000) == 0)
         return;
@@ -11438,10 +11436,15 @@ void pollMatrix() {
 
             break;
     }
+    if(buttonPress > 0)
+    {
+        readyToSend = 1;
+        keypress = 1;
+    }
 }
-# 310 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
+# 301 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
 void debounceRoutine() {
-    while(debouncedVar != 4095)
+    while((debouncedVar<<4) != 65520)
     {
         buttonPress = PORTD & 0b11110000;
         if(buttonPress >= 1)
@@ -11452,10 +11455,15 @@ void debounceRoutine() {
         {
             debouncedVar = debouncedVar<<1;
         }
+        if(debouncedVar<<4 == 0)
+        {
+            debouncedVar = 0;
+            break;
+        }
     }
     debouncedVar = 0;
 }
-# 340 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
+# 336 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
 void __attribute__((picinterrupt(("")))) HiPriISR(void) {
     while(1)
     {
@@ -11467,7 +11475,7 @@ void __attribute__((picinterrupt(("")))) HiPriISR(void) {
         break;
     }
 }
-# 364 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
+# 360 "C:/Users/Will/Documents/GitHub/ASEN-5067-Microavionics/Final Project/FinalProject.X/FinalProjectMain.c"
 void sendData() {
     if(keypress == 1)
     {
@@ -11494,5 +11502,6 @@ void sendData() {
     else
     {
         PIE1bits.TX1IE = 0;
+        readyToSend = 0;
     }
 }
